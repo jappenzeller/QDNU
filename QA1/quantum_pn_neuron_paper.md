@@ -178,27 +178,31 @@ The quantum fidelity F = |⟨ψ_template|ψ_current⟩|² provides a natural sim
 
 ### Empirical Validation
 
-Preliminary validation using the Kaggle American Epilepsy Society Seizure Prediction Challenge dataset demonstrates the feasibility of this approach. Using four-channel subsets of the Dog_1 subject data with 15 ictal and 15 interictal segments, the quantum fidelity-based classifier achieved separation between ictal and interictal states.
-
-![Figure 3. Quantum fidelity distributions for ictal and interictal EEG](figures/fidelity_distribution.png)
-
-*Figure 3.* Distribution of quantum fidelity scores for ictal (red) and interictal (blue) EEG segments. The vertical dashed line indicates the classification threshold (F = 0.5). Ictal segments cluster at higher fidelity values relative to the pre-ictal template, enabling discrimination from interictal baseline.
-
-Figure 3 displays the fidelity distributions obtained from simulation using the Qiskit Aer statevector simulator. The separation between distributions indicates that quantum fidelity captures relevant differences between seizure and non-seizure EEG patterns. Performance metrics including accuracy, precision, recall, and F1 score are summarized in Table 2.
+Preliminary validation was conducted using the Kaggle American Epilepsy Society Seizure Prediction Challenge dataset. Four-channel subsets of the Dog_1 subject data were processed, extracting 15 ictal and 15 interictal segments of 500 samples each. The first ictal segment served as the seizure template, with the remaining 14 ictal and all 15 interictal segments used for testing.
 
 **Table 2**
 
-*Classification Performance on Kaggle EEG Dataset*
+*Experimental Results on Kaggle EEG Dataset (Dog_1)*
 
 | Metric | Value |
 |--------|-------|
-| Accuracy | 0.79 |
-| Precision | 0.82 |
-| Recall | 0.75 |
-| F1 Score | 0.78 |
-| Specificity | 0.83 |
+| Ictal Fidelity | 0.9998 ± 0.0000 |
+| Interictal Fidelity | 0.9998 ± 0.0001 |
+| Fidelity Separation | 0.0000 |
+| Accuracy | 0.48 |
+| Specificity | 0.00 |
 
-*Note.* Results obtained using 4-channel quantum circuit with 9 qubits on the Dog_1 subject from the Kaggle American Epilepsy Society dataset. Values represent preliminary simulation results using Qiskit Aer statevector simulator.
+*Note.* Results obtained using 4-channel quantum circuit with 9 qubits. Fidelity computed via Qiskit Aer statevector simulator.
+
+![Figure 3. Quantum fidelity distributions for ictal and interictal EEG](figures/fidelity_distribution.png)
+
+*Figure 3.* Quantum fidelity scores for ictal (red) and interictal (blue) EEG segments from Dog_1 subject. Both distributions cluster near F ≈ 0.9998 with minimal separation, demonstrating the challenge discussed below.
+
+The empirical results reveal a critical finding: the current preprocessing pipeline produces nearly identical fidelity values for both ictal and interictal states (F ≈ 0.9998). This lack of discrimination, reflected in near-chance classification accuracy, indicates that discriminative features are being lost during the PN parameter extraction and normalization stages.
+
+This outcome does not invalidate the theoretical quantum advantage in correlation encoding—the O(M) scaling demonstrated in Section 4 remains mathematically sound. Rather, it highlights that the end-to-end pipeline requires refinement in the classical preprocessing stage. The z-score normalization applied to each EEG channel independently appears to compress amplitude differences that distinguish seizure from non-seizure activity. The PN dynamics, designed to capture excitation-inhibition balance, may require frequency-specific band filtering or alternative normalization strategies to preserve discriminative information.
+
+These findings represent an honest assessment of the current implementation status and motivate the specific future directions discussed below.
 
 ---
 
@@ -206,13 +210,13 @@ Figure 3 displays the fidelity distributions obtained from simulation using the 
 
 ### Current Limitations
 
-Several limitations constrain the practical applicability of the proposed architecture in its current form. Hardware coherence times on current NISQ devices, typically on the order of 100 microseconds for superconducting qubits, limit the circuit depth that can be reliably executed. While the present architecture requires only depth ~15 for 4-channel encoding, scaling to 19+ channels increases depth proportionally, potentially exceeding coherence limits.
+**Feature Extraction Challenge.** The most significant limitation revealed by empirical validation is the loss of discriminative information during preprocessing. The current pipeline applies z-score normalization independently to each channel, which removes absolute amplitude differences between ictal and interictal states. The PN dynamics subsequently converge to similar parameter values regardless of the original EEG state. This is not a limitation of the quantum architecture itself, but rather indicates that the classical-to-quantum interface requires careful design to preserve task-relevant features.
 
-Gate fidelity remains a significant concern, with two-qubit gate error rates of approximately 0.5-1% on current hardware. For circuits with ~100 gates (corresponding to M ≈ 6 channels), accumulated errors can substantially degrade output fidelity. Error mitigation techniques provide partial remediation but introduce additional computational overhead.
+**Hardware Constraints.** Hardware coherence times on current NISQ devices, typically on the order of 100 microseconds for superconducting qubits, limit the circuit depth that can be reliably executed. While the present architecture requires only depth ~15 for 4-channel encoding, scaling to 19+ channels increases depth proportionally, potentially exceeding coherence limits. Gate fidelity remains a concern, with two-qubit gate error rates of approximately 0.5-1% on current hardware.
 
-The classical preprocessing requirement for PN parameter extraction limits end-to-end quantum speedup. The O(M·T) preprocessing cost dominates for large T, meaning that quantum advantage is most pronounced for scenarios emphasizing correlation encoding rather than raw signal processing.
+**Classical Preprocessing Overhead.** The O(M·T) preprocessing cost for PN parameter extraction is unchanged from classical approaches, meaning that quantum advantage is most pronounced in the correlation encoding phase rather than end-to-end processing.
 
-Finally, classical simulation capabilities limit algorithm development to approximately 30 qubits, corresponding to roughly M = 15 channels. Validation on larger systems requires access to actual quantum hardware.
+**Simulation Limits.** Classical simulation capabilities limit algorithm development to approximately 30 qubits, corresponding to roughly M = 15 channels. Validation on larger systems requires access to actual quantum hardware.
 
 ### Mitigation Strategies
 
