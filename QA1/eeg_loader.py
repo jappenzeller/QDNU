@@ -111,7 +111,7 @@ def load_subject_data(subject, root_dir=None, max_channels=None):
     return ictal, interictal
 
 
-def get_eeg_windows(data, window_size, step=None, normalize=True):
+def get_eeg_windows(data, window_size, step=None, normalize=False):
     """
     Extract sliding windows from EEG data.
 
@@ -119,7 +119,8 @@ def get_eeg_windows(data, window_size, step=None, normalize=True):
         data: np.ndarray shape (n_channels, n_samples)
         window_size: Number of samples per window
         step: Step size (default: window_size // 2)
-        normalize: If True, z-score normalize each window
+        normalize: If True, z-score normalize each window (default: False
+                   to preserve amplitude differences for QDNU)
 
     Yields:
         np.ndarray: Windows of shape (n_channels, window_size)

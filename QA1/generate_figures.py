@@ -199,7 +199,7 @@ def generate_fidelity_distribution():
             'Dog_1', num_channels=4, window_size=500, n_ictal=15, n_interictal=15
         )
 
-        trainer = TemplateTrainer(num_channels=4, lambda_a=0.1, lambda_c=0.05, dt=0.001)
+        trainer = TemplateTrainer(num_channels=4, lambda_a=0.1, lambda_c=0.05, saturation_mode='symmetric')
         trainer.train(ictal_windows[0])
         predictor = SeizurePredictor(trainer, threshold=0.5)
 
@@ -359,7 +359,7 @@ def generate_pn_dynamics_diagram():
 
     for i in range(1, len(t)):
         a[i] = a[i-1] + dt * (-lambda_a * a[i-1] + f_t[i] * (1 - a[i-1]))
-        c[i] = c[i-1] + dt * (+lambda_c * c[i-1] + f_t[i] * (1 - c[i-1]))
+        c[i] = c[i-1] + dt * (-lambda_c * c[i-1] + f_t[i] * (1 - c[i-1]))  # symmetric mode
         a[i] = np.clip(a[i], 0, 1)
         c[i] = np.clip(c[i], 0, 1)
 
@@ -376,8 +376,8 @@ def generate_pn_dynamics_diagram():
     ax1.set_xlim(0, 10)
     ax1.set_ylim(0, 1)
 
-    # Equations
-    eq_text = r'$\frac{da}{dt} = -\lambda_a a + f(t)(1-a)$' + '\n' + r'$\frac{dc}{dt} = +\lambda_c c + f(t)(1-c)$'
+    # Equations (symmetric mode)
+    eq_text = r'$\frac{da}{dt} = -\lambda_a a + f(t)(1-a)$' + '\n' + r'$\frac{dc}{dt} = -\lambda_c c + f(t)(1-c)$'
     ax1.text(0.02, 0.98, eq_text, transform=ax1.transAxes, fontsize=10, va='top',
             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
 

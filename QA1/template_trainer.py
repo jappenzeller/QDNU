@@ -35,7 +35,7 @@ class TemplateTrainer:
         template_circuit: QuantumCircuit encoding the template
     """
 
-    def __init__(self, num_channels, lambda_a=0.1, lambda_c=0.1, dt=0.001,
+    def __init__(self, num_channels, lambda_a=0.1, lambda_c=0.1, dt=0.01,
                  saturation_mode='clamp'):
         """
         Initialize template trainer.
@@ -44,8 +44,11 @@ class TemplateTrainer:
             num_channels: Number of EEG channels to process
             lambda_a: Excitatory decay rate for PN dynamics
             lambda_c: Inhibitory growth rate for PN dynamics
-            dt: Time step for PN integration
+            dt: Time step for PN integration (default 0.01 for 500-sample windows)
             saturation_mode: 'clamp', 'logistic', or 'symmetric'
+
+        Note: dt=0.01 with 500 samples gives 5 time units of integration,
+        allowing parameters to approach equilibrium. Adjust if window size differs.
         """
         self.num_channels = num_channels
         self.pn_dynamics = PNDynamics(
@@ -56,6 +59,10 @@ class TemplateTrainer:
         )
         self.template_params = None
         self.template_circuit = None
+        # Normalization parameters (set during training)
+        self._norm_min = None
+        self._norm_max = None
+        self._norm_range = None
 
     def train(self, preictal_eeg):
         """
@@ -91,37 +98,54 @@ class TemplateTrainer:
 
         return self.template_params
 
-    def normalize_eeg(self, eeg_data):
+    def normalize_eeg(self, eeg_data, use_power=True):
         """
-        Normalize EEG data for stable PN dynamics.
+        Normalize EEG data for PN dynamics.
 
-        Per channel:
-        1. Subtract mean (center at zero)
-        2. Divide by std (unit variance)
-        3. Scale to [0, 1] range
+        Key insight: Ictal and interictal EEG differ primarily in POWER (variance),
+        not mean amplitude. Using instantaneous power preserves this discriminative
+        information that would be lost with z-score normalization.
 
         Args:
             eeg_data: numpy array shape (num_channels, time_steps)
+            use_power: If True, use instantaneous power (RMS envelope)
 
         Returns:
-            numpy array: Normalized EEG in [0, 1] range
+            numpy array: Normalized signal in [0, 1] range
         """
-        normalized = np.zeros_like(eeg_data)
+        if use_power:
+            # Compute instantaneous power (RMS envelope) per channel
+            # This captures local variance - the key discriminator between ictal/interictal
+            window_size = min(50, max(10, eeg_data.shape[1] // 10))
+            normalized = np.zeros_like(eeg_data, dtype=float)
 
-        for ch in range(eeg_data.shape[0]):
-            signal = eeg_data[ch]
+            for ch in range(eeg_data.shape[0]):
+                signal = eeg_data[ch].astype(float)
+                # Sliding RMS as instantaneous power envelope
+                squared = signal ** 2
+                kernel = np.ones(window_size) / window_size
+                power = np.sqrt(np.convolve(squared, kernel, mode='same'))
+                normalized[ch] = power
 
-            # Z-score normalization
-            mean = np.mean(signal)
-            std = np.std(signal)
-            if std > 0:
-                z_scored = (signal - mean) / std
-            else:
-                z_scored = signal - mean
+            # Store template statistics for consistent normalization
+            if self._norm_min is None:
+                self._norm_min = 0  # Power is non-negative
+                self._norm_max = np.percentile(normalized, 99)
+                self._norm_range = max(self._norm_max, 1e-6)
 
-            # Scale to [0, 1] using sigmoid-like mapping
-            # tanh squashes to [-1, 1], then shift to [0, 1]
-            normalized[ch] = (np.tanh(z_scored / 2) + 1) / 2
+            # Normalize to [0, 1]
+            normalized = normalized / self._norm_range
+            normalized = np.clip(normalized, 0, 1)
+
+        else:
+            # Raw amplitude normalization (preserves amplitude)
+            if self._norm_min is None:
+                self._norm_min = np.percentile(eeg_data, 1)
+                self._norm_max = np.percentile(eeg_data, 99)
+                self._norm_range = max(self._norm_max - self._norm_min, 1e-6)
+
+            normalized = (eeg_data - self._norm_min) / self._norm_range
+            normalized = np.clip(normalized, 0, 1)
 
         return normalized
 
