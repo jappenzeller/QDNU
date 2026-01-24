@@ -20,3 +20,6 @@ QA1/Data/
 benchmark_results/
 *_dashboard.png
 *.png
+
+# But keep publication figures
+!QA1/figures/*.png
