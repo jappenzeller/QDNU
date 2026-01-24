@@ -1,2 +1,7 @@
 # Legacy code
 Legacy/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
