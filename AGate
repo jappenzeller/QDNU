@@ -1,0 +1,35 @@
+from qiskit import QuantumCircuit
+from qiskit.circuit import Instruction
+
+# Define a custom gate to serve as a placeholder for our complex rotation.
+class CustomRotationGate(Instruction):
+    def __init__(self, label):
+        # This custom gate acts on one qubit and has no classical bits.
+        super().__init__(name=label, num_qubits=1, num_clbits=0, params=[])
+    def _define(self):
+        # No internal decomposition is provided – the gate label serves as our placeholder.
+        self.definition = []
+
+# Create custom rotation gates with labels indicating their complex parameters.
+# "a" represents the real part for the X rotation and "b" for the Y rotation.
+# "γ" is the common imaginary component.
+Rx_complex = CustomRotationGate("R_x(a+iγ)")
+Ry_complex = CustomRotationGate("R_y(b+iγ)")
+
+# Build the circuit for the A gate (without the measurement)
+qc = QuantumCircuit(2, name="A gate")
+
+# 1. Prepare the Bell state: Hadamard on qubit 0 then CNOT from qubit 0 to qubit 1.
+qc.h(0)
+qc.cx(0, 1)
+
+# 2. Apply the complex rotations: Rx on qubit 0 and Ry on qubit 1.
+qc.append(Rx_complex, [0])
+qc.append(Ry_complex, [1])
+
+# 3. Undo the Bell state preparation: second CNOT and Hadamard on qubit 0.
+qc.cx(0, 1)
+qc.h(0)
+
+# Draw the circuit diagram
+qc.draw(output='mpl')
