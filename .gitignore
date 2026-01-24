@@ -5,3 +5,7 @@ Legacy/
 __pycache__/
 *.pyc
 *.pyo
+
+# Generated artifacts
+*.npy
+trained_template.npy
