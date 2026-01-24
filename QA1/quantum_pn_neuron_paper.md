@@ -42,8 +42,8 @@ Key quantum operations relevant to this work include:
 
 - **Hadamard gate (H)**: Creates superposition from basis states
 - **Phase gate P(θ)**: Applies phase rotation e^(iθ) to |1⟩ component
-- **Rotation gates Rₓ(θ), Rᵧ(θ), Rᵤ(θ)**: Rotate qubit state around X, Y, or Z axis
-- **Controlled rotations CRᵧ(θ), CRᵤ(θ)**: Conditional rotation based on control qubit state
+- **Rotation gates Rx(θ), Ry(θ), Rz(θ)**: Rotate qubit state around X, Y, or Z axis
+- **Controlled rotations CRy(θ), CRz(θ)**: Conditional rotation based on control qubit state
 - **CNOT, CZ**: Two-qubit entangling gates for multi-channel coupling
 
 ---
@@ -58,27 +58,27 @@ For each EEG channel, we allocate two qubits representing excitatory (E) and inh
 
 Each qubit undergoes an H-P-R-P-H sandwich structure:
 
-**E qubit (q₀):** H → P(b) → Rₓ(2a) → P(b) → H
+**E qubit (q₀):** H → P(b) → Rx(2a) → P(b) → H
 
-**I qubit (q₁):** H → P(b) → Rᵧ(2c) → P(b) → H
+**I qubit (q₁):** H → P(b) → Ry(2c) → P(b) → H
 
-The shared phase parameter b appears on all four P gates (two per qubit), encoding the temporal coupling intrinsic to the PN model. The factor of 2 on rotation angles follows Qiskit convention where Rₓ(θ) rotates by θ/2. The use of Rₓ for excitatory and Rᵧ for inhibitory components creates orthogonal dynamics in the Bloch sphere representation.
+The shared phase parameter b appears on all four P gates (two per qubit), encoding the temporal coupling intrinsic to the PN model. The factor of 2 on rotation angles follows Qiskit convention where Rx(θ) rotates by θ/2. The use of Rx for excitatory and Ry for inhibitory components creates orthogonal dynamics in the Bloch sphere representation.
 
 **Layer 2: E-I Coupling**
 
 After the encoding layer, bidirectional coupling gates entangle the E and I qubits:
 
-**CRᵧ(π/4):** Control on E (q₀), target rotation on I (q₁) — excitatory influences inhibitory
+**CRy(π/4):** Control on E (q₀), target rotation on I (q₁) — excitatory influences inhibitory
 
-**CRᵤ(π/4):** Control on I (q₁), target rotation on E (q₀) — inhibitory influences excitatory
+**CRz(π/4):** Control on I (q₁), target rotation on E (q₀) — inhibitory influences excitatory
 
 This bidirectional structure reflects the biological reality that excitation and inhibition mutually regulate each other.
 
 **Complete single-channel circuit:**
 ```
-q₀ (E): ─H─P(b)─Rₓ(2a)─P(b)─H───●────────Rᵤ(π/4)──
+q₀ (E): ─H─P(b)─Rx(2a)─P(b)─H───●────────Rz(π/4)──
                                 │           │
-q₁ (I): ─H─P(b)─Rᵧ(2c)─P(b)─H───Rᵧ(π/4)────●───────
+q₁ (I): ─H─P(b)─Ry(2c)─P(b)─H───Ry(π/4)────●───────
 ```
 
 **Gate count per channel:** 14 gates (4 H, 4 P, 2 R, 2 CR)
@@ -269,16 +269,16 @@ Schuld, M., & Petruccione, F. (2021). *Machine learning with quantum computers* 
 |------|--------|--------|
 | H | (1/√2)[[1,1],[1,-1]] | Creates equal superposition |
 | P(θ) | [[1,0],[0,e^(iθ)]] | Phase rotation on \|1⟩ |
-| Rₓ(θ) | [[cos(θ/2),-i·sin(θ/2)],[-i·sin(θ/2),cos(θ/2)]] | X-axis rotation |
-| Rᵧ(θ) | [[cos(θ/2),-sin(θ/2)],[sin(θ/2),cos(θ/2)]] | Y-axis rotation |
-| Rᵤ(θ) | [[e^(-iθ/2),0],[0,e^(iθ/2)]] | Z-axis rotation |
+| Rx(θ) | [[cos(θ/2),-i·sin(θ/2)],[-i·sin(θ/2),cos(θ/2)]] | X-axis rotation |
+| Ry(θ) | [[cos(θ/2),-sin(θ/2)],[sin(θ/2),cos(θ/2)]] | Y-axis rotation |
+| Rz(θ) | [[e^(-iθ/2),0],[0,e^(iθ/2)]] | Z-axis rotation |
 
 ### A.2 Two-Qubit Gates
 
 | Gate | Action |
 |------|--------|
-| CRᵧ(θ) | Applies Rᵧ(θ) to target when control is \|1⟩ |
-| CRᵤ(θ) | Applies Rᵤ(θ) to target when control is \|1⟩ |
+| CRy(θ) | Applies Ry(θ) to target when control is \|1⟩ |
+| CRz(θ) | Applies Rz(θ) to target when control is \|1⟩ |
 | CNOT | Flips target when control is \|1⟩ (ring topology) |
 | CZ | Applies Z to target when control is \|1⟩ (global ancilla) |
 

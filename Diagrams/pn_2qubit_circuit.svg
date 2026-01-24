@@ -51,7 +51,7 @@
 
   <!-- RX(a) gate -->
   <rect x="195" y="70" width="44" height="40" rx="4" class="gate-rx"/>
-  <text x="217" y="92" class="gate-text">Rₓ</text>
+  <text x="217" y="92" class="gate-text">Rx</text>
   <text x="217" y="103" class="param">(2a)</text>
 
   <!-- P(b) gate -->
@@ -76,7 +76,7 @@
 
   <!-- RY(c) gate -->
   <rect x="195" y="140" width="44" height="40" rx="4" class="gate-ry"/>
-  <text x="217" y="162" class="gate-text">Rᵧ</text>
+  <text x="217" y="162" class="gate-text">Ry</text>
   <text x="217" y="173" class="param">(2c)</text>
 
   <!-- P(b) gate -->
@@ -101,7 +101,7 @@
   <line x1="400" y1="96" x2="400" y2="140" class="coupling-line"/>
   <!-- Target gate on I (q1) -->
   <rect x="378" y="140" width="44" height="40" rx="4" class="gate-coupling"/>
-  <text x="400" y="162" class="gate-text">Rᵧ</text>
+  <text x="400" y="162" class="gate-text">Ry</text>
   <text x="400" y="173" class="param">(π/4)</text>
 
   <!-- CRZ: Control on q1, Target on q0 -->
@@ -111,7 +111,7 @@
   <line x1="480" y1="154" x2="480" y2="110" class="coupling-line"/>
   <!-- Target gate on E (q0) -->
   <rect x="458" y="70" width="44" height="40" rx="4" class="gate-coupling"/>
-  <text x="480" y="92" class="gate-text">Rᵤ</text>
+  <text x="480" y="92" class="gate-text">Rz</text>
   <text x="480" y="103" class="param">(π/4)</text>
 
   <!-- Barrier: End -->

@@ -11,9 +11,9 @@ This project implements a quantum circuit architecture that encodes excitatory-i
 The core component is the **A-Gate**, a 2-qubit circuit encoding a single PN neuron channel:
 
 ```
-q₀ (E): ─H─P(b)─Rₓ(2a)─P(b)─H───●────────Rᵤ(π/4)──
+q₀ (E): ─H─P(b)─Rx(2a)─P(b)─H───●────────Rz(π/4)──
                                 │           │
-q₁ (I): ─H─P(b)─Rᵧ(2c)─P(b)─H───Rᵧ(π/4)────●───────
+q₁ (I): ─H─P(b)─Ry(2c)─P(b)─H───Ry(π/4)────●───────
 ```
 
 **Parameters:**
@@ -23,7 +23,7 @@ q₁ (I): ─H─P(b)─Rᵧ(2c)─P(b)─H───Rᵧ(π/4)────●─
 
 **Key features:**
 - 14 gates per channel (4 H, 4 P, 2 R, 2 CR)
-- Bidirectional E-I coupling via CRᵧ and CRᵤ
+- Bidirectional E-I coupling via CRy and CRz
 - Shared phase parameter encodes temporal dynamics
 
 ## Project Structure
