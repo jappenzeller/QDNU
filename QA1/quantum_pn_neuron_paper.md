@@ -1,12 +1,12 @@
 # Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Analysis: A Theoretical Framework
 
-**James [Last Name]**
+**James Appenzeller**
 
-*[Institutional Affiliation]*
+*Independent Researcher*
 
 **Author Note**
 
-Correspondence concerning this article should be addressed to [Author Contact Information].
+The author has no institutional affiliation. This work was conducted as independent research. Correspondence concerning this article should be addressed to James Appenzeller via the project repository at https://github.com/jappenzeller/QDNU.
 
 ---
 
