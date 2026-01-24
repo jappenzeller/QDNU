@@ -15,3 +15,8 @@ Data/
 QA1/Data/
 *.mat
 *.edf
+
+# Generated outputs
+benchmark_results/
+*_dashboard.png
+*.png
