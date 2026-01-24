@@ -9,3 +9,9 @@ __pycache__/
 # Generated artifacts
 *.npy
 trained_template.npy
+
+# EEG data (not distributed due to licensing)
+Data/
+QA1/Data/
+*.mat
+*.edf
