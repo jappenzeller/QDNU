@@ -4,7 +4,7 @@
 This project implements a quantum machine learning system for EEG-based seizure prediction using Positive-Negative Dynamic Neural Units (PNDNU) mapped to quantum gates.
 
 ## Key Innovation
-**Quantum advantage**: Multi-channel EEG correlations encoded in entangled quantum state. Single fidelity measurement captures O(M²) classical correlations in O(1) quantum operation.
+**Quantum advantage**: Multi-channel EEG correlations encoded in entangled quantum state using 2M qubits. Fidelity measurement captures O(M²) classical correlations with O(M) gate complexity (note: O(1/ε²) shots required for precision ε).
 
 ## Task Execution Order
 
@@ -27,9 +27,9 @@ Execute tasks sequentially. Each builds on previous components.
 **File**: `task_02_single_agate.md`
 
 **What it does**: Creates quantum circuit for single EEG channel with:
-- Excitatory dynamics (R_X rotation)
-- Inhibitory dynamics (R_Y rotation)
-- Shared phase coupling
+- Excitatory dynamics: H → P(b) → Rx(2a) → P(b) → H
+- Inhibitory dynamics: H → P(b) → Ry(2c) → P(b) → H
+- E-I coupling: CRy(π/4) and CRz(π/4)
 
 **Dependencies**: qiskit, numpy, matplotlib
 
@@ -153,16 +153,18 @@ print(f"Confidence (fidelity): {fidelity:.3f}")
 - **b (phase)**: Pure integration, creates E-I coupling
 - **c (inhibitory)**: Grows naturally (+λ_c), driven by signal
 
-### Quantum Encoding
-- **θ = a + ib** → R_X rotation (excitatory)
-- **φ = c + ib** → R_Y rotation (inhibitory)
-- Shared **b** creates quantum interference sensitive to phase synchronization
+### Quantum Encoding (A-Gate)
+Each channel uses 2 qubits with H-P-R-P-H sandwich structure:
+- **E qubit**: H → P(b) → Rx(2a) → P(b) → H
+- **I qubit**: H → P(b) → Ry(2c) → P(b) → H
+- **E-I coupling**: CRy(π/4) from E→I, CRz(π/4) from I→E
+- Shared **b** on all 4 P gates creates phase-sensitive interference
 
 ### Why Quantum Advantage
-1. **Entanglement**: Encodes M² channel correlations in M qubits
+1. **Entanglement**: Encodes M² channel correlations in 2M qubits
 2. **Interference**: Shared phase b detects synchronization automatically
-3. **Hilbert space**: 2^(2M) dimensional state vs M-dimensional classical
-4. **Fidelity**: Single measurement vs O(M²) classical comparisons
+3. **Hilbert space**: 2^(2M) dimensional state enables rich correlation encoding
+4. **Gate complexity**: O(M) gates vs O(M²) classical correlation computations
 
 ## Troubleshooting
 
@@ -190,9 +192,9 @@ print(f"Confidence (fidelity): {fidelity:.3f}")
 
 ## References
 
-- Gupta, Jin, Homma - "Static and Dynamic Neural Networks" (2003)
-- Your whiteboard formulation of A-gate architecture
-- PN neuron dynamics: Section 8.3.2 from textbook
+- Gupta, A., et al. (2024). Positive-negative neuron model for excitatory-inhibitory neural dynamics.
+- Holevo, A. S. (1973). Bounds for the quantity of information transmitted by a quantum communication channel. *Problems of Information Transmission*, 9(3), 177-183.
+- Mormann, F., et al. (2007). Seizure prediction: The long and winding road. *Brain*, 130(2), 314-333.
 
 ## Contact & Questions
 
