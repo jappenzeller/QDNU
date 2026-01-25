@@ -415,9 +415,9 @@ if __name__ == "__main__":
     print("Generating Publication Figures for Quantum PN Neuron Paper")
     print("=" * 60)
 
-    # Try Qiskit circuit visualization first, fallback to matplotlib
-    if not generate_agate_circuit_diagram():
-        generate_agate_diagram_matplotlib()
+    # Use matplotlib for symbolic parameter labels (Rx(2a), Ry(2c), P(b))
+    # Qiskit circuit drawing shows numerical values which is less clear
+    generate_agate_diagram_matplotlib()
 
     generate_multichannel_diagram()
     generate_fidelity_distribution()
