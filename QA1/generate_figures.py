@@ -8,9 +8,16 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+# Use dark background style
+plt.style.use('dark_background')
+
 # Ensure figures directory exists
 FIGURES_DIR = Path(__file__).parent / "figures"
 FIGURES_DIR.mkdir(exist_ok=True)
+
+# Dark theme colors
+DARK_BG = '#1a1a2e'
+DARK_FG = '#eaeaea'
 
 
 def generate_agate_circuit_diagram():
@@ -49,7 +56,7 @@ def generate_agate_circuit_diagram():
         # Draw circuit
         fig = qc.draw(output='mpl', style='iqp', fold=-1)
         fig.savefig(FIGURES_DIR / 'agate_circuit.png', dpi=200, bbox_inches='tight',
-                   facecolor='white', edgecolor='none')
+                   facecolor=DARK_BG, edgecolor='none')
         plt.close(fig)
         print("[OK] Generated agate_circuit.png")
         return True
@@ -70,15 +77,15 @@ def generate_agate_diagram_matplotlib():
     y_e = 2  # Excitatory qubit
     y_i = 0  # Inhibitory qubit
 
-    ax.hlines([y_e, y_i], 0, 14, colors='black', linewidth=1)
+    ax.hlines([y_e, y_i], 0, 14, colors='white', linewidth=1)
 
     # Labels
     ax.text(-0.5, y_e, r'$q_0$ (E)', ha='right', va='center', fontsize=11, fontweight='bold')
     ax.text(-0.5, y_i, r'$q_1$ (I)', ha='right', va='center', fontsize=11, fontweight='bold')
 
     # Gate positions
-    gate_style = dict(boxstyle='square,pad=0.3', facecolor='lightblue', edgecolor='black', linewidth=1.5)
-    gate_style_green = dict(boxstyle='square,pad=0.3', facecolor='lightgreen', edgecolor='black', linewidth=1.5)
+    gate_style = dict(boxstyle='square,pad=0.3', facecolor='#1e3a5f', edgecolor='#6eb5ff', linewidth=1.5)
+    gate_style_green = dict(boxstyle='square,pad=0.3', facecolor='#1e4a3a', edgecolor='#6eff9e', linewidth=1.5)
 
     # Layer 1: Per-qubit encoding
     # E qubit: H - P(b) - Rx(2a) - P(b) - H
@@ -93,13 +100,13 @@ def generate_agate_diagram_matplotlib():
 
     # Layer 2: E-I coupling
     # CRy(pi/4): E controls I
-    ax.plot([10, 10], [y_e, y_i], 'k-', linewidth=2)
-    ax.plot(10, y_e, 'ko', markersize=8)  # Control dot
+    ax.plot([10, 10], [y_e, y_i], 'w-', linewidth=2)
+    ax.plot(10, y_e, 'wo', markersize=8)  # Control dot
     ax.text(10, y_i, r'$R_y(\frac{\pi}{4})$', ha='center', va='center', fontsize=9, bbox=gate_style_green)
 
     # CRz(pi/4): I controls E
-    ax.plot([12, 12], [y_e, y_i], 'k-', linewidth=2)
-    ax.plot(12, y_i, 'ko', markersize=8)  # Control dot
+    ax.plot([12, 12], [y_e, y_i], 'w-', linewidth=2)
+    ax.plot(12, y_i, 'wo', markersize=8)  # Control dot
     ax.text(12, y_e, r'$R_z(\frac{\pi}{4})$', ha='center', va='center', fontsize=9, bbox=gate_style_green)
 
     # Section labels
@@ -111,7 +118,7 @@ def generate_agate_diagram_matplotlib():
 
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / 'agate_circuit.png', dpi=200, bbox_inches='tight',
-               facecolor='white', edgecolor='none')
+               facecolor=DARK_BG, edgecolor='none')
     plt.close()
     print("[OK] Generated agate_circuit.png (matplotlib)")
 
@@ -132,13 +139,13 @@ def generate_multichannel_diagram():
         y_i = 4.6 - i * 1.2  # Inhibitory
         y_positions.append((y_e, y_i))
 
-        ax.hlines([y_e, y_i], 0, 13.5, colors='black', linewidth=0.8)
+        ax.hlines([y_e, y_i], 0, 13.5, colors='white', linewidth=0.8)
         ax.text(-0.3, y_e, f'$E_{i+1}$', ha='right', va='center', fontsize=9)
         ax.text(-0.3, y_i, f'$I_{i+1}$', ha='right', va='center', fontsize=9)
 
     # Ancilla qubit
     y_anc = -0.5
-    ax.hlines([y_anc], 0, 13.5, colors='black', linewidth=0.8)
+    ax.hlines([y_anc], 0, 13.5, colors='white', linewidth=0.8)
     ax.text(-0.3, y_anc, 'Anc', ha='right', va='center', fontsize=9, fontweight='bold')
 
     # Gate styles
@@ -157,22 +164,22 @@ def generate_multichannel_diagram():
         x = 5 + i * 0.6
         y1 = y_positions[i][0]
         y2 = y_positions[i + 1][0]
-        ax.plot([x, x], [y1, y2], 'k-', linewidth=1.5)
-        ax.plot(x, y1, 'ko', markersize=5)
-        ax.plot(x, y2, 'o', markersize=8, markerfacecolor='white', markeredgecolor='black', markeredgewidth=1.5)
-        ax.plot([x - 0.1, x + 0.1], [y2, y2], 'k-', linewidth=1.5)
-        ax.plot([x, x], [y2 - 0.1, y2 + 0.1], 'k-', linewidth=1.5)
+        ax.plot([x, x], [y1, y2], 'w-', linewidth=1.5)
+        ax.plot(x, y1, 'wo', markersize=5)
+        ax.plot(x, y2, 'o', markersize=8, markerfacecolor=DARK_BG, markeredgecolor='white', markeredgewidth=1.5)
+        ax.plot([x - 0.1, x + 0.1], [y2, y2], 'w-', linewidth=1.5)
+        ax.plot([x, x], [y2 - 0.1, y2 + 0.1], 'w-', linewidth=1.5)
 
     # Ring topology CNOTs (I qubits)
     for i in range(M - 1):
         x = 8 + i * 0.6
         y1 = y_positions[i][1]
         y2 = y_positions[i + 1][1]
-        ax.plot([x, x], [y1, y2], 'k-', linewidth=1.5)
-        ax.plot(x, y1, 'ko', markersize=5)
-        ax.plot(x, y2, 'o', markersize=8, markerfacecolor='white', markeredgecolor='black', markeredgewidth=1.5)
-        ax.plot([x - 0.1, x + 0.1], [y2, y2], 'k-', linewidth=1.5)
-        ax.plot([x, x], [y2 - 0.1, y2 + 0.1], 'k-', linewidth=1.5)
+        ax.plot([x, x], [y1, y2], 'w-', linewidth=1.5)
+        ax.plot(x, y1, 'wo', markersize=5)
+        ax.plot(x, y2, 'o', markersize=8, markerfacecolor=DARK_BG, markeredgecolor='white', markeredgewidth=1.5)
+        ax.plot([x - 0.1, x + 0.1], [y2, y2], 'w-', linewidth=1.5)
+        ax.plot([x, x], [y2 - 0.1, y2 + 0.1], 'w-', linewidth=1.5)
 
     # Section 3: Ancilla H gate
     ax.text(10.5, y_anc, 'H', ha='center', va='center', fontsize=9, bbox=gate_box)
@@ -180,9 +187,9 @@ def generate_multichannel_diagram():
     # Section 4: Global CZ gates from ancilla to all E qubits
     for i, (y_e, _) in enumerate(y_positions):
         x = 11.5 + i * 0.5
-        ax.plot([x, x], [y_anc, y_e], 'k-', linewidth=1.5)
-        ax.plot(x, y_anc, 'ko', markersize=5)
-        ax.plot(x, y_e, 'ko', markersize=5)
+        ax.plot([x, x], [y_anc, y_e], 'w-', linewidth=1.5)
+        ax.plot(x, y_anc, 'wo', markersize=5)
+        ax.plot(x, y_e, 'wo', markersize=5)
 
     # Section labels (compact)
     ax.text(2, 5.7, 'A-Gate', ha='center', fontsize=10, fontweight='bold', color='#FF9800')
@@ -197,11 +204,11 @@ def generate_multichannel_diagram():
     # Summary box
     summary = f"M={M}  Qubits: 2M+1={2*M+1}  Gates: 17M-2={17*M-2}"
     ax.text(7, -0.9, summary, ha='center', va='top', fontsize=9,
-           bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
+           bbox=dict(boxstyle='round', facecolor='#3d3d00', alpha=0.8))
 
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / 'multichannel_circuit.png', dpi=200, bbox_inches='tight',
-               facecolor='white', edgecolor='none')
+               facecolor=DARK_BG, edgecolor='none')
     plt.close()
     print("[OK] Generated multichannel_circuit.png")
 
@@ -268,7 +275,7 @@ def generate_fidelity_distribution():
         ax.text(0.5, 0.02, 'Key Finding: Fidelity distributions overlap completely\n'
                           '(preprocessing removes discriminative features)',
                transform=ax.transAxes, fontsize=11, ha='center', va='bottom',
-               bbox=dict(boxstyle='round', facecolor='lightyellow', edgecolor='orange', alpha=0.9))
+               bbox=dict(boxstyle='round', facecolor='#3d3d00', edgecolor='orange', alpha=0.9))
     else:
         # Separated distributions - use histogram
         bins = np.linspace(min(min(ictal_fid), min(interictal_fid)) - 0.05,
@@ -277,7 +284,7 @@ def generate_fidelity_distribution():
                color='#E74C3C', edgecolor='#C0392B', linewidth=1.5)
         ax.hist(interictal_fid, bins=bins, alpha=0.7, label='Interictal (baseline)',
                color='#3498DB', edgecolor='#2980B9', linewidth=1.5)
-        ax.axvline(0.5, color='black', linestyle='--', linewidth=2, label='Threshold')
+        ax.axvline(0.5, color='white', linestyle='--', linewidth=2, label='Threshold')
         ax.set_ylabel('Count', fontsize=12)
 
     # Labels
@@ -288,7 +295,7 @@ def generate_fidelity_distribution():
     # Math annotation
     ax.text(0.98, 0.98, r'$F = |\langle\psi_{template}|\psi_{test}\rangle|^2$',
            transform=ax.transAxes, fontsize=11, va='top', ha='right',
-           bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.7))
+           bbox=dict(boxstyle='round', facecolor='#4a3d2a', alpha=0.7))
 
     # Statistics box
     stats_text = f"Ictal: {ictal_mean:.4f} +/- {np.std(ictal_fid):.4f}\n"
@@ -296,13 +303,13 @@ def generate_fidelity_distribution():
     stats_text += f"Separation: {separation:.4f}"
     ax.text(0.98, 0.75, stats_text, transform=ax.transAxes, fontsize=10,
            va='top', ha='right', fontfamily='monospace',
-           bbox=dict(boxstyle='round', facecolor='lightgray', alpha=0.8))
+           bbox=dict(boxstyle='round', facecolor='#404040', alpha=0.8))
 
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / 'fidelity_distribution.png', dpi=200, bbox_inches='tight',
-               facecolor='white', edgecolor='none')
+               facecolor=DARK_BG, edgecolor='none')
     plt.close()
     print("[OK] Generated fidelity_distribution.png")
 
@@ -350,7 +357,7 @@ def generate_complexity_comparison():
 
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / 'complexity_comparison.png', dpi=200, bbox_inches='tight',
-               facecolor='white', edgecolor='none')
+               facecolor=DARK_BG, edgecolor='none')
     plt.close()
     print("[OK] Generated complexity_comparison.png")
 
@@ -399,7 +406,7 @@ def generate_pn_dynamics_diagram():
     # Equations (symmetric mode)
     eq_text = r'$\frac{da}{dt} = -\lambda_a a + f(t)(1-a)$' + '\n' + r'$\frac{dc}{dt} = -\lambda_c c + f(t)(1-c)$'
     ax1.text(0.02, 0.98, eq_text, transform=ax1.transAxes, fontsize=10, va='top',
-            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
+            bbox=dict(boxstyle='round', facecolor='#4a3d2a', alpha=0.8))
 
     # Right panel: Phase space
     ax2 = axes[1]
@@ -425,7 +432,7 @@ def generate_pn_dynamics_diagram():
 
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / 'pn_dynamics.png', dpi=200, bbox_inches='tight',
-               facecolor='white', edgecolor='none')
+               facecolor=DARK_BG, edgecolor='none')
     plt.close()
     print("[OK] Generated pn_dynamics.png")
 
