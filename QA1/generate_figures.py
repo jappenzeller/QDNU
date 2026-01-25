@@ -53,8 +53,18 @@ def generate_agate_circuit_diagram():
         qc.cry(np.pi / 4, 0, 1)
         qc.crz(np.pi / 4, 1, 0)
 
-        # Draw circuit
-        fig = qc.draw(output='mpl', style='iqp', fold=-1)
+        # Draw circuit with dark theme
+        dark_style = {
+            'backgroundcolor': DARK_BG,
+            'textcolor': '#ffffff',
+            'linecolor': '#ffffff',
+            'creglinecolor': '#ffffff',
+            'gatetextcolor': '#ffffff',
+            'gatefacecolor': '#2d4a6e',
+            'barrierfacecolor': '#4a4a4a',
+            'fontsize': 12,
+        }
+        fig = qc.draw(output='mpl', style=dark_style, fold=-1)
         fig.savefig(FIGURES_DIR / 'agate_circuit.png', dpi=200, bbox_inches='tight',
                    facecolor=DARK_BG, edgecolor='none')
         plt.close(fig)
@@ -148,13 +158,13 @@ def generate_multichannel_diagram():
     ax.hlines([y_anc], 0, 13.5, colors='white', linewidth=0.8)
     ax.text(-0.3, y_anc, 'Anc', ha='right', va='center', fontsize=9, fontweight='bold')
 
-    # Gate styles
-    gate_box = dict(boxstyle='round,pad=0.15', facecolor='#E8F4FD', edgecolor='#2196F3', linewidth=1.5)
-    agate_box = dict(boxstyle='round,pad=0.25', facecolor='#FFF3E0', edgecolor='#FF9800', linewidth=2)
+    # Gate styles (dark theme)
+    gate_box = dict(boxstyle='round,pad=0.15', facecolor='#1e3a5f', edgecolor='#4a90d9', linewidth=1.5)
+    agate_box = dict(boxstyle='round,pad=0.25', facecolor='#4a3d00', edgecolor='#8a7a30', linewidth=1)
 
     # Section 1: A-Gate encoding for each channel
     for i, (y_e, y_i) in enumerate(y_positions):
-        ax.text(2, (y_e + y_i) / 2, 'A-Gate', ha='center', va='center', fontsize=10, bbox=agate_box)
+        ax.text(2, (y_e + y_i) / 2, 'A-Gate', ha='center', va='center', fontsize=10, color='#ffd700', bbox=agate_box)
         rect = plt.Rectangle((0.8, y_i - 0.15), 2.4, y_e - y_i + 0.3,
                              fill=False, edgecolor='#FF9800', linestyle='--', alpha=0.5)
         ax.add_patch(rect)
