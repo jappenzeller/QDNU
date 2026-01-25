@@ -148,36 +148,40 @@ def compute_mutual_information(circuit: QuantumCircuit) -> float:
 
 # === Matplotlib Drawing Functions ===
 
-def draw_bloch_sphere(ax, bloch_coords, color='blue', label='', show_axes=True, use_unity_coords=True):
-    """Draw a Bloch sphere with state vector on a 3D axis."""
+def draw_bloch_sphere(ax, bloch_coords, color='blue', label='', show_axes=True, use_unity_coords=False):
+    """
+    Draw a Bloch sphere with state vector on a 3D axis.
+
+    Convention: Z-axis (green) is UP, +Z = |0⟩, -Z = |1⟩
+    """
     ax.clear()
 
-    if use_unity_coords:
-        bx, by, bz = bloch_to_unity_coords(bloch_coords)
-    else:
-        bx, by, bz = bloch_coords
+    # Use standard Bloch coordinates: +Z = |0⟩ (up)
+    bx, by, bz = bloch_coords
 
     # Sphere wireframe
     u = np.linspace(0, 2 * np.pi, 20)
     v = np.linspace(0, np.pi, 20)
     x = np.outer(np.cos(u), np.sin(v))
-    z = np.outer(np.sin(u), np.sin(v))
-    y = np.outer(np.ones(np.size(u)), np.cos(v))
+    y = np.outer(np.sin(u), np.sin(v))
+    z = np.outer(np.ones(np.size(u)), np.cos(v))
     ax.plot_wireframe(x, y, z, color='gray', alpha=0.2, linewidth=0.5)
 
     if show_axes:
-        # RGB axes
+        # Z-axis GREEN (up = |0⟩)
+        ax.quiver(0, 0, 0, 0, 0, 1.2, color='#00FF00', alpha=0.9, arrow_length_ratio=0.08, linewidth=2)
+        # X-axis RED
         ax.quiver(0, 0, 0, 1.2, 0, 0, color='red', alpha=0.7, arrow_length_ratio=0.08, linewidth=1.5)
-        ax.quiver(0, 0, 0, 0, 1.2, 0, color='green', alpha=0.7, arrow_length_ratio=0.08, linewidth=1.5)
-        ax.quiver(0, 0, 0, 0, 0, 1.2, color='blue', alpha=0.7, arrow_length_ratio=0.08, linewidth=1.5)
+        # Y-axis BLUE
+        ax.quiver(0, 0, 0, 0, 1.2, 0, color='blue', alpha=0.7, arrow_length_ratio=0.08, linewidth=1.5)
 
-        # Labels
-        ax.text(1.4, 0, 0, 'X |+>', color='red', fontsize=9)
-        ax.text(-1.4, 0, 0, '|->', color='red', fontsize=9)
-        ax.text(0, 1.4, 0, 'Y |0>', color='green', fontsize=10)
-        ax.text(0, -1.4, 0, '|1>', color='green', fontsize=10)
-        ax.text(0, 0, 1.4, 'Z |+i>', color='blue', fontsize=9)
-        ax.text(0, 0, -1.4, '|-i>', color='blue', fontsize=9)
+        # Labels - Z is up/down with |0⟩ and |1⟩
+        ax.text(0, 0, 1.5, '|0⟩', color='#00FF00', fontsize=11, fontweight='bold', ha='center')
+        ax.text(0, 0, -1.5, '|1⟩', color='#00FF00', fontsize=11, fontweight='bold', ha='center')
+        ax.text(1.4, 0, 0, '|+⟩', color='red', fontsize=9)
+        ax.text(-1.4, 0, 0, '|−⟩', color='red', fontsize=9)
+        ax.text(0, 1.4, 0, '|+i⟩', color='blue', fontsize=9)
+        ax.text(0, -1.4, 0, '|−i⟩', color='blue', fontsize=9)
 
     # State vector
     r = np.sqrt(bx**2 + by**2 + bz**2)
@@ -194,6 +198,9 @@ def draw_bloch_sphere(ax, bloch_coords, color='blue', label='', show_axes=True, 
     ax.set_zlabel('Z')
     ax.set_title(label)
     ax.set_box_aspect([1, 1, 1])
+
+    # Set view angle so Z points up
+    ax.view_init(elev=20, azim=45)
 
 
 def draw_entanglement_indicator(ax, concurrence, purity_E, purity_I):
