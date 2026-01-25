@@ -6,6 +6,7 @@ Provides real-time visualization of quantum neuron activation with:
 - Julia set fractal fingerprint
 - Entanglement and purity indicators
 - Measurement probability distribution
+- Export button for Julia surface generator
 """
 
 import numpy as np
@@ -14,6 +15,8 @@ matplotlib.use('TkAgg')  # Use TkAgg backend for interactive plots
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 from mpl_toolkits.mplot3d import Axes3D
+import json
+from datetime import datetime
 
 import sys
 from pathlib import Path
@@ -144,6 +147,128 @@ Quantum Properties:
         slider_c.reset()
 
     reset_btn.on_clicked(reset)
+
+    # Export button - saves current params for Julia surface generator
+    export_ax = plt.axes([0.12, 0.02, 0.12, 0.03])
+    export_btn = Button(export_ax, 'Export Config', color='#1a4a2a', hovercolor='#2a5a3a')
+
+    # Store for exported configs
+    exported_configs = []
+
+    def export_config(event):
+        a = slider_a.val
+        b = slider_b.val
+        c = slider_c.val
+
+        # Get current visualization data
+        circuit = create_single_channel_circuit(a, b, c)
+        viz = extract_visualization_data(circuit)
+
+        config = {
+            'a': float(a),
+            'b': float(b),
+            'b_deg': float(np.degrees(b)),
+            'c': float(c),
+            'concurrence': float(viz['concurrence']),
+            'purity_E': float(viz['purity_E']),
+            'purity_I': float(viz['purity_I']),
+            'timestamp': datetime.now().isoformat()
+        }
+
+        exported_configs.append(config)
+
+        # Print Python code ready to use
+        print("\n" + "=" * 60)
+        print("EXPORTED CONFIG FOR JULIA SURFACE GENERATOR")
+        print("=" * 60)
+        print(f"\n# Parameters: a={a:.4f}, b={b:.4f} ({np.degrees(b):.1f} deg), c={c:.4f}")
+        print(f"# Concurrence: {viz['concurrence']:.4f}")
+        print()
+        print("# Option 1: Single mesh")
+        print("from visualization.animation import JuliaSurfaceGenerator, PNState")
+        print(f"state = PNState(a={a:.4f}, b={b:.4f}, c={c:.4f})")
+        print("gen = JuliaSurfaceGenerator(resolution=64)")
+        print("gen.generate_single(state, 'my_julia', fmt='ply')")
+        print()
+        print("# Option 2: 8-keyframe animation (fixed a,c, varying b)")
+        print("from visualization.animation import JuliaSurfaceGenerator, KeyframeSystem")
+        print(f"kf = KeyframeSystem(a_fixed={a:.4f}, c_fixed={c:.4f})")
+        print("gen = JuliaSurfaceGenerator(resolution=64)")
+        print("gen.keyframes = kf")
+        print("gen.generate_keyframe_sequence('meshes/')")
+        print()
+
+        # Save to JSON file
+        export_dir = Path(__file__).parent.parent.parent / 'research'
+        export_dir.mkdir(exist_ok=True)
+        export_file = export_dir / 'explorer_exports.json'
+
+        # Load existing or create new
+        if export_file.exists():
+            with open(export_file, 'r') as f:
+                all_exports = json.load(f)
+        else:
+            all_exports = []
+
+        all_exports.append(config)
+
+        with open(export_file, 'w') as f:
+            json.dump(all_exports, f, indent=2)
+
+        print(f"Config saved to: {export_file}")
+        print(f"Total saved configs: {len(all_exports)}")
+        print("=" * 60)
+
+        # Try to copy to clipboard
+        try:
+            import subprocess
+            clip_text = f"PNState(a={a:.4f}, b={b:.4f}, c={c:.4f})"
+            subprocess.run(['clip'], input=clip_text.encode(), check=True)
+            print(f"Copied to clipboard: {clip_text}")
+        except Exception:
+            pass  # Clipboard not available
+
+    export_btn.on_clicked(export_config)
+
+    # Generate mesh button - directly generates a PLY file
+    gen_ax = plt.axes([0.26, 0.02, 0.12, 0.03])
+    gen_btn = Button(gen_ax, 'Generate Mesh', color='#4a1a4a', hovercolor='#5a2a5a')
+
+    def generate_mesh(event):
+        a = slider_a.val
+        b = slider_b.val
+        c = slider_c.val
+
+        print(f"\nGenerating mesh for a={a:.4f}, b={np.degrees(b):.1f} deg, c={c:.4f}...")
+
+        try:
+            from visualization.animation import JuliaSurfaceGenerator, PNState
+
+            gen = JuliaSurfaceGenerator(resolution=64, bounds=1.2, max_iter=15)
+            state = PNState(a=float(a), b=float(b), c=float(c))
+
+            # Create output directory
+            output_dir = Path(__file__).parent.parent.parent / 'research' / 'explorer_meshes'
+            output_dir.mkdir(parents=True, exist_ok=True)
+
+            # Generate filename with timestamp
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            filename = output_dir / f"julia_a{a:.2f}_b{np.degrees(b):.0f}_c{c:.2f}_{timestamp}"
+
+            mesh = gen.generate_single(state, str(filename), fmt='ply')
+
+            if mesh:
+                print(f"Generated: {filename}.ply")
+                print(f"  Vertices: {mesh.n_vertices}")
+                print(f"  Faces: {mesh.n_faces}")
+            else:
+                print("Mesh generation failed (try installing scikit-image)")
+
+        except ImportError as e:
+            print(f"Import error: {e}")
+            print("Make sure scikit-image is installed: pip install scikit-image")
+
+    gen_btn.on_clicked(generate_mesh)
 
     # Initial draw
     update()
