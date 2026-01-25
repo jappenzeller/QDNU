@@ -26,3 +26,6 @@ research/
 # But keep publication figures
 !paper/figures/*.png
 !paper/figures/**/*.png
+
+# AWS Infrastructure (separate repo)
+qdnu-infra/
