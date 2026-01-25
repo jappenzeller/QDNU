@@ -34,6 +34,20 @@ class JuliaReloadProperties(bpy.types.PropertyGroup):
         default="JuliaSphere",
         description="Object to replace mesh data"
     )
+    # Sequence import properties
+    sequence_folder: bpy.props.StringProperty(
+        name="Sequence Folder",
+        default=r"H:\QuantumPython\QDNU\research\explorer_meshes",
+        subtype='DIR_PATH',
+        description="Folder containing PLY sequence"
+    )
+    frames_per_mesh: bpy.props.IntProperty(
+        name="Frames/Mesh",
+        default=3,
+        min=1,
+        max=30,
+        description="How many frames each mesh is visible"
+    )
 
 
 class JULIA_OT_reload(bpy.types.Operator):
@@ -148,6 +162,47 @@ class JULIA_OT_set_material(bpy.types.Operator):
         return {'FINISHED'}
 
 
+class JULIA_OT_import_sequence(bpy.types.Operator):
+    """Import PLY sequence and set up animation"""
+    bl_idname = "julia.import_sequence"
+    bl_label = "Import Sequence"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        props = context.scene.julia_reload
+        folder = bpy.path.abspath(props.sequence_folder)
+
+        if not os.path.exists(folder):
+            self.report({'ERROR'}, f"Folder not found: {folder}")
+            return {'CANCELLED'}
+
+        # Import using the sequence module
+        try:
+            import sys
+            qdnu_root = str(Path(__file__).parent.parent)
+            if qdnu_root not in sys.path:
+                sys.path.insert(0, qdnu_root)
+
+            from blender.import_sequence import import_and_animate
+            objects = import_and_animate(
+                folder=folder,
+                frames_per_mesh=props.frames_per_mesh,
+                add_material=True,
+                add_lighting=True
+            )
+
+            if objects:
+                self.report({'INFO'}, f"Imported {len(objects)} meshes")
+            else:
+                self.report({'WARNING'}, "No meshes imported")
+
+        except Exception as e:
+            self.report({'ERROR'}, f"Import failed: {str(e)}")
+            return {'CANCELLED'}
+
+        return {'FINISHED'}
+
+
 class JULIA_PT_panel(bpy.types.Panel):
     """Julia Live Reload Panel"""
     bl_label = "Julia Live Reload"
@@ -185,6 +240,16 @@ class JULIA_PT_panel(bpy.types.Panel):
         else:
             layout.label(text="File not found", icon='ERROR')
 
+        # Sequence Import section
+        layout.separator()
+        box = layout.box()
+        box.label(text="Sequence Animation", icon='SEQUENCE')
+        box.prop(props, "sequence_folder")
+        box.prop(props, "frames_per_mesh")
+        row = box.row()
+        row.scale_y = 1.5
+        row.operator("julia.import_sequence", icon='IMPORT')
+
 
 # File watcher timer
 def check_file_changed():
@@ -215,6 +280,7 @@ classes = [
     JuliaReloadProperties,
     JULIA_OT_reload,
     JULIA_OT_set_material,
+    JULIA_OT_import_sequence,
     JULIA_PT_panel,
 ]
 

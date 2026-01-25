@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(python:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd visualization module with Bloch spheres, fractals, and phase analysis\n\n- Create QA1/visualization/ module integrating A-Gate visualization tools\n- Add Bloch sphere rendering for E/I qubits with entanglement display\n- Add Julia set fractal generation from quantum state amplitudes\n- Add interactive matplotlib explorer with real-time parameter sliders\n- Add EEG-quantum visualization bridge for QDNU pipeline\n- Add phase space analysis: fixed points, nullclines, RK4 integration\n- Add parameter sweep figure \\(Figure S3\\) to paper\n- Fix matrix formatting in Appendix A for GitHub markdown rendering\n- Update A-Gate circuit figure styling\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(unzip:*)"
+    ]
+  }
+}

@@ -10,11 +10,11 @@ from .interactive_explorer import (
     visualize_eeg_activation,
 )
 
-from .julia_animated_explorer import JuliaAnimatedExplorer
+from .julia_animated_explorer import JuliaExplorer
 
 __all__ = [
     'interactive_agate_explorer',
     'animate_parameter_sweep',
     'visualize_eeg_activation',
-    'JuliaAnimatedExplorer',
+    'JuliaExplorer',
 ]
