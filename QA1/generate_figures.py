@@ -118,89 +118,85 @@ def generate_agate_diagram_matplotlib():
 
 def generate_multichannel_diagram():
     """Generate Figure 2: Multi-channel circuit architecture."""
-    fig, ax = plt.subplots(figsize=(16, 8))
-    ax.set_xlim(-1, 20)
-    ax.set_ylim(-1, 10)
+    fig, ax = plt.subplots(figsize=(12, 5))
+    ax.set_xlim(-0.5, 14)
+    ax.set_ylim(-1, 6)
     ax.axis('off')
 
     M = 4  # Number of channels
     y_positions = []
 
-    # Draw qubit lines for each channel
+    # Draw qubit lines for each channel (tighter spacing)
     for i in range(M):
-        y_e = 8 - i * 2  # Excitatory
-        y_i = 7.5 - i * 2  # Inhibitory
+        y_e = 5 - i * 1.2  # Excitatory
+        y_i = 4.6 - i * 1.2  # Inhibitory
         y_positions.append((y_e, y_i))
 
-        ax.hlines([y_e, y_i], 0, 19, colors='black', linewidth=0.8)
-        ax.text(-0.8, y_e, f'$E_{i+1}$', ha='right', va='center', fontsize=10)
-        ax.text(-0.8, y_i, f'$I_{i+1}$', ha='right', va='center', fontsize=10)
+        ax.hlines([y_e, y_i], 0, 13.5, colors='black', linewidth=0.8)
+        ax.text(-0.3, y_e, f'$E_{i+1}$', ha='right', va='center', fontsize=9)
+        ax.text(-0.3, y_i, f'$I_{i+1}$', ha='right', va='center', fontsize=9)
 
     # Ancilla qubit
     y_anc = -0.5
-    ax.hlines([y_anc], 0, 19, colors='black', linewidth=0.8)
-    ax.text(-0.8, y_anc, 'Anc', ha='right', va='center', fontsize=10, fontweight='bold')
+    ax.hlines([y_anc], 0, 13.5, colors='black', linewidth=0.8)
+    ax.text(-0.3, y_anc, 'Anc', ha='right', va='center', fontsize=9, fontweight='bold')
 
     # Gate styles
-    gate_box = dict(boxstyle='round,pad=0.2', facecolor='#E8F4FD', edgecolor='#2196F3', linewidth=1.5)
-    agate_box = dict(boxstyle='round,pad=0.4', facecolor='#FFF3E0', edgecolor='#FF9800', linewidth=2)
-    cnot_box = dict(boxstyle='round,pad=0.2', facecolor='#E8F5E9', edgecolor='#4CAF50', linewidth=1.5)
-    cz_box = dict(boxstyle='round,pad=0.2', facecolor='#FCE4EC', edgecolor='#E91E63', linewidth=1.5)
+    gate_box = dict(boxstyle='round,pad=0.15', facecolor='#E8F4FD', edgecolor='#2196F3', linewidth=1.5)
+    agate_box = dict(boxstyle='round,pad=0.25', facecolor='#FFF3E0', edgecolor='#FF9800', linewidth=2)
 
     # Section 1: A-Gate encoding for each channel
     for i, (y_e, y_i) in enumerate(y_positions):
-        ax.text(3, (y_e + y_i) / 2, 'A-Gate', ha='center', va='center', fontsize=11, bbox=agate_box)
-        # Draw box around E-I pair
-        rect = plt.Rectangle((1.5, y_i - 0.3), 3, y_e - y_i + 0.6,
+        ax.text(2, (y_e + y_i) / 2, 'A-Gate', ha='center', va='center', fontsize=10, bbox=agate_box)
+        rect = plt.Rectangle((0.8, y_i - 0.15), 2.4, y_e - y_i + 0.3,
                              fill=False, edgecolor='#FF9800', linestyle='--', alpha=0.5)
         ax.add_patch(rect)
 
-    # Section 2: Ring topology CNOTs
-    # E qubits ring
+    # Section 2: Ring topology CNOTs (E qubits)
     for i in range(M - 1):
-        x = 7 + i * 0.8
+        x = 5 + i * 0.6
         y1 = y_positions[i][0]
         y2 = y_positions[i + 1][0]
         ax.plot([x, x], [y1, y2], 'k-', linewidth=1.5)
-        ax.plot(x, y1, 'ko', markersize=6)
-        ax.plot(x, y2, 'o', markersize=10, markerfacecolor='white', markeredgecolor='black', markeredgewidth=1.5)
-        ax.plot([x - 0.15, x + 0.15], [y2, y2], 'k-', linewidth=1.5)
-        ax.plot([x, x], [y2 - 0.15, y2 + 0.15], 'k-', linewidth=1.5)
+        ax.plot(x, y1, 'ko', markersize=5)
+        ax.plot(x, y2, 'o', markersize=8, markerfacecolor='white', markeredgecolor='black', markeredgewidth=1.5)
+        ax.plot([x - 0.1, x + 0.1], [y2, y2], 'k-', linewidth=1.5)
+        ax.plot([x, x], [y2 - 0.1, y2 + 0.1], 'k-', linewidth=1.5)
 
-    # I qubits ring
+    # Ring topology CNOTs (I qubits)
     for i in range(M - 1):
-        x = 11 + i * 0.8
+        x = 8 + i * 0.6
         y1 = y_positions[i][1]
         y2 = y_positions[i + 1][1]
         ax.plot([x, x], [y1, y2], 'k-', linewidth=1.5)
-        ax.plot(x, y1, 'ko', markersize=6)
-        ax.plot(x, y2, 'o', markersize=10, markerfacecolor='white', markeredgecolor='black', markeredgewidth=1.5)
-        ax.plot([x - 0.15, x + 0.15], [y2, y2], 'k-', linewidth=1.5)
-        ax.plot([x, x], [y2 - 0.15, y2 + 0.15], 'k-', linewidth=1.5)
+        ax.plot(x, y1, 'ko', markersize=5)
+        ax.plot(x, y2, 'o', markersize=8, markerfacecolor='white', markeredgecolor='black', markeredgewidth=1.5)
+        ax.plot([x - 0.1, x + 0.1], [y2, y2], 'k-', linewidth=1.5)
+        ax.plot([x, x], [y2 - 0.1, y2 + 0.1], 'k-', linewidth=1.5)
 
     # Section 3: Ancilla H gate
-    ax.text(15, y_anc, 'H', ha='center', va='center', fontsize=10, bbox=gate_box)
+    ax.text(10.5, y_anc, 'H', ha='center', va='center', fontsize=9, bbox=gate_box)
 
     # Section 4: Global CZ gates from ancilla to all E qubits
     for i, (y_e, _) in enumerate(y_positions):
-        x = 16.5 + i * 0.6
+        x = 11.5 + i * 0.5
         ax.plot([x, x], [y_anc, y_e], 'k-', linewidth=1.5)
-        ax.plot(x, y_anc, 'ko', markersize=6)
-        ax.plot(x, y_e, 'ko', markersize=6)
+        ax.plot(x, y_anc, 'ko', markersize=5)
+        ax.plot(x, y_e, 'ko', markersize=5)
 
-    # Section labels
-    ax.text(3, 9.5, 'A-Gate Encoding', ha='center', fontsize=12, fontweight='bold', color='#FF9800')
-    ax.text(9, 9.5, 'Ring Topology\n(E qubits)', ha='center', fontsize=11, fontweight='bold', color='#4CAF50')
-    ax.text(12.5, 9.5, 'Ring Topology\n(I qubits)', ha='center', fontsize=11, fontweight='bold', color='#4CAF50')
-    ax.text(17.5, 9.5, 'Global\nAncilla', ha='center', fontsize=11, fontweight='bold', color='#E91E63')
+    # Section labels (compact)
+    ax.text(2, 5.7, 'A-Gate', ha='center', fontsize=10, fontweight='bold', color='#FF9800')
+    ax.text(5.9, 5.7, 'Ring (E)', ha='center', fontsize=9, fontweight='bold', color='#4CAF50')
+    ax.text(8.9, 5.7, 'Ring (I)', ha='center', fontsize=9, fontweight='bold', color='#4CAF50')
+    ax.text(12, 5.7, 'Global CZ', ha='center', fontsize=9, fontweight='bold', color='#E91E63')
 
     # Channel labels on right
     for i, (y_e, y_i) in enumerate(y_positions):
-        ax.text(19.5, (y_e + y_i) / 2, f'Ch {i+1}', ha='left', va='center', fontsize=10, color='gray')
+        ax.text(13.8, (y_e + y_i) / 2, f'Ch{i+1}', ha='left', va='center', fontsize=8, color='gray')
 
     # Summary box
-    summary = f"M = {M} channels\nQubits: 2M+1 = {2*M+1}\nGates: 17M-2 = {17*M-2}"
-    ax.text(0.5, -0.8, summary, ha='left', va='top', fontsize=10,
+    summary = f"M={M}  Qubits: 2M+1={2*M+1}  Gates: 17M-2={17*M-2}"
+    ax.text(7, -0.9, summary, ha='center', va='top', fontsize=9,
            bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
 
     plt.tight_layout()
