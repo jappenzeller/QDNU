@@ -14,13 +14,37 @@ FIGURES_DIR.mkdir(exist_ok=True)
 
 
 def generate_agate_circuit_diagram():
-    """Generate Figure 1: Single-channel A-Gate circuit."""
+    """Generate Figure 1: Single-channel A-Gate circuit with symbolic parameters."""
     try:
         from qiskit import QuantumCircuit
-        from quantum_agate import create_single_channel_agate
+        from qiskit.circuit import Parameter
 
-        # Create circuit with example parameters
-        qc = create_single_channel_agate(0.5, 0.3, 0.7)
+        # Create symbolic parameters for clear labeling
+        a = Parameter('a')
+        b = Parameter('b')
+        c = Parameter('c')
+
+        # Build circuit with symbolic parameters
+        qc = QuantumCircuit(2, name='A-Gate')
+
+        # Layer 1: Per-qubit encoding
+        # Excitatory qubit (q0)
+        qc.h(0)
+        qc.p(b, 0)
+        qc.rx(2 * a, 0)
+        qc.p(b, 0)
+        qc.h(0)
+
+        # Inhibitory qubit (q1)
+        qc.h(1)
+        qc.p(b, 1)
+        qc.ry(2 * c, 1)
+        qc.p(b, 1)
+        qc.h(1)
+
+        # Layer 2: E-I coupling
+        qc.cry(np.pi / 4, 0, 1)
+        qc.crz(np.pi / 4, 1, 0)
 
         # Draw circuit
         fig = qc.draw(output='mpl', style='iqp', fold=-1)
@@ -415,9 +439,9 @@ if __name__ == "__main__":
     print("Generating Publication Figures for Quantum PN Neuron Paper")
     print("=" * 60)
 
-    # Use matplotlib for symbolic parameter labels (Rx(2a), Ry(2c), P(b))
-    # Qiskit circuit drawing shows numerical values which is less clear
-    generate_agate_diagram_matplotlib()
+    # Try Qiskit with symbolic Parameters, fallback to matplotlib
+    if not generate_agate_circuit_diagram():
+        generate_agate_diagram_matplotlib()
 
     generate_multichannel_diagram()
     generate_fidelity_distribution()
