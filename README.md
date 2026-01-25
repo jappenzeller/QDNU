@@ -5,6 +5,7 @@ A quantum computing architecture for multi-channel EEG seizure prediction based 
 **Author:** James Appenzeller, Independent Researcher
 
 [![Paper](https://img.shields.io/badge/Paper-quantum__pn__neuron__paper.md-blue)](paper/quantum_pn_neuron_paper.md)
+[![arXiv](https://img.shields.io/badge/arXiv-cs.LG-b31b1b)](paper/QDNU.pdf)
 
 ---
 
@@ -179,7 +180,8 @@ QDNU/
 │   ├── benchmark.py               # Quantum vs classical comparison
 │   └── main_pipeline.py           # End-to-end pipeline
 ├── paper/                         # Publication materials
-│   ├── quantum_pn_neuron_paper.md # Full paper
+│   ├── quantum_pn_neuron_paper.md # Full paper (markdown)
+│   ├── QDNU.pdf                   # arXiv submission preview
 │   └── figures/                   # Publication figures
 │       ├── qdnu_dashboard.png
 │       ├── fidelity_distribution.png
