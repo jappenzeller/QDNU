@@ -201,6 +201,10 @@ Preliminary validation was conducted using the Kaggle American Epilepsy Society 
 
 *Figure 3.* Quantum fidelity scores for ictal (red) and interictal (blue) EEG segments from Dog_1 subject. The power-based preprocessing preserves variance differences, resulting in meaningful separation between seizure and non-seizure states.
 
+![Figure 4. QDNU Performance Dashboard](figures/qdnu_dashboard.png)
+
+*Figure 4.* Comprehensive performance dashboard showing: (a) fidelity distributions with decision threshold, (b) PN parameter space clustering, (c) phase coherence comparison, (d) quantum circuit scaling, (e) classification metrics, and (f) confusion matrix. The confusion matrix panel enables future visualization of sample clustering when running on quantum hardware.
+
 The key to achieving discrimination lies in the preprocessing stage. Initial experiments using z-score normalization produced nearly identical fidelity values for both classes, as the normalization compressed the amplitude variance that distinguishes ictal from interictal activity. The solution was to use instantaneous power (RMS envelope) as the PN dynamics input signal. Ictal EEG exhibits approximately 2.25× higher power than interictal EEG, and this difference is preserved through the power-based normalization, translating to distinct PN parameter values and measurable fidelity separation.
 
 The 72.4% accuracy and 75.0% F1 score demonstrate that quantum fidelity captures clinically relevant differences between seizure and non-seizure EEG patterns. The high recall (85.7%) indicates the system successfully identifies most seizure-related activity, which is critical for clinical applications where missing a seizure is more costly than a false alarm. The moderate specificity (60.0%) suggests room for improvement through additional feature engineering or multi-template approaches.
