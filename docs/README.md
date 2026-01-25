@@ -4,7 +4,7 @@ A quantum computing architecture for multi-channel EEG seizure prediction based 
 
 **Author:** James Appenzeller, Independent Researcher
 
-[![Paper](https://img.shields.io/badge/Paper-quantum__pn__neuron__paper.md-blue)](paper/quantum_pn_neuron_paper.md)
+[![Paper](https://img.shields.io/badge/Paper-quantum__pn__neuron__paper.md-blue)](QA1/quantum_pn_neuron_paper.md)
 
 ---
 
@@ -35,11 +35,11 @@ Validation on the Kaggle American Epilepsy Society Seizure Prediction Challenge 
 
 ### Dashboard
 
-![QDNU Dashboard](paper/figures/qdnu_dashboard.png)
+![QDNU Dashboard](QA1/figures/qdnu_dashboard.png)
 
 ### Quantum Fidelity Distribution
 
-![Fidelity Distribution](paper/figures/fidelity_distribution.png)
+![Fidelity Distribution](QA1/figures/fidelity_distribution.png)
 
 ---
 
@@ -49,7 +49,7 @@ Validation on the Kaggle American Epilepsy Society Seizure Prediction Challenge 
 
 The core component is the **A-Gate**, a 2-qubit circuit encoding a single PN neuron channel:
 
-![A-Gate Circuit](paper/figures/agate_circuit.png)
+![A-Gate Circuit](QA1/figures/agate_circuit.png)
 
 **Parameters:**
 - `a`: Excitatory state amplitude [0, 1]
@@ -68,7 +68,7 @@ For M EEG channels, the quantum circuit uses:
 - **Gates:** 17M - 2
 - **Depth:** O(M)
 
-![Multi-Channel Circuit](paper/figures/multichannel_circuit.png)
+![Multi-Channel Circuit](QA1/figures/multichannel_circuit.png)
 
 ### Complexity Advantage
 
@@ -95,7 +95,7 @@ Where:
 - `λ_a` = excitatory decay rate (default: 0.1)
 - `λ_c` = inhibitory growth rate (default: 0.05)
 
-![PN Dynamics](paper/figures/pn_dynamics.png)
+![PN Dynamics](QA1/figures/pn_dynamics.png)
 
 ---
 
@@ -116,8 +116,8 @@ pip install -r requirements.txt
 ## Quick Start
 
 ```python
-from qdnu import create_single_channel_agate
-from visualization.quantum import extract_visualization_data
+from QA1.quantum_agate import create_single_channel_agate
+from QA1.visualization import extract_visualization_data
 
 # Create A-Gate circuit
 circuit = create_single_channel_agate(a=0.6, b=1.2, c=0.4)
@@ -132,18 +132,19 @@ print(f"Bloch I: {viz['bloch_I']}")
 ### Run Dashboard
 
 ```bash
-python scripts/dashboard.py
+cd QA1
+python dashboard.py
 ```
 
 ### Run Harmonic Oscillator Visualization
 
 ```python
-from visualization.dynamics import run_oscillator_demo
+from QA1.visualization import run_oscillator_demo
 
 config, history, viz, figures = run_oscillator_demo(
     duration=20.0,
     drive_frequency=0.2,
-    save_dir='paper/figures/harmonic_oscillator'
+    save_dir='figures/harmonic_oscillator'
 )
 ```
 
@@ -153,39 +154,26 @@ config, history, viz, figures = run_oscillator_demo(
 
 ```
 QDNU/
-├── qdnu/                          # Core quantum library (importable)
-│   ├── quantum_agate.py           # A-Gate circuit implementation
-│   ├── pn_dynamics.py             # PN neuron dynamics
-│   ├── multichannel_circuit.py    # Multi-channel quantum circuit
-│   ├── template_trainer.py        # Template-based classifier
-│   ├── seizure_predictor.py       # Fidelity-based prediction
-│   └── quantum_backends.py        # Backend utilities
-├── visualization/                 # Visualization modules by type
-│   ├── quantum/                   # Quantum state visualization
-│   │   ├── agate_visualization.py # Bloch spheres, entanglement
-│   │   └── fractal_generator.py   # Julia set fingerprints
-│   ├── dynamics/                  # Dynamical systems
-│   │   ├── phase_analysis.py      # Phase space analysis
-│   │   └── harmonic_oscillator.py # 4D limit cycle visualization
-│   ├── animation/                 # Animated visualizations
-│   │   └── limit_cycle_julia_explorer.py
-│   └── interactive/               # Real-time explorers
-│       └── interactive_explorer.py
-├── eeg/                           # EEG data handling
-│   ├── eeg_loader.py              # Kaggle dataset loader
-│   └── eeg_visualizer.py          # EEG plotting utilities
-├── scripts/                       # Runnable scripts
-│   ├── dashboard.py               # Results dashboard generator
-│   ├── benchmark.py               # Quantum vs classical comparison
-│   └── main_pipeline.py           # End-to-end pipeline
-├── paper/                         # Publication materials
-│   ├── quantum_pn_neuron_paper.md # Full paper
-│   └── figures/                   # Publication figures
+├── QA1/
+│   ├── quantum_pn_neuron_paper.md   # Full paper
+│   ├── quantum_agate.py             # A-Gate circuit implementation
+│   ├── pn_dynamics.py               # PN neuron dynamics
+│   ├── template_trainer.py          # Template-based classifier
+│   ├── seizure_predictor.py         # Fidelity-based prediction
+│   ├── dashboard.py                 # Results visualization
+│   ├── eeg_loader.py                # Kaggle dataset loader
+│   ├── visualization/               # Visualization module
+│   │   ├── agate_visualization.py   # Bloch spheres, entanglement
+│   │   ├── fractal_generator.py     # Julia set fingerprints
+│   │   ├── phase_analysis.py        # Dynamical systems analysis
+│   │   ├── harmonic_oscillator.py   # 4D limit cycle visualization
+│   │   └── interactive_explorer.py  # Real-time parameter explorer
+│   └── figures/                     # Generated figures
 │       ├── qdnu_dashboard.png
 │       ├── fidelity_distribution.png
-│       ├── phase_analysis/
-│       └── harmonic_oscillator/
-├── docs/                          # Documentation
+│       ├── phase_analysis/          # Phase space analysis
+│       └── harmonic_oscillator/     # Limit cycle analysis
+├── Diagrams/                        # Circuit diagrams
 └── README.md
 ```
 

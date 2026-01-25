@@ -1,5 +1,6 @@
 # Legacy code
 Legacy/
+QA1/
 
 # Python cache
 __pycache__/
@@ -12,15 +13,16 @@ trained_template.npy
 
 # EEG data (not distributed due to licensing)
 Data/
-QA1/Data/
+eeg/Data/
 *.mat
 *.edf
 
 # Generated outputs
 benchmark_results/
+research/
 *_dashboard.png
 *.png
 
 # But keep publication figures
-!QA1/figures/*.png
-!QA1/figures/**/*.png
+!paper/figures/*.png
+!paper/figures/**/*.png
