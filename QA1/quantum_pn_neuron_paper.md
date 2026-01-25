@@ -265,21 +265,39 @@ World Health Organization. (2019). *Epilepsy: A public health imperative*. World
 
 ### Single-Qubit Gates
 
-The single-qubit gates employed in the A-Gate architecture are defined by their unitary matrices. The Hadamard gate creates equal superposition:
+The single-qubit gates employed in the A-Gate architecture are defined by their unitary matrices.
 
-$$H = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
+**Hadamard Gate** — Creates equal superposition:
 
-The phase gate applies a Z-rotation to the |1⟩ state:
+```
+         1   ┌  1    1  ┐
+H  =  ────── │          │
+        √2   └  1   -1  ┘
+```
 
-$$P(\theta) = \begin{pmatrix} 1 & 0 \\ 0 & e^{i\theta} \end{pmatrix}$$
+**Phase Gate** — Applies Z-rotation to |1⟩ state:
 
-The rotation gates perform rotations around the Bloch sphere axes:
+```
+           ┌  1      0     ┐
+P(θ)  =    │               │
+           └  0    e^iθ    ┘
+```
 
-$$R_x(\theta) = \begin{pmatrix} \cos(\theta/2) & -i\sin(\theta/2) \\ -i\sin(\theta/2) & \cos(\theta/2) \end{pmatrix}$$
+**Rotation Gates** — Rotations around Bloch sphere axes:
 
-$$R_y(\theta) = \begin{pmatrix} \cos(\theta/2) & -\sin(\theta/2) \\ \sin(\theta/2) & \cos(\theta/2) \end{pmatrix}$$
+```
+            ┌   cos(θ/2)      -i·sin(θ/2)  ┐
+Rx(θ)  =    │                              │
+            └  -i·sin(θ/2)     cos(θ/2)    ┘
 
-$$R_z(\theta) = \begin{pmatrix} e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{pmatrix}$$
+            ┌   cos(θ/2)      -sin(θ/2)  ┐
+Ry(θ)  =    │                            │
+            └   sin(θ/2)       cos(θ/2)  ┘
+
+            ┌  e^(-iθ/2)        0       ┐
+Rz(θ)  =    │                           │
+            └     0         e^(iθ/2)    ┘
+```
 
 ### Two-Qubit Gates
 
@@ -362,3 +380,9 @@ Complete implementation code for multi-channel circuits, template training, and 
 ![Figure S2. PN neuron dynamics](figures/pn_dynamics.png)
 
 *Figure S2.* Temporal evolution and phase space representation of PN neuron dynamics. Left: Excitatory (a) and inhibitory (c) state variables evolving in response to an EEG-like input signal f(t). Right: Phase space trajectory showing the coupled E-I dynamics. The asymmetric decay constants (λ_a > λ_c) produce characteristic trajectories that distinguish different neural states.
+
+### D.3 Parameter Sweep Analysis
+
+![Figure S3. Lambda parameter sweep](figures/parameter_sweep.png)
+
+*Figure S3.* Sensitivity analysis of PN dynamics parameters. Left and center panels show how the final excitatory (a) and inhibitory (c) parameters differ between simulated ictal (high amplitude) and interictal (low amplitude) signals across various λ_a values (with λ_c = λ_a/2). Right panel shows the total parameter separation, with color coding indicating discrimination quality: green (>0.1) indicates good separation, orange (0.05-0.1) moderate, and red (<0.05) poor. Moderate λ values (0.1-0.2) provide optimal discrimination between seizure and baseline states.

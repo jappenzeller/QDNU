@@ -64,7 +64,44 @@ def generate_agate_circuit_diagram():
             'barrierfacecolor': '#4a4a4a',
             'fontsize': 12,
         }
-        fig = qc.draw(output='mpl', style=dark_style, fold=-1)
+        qc_fig = qc.draw(output='mpl', style=dark_style, fold=-1)
+
+        # Create wrapper figure with orange border (matching Figure 2)
+        fig, ax = plt.subplots(figsize=(12, 4))
+        ax.axis('off')
+
+        # Add the qiskit circuit as an inset
+        from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+        import io
+
+        # Save qiskit fig to buffer and reload
+        buf = io.BytesIO()
+        qc_fig.savefig(buf, format='png', dpi=200, bbox_inches='tight',
+                      facecolor=DARK_BG, edgecolor='none')
+        buf.seek(0)
+        plt.close(qc_fig)
+
+        from PIL import Image
+        img = Image.open(buf)
+        img_array = np.array(img)
+
+        # Display circuit image
+        ax.imshow(img_array, aspect='auto')
+        ax.set_xlim(-50, img_array.shape[1] + 50)
+        ax.set_ylim(img_array.shape[0] + 30, -30)
+
+        # Add orange dashed border around the whole circuit (matching Figure 2 A-Gate style)
+        from matplotlib.patches import FancyBboxPatch
+        border = FancyBboxPatch((-20, -10), img_array.shape[1] + 40, img_array.shape[0] + 20,
+                               boxstyle='round,pad=10', fill=False,
+                               edgecolor='#FF9800', linestyle='--', linewidth=2, alpha=0.8)
+        ax.add_patch(border)
+
+        # Add A-Gate label (matching Figure 2 style)
+        agate_box = dict(boxstyle='round,pad=0.3', facecolor='#4a3d00', edgecolor='#8a7a30', linewidth=1)
+        ax.text(img_array.shape[1] / 2, -20, 'A-Gate', ha='center', va='center',
+               fontsize=14, color='#ffd700', fontweight='bold', bbox=agate_box)
+
         fig.savefig(FIGURES_DIR / 'agate_circuit.png', dpi=200, bbox_inches='tight',
                    facecolor=DARK_BG, edgecolor='none')
         plt.close(fig)
@@ -78,8 +115,8 @@ def generate_agate_circuit_diagram():
 def generate_agate_diagram_matplotlib():
     """Generate Figure 1 using pure matplotlib (fallback)."""
     fig, ax = plt.subplots(figsize=(12, 4))
-    ax.set_xlim(0, 14)
-    ax.set_ylim(-0.5, 2.5)
+    ax.set_xlim(-1, 15)
+    ax.set_ylim(-1, 3.5)
     ax.set_aspect('equal')
     ax.axis('off')
 
@@ -120,11 +157,21 @@ def generate_agate_diagram_matplotlib():
     ax.text(12, y_e, r'$R_z(\frac{\pi}{4})$', ha='center', va='center', fontsize=9, bbox=gate_style_green)
 
     # Section labels
-    ax.text(4.5, 3, 'Layer 1: Per-Qubit Encoding', ha='center', fontsize=11, fontstyle='italic')
-    ax.text(11, 3, 'Layer 2: E-I Coupling', ha='center', fontsize=11, fontstyle='italic')
+    ax.text(4.5, 3.2, 'Layer 1: Per-Qubit Encoding', ha='center', fontsize=11, fontstyle='italic')
+    ax.text(11, 3.2, 'Layer 2: E-I Coupling', ha='center', fontsize=11, fontstyle='italic')
 
     # Vertical separator
     ax.axvline(9, color='gray', linestyle='--', alpha=0.5)
+
+    # Orange dashed border around entire circuit (matching Figure 2 style)
+    border = plt.Rectangle((-0.5, -0.7), 14.5, 3.6,
+                          fill=False, edgecolor='#FF9800', linestyle='--', linewidth=2, alpha=0.8)
+    ax.add_patch(border)
+
+    # A-Gate label (matching Figure 2 style)
+    agate_box = dict(boxstyle='round,pad=0.3', facecolor='#4a3d00', edgecolor='#8a7a30', linewidth=1)
+    ax.text(7, -0.9, 'A-Gate', ha='center', va='top', fontsize=12, color='#ffd700',
+           fontweight='bold', bbox=agate_box)
 
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / 'agate_circuit.png', dpi=200, bbox_inches='tight',
@@ -372,6 +419,121 @@ def generate_complexity_comparison():
     print("[OK] Generated complexity_comparison.png")
 
 
+def generate_parameter_sweep():
+    """Generate supplementary figure: Lambda parameter sweep showing sensitivity."""
+    fig, axes = plt.subplots(1, 3, figsize=(14, 5))
+
+    # Parameter configurations to test
+    lambda_values = [0.01, 0.05, 0.1, 0.2, 0.5]
+
+    # Simulated EEG-like signals (ictal = higher amplitude/activity)
+    np.random.seed(42)
+    t = np.linspace(0, 5, 500)
+
+    # Ictal: higher amplitude, more synchronous
+    ictal_signal = 0.6 + 0.3 * np.sin(2 * np.pi * 2 * t) + 0.1 * np.random.randn(len(t))
+    ictal_signal = np.clip(np.abs(ictal_signal), 0, 1)
+
+    # Interictal: lower amplitude, less regular
+    interictal_signal = 0.3 + 0.15 * np.sin(2 * np.pi * 0.5 * t) + 0.15 * np.random.randn(len(t))
+    interictal_signal = np.clip(np.abs(interictal_signal), 0, 1)
+
+    dt = t[1] - t[0]
+
+    # Storage for results
+    a_ictal_final = []
+    c_ictal_final = []
+    a_inter_final = []
+    c_inter_final = []
+    param_diff = []
+
+    for lambda_a in lambda_values:
+        lambda_c = lambda_a / 2  # Keep ratio consistent
+
+        # Evolve ictal
+        a_i, c_i = 0.0, 0.0
+        for i in range(len(t)):
+            a_i += dt * (-lambda_a * a_i + ictal_signal[i] * (1 - a_i))
+            c_i += dt * (-lambda_c * c_i + ictal_signal[i] * (1 - c_i))
+            a_i = np.clip(a_i, 0, 1)
+            c_i = np.clip(c_i, 0, 1)
+        a_ictal_final.append(a_i)
+        c_ictal_final.append(c_i)
+
+        # Evolve interictal
+        a_n, c_n = 0.0, 0.0
+        for i in range(len(t)):
+            a_n += dt * (-lambda_a * a_n + interictal_signal[i] * (1 - a_n))
+            c_n += dt * (-lambda_c * c_n + interictal_signal[i] * (1 - c_n))
+            a_n = np.clip(a_n, 0, 1)
+            c_n = np.clip(c_n, 0, 1)
+        a_inter_final.append(a_n)
+        c_inter_final.append(c_n)
+
+        # Total parameter difference
+        diff = abs(a_i - a_n) + abs(c_i - c_n)
+        param_diff.append(diff)
+
+    # Panel 1: Parameter values vs lambda
+    ax1 = axes[0]
+    x = np.arange(len(lambda_values))
+    width = 0.35
+
+    bars1 = ax1.bar(x - width/2, a_ictal_final, width, label='Ictal a', color='#E74C3C', alpha=0.8)
+    bars2 = ax1.bar(x + width/2, a_inter_final, width, label='Interictal a', color='#3498DB', alpha=0.8)
+
+    ax1.set_xlabel(r'$\lambda_a$ value', fontsize=11)
+    ax1.set_ylabel('Final a parameter', fontsize=11)
+    ax1.set_title('Excitatory Parameter (a) vs Lambda', fontsize=12, fontweight='bold')
+    ax1.set_xticks(x)
+    ax1.set_xticklabels([str(v) for v in lambda_values])
+    ax1.legend(loc='upper right', fontsize=9)
+    ax1.grid(True, alpha=0.3, axis='y')
+
+    # Panel 2: c parameter
+    ax2 = axes[1]
+    bars3 = ax2.bar(x - width/2, c_ictal_final, width, label='Ictal c', color='#E74C3C', alpha=0.8)
+    bars4 = ax2.bar(x + width/2, c_inter_final, width, label='Interictal c', color='#3498DB', alpha=0.8)
+
+    ax2.set_xlabel(r'$\lambda_a$ value', fontsize=11)
+    ax2.set_ylabel('Final c parameter', fontsize=11)
+    ax2.set_title('Inhibitory Parameter (c) vs Lambda', fontsize=12, fontweight='bold')
+    ax2.set_xticks(x)
+    ax2.set_xticklabels([str(v) for v in lambda_values])
+    ax2.legend(loc='upper right', fontsize=9)
+    ax2.grid(True, alpha=0.3, axis='y')
+
+    # Panel 3: Total parameter difference (separation)
+    ax3 = axes[2]
+    colors = ['#2ecc71' if d > 0.1 else '#f39c12' if d > 0.05 else '#e74c3c' for d in param_diff]
+    bars5 = ax3.bar(x, param_diff, width=0.6, color=colors, edgecolor='white', linewidth=1.5)
+
+    ax3.set_xlabel(r'$\lambda_a$ value', fontsize=11)
+    ax3.set_ylabel('Parameter Separation', fontsize=11)
+    ax3.set_title('Ictal-Interictal Separation vs Lambda', fontsize=12, fontweight='bold')
+    ax3.set_xticks(x)
+    ax3.set_xticklabels([str(v) for v in lambda_values])
+    ax3.grid(True, alpha=0.3, axis='y')
+
+    # Best lambda annotation
+    best_idx = np.argmax(param_diff)
+    ax3.annotate(f'Best: {lambda_values[best_idx]}', xy=(best_idx, param_diff[best_idx]),
+                xytext=(best_idx, param_diff[best_idx] + 0.02),
+                ha='center', fontsize=10, fontweight='bold', color='#2ecc71',
+                arrowprops=dict(arrowstyle='->', color='#2ecc71', lw=1.5))
+
+    # Legend for color coding
+    ax3.text(0.98, 0.98, 'Good (>0.1)\nModerate (0.05-0.1)\nPoor (<0.05)',
+            transform=ax3.transAxes, fontsize=9, va='top', ha='right',
+            bbox=dict(boxstyle='round', facecolor='#404040', alpha=0.8))
+
+    plt.tight_layout()
+    plt.savefig(FIGURES_DIR / 'parameter_sweep.png', dpi=200, bbox_inches='tight',
+               facecolor=DARK_BG, edgecolor='none')
+    plt.close()
+    print("[OK] Generated parameter_sweep.png")
+
+
 def generate_pn_dynamics_diagram():
     """Generate supplementary figure: PN dynamics visualization."""
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
@@ -460,6 +622,7 @@ if __name__ == "__main__":
     generate_fidelity_distribution()
     generate_complexity_comparison()
     generate_pn_dynamics_diagram()
+    generate_parameter_sweep()
 
     print("\n" + "=" * 60)
     print("All figures saved to:", FIGURES_DIR)
