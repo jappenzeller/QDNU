@@ -7,6 +7,7 @@ Provides real-time visualization of quantum neuron activation including:
 - Julia set fractal fingerprints
 - Parameter evolution tracking
 - Phase space analysis and dynamical systems tools
+- 4D harmonic oscillator visualization for limit cycles
 
 Usage:
     # Core visualization
@@ -21,6 +22,9 @@ Usage:
 
     # Phase space analysis
     from visualization.phase_analysis import run_phase_analysis, DynamicsConfig
+
+    # 4D harmonic oscillator (limit cycles under periodic driving)
+    from visualization.harmonic_oscillator import run_oscillator_demo, HarmonicOscillatorVisualizer
 """
 
 # Core visualization functions (always available)
@@ -60,6 +64,14 @@ from .phase_analysis import (
     run_phase_analysis,
 )
 
+from .harmonic_oscillator import (
+    OscillatorConfig,
+    HarmonicOscillatorVisualizer,
+    simulate_driven_oscillator,
+    visualize_harmonic_oscillator,
+    run_oscillator_demo,
+)
+
 __all__ = [
     # Core visualization
     'extract_visualization_data',
@@ -91,4 +103,10 @@ __all__ = [
     'trajectory_to_quantum_observables',
     'plot_quantum_observables',
     'run_phase_analysis',
+    # Harmonic oscillator
+    'OscillatorConfig',
+    'HarmonicOscillatorVisualizer',
+    'simulate_driven_oscillator',
+    'visualize_harmonic_oscillator',
+    'run_oscillator_demo',
 ]
