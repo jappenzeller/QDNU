@@ -23,6 +23,7 @@ def run_validation(subject='Dog_1', num_channels=4, n_samples=20):
 
     Returns dict with all results for plotting.
     """
+    np.random.seed(42)  # Ensure reproducible results
     print(f"Loading data for {subject}...")
     ictal_windows, interictal_windows = load_for_qdnu(
         subject,
@@ -38,12 +39,13 @@ def run_validation(subject='Dog_1', num_channels=4, n_samples=20):
         num_channels=num_channels,
         lambda_a=0.1,
         lambda_c=0.05,
-        dt=0.001
+        saturation_mode='symmetric'  # Paper: symmetric PN dynamics
+        # Note: Uses default dt=0.01 for proper parameter evolution
     )
     trainer.train(ictal_windows[0])
 
     # Collect PN parameters for all samples
-    pn = PNDynamics(lambda_a=0.1, lambda_c=0.05, dt=0.001)
+    pn = PNDynamics(lambda_a=0.1, lambda_c=0.05, saturation_mode='symmetric')  # Uses default dt=0.01
 
     ictal_params = []
     interictal_params = []
@@ -60,7 +62,7 @@ def run_validation(subject='Dog_1', num_channels=4, n_samples=20):
 
     # Run predictions
     print("Running predictions...")
-    predictor = SeizurePredictor(trainer, threshold=0.5)
+    predictor = SeizurePredictor(trainer, threshold=0.82)  # Paper: optimized threshold
 
     ictal_fidelities = []
     interictal_fidelities = []
@@ -118,7 +120,7 @@ def create_dashboard(results, output_path='qdnu_dashboard.png'):
 
     ax1.hist(ictal_fid, bins=bins, alpha=0.7, label='Ictal', color='red', edgecolor='darkred')
     ax1.hist(inter_fid, bins=bins, alpha=0.7, label='Interictal', color='blue', edgecolor='darkblue')
-    ax1.axvline(0.5, color='black', linestyle='--', label='Threshold')
+    ax1.axvline(0.82, color='black', linestyle='--', label='Threshold (0.82)')
     ax1.set_xlabel('Fidelity F')
     ax1.set_ylabel('Count')
     ax1.set_title('Quantum Fidelity Distribution')
@@ -238,37 +240,42 @@ def create_dashboard(results, output_path='qdnu_dashboard.png'):
         ax5.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.02,
                 f'{val:.2f}', ha='center', va='bottom', fontsize=9)
 
-    # === Panel 6: Summary Stats ===
+    # === Panel 6: Confusion Matrix Heatmap ===
     ax6 = fig.add_subplot(gs[1, 2])
-    ax6.axis('off')
 
-    summary_text = f"""
-    QDNU Configuration
-    ══════════════════
-    Subject: {results['subject']}
-    Channels: {results['num_channels']}
+    # Build confusion matrix
+    cm = np.array([
+        [metrics['true_negatives'], metrics['false_positives']],
+        [metrics['false_negatives'], metrics['true_positives']]
+    ])
 
-    Quantum Circuit
-    ══════════════════
-    Qubits: {results['circuit_qubits']}
-    Depth: {results['circuit_depth']}
-    Gates: {results['circuit_gates']}
+    # Plot heatmap
+    im = ax6.imshow(cm, cmap='Blues', aspect='auto')
 
-    Fidelity Statistics
-    ══════════════════
-    Ictal: {np.mean(ictal_fid):.4f} ± {np.std(ictal_fid):.4f}
-    Interictal: {np.mean(inter_fid):.4f} ± {np.std(inter_fid):.4f}
-    Separation: {np.mean(ictal_fid) - np.mean(inter_fid):.4f}
+    # Add text annotations
+    for i in range(2):
+        for j in range(2):
+            val = cm[i, j]
+            # Choose text color based on background
+            text_color = 'white' if val > cm.max() / 2 else 'black'
+            ax6.text(j, i, f'{val}', ha='center', va='center',
+                    fontsize=16, fontweight='bold', color=text_color)
 
-    Classification
-    ══════════════════
-    TP: {metrics['true_positives']} | FP: {metrics['false_positives']}
-    FN: {metrics['false_negatives']} | TN: {metrics['true_negatives']}
-    """
+    # Labels
+    ax6.set_xticks([0, 1])
+    ax6.set_yticks([0, 1])
+    ax6.set_xticklabels(['Pred: Interictal', 'Pred: Ictal'])
+    ax6.set_yticklabels(['True: Interictal', 'True: Ictal'])
+    ax6.set_xlabel('Predicted', fontsize=10)
+    ax6.set_ylabel('Actual', fontsize=10)
 
-    ax6.text(0.1, 0.95, summary_text, transform=ax6.transAxes,
-             fontsize=10, verticalalignment='top', fontfamily='monospace',
-             bbox=dict(boxstyle='round', facecolor='lightgray', alpha=0.8))
+    # Title with key stats
+    sep = np.mean(ictal_fid) - np.mean(inter_fid)
+    ax6.set_title(f'Confusion Matrix\nFidelity Sep: {sep:.3f} | {results["circuit_qubits"]}q, {results["circuit_gates"]}g',
+                 fontsize=10)
+
+    # Add colorbar
+    plt.colorbar(im, ax=ax6, shrink=0.8)
 
     plt.tight_layout(rect=[0, 0, 1, 0.96])
     plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
@@ -300,7 +307,7 @@ if __name__ == "__main__":
     results = run_validation(subject=subject, num_channels=4, n_samples=15)
 
     # Create dashboard
-    output_path = create_dashboard(results, 'qdnu_dashboard.png')
+    output_path = create_dashboard(results, 'figures/qdnu_dashboard.png')
 
     # Print summary
     print("\n" + "=" * 60)
