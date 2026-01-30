@@ -44,6 +44,42 @@ TEXT_DIM = '#666666'
 TAU = 2 * np.pi
 TAU_SYMBOL = 'τ'  # Unicode tau
 
+# =============================================================================
+# REFERENCE STATE PRESETS
+# =============================================================================
+
+PRESETS = {
+    'Balanced Flower': {
+        'a': 0.293,
+        'b': 0.0,  # τ fraction (0-1)
+        'c': 0.301,
+        'description': 'E-I balance, 8-fold symmetric Julia, healthy baseline',
+        'color': '#22c55e',  # Green - healthy
+    },
+    'E Dominant': {
+        'a': 0.7,
+        'b': 0.0,
+        'c': 0.4,
+        'description': 'Excitatory dominant, asymmetric Julia, seizure-like',
+        'color': '#ff6b6b',  # Red - ictal
+    },
+    'I Dominant': {
+        'a': 0.3,
+        'b': 0.0,
+        'c': 0.7,
+        'description': 'Inhibitory dominant, compare to E dominant',
+        'color': '#4dabf7',  # Blue - inhibitory
+    },
+    'Boundary': {
+        'a': 0.31,
+        'b': 0.23,  # τ fraction - at Mandelbrot boundary crossing
+        'c': 0.32,
+        'description': 'Critical transition point at Mandelbrot boundary',
+        'color': '#a855f7',  # Purple - transition
+    },
+}
+
+
 
 def phase_to_tau_str(radians: float) -> str:
     """Convert radians to τ fraction string (e.g., '1/4 τ' for π/2)."""
@@ -288,6 +324,9 @@ class JuliaExplorer:
         self.playing = False
         self.animation_speed = 0.03
         self.anim = None
+        
+        # Active preset tracking
+        self.active_preset = None
 
         # Traces
         self.trace_E: List[Tuple[float, float, float]] = []
@@ -442,7 +481,72 @@ class JuliaExplorer:
         # Info display
         self.info_text = self.fig.text(0.72, 0.01, '', color=TEXT_DIM,
                                         fontsize=8, family='monospace')
+        
+        # Preset buttons
+        self._setup_presets()
 
+    def _setup_presets(self):
+        """Setup preset selection buttons."""
+        # Preset section label
+        self.fig.text(0.42, 0.28, 'PRESETS', color=TEXT_COLOR,
+                      fontsize=11, fontweight='bold')
+        
+        # Active preset label (will be updated)
+        self.preset_label = self.fig.text(0.42, 0.24, 'Active: None',
+                                           color=TEXT_DIM, fontsize=9)
+        
+        # Preset description
+        self.preset_desc = self.fig.text(0.42, 0.21, '',
+                                          color=TEXT_DIM, fontsize=8,
+                                          style='italic')
+        
+        # Create preset buttons
+        self.preset_buttons = {}
+        preset_names = list(PRESETS.keys())
+        btn_width = 0.085
+        btn_height = 0.025
+        btn_y = 0.15
+        
+        for i, name in enumerate(preset_names):
+            preset = PRESETS[name]
+            x = 0.42 + i * (btn_width + 0.005)
+            ax_btn = self.fig.add_axes([x, btn_y, btn_width, btn_height])
+            
+            # Short label for button
+            short_name = name.split()[0] if ' ' in name else name[:8]
+            btn = Button(ax_btn, short_name, color='#2a2a4a', hovercolor=preset['color'])
+            btn.label.set_color(TEXT_COLOR)
+            btn.label.set_fontsize(8)
+            btn.on_clicked(lambda e, n=name: self._on_preset_select(n))
+            self.preset_buttons[name] = btn
+    
+    def _on_preset_select(self, preset_name: str):
+        """Handle preset selection."""
+        if preset_name not in PRESETS:
+            return
+        
+        preset = PRESETS[preset_name]
+        self.active_preset = preset_name
+        
+        # Update label
+        self.preset_label.set_text(f'Active: {preset_name}')
+        self.preset_label.set_color(preset['color'])
+        
+        # Update description
+        self.preset_desc.set_text(preset['description'])
+        
+        # Highlight active button
+        for name, btn in self.preset_buttons.items():
+            if name == preset_name:
+                btn.ax.set_facecolor(PRESETS[name]['color'])
+                btn.color = PRESETS[name]['color']
+            else:
+                btn.ax.set_facecolor('#2a2a4a')
+                btn.color = '#2a2a4a'
+        
+        # Apply the preset values (a, b as τ fraction, c)
+        self._apply_preset((preset['a'], preset['b'], preset['c']))
+    
     def _compute_julia(self):
         """Compute Julia set."""
         c = self.state.to_julia_c()
@@ -680,6 +784,16 @@ class JuliaExplorer:
 
     def _on_slider_change(self, param, val):
         """Handle slider change."""
+        # Clear active preset when manually adjusting
+        if self.active_preset is not None:
+            self.active_preset = None
+            self.preset_label.set_text('Active: (custom)')
+            self.preset_label.set_color(TEXT_DIM)
+            self.preset_desc.set_text('')
+            for btn in self.preset_buttons.values():
+                btn.ax.set_facecolor('#2a2a4a')
+                btn.color = '#2a2a4a'
+        
         if param == 'a':
             self.state.a = val
             self.text_a.set_val(f'{val:.3f}')
@@ -830,8 +944,15 @@ Clean interface with:
 Controls:
   - Sliders OR text boxes to set a, b, c values
   - Play/Pause/Stop/Step for animation
-  - Presets: Balanced, Ictal, Interictal, Spiral
+  - Presets: Balanced Flower (interictal), E/I Dominant, Boundary
+  - Keyframes: Quick phase jumps (0 to 7/8 tau)
   - Export: Save current state to julia_exports/
+
+Reference States:
+  - Balanced Flower: a=0.293, c=0.301 (|a-c|=0.008) - healthy baseline
+  - E Dominant: a=0.7, c=0.4 - seizure-like excitatory dominance
+  - I Dominant: a=0.3, c=0.7 - inhibitory dominance
+  - Boundary: Phase at Mandelbrot boundary crossing
 """)
 
     explorer = JuliaExplorer(resolution=400)
