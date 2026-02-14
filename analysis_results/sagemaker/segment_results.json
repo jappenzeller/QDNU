@@ -1,0 +1,4376 @@
+[
+  {
+    "subject": "chb01",
+    "source_file": "chb01_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_03.edf",
+    "label": "ictal",
+    "start_sec": 2996,
+    "end_sec": 3036,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_03.edf",
+    "label": "preictal",
+    "start_sec": 2936,
+    "end_sec": 2996,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_04.edf",
+    "label": "ictal",
+    "start_sec": 1467,
+    "end_sec": 1494,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_04.edf",
+    "label": "preictal",
+    "start_sec": 1407,
+    "end_sec": 1467,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_15.edf",
+    "label": "ictal",
+    "start_sec": 1732,
+    "end_sec": 1772,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_15.edf",
+    "label": "preictal",
+    "start_sec": 1672,
+    "end_sec": 1732,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_16.edf",
+    "label": "ictal",
+    "start_sec": 1015,
+    "end_sec": 1066,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_16.edf",
+    "label": "preictal",
+    "start_sec": 955,
+    "end_sec": 1015,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_18.edf",
+    "label": "ictal",
+    "start_sec": 1720,
+    "end_sec": 1810,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_18.edf",
+    "label": "preictal",
+    "start_sec": 1660,
+    "end_sec": 1720,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_21.edf",
+    "label": "ictal",
+    "start_sec": 327,
+    "end_sec": 420,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_21.edf",
+    "label": "preictal",
+    "start_sec": 267,
+    "end_sec": 327,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_26.edf",
+    "label": "ictal",
+    "start_sec": 1862,
+    "end_sec": 1963,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb01",
+    "source_file": "chb01_26.edf",
+    "label": "preictal",
+    "start_sec": 1802,
+    "end_sec": 1862,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_16+.edf",
+    "label": "ictal",
+    "start_sec": 2972,
+    "end_sec": 3053,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_16+.edf",
+    "label": "preictal",
+    "start_sec": 2912,
+    "end_sec": 2972,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_16.edf",
+    "label": "ictal",
+    "start_sec": 130,
+    "end_sec": 212,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_16.edf",
+    "label": "preictal",
+    "start_sec": 70,
+    "end_sec": 130,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb02",
+    "source_file": "chb02_19.edf",
+    "label": "preictal",
+    "start_sec": 3309,
+    "end_sec": 3369,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_01.edf",
+    "label": "ictal",
+    "start_sec": 362,
+    "end_sec": 414,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_01.edf",
+    "label": "preictal",
+    "start_sec": 302,
+    "end_sec": 362,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_02.edf",
+    "label": "ictal",
+    "start_sec": 731,
+    "end_sec": 796,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_02.edf",
+    "label": "preictal",
+    "start_sec": 671,
+    "end_sec": 731,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_03.edf",
+    "label": "ictal",
+    "start_sec": 432,
+    "end_sec": 501,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_03.edf",
+    "label": "preictal",
+    "start_sec": 372,
+    "end_sec": 432,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_04.edf",
+    "label": "ictal",
+    "start_sec": 2162,
+    "end_sec": 2214,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_04.edf",
+    "label": "preictal",
+    "start_sec": 2102,
+    "end_sec": 2162,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_05.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_05.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_05.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_05.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_05.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_06.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_06.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_06.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_06.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_06.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_34.edf",
+    "label": "ictal",
+    "start_sec": 1982,
+    "end_sec": 2029,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_34.edf",
+    "label": "preictal",
+    "start_sec": 1922,
+    "end_sec": 1982,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_35.edf",
+    "label": "ictal",
+    "start_sec": 2592,
+    "end_sec": 2656,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_35.edf",
+    "label": "preictal",
+    "start_sec": 2532,
+    "end_sec": 2592,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_36.edf",
+    "label": "ictal",
+    "start_sec": 1725,
+    "end_sec": 1778,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb03",
+    "source_file": "chb03_36.edf",
+    "label": "preictal",
+    "start_sec": 1665,
+    "end_sec": 1725,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_05.edf",
+    "label": "ictal",
+    "start_sec": 7804,
+    "end_sec": 7853,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_05.edf",
+    "label": "preictal",
+    "start_sec": 7744,
+    "end_sec": 7804,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_08.edf",
+    "label": "ictal",
+    "start_sec": 6446,
+    "end_sec": 6557,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_08.edf",
+    "label": "preictal",
+    "start_sec": 6386,
+    "end_sec": 6446,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_28.edf",
+    "label": "ictal",
+    "start_sec": 1679,
+    "end_sec": 1781,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_28.edf",
+    "label": "preictal",
+    "start_sec": 1619,
+    "end_sec": 1679,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_28.edf",
+    "label": "ictal",
+    "start_sec": 3782,
+    "end_sec": 3898,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb04",
+    "source_file": "chb04_28.edf",
+    "label": "preictal",
+    "start_sec": 3722,
+    "end_sec": 3782,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_06.edf",
+    "label": "ictal",
+    "start_sec": 417,
+    "end_sec": 532,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_06.edf",
+    "label": "preictal",
+    "start_sec": 357,
+    "end_sec": 417,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_13.edf",
+    "label": "ictal",
+    "start_sec": 1086,
+    "end_sec": 1196,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_13.edf",
+    "label": "preictal",
+    "start_sec": 1026,
+    "end_sec": 1086,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_16.edf",
+    "label": "ictal",
+    "start_sec": 2317,
+    "end_sec": 2413,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_16.edf",
+    "label": "preictal",
+    "start_sec": 2257,
+    "end_sec": 2317,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_17.edf",
+    "label": "ictal",
+    "start_sec": 2451,
+    "end_sec": 2571,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_17.edf",
+    "label": "preictal",
+    "start_sec": 2391,
+    "end_sec": 2451,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_22.edf",
+    "label": "ictal",
+    "start_sec": 2348,
+    "end_sec": 2465,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb05",
+    "source_file": "chb05_22.edf",
+    "label": "preictal",
+    "start_sec": 2288,
+    "end_sec": 2348,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_01.edf",
+    "label": "preictal",
+    "start_sec": 1664,
+    "end_sec": 1724,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_01.edf",
+    "label": "ictal",
+    "start_sec": 7461,
+    "end_sec": 7476,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_01.edf",
+    "label": "preictal",
+    "start_sec": 7401,
+    "end_sec": 7461,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_01.edf",
+    "label": "ictal",
+    "start_sec": 13525,
+    "end_sec": 13540,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_01.edf",
+    "label": "preictal",
+    "start_sec": 13465,
+    "end_sec": 13525,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_03.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_03.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_03.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_03.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_03.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_04.edf",
+    "label": "ictal",
+    "start_sec": 327,
+    "end_sec": 347,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_04.edf",
+    "label": "preictal",
+    "start_sec": 267,
+    "end_sec": 327,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_04.edf",
+    "label": "ictal",
+    "start_sec": 6211,
+    "end_sec": 6231,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_04.edf",
+    "label": "preictal",
+    "start_sec": 6151,
+    "end_sec": 6211,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_09.edf",
+    "label": "ictal",
+    "start_sec": 12500,
+    "end_sec": 12516,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_09.edf",
+    "label": "preictal",
+    "start_sec": 12440,
+    "end_sec": 12500,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_10.edf",
+    "label": "preictal",
+    "start_sec": 10773,
+    "end_sec": 10833,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_13.edf",
+    "label": "preictal",
+    "start_sec": 446,
+    "end_sec": 506,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_18.edf",
+    "label": "preictal",
+    "start_sec": 7739,
+    "end_sec": 7799,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_24.edf",
+    "label": "ictal",
+    "start_sec": 9387,
+    "end_sec": 9403,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb06",
+    "source_file": "chb06_24.edf",
+    "label": "preictal",
+    "start_sec": 9327,
+    "end_sec": 9387,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_12.edf",
+    "label": "ictal",
+    "start_sec": 4920,
+    "end_sec": 5006,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_12.edf",
+    "label": "preictal",
+    "start_sec": 4860,
+    "end_sec": 4920,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_13.edf",
+    "label": "ictal",
+    "start_sec": 3285,
+    "end_sec": 3381,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_13.edf",
+    "label": "preictal",
+    "start_sec": 3225,
+    "end_sec": 3285,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_19.edf",
+    "label": "ictal",
+    "start_sec": 13688,
+    "end_sec": 13831,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb07",
+    "source_file": "chb07_19.edf",
+    "label": "preictal",
+    "start_sec": 13628,
+    "end_sec": 13688,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_02.edf",
+    "label": "ictal",
+    "start_sec": 2670,
+    "end_sec": 2841,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_02.edf",
+    "label": "preictal",
+    "start_sec": 2610,
+    "end_sec": 2670,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_03.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_03.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_03.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_03.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_03.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_04.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_04.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_04.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_04.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_04.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_05.edf",
+    "label": "ictal",
+    "start_sec": 2856,
+    "end_sec": 3046,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_05.edf",
+    "label": "preictal",
+    "start_sec": 2796,
+    "end_sec": 2856,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_11.edf",
+    "label": "ictal",
+    "start_sec": 2988,
+    "end_sec": 3122,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_11.edf",
+    "label": "preictal",
+    "start_sec": 2928,
+    "end_sec": 2988,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_13.edf",
+    "label": "ictal",
+    "start_sec": 2417,
+    "end_sec": 2577,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_13.edf",
+    "label": "preictal",
+    "start_sec": 2357,
+    "end_sec": 2417,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_21.edf",
+    "label": "ictal",
+    "start_sec": 2083,
+    "end_sec": 2347,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb08",
+    "source_file": "chb08_21.edf",
+    "label": "preictal",
+    "start_sec": 2023,
+    "end_sec": 2083,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_06.edf",
+    "label": "ictal",
+    "start_sec": 12231,
+    "end_sec": 12295,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_06.edf",
+    "label": "preictal",
+    "start_sec": 12171,
+    "end_sec": 12231,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_08.edf",
+    "label": "ictal",
+    "start_sec": 2951,
+    "end_sec": 3030,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_08.edf",
+    "label": "preictal",
+    "start_sec": 2891,
+    "end_sec": 2951,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_08.edf",
+    "label": "ictal",
+    "start_sec": 9196,
+    "end_sec": 9267,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_08.edf",
+    "label": "preictal",
+    "start_sec": 9136,
+    "end_sec": 9196,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_19.edf",
+    "label": "ictal",
+    "start_sec": 5299,
+    "end_sec": 5361,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb09",
+    "source_file": "chb09_19.edf",
+    "label": "preictal",
+    "start_sec": 5239,
+    "end_sec": 5299,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_12.edf",
+    "label": "ictal",
+    "start_sec": 6313,
+    "end_sec": 6348,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_12.edf",
+    "label": "preictal",
+    "start_sec": 6253,
+    "end_sec": 6313,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_20.edf",
+    "label": "ictal",
+    "start_sec": 6888,
+    "end_sec": 6958,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_20.edf",
+    "label": "preictal",
+    "start_sec": 6828,
+    "end_sec": 6888,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_27.edf",
+    "label": "ictal",
+    "start_sec": 2382,
+    "end_sec": 2447,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_27.edf",
+    "label": "preictal",
+    "start_sec": 2322,
+    "end_sec": 2382,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_30.edf",
+    "label": "ictal",
+    "start_sec": 3021,
+    "end_sec": 3079,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_30.edf",
+    "label": "preictal",
+    "start_sec": 2961,
+    "end_sec": 3021,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_31.edf",
+    "label": "ictal",
+    "start_sec": 3801,
+    "end_sec": 3877,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_31.edf",
+    "label": "preictal",
+    "start_sec": 3741,
+    "end_sec": 3801,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_38.edf",
+    "label": "ictal",
+    "start_sec": 4618,
+    "end_sec": 4707,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_38.edf",
+    "label": "preictal",
+    "start_sec": 4558,
+    "end_sec": 4618,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_89.edf",
+    "label": "ictal",
+    "start_sec": 1383,
+    "end_sec": 1437,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb10",
+    "source_file": "chb10_89.edf",
+    "label": "preictal",
+    "start_sec": 1323,
+    "end_sec": 1383,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_82.edf",
+    "label": "ictal",
+    "start_sec": 298,
+    "end_sec": 320,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_82.edf",
+    "label": "preictal",
+    "start_sec": 238,
+    "end_sec": 298,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_92.edf",
+    "label": "ictal",
+    "start_sec": 2695,
+    "end_sec": 2727,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_92.edf",
+    "label": "preictal",
+    "start_sec": 2635,
+    "end_sec": 2695,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_99.edf",
+    "label": "ictal",
+    "start_sec": 1454,
+    "end_sec": 2206,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb11",
+    "source_file": "chb11_99.edf",
+    "label": "preictal",
+    "start_sec": 1394,
+    "end_sec": 1454,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_03.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_03.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_03.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_03.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_03.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_19.edf",
+    "label": "ictal",
+    "start_sec": 2077,
+    "end_sec": 2121,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_19.edf",
+    "label": "preictal",
+    "start_sec": 2017,
+    "end_sec": 2077,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_21.edf",
+    "label": "ictal",
+    "start_sec": 934,
+    "end_sec": 1004,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_21.edf",
+    "label": "preictal",
+    "start_sec": 874,
+    "end_sec": 934,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_40.edf",
+    "label": "ictal",
+    "start_sec": 142,
+    "end_sec": 173,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_40.edf",
+    "label": "preictal",
+    "start_sec": 82,
+    "end_sec": 142,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_40.edf",
+    "label": "ictal",
+    "start_sec": 530,
+    "end_sec": 594,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_40.edf",
+    "label": "preictal",
+    "start_sec": 470,
+    "end_sec": 530,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_55.edf",
+    "label": "ictal",
+    "start_sec": 458,
+    "end_sec": 478,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_55.edf",
+    "label": "preictal",
+    "start_sec": 398,
+    "end_sec": 458,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_55.edf",
+    "label": "ictal",
+    "start_sec": 2436,
+    "end_sec": 2454,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_55.edf",
+    "label": "preictal",
+    "start_sec": 2376,
+    "end_sec": 2436,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_58.edf",
+    "label": "ictal",
+    "start_sec": 2474,
+    "end_sec": 2491,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_58.edf",
+    "label": "preictal",
+    "start_sec": 2414,
+    "end_sec": 2474,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_59.edf",
+    "label": "ictal",
+    "start_sec": 3339,
+    "end_sec": 3401,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_59.edf",
+    "label": "preictal",
+    "start_sec": 3279,
+    "end_sec": 3339,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_60.edf",
+    "label": "ictal",
+    "start_sec": 638,
+    "end_sec": 660,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_60.edf",
+    "label": "preictal",
+    "start_sec": 578,
+    "end_sec": 638,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_62.edf",
+    "label": "ictal",
+    "start_sec": 851,
+    "end_sec": 916,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_62.edf",
+    "label": "preictal",
+    "start_sec": 791,
+    "end_sec": 851,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_62.edf",
+    "label": "ictal",
+    "start_sec": 1626,
+    "end_sec": 1691,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_62.edf",
+    "label": "preictal",
+    "start_sec": 1566,
+    "end_sec": 1626,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_62.edf",
+    "label": "ictal",
+    "start_sec": 2664,
+    "end_sec": 2721,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb13",
+    "source_file": "chb13_62.edf",
+    "label": "preictal",
+    "start_sec": 2604,
+    "end_sec": 2664,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_03.edf",
+    "label": "preictal",
+    "start_sec": 1926,
+    "end_sec": 1986,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_04.edf",
+    "label": "ictal",
+    "start_sec": 1372,
+    "end_sec": 1392,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_04.edf",
+    "label": "preictal",
+    "start_sec": 1312,
+    "end_sec": 1372,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_04.edf",
+    "label": "ictal",
+    "start_sec": 2817,
+    "end_sec": 2839,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_04.edf",
+    "label": "preictal",
+    "start_sec": 2757,
+    "end_sec": 2817,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_06.edf",
+    "label": "preictal",
+    "start_sec": 1851,
+    "end_sec": 1911,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_11.edf",
+    "label": "ictal",
+    "start_sec": 1838,
+    "end_sec": 1879,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_11.edf",
+    "label": "preictal",
+    "start_sec": 1778,
+    "end_sec": 1838,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_17.edf",
+    "label": "ictal",
+    "start_sec": 3239,
+    "end_sec": 3259,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_17.edf",
+    "label": "preictal",
+    "start_sec": 3179,
+    "end_sec": 3239,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_18.edf",
+    "label": "ictal",
+    "start_sec": 1039,
+    "end_sec": 1061,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_18.edf",
+    "label": "preictal",
+    "start_sec": 979,
+    "end_sec": 1039,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_27.edf",
+    "label": "ictal",
+    "start_sec": 2833,
+    "end_sec": 2849,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb14",
+    "source_file": "chb14_27.edf",
+    "label": "preictal",
+    "start_sec": 2773,
+    "end_sec": 2833,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_06.edf",
+    "label": "ictal",
+    "start_sec": 272,
+    "end_sec": 397,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_06.edf",
+    "label": "preictal",
+    "start_sec": 212,
+    "end_sec": 272,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_10.edf",
+    "label": "ictal",
+    "start_sec": 1082,
+    "end_sec": 1113,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_10.edf",
+    "label": "preictal",
+    "start_sec": 1022,
+    "end_sec": 1082,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_15.edf",
+    "label": "ictal",
+    "start_sec": 1591,
+    "end_sec": 1748,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_15.edf",
+    "label": "preictal",
+    "start_sec": 1531,
+    "end_sec": 1591,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_17.edf",
+    "label": "ictal",
+    "start_sec": 1925,
+    "end_sec": 1960,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_17.edf",
+    "label": "preictal",
+    "start_sec": 1865,
+    "end_sec": 1925,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_20.edf",
+    "label": "ictal",
+    "start_sec": 607,
+    "end_sec": 662,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_20.edf",
+    "label": "preictal",
+    "start_sec": 547,
+    "end_sec": 607,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_22.edf",
+    "label": "ictal",
+    "start_sec": 760,
+    "end_sec": 965,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_22.edf",
+    "label": "preictal",
+    "start_sec": 700,
+    "end_sec": 760,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_28.edf",
+    "label": "ictal",
+    "start_sec": 876,
+    "end_sec": 1066,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_28.edf",
+    "label": "preictal",
+    "start_sec": 816,
+    "end_sec": 876,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_31.edf",
+    "label": "ictal",
+    "start_sec": 1751,
+    "end_sec": 1871,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_31.edf",
+    "label": "preictal",
+    "start_sec": 1691,
+    "end_sec": 1751,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_40.edf",
+    "label": "ictal",
+    "start_sec": 834,
+    "end_sec": 894,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_40.edf",
+    "label": "preictal",
+    "start_sec": 774,
+    "end_sec": 834,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_40.edf",
+    "label": "ictal",
+    "start_sec": 2378,
+    "end_sec": 2497,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_40.edf",
+    "label": "preictal",
+    "start_sec": 2318,
+    "end_sec": 2378,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_40.edf",
+    "label": "ictal",
+    "start_sec": 3362,
+    "end_sec": 3425,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_40.edf",
+    "label": "preictal",
+    "start_sec": 3302,
+    "end_sec": 3362,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_46.edf",
+    "label": "ictal",
+    "start_sec": 3322,
+    "end_sec": 3429,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_46.edf",
+    "label": "preictal",
+    "start_sec": 3262,
+    "end_sec": 3322,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_49.edf",
+    "label": "ictal",
+    "start_sec": 1108,
+    "end_sec": 1248,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_49.edf",
+    "label": "preictal",
+    "start_sec": 1048,
+    "end_sec": 1108,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_52.edf",
+    "label": "ictal",
+    "start_sec": 778,
+    "end_sec": 849,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_52.edf",
+    "label": "preictal",
+    "start_sec": 718,
+    "end_sec": 778,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "ictal",
+    "start_sec": 263,
+    "end_sec": 318,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "preictal",
+    "start_sec": 203,
+    "end_sec": 263,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "ictal",
+    "start_sec": 843,
+    "end_sec": 1020,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "preictal",
+    "start_sec": 783,
+    "end_sec": 843,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "ictal",
+    "start_sec": 1524,
+    "end_sec": 1595,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "preictal",
+    "start_sec": 1464,
+    "end_sec": 1524,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "ictal",
+    "start_sec": 2179,
+    "end_sec": 2250,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "preictal",
+    "start_sec": 2119,
+    "end_sec": 2179,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "ictal",
+    "start_sec": 3428,
+    "end_sec": 3460,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_54.edf",
+    "label": "preictal",
+    "start_sec": 3368,
+    "end_sec": 3428,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_62.edf",
+    "label": "ictal",
+    "start_sec": 751,
+    "end_sec": 859,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb15",
+    "source_file": "chb15_62.edf",
+    "label": "preictal",
+    "start_sec": 691,
+    "end_sec": 751,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_10.edf",
+    "label": "preictal",
+    "start_sec": 2230,
+    "end_sec": 2290,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_11.edf",
+    "label": "preictal",
+    "start_sec": 1060,
+    "end_sec": 1120,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_14.edf",
+    "label": "preictal",
+    "start_sec": 1794,
+    "end_sec": 1854,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_16.edf",
+    "label": "preictal",
+    "start_sec": 1154,
+    "end_sec": 1214,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_17.edf",
+    "label": "preictal",
+    "start_sec": 167,
+    "end_sec": 227,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_17.edf",
+    "label": "preictal",
+    "start_sec": 1634,
+    "end_sec": 1694,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_17.edf",
+    "label": "preictal",
+    "start_sec": 2102,
+    "end_sec": 2162,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_17.edf",
+    "label": "preictal",
+    "start_sec": 3230,
+    "end_sec": 3290,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_18.edf",
+    "label": "preictal",
+    "start_sec": 567,
+    "end_sec": 627,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb16",
+    "source_file": "chb16_18.edf",
+    "label": "preictal",
+    "start_sec": 1849,
+    "end_sec": 1909,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_03.edf",
+    "label": "ictal",
+    "start_sec": 2282,
+    "end_sec": 2372,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_03.edf",
+    "label": "preictal",
+    "start_sec": 2222,
+    "end_sec": 2282,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_04.edf",
+    "label": "ictal",
+    "start_sec": 3025,
+    "end_sec": 3140,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_04.edf",
+    "label": "preictal",
+    "start_sec": 2965,
+    "end_sec": 3025,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_05.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_05.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_05.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_05.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_05.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_06.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_06.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_06.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_06.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17a_06.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17b_63.edf",
+    "label": "ictal",
+    "start_sec": 3136,
+    "end_sec": 3224,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb17",
+    "source_file": "chb17b_63.edf",
+    "label": "preictal",
+    "start_sec": 3076,
+    "end_sec": 3136,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_29.edf",
+    "label": "ictal",
+    "start_sec": 3477,
+    "end_sec": 3527,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_29.edf",
+    "label": "preictal",
+    "start_sec": 3417,
+    "end_sec": 3477,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_30.edf",
+    "label": "ictal",
+    "start_sec": 541,
+    "end_sec": 571,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_30.edf",
+    "label": "preictal",
+    "start_sec": 481,
+    "end_sec": 541,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_31.edf",
+    "label": "ictal",
+    "start_sec": 2087,
+    "end_sec": 2155,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_31.edf",
+    "label": "preictal",
+    "start_sec": 2027,
+    "end_sec": 2087,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_32.edf",
+    "label": "ictal",
+    "start_sec": 1908,
+    "end_sec": 1963,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_32.edf",
+    "label": "preictal",
+    "start_sec": 1848,
+    "end_sec": 1908,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_35.edf",
+    "label": "ictal",
+    "start_sec": 2196,
+    "end_sec": 2264,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_35.edf",
+    "label": "preictal",
+    "start_sec": 2136,
+    "end_sec": 2196,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_36.edf",
+    "label": "ictal",
+    "start_sec": 463,
+    "end_sec": 509,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb18",
+    "source_file": "chb18_36.edf",
+    "label": "preictal",
+    "start_sec": 403,
+    "end_sec": 463,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_28.edf",
+    "label": "ictal",
+    "start_sec": 299,
+    "end_sec": 377,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_28.edf",
+    "label": "preictal",
+    "start_sec": 239,
+    "end_sec": 299,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_29.edf",
+    "label": "ictal",
+    "start_sec": 2964,
+    "end_sec": 3041,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_29.edf",
+    "label": "preictal",
+    "start_sec": 2904,
+    "end_sec": 2964,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_30.edf",
+    "label": "ictal",
+    "start_sec": 3159,
+    "end_sec": 3240,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb19",
+    "source_file": "chb19_30.edf",
+    "label": "preictal",
+    "start_sec": 3099,
+    "end_sec": 3159,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_12.edf",
+    "label": "ictal",
+    "start_sec": 94,
+    "end_sec": 123,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_12.edf",
+    "label": "preictal",
+    "start_sec": 34,
+    "end_sec": 94,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_13.edf",
+    "label": "ictal",
+    "start_sec": 1440,
+    "end_sec": 1470,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_13.edf",
+    "label": "preictal",
+    "start_sec": 1380,
+    "end_sec": 1440,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_13.edf",
+    "label": "ictal",
+    "start_sec": 2498,
+    "end_sec": 2537,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_13.edf",
+    "label": "preictal",
+    "start_sec": 2438,
+    "end_sec": 2498,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_14.edf",
+    "label": "ictal",
+    "start_sec": 1971,
+    "end_sec": 2009,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_14.edf",
+    "label": "preictal",
+    "start_sec": 1911,
+    "end_sec": 1971,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_15.edf",
+    "label": "ictal",
+    "start_sec": 390,
+    "end_sec": 425,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_15.edf",
+    "label": "preictal",
+    "start_sec": 330,
+    "end_sec": 390,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_15.edf",
+    "label": "ictal",
+    "start_sec": 1689,
+    "end_sec": 1738,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_15.edf",
+    "label": "preictal",
+    "start_sec": 1629,
+    "end_sec": 1689,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_16.edf",
+    "label": "ictal",
+    "start_sec": 2226,
+    "end_sec": 2261,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_16.edf",
+    "label": "preictal",
+    "start_sec": 2166,
+    "end_sec": 2226,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_68.edf",
+    "label": "ictal",
+    "start_sec": 1393,
+    "end_sec": 1432,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb20",
+    "source_file": "chb20_68.edf",
+    "label": "preictal",
+    "start_sec": 1333,
+    "end_sec": 1393,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_19.edf",
+    "label": "ictal",
+    "start_sec": 1288,
+    "end_sec": 1344,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_19.edf",
+    "label": "preictal",
+    "start_sec": 1228,
+    "end_sec": 1288,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_20.edf",
+    "label": "ictal",
+    "start_sec": 2627,
+    "end_sec": 2677,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_20.edf",
+    "label": "preictal",
+    "start_sec": 2567,
+    "end_sec": 2627,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_21.edf",
+    "label": "ictal",
+    "start_sec": 2003,
+    "end_sec": 2084,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_21.edf",
+    "label": "preictal",
+    "start_sec": 1943,
+    "end_sec": 2003,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb21",
+    "source_file": "chb21_22.edf",
+    "label": "preictal",
+    "start_sec": 2493,
+    "end_sec": 2553,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_01.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_01.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_01.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_01.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_01.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_02.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_02.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_02.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_02.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_02.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_20.edf",
+    "label": "ictal",
+    "start_sec": 3367,
+    "end_sec": 3425,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_20.edf",
+    "label": "preictal",
+    "start_sec": 3307,
+    "end_sec": 3367,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_25.edf",
+    "label": "ictal",
+    "start_sec": 3139,
+    "end_sec": 3213,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_25.edf",
+    "label": "preictal",
+    "start_sec": 3079,
+    "end_sec": 3139,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_38.edf",
+    "label": "ictal",
+    "start_sec": 1263,
+    "end_sec": 1335,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb22",
+    "source_file": "chb22_38.edf",
+    "label": "preictal",
+    "start_sec": 1203,
+    "end_sec": 1263,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_06.edf",
+    "label": "ictal",
+    "start_sec": 3962,
+    "end_sec": 4075,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_06.edf",
+    "label": "preictal",
+    "start_sec": 3902,
+    "end_sec": 3962,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_07.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_07.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_07.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_07.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_07.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_08.edf",
+    "label": "ictal",
+    "start_sec": 325,
+    "end_sec": 345,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_08.edf",
+    "label": "preictal",
+    "start_sec": 265,
+    "end_sec": 325,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_08.edf",
+    "label": "ictal",
+    "start_sec": 5104,
+    "end_sec": 5151,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_08.edf",
+    "label": "preictal",
+    "start_sec": 5044,
+    "end_sec": 5104,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "ictal",
+    "start_sec": 2589,
+    "end_sec": 2660,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "preictal",
+    "start_sec": 2529,
+    "end_sec": 2589,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "ictal",
+    "start_sec": 6885,
+    "end_sec": 6947,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "preictal",
+    "start_sec": 6825,
+    "end_sec": 6885,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "ictal",
+    "start_sec": 8505,
+    "end_sec": 8532,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "preictal",
+    "start_sec": 8445,
+    "end_sec": 8505,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "ictal",
+    "start_sec": 9580,
+    "end_sec": 9664,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_09.edf",
+    "label": "preictal",
+    "start_sec": 9520,
+    "end_sec": 9580,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_10.edf",
+    "label": "interictal",
+    "start_sec": 0.0,
+    "end_sec": 30.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_10.edf",
+    "label": "interictal",
+    "start_sec": 60.0,
+    "end_sec": 90.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_10.edf",
+    "label": "interictal",
+    "start_sec": 120.0,
+    "end_sec": 150.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_10.edf",
+    "label": "interictal",
+    "start_sec": 180.0,
+    "end_sec": 210.0,
+    "n_channels": 18,
+    "n_features": 2016
+  },
+  {
+    "subject": "chb23",
+    "source_file": "chb23_10.edf",
+    "label": "interictal",
+    "start_sec": 240.0,
+    "end_sec": 270.0,
+    "n_channels": 18,
+    "n_features": 2016
+  }
+]

@@ -1,0 +1,536 @@
+{
+  "n_ictal": 230,
+  "n_interictal": 240,
+  "metrics": {
+    "E-I Balance": {
+      "ictal_mean": 0.629962304103972,
+      "ictal_std": 0.23362228236182914,
+      "interictal_mean": 0.6668561140067488,
+      "interictal_std": 0.22939470448776023,
+      "t_statistic": -1.723643557712496,
+      "t_pvalue": 0.08543264828339055,
+      "mann_whitney_u": 24472.0,
+      "mann_whitney_p": 0.03351881322557274,
+      "cohens_d": -0.1593560201917319,
+      "significant": 0.0
+    },
+    "Concurrence": {
+      "ictal_mean": 0.13269812234148898,
+      "ictal_std": 0.09930283890491877,
+      "interictal_mean": 0.1213536712622992,
+      "interictal_std": 0.10749237917868594,
+      "t_statistic": 1.184574145045543,
+      "t_pvalue": 0.23678708697368334,
+      "mann_whitney_u": 30111.0,
+      "mann_whitney_p": 0.08808721190816439,
+      "cohens_d": 0.10963082899496,
+      "significant": 0.0
+    },
+    "Boundary Distance": {
+      "ictal_mean": -0.16973913043478264,
+      "ictal_std": 0.1436751218643023,
+      "interictal_mean": -0.18841666666666665,
+      "interictal_std": 0.15170418491993629,
+      "t_statistic": 1.3663214839519928,
+      "t_pvalue": 0.17249419487524856,
+      "mann_whitney_u": 30203.5,
+      "mann_whitney_p": 0.07653645350567065,
+      "cohens_d": 0.12641806290366067,
+      "significant": 0.0
+    },
+    "Max Depth": {
+      "ictal_mean": 0.9119734764099121,
+      "ictal_std": 0.23784920573234558,
+      "interictal_mean": 0.8918619751930237,
+      "interictal_std": 0.2579214572906494,
+      "t_statistic": 0.8759098783235797,
+      "t_pvalue": 0.38152836803490064,
+      "mann_whitney_u": 28363.0,
+      "mann_whitney_p": 0.40291178948343087,
+      "cohens_d": 0.08106586337089539,
+      "significant": 0.0
+    },
+    "Excitatory (a)": {
+      "ictal_mean": 0.14238959984814606,
+      "ictal_std": 0.1190731033249825,
+      "interictal_mean": 0.14307748562491776,
+      "interictal_std": 0.158440073459051,
+      "t_statistic": -0.05292365906699104,
+      "t_pvalue": 0.9578153162056939,
+      "mann_whitney_u": 29192.5,
+      "mann_whitney_p": 0.27272996959465656,
+      "cohens_d": -0.004908359985371984,
+      "significant": 0.0
+    },
+    "Inhibitory (c)": {
+      "ictal_mean": 0.756542526085096,
+      "ictal_std": 0.16068174798567916,
+      "interictal_mean": 0.7603886380086656,
+      "interictal_std": 0.1927104006350519,
+      "t_statistic": -0.2339829255231269,
+      "t_pvalue": 0.8151005535470115,
+      "mann_whitney_u": 25779.5,
+      "mann_whitney_p": 0.2161214559581871,
+      "cohens_d": -0.02167797042899776,
+      "significant": 0.0
+    },
+    "Phase (b)": {
+      "ictal_mean": 0.18045380660560179,
+      "ictal_std": 0.13984736503743803,
+      "interictal_mean": 0.17713166029360186,
+      "interictal_std": 0.1739032625579361,
+      "t_statistic": 0.22715706704451305,
+      "t_pvalue": 0.8204008046099172,
+      "mann_whitney_u": 29515.0,
+      "mann_whitney_p": 0.19337258600850116,
+      "cohens_d": 0.02105332497740663,
+      "significant": 0.0
+    }
+  },
+  "per_patient": {
+    "Patient_1": {
+      "n_ictal": 30,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.5759553935481635,
+          "interictal_mean": 0.5183327000125202,
+          "t_pvalue": 0.3542354665183708,
+          "cohens_d": 0.245249963482255,
+          "significant": 0.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.14160310841637777,
+          "interictal_mean": 0.2069045969040491,
+          "t_pvalue": 0.008708242760424917,
+          "cohens_d": -0.7130817301439502,
+          "significant": 1.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.15566666666666668,
+          "interictal_mean": -0.06366666666666668,
+          "t_pvalue": 0.008261777750529596,
+          "cohens_d": -0.718241172785454,
+          "significant": 1.0
+        },
+        "Max Depth": {
+          "ictal_mean": 0.9423177242279053,
+          "interictal_mean": 0.802734375,
+          "t_pvalue": 0.044943362037179614,
+          "cohens_d": 0.5382286906242371,
+          "significant": 1.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.21339819438810595,
+          "interictal_mean": 0.18139785913577797,
+          "t_pvalue": 0.37227989951090146,
+          "cohens_d": 0.23613370851180757,
+          "significant": 0.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.7392642367722877,
+          "interictal_mean": 0.6997305591482981,
+          "t_pvalue": 0.33220437973128836,
+          "cohens_d": 0.2567988176041895,
+          "significant": 0.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.24019444277259072,
+          "interictal_mean": 0.23383006775289245,
+          "t_pvalue": 0.8676841971241103,
+          "cohens_d": 0.04394577949736263,
+          "significant": 0.0
+        }
+      }
+    },
+    "Patient_2": {
+      "n_ictal": 30,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.4897890413209531,
+          "interictal_mean": 0.7101633194963599,
+          "t_pvalue": 2.4406967359236097e-05,
+          "cohens_d": -1.2049298424766426,
+          "significant": 1.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.1937829320333904,
+          "interictal_mean": 0.1098939936297887,
+          "t_pvalue": 0.00048152578798255286,
+          "cohens_d": 0.9716156937289692,
+          "significant": 1.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.083,
+          "interictal_mean": -0.21033333333333332,
+          "t_pvalue": 0.00015801034424460563,
+          "cohens_d": 1.061524826018915,
+          "significant": 1.0
+        },
+        "Max Depth": {
+          "ictal_mean": 0.856640636920929,
+          "interictal_mean": 0.9325520992279053,
+          "t_pvalue": 0.2524783749404843,
+          "cohens_d": -0.30354323983192444,
+          "significant": 0.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.1815886570333002,
+          "interictal_mean": 0.08939932680800292,
+          "t_pvalue": 2.403768472743635e-05,
+          "cohens_d": 1.206070412399765,
+          "significant": 1.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.6631780223474031,
+          "interictal_mean": 0.799562646304363,
+          "t_pvalue": 0.0001245437934378055,
+          "cohens_d": -1.0802547299985024,
+          "significant": 1.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.24309453605019993,
+          "interictal_mean": 0.12212471313814284,
+          "t_pvalue": 1.6356716645806063e-05,
+          "cohens_d": 1.2347358292476622,
+          "significant": 1.0
+        }
+      }
+    },
+    "Patient_3": {
+      "n_ictal": 30,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.651554886740583,
+          "interictal_mean": 0.532227061424887,
+          "t_pvalue": 0.026575400061594992,
+          "cohens_d": 0.5976251368962395,
+          "significant": 1.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.14129586895849552,
+          "interictal_mean": 0.18535329143866275,
+          "t_pvalue": 0.06980024651190495,
+          "cohens_d": -0.48513519394200694,
+          "significant": 0.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.15933333333333335,
+          "interictal_mean": -0.09233333333333334,
+          "t_pvalue": 0.06241840615360426,
+          "cohens_d": -0.4989444364561701,
+          "significant": 0.0
+        },
+        "Max Depth": {
+          "ictal_mean": 0.9535156488418579,
+          "interictal_mean": 0.8473958373069763,
+          "t_pvalue": 0.10075950298257118,
+          "cohens_d": 0.4379684627056122,
+          "significant": 0.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.11547960684513356,
+          "interictal_mean": 0.1759934121879993,
+          "t_pvalue": 0.004736716863441739,
+          "cohens_d": -0.7714884742328293,
+          "significant": 1.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.7670344935857164,
+          "interictal_mean": 0.7082204736128862,
+          "t_pvalue": 0.08444153818553861,
+          "cohens_d": 0.4610356699483798,
+          "significant": 0.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.1593984750279387,
+          "interictal_mean": 0.226753574155469,
+          "t_pvalue": 0.012757310556330496,
+          "cohens_d": -0.6749449802516876,
+          "significant": 1.0
+        }
+      }
+    },
+    "Patient_4": {
+      "n_ictal": 20,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.5334274357197448,
+          "interictal_mean": 0.572274544143319,
+          "t_pvalue": 0.52399100524789,
+          "cohens_d": -0.19846492378811406,
+          "significant": 0.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.21023086903682206,
+          "interictal_mean": 0.15874090188449613,
+          "t_pvalue": 0.07474601274714655,
+          "cohens_d": 0.5520078860743118,
+          "significant": 0.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.07550000000000001,
+          "interictal_mean": -0.14766666666666667,
+          "t_pvalue": 0.06925589770866726,
+          "cohens_d": 0.5604373912976915,
+          "significant": 0.0
+        },
+        "Max Depth": {
+          "ictal_mean": 0.7855468988418579,
+          "interictal_mean": 0.873828113079071,
+          "t_pvalue": 0.3312626184163726,
+          "cohens_d": -0.28450703620910645,
+          "significant": 0.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.13203913894526498,
+          "interictal_mean": 0.13715371888758826,
+          "t_pvalue": 0.8382624547530333,
+          "cohens_d": -0.06449275096741551,
+          "significant": 0.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.6654665746650099,
+          "interictal_mean": 0.6940540999361803,
+          "t_pvalue": 0.526020311193292,
+          "cohens_d": -0.1974698294745014,
+          "significant": 0.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.19727270120380608,
+          "interictal_mean": 0.195624787409889,
+          "t_pvalue": 0.9616618146146279,
+          "cohens_d": 0.015115791783297758,
+          "significant": 0.0
+        }
+      }
+    },
+    "Patient_5": {
+      "n_ictal": 30,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.6796794115477979,
+          "interictal_mean": 0.8185320539865966,
+          "t_pvalue": 4.094548171132741e-06,
+          "cohens_d": -1.3359485255832881,
+          "significant": 1.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.12829028751308788,
+          "interictal_mean": 0.04838150968129293,
+          "t_pvalue": 4.987170415725885e-06,
+          "cohens_d": 1.3216996760823416,
+          "significant": 1.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.16833333333333333,
+          "interictal_mean": -0.2963333333333333,
+          "t_pvalue": 5.942432918318266e-06,
+          "cohens_d": 1.3089954086482438,
+          "significant": 1.0
+        },
+        "Max Depth": {
+          "ictal_mean": 0.9429687261581421,
+          "interictal_mean": 1.0,
+          "t_pvalue": 0.09195383656222375,
+          "cohens_d": -0.44999778270721436,
+          "significant": 0.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.11380242270235058,
+          "interictal_mean": 0.06270223176912983,
+          "t_pvalue": 6.313643800064324e-05,
+          "cohens_d": 1.1329333026066875,
+          "significant": 1.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.7934818342501483,
+          "interictal_mean": 0.8812342857557266,
+          "t_pvalue": 5.51785743064705e-06,
+          "cohens_d": -1.3143741415995227,
+          "significant": 1.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.15244666339062335,
+          "interictal_mean": 0.07733918423820242,
+          "t_pvalue": 3.70311551442262e-06,
+          "cohens_d": 1.3431897631773368,
+          "significant": 1.0
+        }
+      }
+    },
+    "Patient_6": {
+      "n_ictal": 30,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.8136019116690079,
+          "interictal_mean": 0.8755056647044284,
+          "t_pvalue": 0.004619001326432094,
+          "cohens_d": -0.7738453694506263,
+          "significant": 1.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.04699380752642126,
+          "interictal_mean": 0.019496549688047406,
+          "t_pvalue": 0.022672081325496928,
+          "cohens_d": 0.6148669649333388,
+          "significant": 1.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.30199999999999994,
+          "interictal_mean": -0.3333333333333333,
+          "t_pvalue": 0.06560858473729532,
+          "cohens_d": 0.4928157383721091,
+          "significant": 0.0
+        },
+        "Max Depth": {
+          "ictal_mean": 1.0,
+          "interictal_mean": 1.0,
+          "t_pvalue": NaN,
+          "cohens_d": 0,
+          "significant": 0.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.06087247965213785,
+          "interictal_mean": 0.053727285580549684,
+          "t_pvalue": 0.17199244245147915,
+          "cohens_d": 0.3631709377973769,
+          "significant": 0.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.8744743913211459,
+          "interictal_mean": 0.9292329502849782,
+          "t_pvalue": 0.0017148066367025877,
+          "cohens_d": -0.8636024963352875,
+          "significant": 1.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.06528535841974817,
+          "interictal_mean": 0.04062016397374712,
+          "t_pvalue": 0.03218637632768864,
+          "cohens_d": 0.576412931390356,
+          "significant": 1.0
+        }
+      }
+    },
+    "Patient_7": {
+      "n_ictal": 30,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.8539461043023185,
+          "interictal_mean": 0.7475980504082318,
+          "t_pvalue": 0.002359885719962673,
+          "cohens_d": 0.8352829123837267,
+          "significant": 1.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.032371169786360884,
+          "interictal_mean": 0.0947597756473255,
+          "t_pvalue": 0.0017578065264984208,
+          "cohens_d": -0.8614247137212168,
+          "significant": 1.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.3136666666666666,
+          "interictal_mean": -0.21833333333333338,
+          "t_pvalue": 0.0022125920097282583,
+          "cohens_d": -0.8410418855530201,
+          "significant": 1.0
+        },
+        "Max Depth": {
+          "ictal_mean": 1.0,
+          "interictal_mean": 0.8561198115348816,
+          "t_pvalue": 0.009473268322610116,
+          "cohens_d": 0.7047798037528992,
+          "significant": 1.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.05539614483403857,
+          "interictal_mean": 0.10158714209467058,
+          "t_pvalue": 0.0016129381128873945,
+          "cohens_d": -0.86897470967197,
+          "significant": 1.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.9093422491363571,
+          "interictal_mean": 0.8491851925029025,
+          "t_pvalue": 0.004002110317674259,
+          "cohens_d": 0.7871921156427785,
+          "significant": 1.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.06988990998138583,
+          "interictal_mean": 0.1223069220222747,
+          "t_pvalue": 0.004921921431549665,
+          "cohens_d": -0.7678881915098184,
+          "significant": 1.0
+        }
+      }
+    },
+    "Patient_8": {
+      "n_ictal": 30,
+      "n_interictal": 30,
+      "metrics": {
+        "E-I Balance": {
+          "ictal_mean": 0.4095659585217988,
+          "interictal_mean": 0.5602155178776482,
+          "t_pvalue": 0.0377670538646859,
+          "cohens_d": -0.5583282564060477,
+          "significant": 1.0
+        },
+        "Concurrence": {
+          "ictal_mean": 0.19286118435940042,
+          "interictal_mean": 0.1472987512247312,
+          "t_pvalue": 0.11683095200688727,
+          "cohens_d": 0.41806780421163486,
+          "significant": 0.0
+        },
+        "Boundary Distance": {
+          "ictal_mean": -0.069,
+          "interictal_mean": -0.14533333333333334,
+          "t_pvalue": 0.040332481089487913,
+          "cohens_d": 0.5507887835103251,
+          "significant": 1.0
+        },
+        "Max Depth": {
+          "ictal_mean": 0.772656261920929,
+          "interictal_mean": 0.822265625,
+          "t_pvalue": 0.5749910731647375,
+          "cohens_d": -0.14808939397335052,
+          "significant": 0.0
+        },
+        "Excitatory (a)": {
+          "ictal_mean": 0.263090000750543,
+          "interictal_mean": 0.3426589085356234,
+          "t_pvalue": 0.23582378429652745,
+          "cohens_d": -0.3145870623333189,
+          "significant": 0.0
+        },
+        "Inhibitory (c)": {
+          "ictal_mean": 0.6097397561293365,
+          "interictal_mean": 0.5218888965239905,
+          "t_pvalue": 0.17921880292638687,
+          "cohens_d": 0.3570485670568871,
+          "significant": 0.0
+        },
+        "Phase (b)": {
+          "ictal_mean": 0.3216546641979231,
+          "interictal_mean": 0.3984538696581973,
+          "t_pvalue": 0.24741265281938535,
+          "cohens_d": -0.3068454045135389,
+          "significant": 0.0
+        }
+      }
+    }
+  },
+  "in_mandelbrot": {
+    "ictal_fraction": 0.8347826086956521,
+    "interictal_fraction": 0.8125
+  }
+}

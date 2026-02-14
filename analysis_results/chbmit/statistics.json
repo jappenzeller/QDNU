@@ -1,0 +1,430 @@
+{
+  "overall": {
+    "ictal_in_mandelbrot": 0.7362637362637363,
+    "ictal_count": 182,
+    "interictal_in_mandelbrot": 0.7794285714285715,
+    "interictal_count": 1750,
+    "preictal_in_mandelbrot": 0.6813186813186813,
+    "preictal_count": 182
+  },
+  "per_subject": {
+    "chb01": {
+      "n_ictal": 7,
+      "n_preictal": 7,
+      "n_interictal": 90,
+      "bd_ictal_mean": -0.3117241379310345,
+      "bd_interictal_mean": -0.1638390804597701,
+      "bd_t_pvalue": 0.008441406051113678,
+      "bd_cohens_d": -1.3546147983432217,
+      "bd_significant": true
+    },
+    "chb02": {
+      "n_ictal": 3,
+      "n_preictal": 3,
+      "n_interictal": 50,
+      "bd_ictal_mean": -0.09344827586206898,
+      "bd_interictal_mean": -0.07966206896551724,
+      "bd_t_pvalue": 0.8725226697458567,
+      "bd_cohens_d": -0.10670937396218125,
+      "bd_significant": false
+    },
+    "chb03": {
+      "n_ictal": 7,
+      "n_preictal": 7,
+      "n_interictal": 90,
+      "bd_ictal_mean": -0.013054187192118222,
+      "bd_interictal_mean": -0.07418007662835249,
+      "bd_t_pvalue": 0.123613299045454,
+      "bd_cohens_d": 0.704339008800919,
+      "bd_significant": false
+    },
+    "chb04": {
+      "n_ictal": 4,
+      "n_preictal": 4,
+      "n_interictal": 50,
+      "bd_ictal_mean": -0.01767241379310345,
+      "bd_interictal_mean": -0.09616551724137933,
+      "bd_t_pvalue": 0.13102918520415824,
+      "bd_cohens_d": 1.0860033603456178,
+      "bd_significant": false
+    },
+    "chb05": {
+      "n_ictal": 5,
+      "n_preictal": 5,
+      "n_interictal": 70,
+      "bd_ictal_mean": -0.035172413793103444,
+      "bd_interictal_mean": -0.1935320197044335,
+      "bd_t_pvalue": 0.018532118285516812,
+      "bd_cohens_d": 1.1955911639099732,
+      "bd_significant": true
+    },
+    "chb06": {
+      "n_ictal": 10,
+      "n_preictal": 10,
+      "n_interictal": 90,
+      "bd_ictal_mean": -0.12827586206896552,
+      "bd_interictal_mean": -0.2752222222222222,
+      "bd_t_pvalue": 0.00023925504191687382,
+      "bd_cohens_d": 1.5030704311803742,
+      "bd_significant": true
+    },
+    "chb07": {
+      "n_ictal": 3,
+      "n_preictal": 3,
+      "n_interictal": 50,
+      "bd_ictal_mean": -0.013563218390804599,
+      "bd_interictal_mean": -0.07447586206896552,
+      "bd_t_pvalue": 0.2927543786507573,
+      "bd_cohens_d": 0.6481678209226621,
+      "bd_significant": false
+    },
+    "chb08": {
+      "n_ictal": 5,
+      "n_preictal": 5,
+      "n_interictal": 70,
+      "bd_ictal_mean": -0.31075862068965515,
+      "bd_interictal_mean": -0.17549261083743845,
+      "bd_t_pvalue": 0.062337173282529336,
+      "bd_cohens_d": -1.2047482124912174,
+      "bd_significant": false
+    },
+    "chb09": {
+      "n_ictal": 4,
+      "n_preictal": 4,
+      "n_interictal": 50,
+      "bd_ictal_mean": 0.03956896551724138,
+      "bd_interictal_mean": -0.10596551724137931,
+      "bd_t_pvalue": 0.017471144131323606,
+      "bd_cohens_d": 1.7407294462496117,
+      "bd_significant": true
+    },
+    "chb10": {
+      "n_ictal": 7,
+      "n_preictal": 7,
+      "n_interictal": 90,
+      "bd_ictal_mean": -0.2537931034482759,
+      "bd_interictal_mean": -0.28327969348658993,
+      "bd_t_pvalue": 0.4709125249607643,
+      "bd_cohens_d": 0.32937887567945573,
+      "bd_significant": false
+    },
+    "chb11": {
+      "n_ictal": 3,
+      "n_preictal": 3,
+      "n_interictal": 50,
+      "bd_ictal_mean": -0.21839080459770113,
+      "bd_interictal_mean": -0.09038620689655172,
+      "bd_t_pvalue": 0.08998110950067574,
+      "bd_cohens_d": -1.4199782870107545,
+      "bd_significant": false
+    },
+    "chb12": {
+      "n_ictal": 40,
+      "n_preictal": 40,
+      "n_interictal": 150,
+      "bd_ictal_mean": -0.12768965517241376,
+      "bd_interictal_mean": -0.10022758620689652,
+      "bd_t_pvalue": 0.2619959706988554,
+      "bd_cohens_d": -0.196545937287274,
+      "bd_significant": false
+    },
+    "chb13": {
+      "n_ictal": 12,
+      "n_preictal": 12,
+      "n_interictal": 100,
+      "bd_ictal_mean": -0.28008620689655167,
+      "bd_interictal_mean": -0.1361758620689655,
+      "bd_t_pvalue": 0.0044812416231365644,
+      "bd_cohens_d": -0.9680672106882092,
+      "bd_significant": true
+    },
+    "chb14": {
+      "n_ictal": 8,
+      "n_preictal": 8,
+      "n_interictal": 90,
+      "bd_ictal_mean": -0.14017241379310344,
+      "bd_interictal_mean": -0.33798084291187735,
+      "bd_t_pvalue": 4.0979750309112524e-17,
+      "bd_cohens_d": 2.503803616794615,
+      "bd_significant": true
+    },
+    "chb15": {
+      "n_ictal": 20,
+      "n_preictal": 20,
+      "n_interictal": 160,
+      "bd_ictal_mean": -0.036482758620689656,
+      "bd_interictal_mean": -0.06814008620689656,
+      "bd_t_pvalue": 0.1950999345912664,
+      "bd_cohens_d": 0.2912466416884252,
+      "bd_significant": false
+    },
+    "chb16": {
+      "n_ictal": 10,
+      "n_preictal": 10,
+      "n_interictal": 80,
+      "bd_ictal_mean": -0.10968965517241377,
+      "bd_interictal_mean": -0.05182758620689656,
+      "bd_t_pvalue": 0.07094017671885143,
+      "bd_cohens_d": -0.7657976070366599,
+      "bd_significant": false
+    },
+    "chb17": {
+      "n_ictal": 3,
+      "n_preictal": 3,
+      "n_interictal": 50,
+      "bd_ictal_mean": -0.10471264367816091,
+      "bd_interictal_mean": -0.1628,
+      "bd_t_pvalue": 0.515429657551173,
+      "bd_cohens_d": 0.47037320520219617,
+      "bd_significant": false
+    },
+    "chb18": {
+      "n_ictal": 6,
+      "n_preictal": 6,
+      "n_interictal": 80,
+      "bd_ictal_mean": -0.18459770114942528,
+      "bd_interictal_mean": -0.1327241379310345,
+      "bd_t_pvalue": 0.29790562653572955,
+      "bd_cohens_d": -0.4803591517764473,
+      "bd_significant": false
+    },
+    "chb19": {
+      "n_ictal": 3,
+      "n_preictal": 3,
+      "n_interictal": 50,
+      "bd_ictal_mean": -0.008965517241379312,
+      "bd_interictal_mean": -0.1613241379310345,
+      "bd_t_pvalue": 0.10699337006122601,
+      "bd_cohens_d": 1.231018127043625,
+      "bd_significant": false
+    },
+    "chb20": {
+      "n_ictal": 8,
+      "n_preictal": 8,
+      "n_interictal": 80,
+      "bd_ictal_mean": -0.07508620689655171,
+      "bd_interictal_mean": -0.15876293103448275,
+      "bd_t_pvalue": 0.05294041205306783,
+      "bd_cohens_d": 0.8890571885200605,
+      "bd_significant": false
+    },
+    "chb21": {
+      "n_ictal": 4,
+      "n_preictal": 4,
+      "n_interictal": 60,
+      "bd_ictal_mean": -0.2761206896551724,
+      "bd_interictal_mean": -0.0967298850574713,
+      "bd_t_pvalue": 0.0035898443707005684,
+      "bd_cohens_d": -2.110140293871465,
+      "bd_significant": true
+    },
+    "chb22": {
+      "n_ictal": 3,
+      "n_preictal": 3,
+      "n_interictal": 50,
+      "bd_ictal_mean": -0.07195402298850574,
+      "bd_interictal_mean": -0.07238620689655172,
+      "bd_t_pvalue": 0.9940389822554023,
+      "bd_cohens_d": 0.005720744355041501,
+      "bd_significant": false
+    },
+    "chb23": {
+      "n_ictal": 7,
+      "n_preictal": 7,
+      "n_interictal": 50,
+      "bd_ictal_mean": 0.03325123152709359,
+      "bd_interictal_mean": -0.07840689655172413,
+      "bd_t_pvalue": 0.007649271553955222,
+      "bd_cohens_d": 1.3754497347811654,
+      "bd_significant": true
+    }
+  },
+  "per_label_pair": {
+    "ictal_vs_interictal": {
+      "Boundary Distance": {
+        "ictal_mean": -0.12365100416824555,
+        "interictal_mean": -0.14105064039408866,
+        "ictal_std": 0.13998858981078507,
+        "interictal_std": 0.14457330907115912,
+        "t_pvalue": 0.1215392624045811,
+        "mann_whitney_p": 0.11363718579457666,
+        "cohens_d": 0.12227482618714657,
+        "significant": false
+      },
+      "E-I Balance": {
+        "ictal_mean": 0.5894888685334679,
+        "interictal_mean": 0.5532415833783019,
+        "ictal_std": 0.22366254723521017,
+        "interictal_std": 0.2678961359545198,
+        "t_pvalue": 0.07828451489214461,
+        "mann_whitney_p": 0.23562551157898015,
+        "cohens_d": 0.14688546700941676,
+        "significant": false
+      },
+      "Concurrence": {
+        "ictal_mean": 0.15747187187170977,
+        "interictal_mean": 0.14759902587939022,
+        "ictal_std": 0.09434431764205659,
+        "interictal_std": 0.09961789267221598,
+        "t_pvalue": 0.20138321797988348,
+        "mann_whitney_p": 0.15332852577743097,
+        "cohens_d": 0.1017641413374176,
+        "significant": false
+      },
+      "Excitatory (a)": {
+        "ictal_mean": 0.1671303058577394,
+        "interictal_mean": 0.2072351783339835,
+        "ictal_std": 0.10884772604212774,
+        "interictal_std": 0.1691767839928396,
+        "t_pvalue": 0.0017755254179263932,
+        "mann_whitney_p": 0.12214398197332164,
+        "cohens_d": -0.2819375909666487,
+        "significant": true
+      },
+      "Inhibitory (c)": {
+        "ictal_mean": 0.7499905739046808,
+        "interictal_mean": 0.7106767589241288,
+        "ictal_std": 0.13595394405617486,
+        "interictal_std": 0.18899220881526982,
+        "t_pvalue": 0.006346601471426903,
+        "mann_whitney_p": 0.0656037084342375,
+        "cohens_d": 0.2388110481255716,
+        "significant": true
+      },
+      "Phase (b)": {
+        "ictal_mean": 0.207271444715749,
+        "interictal_mean": 0.24361511626571603,
+        "ictal_std": 0.1212480551018205,
+        "interictal_std": 0.17968070828290533,
+        "t_pvalue": 0.007763877141779736,
+        "mann_whitney_p": 0.13291534581445183,
+        "cohens_d": -0.23711466472471926,
+        "significant": true
+      }
+    },
+    "ictal_vs_preictal": {
+      "Boundary Distance": {
+        "ictal_mean": -0.12365100416824555,
+        "preictal_mean": -0.12431602879878742,
+        "ictal_std": 0.13998858981078507,
+        "preictal_std": 0.1509298065879388,
+        "t_pvalue": 0.9653568839586972,
+        "mann_whitney_p": 0.9824978957514225,
+        "cohens_d": 0.004568668146762323,
+        "significant": false
+      },
+      "E-I Balance": {
+        "ictal_mean": 0.5894888685334679,
+        "preictal_mean": 0.609103238205811,
+        "ictal_std": 0.22366254723521017,
+        "preictal_std": 0.20766080134782544,
+        "t_pvalue": 0.3878180730939307,
+        "mann_whitney_p": 0.49369549082986086,
+        "cohens_d": -0.09088719884122146,
+        "significant": false
+      },
+      "Concurrence": {
+        "ictal_mean": 0.15747187187170977,
+        "preictal_mean": 0.15645264077152501,
+        "ictal_std": 0.09434431764205659,
+        "preictal_std": 0.0977379869323235,
+        "t_pvalue": 0.9196524007517225,
+        "mann_whitney_p": 0.8981335870129205,
+        "cohens_d": 0.010610785442431518,
+        "significant": false
+      },
+      "Excitatory (a)": {
+        "ictal_mean": 0.1671303058577394,
+        "preictal_mean": 0.15972360517075523,
+        "ictal_std": 0.10884772604212774,
+        "preictal_std": 0.10309338520470945,
+        "t_pvalue": 0.5066869356937178,
+        "mann_whitney_p": 0.5574344111783093,
+        "cohens_d": 0.06986820250610773,
+        "significant": false
+      },
+      "Inhibitory (c)": {
+        "ictal_mean": 0.7499905739046808,
+        "preictal_mean": 0.7645436708449347,
+        "ictal_std": 0.13595394405617486,
+        "preictal_std": 0.12402211427903476,
+        "t_pvalue": 0.2880625179444607,
+        "mann_whitney_p": 0.41055029968115075,
+        "cohens_d": -0.11183947978260755,
+        "significant": false
+      },
+      "Phase (b)": {
+        "ictal_mean": 0.207271444715749,
+        "preictal_mean": 0.19603213291396518,
+        "ictal_std": 0.1212480551018205,
+        "preictal_std": 0.11361247176294081,
+        "t_pvalue": 0.3634134591906093,
+        "mann_whitney_p": 0.4852520520016377,
+        "cohens_d": 0.09565998020231245,
+        "significant": false
+      }
+    },
+    "interictal_vs_preictal": {
+      "Boundary Distance": {
+        "interictal_mean": -0.14105064039408866,
+        "preictal_mean": -0.12431602879878742,
+        "interictal_std": 0.14457330907115912,
+        "preictal_std": 0.1509298065879388,
+        "t_pvalue": 0.1392534462337793,
+        "mann_whitney_p": 0.09184828798810721,
+        "cohens_d": -0.11323563367845994,
+        "significant": false
+      },
+      "E-I Balance": {
+        "interictal_mean": 0.5532415833783019,
+        "preictal_mean": 0.609103238205811,
+        "interictal_std": 0.2678961359545198,
+        "preictal_std": 0.20766080134782544,
+        "t_pvalue": 0.006435636617351633,
+        "mann_whitney_p": 0.04159104922958191,
+        "cohens_d": -0.2330693323864946,
+        "significant": true
+      },
+      "Concurrence": {
+        "interictal_mean": 0.14759902587939022,
+        "preictal_mean": 0.15645264077152501,
+        "interictal_std": 0.09961789267221598,
+        "preictal_std": 0.0977379869323235,
+        "t_pvalue": 0.25336671984458986,
+        "mann_whitney_p": 0.22104233337863022,
+        "cohens_d": -0.08971826198899374,
+        "significant": false
+      },
+      "Excitatory (a)": {
+        "interictal_mean": 0.2072351783339835,
+        "preictal_mean": 0.15972360517075523,
+        "interictal_std": 0.1691767839928396,
+        "preictal_std": 0.10309338520470945,
+        "t_pvalue": 0.00020840506653715152,
+        "mann_whitney_p": 0.01890074997263311,
+        "cohens_d": 0.3391563421630683,
+        "significant": true
+      },
+      "Inhibitory (c)": {
+        "interictal_mean": 0.7106767589241288,
+        "preictal_mean": 0.7645436708449347,
+        "interictal_std": 0.18899220881526982,
+        "preictal_std": 0.12402211427903476,
+        "t_pvalue": 0.00017504675855660356,
+        "mann_whitney_p": 0.004195594282409375,
+        "cohens_d": -0.33699897684836727,
+        "significant": true
+      },
+      "Phase (b)": {
+        "interictal_mean": 0.24361511626571603,
+        "preictal_mean": 0.19603213291396518,
+        "interictal_std": 0.17968070828290533,
+        "preictal_std": 0.11361247176294081,
+        "t_pvalue": 0.00047801385495566204,
+        "mann_whitney_p": 0.01749618568479686,
+        "cohens_d": 0.3165419817249312,
+        "significant": true
+      }
+    }
+  }
+}

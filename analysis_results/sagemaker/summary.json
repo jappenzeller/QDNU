@@ -1,0 +1,24 @@
+{
+  "n_subjects": 22,
+  "n_segments": 486,
+  "n_ictal": 124,
+  "n_preictal": 142,
+  "n_interictal": 220,
+  "loso_results": {
+    "n_segments": 486,
+    "accuracy": 0.7098765432098766,
+    "precision": 0.7256317689530686,
+    "recall": 0.7556390977443609,
+    "f1": 0.7403314917127071,
+    "auc": 0.7989917976760081
+  },
+  "model_params": {
+    "classifier": "RandomForest",
+    "n_estimators": 300,
+    "window_sec": 30.0,
+    "n_features": 2016,
+    "n_channels": 18,
+    "feature_set": "ClassicalBaselineV3_ChannelHarmonized"
+  },
+  "completed": "2026-02-14T22:09:14.441956"
+}
