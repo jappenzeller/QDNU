@@ -52,12 +52,22 @@ FS = 256  # Hz
 N_CHANNELS_STANDARD = 23
 TAU = 2 * np.pi
 
-# Segment parameters
+# Segment parameters (updated per Kaggle winner preprocessing)
 PREICTAL_DURATION = 60   # seconds before seizure
 INTERICTAL_MIN_GAP = 300  # minimum seconds away from any seizure
-WINDOW_SEC = 1.0          # analysis window in seconds
-MAX_INTERICTAL_PER_FILE = 10  # limit interictal segments per file
+WINDOW_SEC = 30.0         # 30-second windows (Kaggle winner approach)
+MAX_INTERICTAL_PER_FILE = 5  # limit interictal segments per file
 MAX_INTERICTAL_FILES = 2  # non-seizure files to download per subject
+
+# Feature extraction frequency bands (Kaggle winner)
+FREQ_BANDS = {
+    'delta': (0.5, 4),
+    'theta': (4, 8),
+    'alpha': (8, 15),
+    'beta': (15, 30),
+    'low_gamma': (30, 70),
+    'high_gamma': (70, 128)
+}
 
 
 # =============================================================================
@@ -285,9 +295,9 @@ def extract_segments(subject: str, summary: Dict) -> List[EEGSegment]:
 
         # Extract interictal: must be far from any seizure
         if file_info['n_seizures'] == 0:
-            # Entire file is non-seizure; sample windows
+            # Entire file is non-seizure; sample non-overlapping windows
             window_samples = int(WINDOW_SEC * fs)
-            step = int(30 * fs)  # Sample every 30 seconds
+            step = window_samples  # Non-overlapping windows
             count = 0
 
             for start in range(0, n_samples - window_samples, step):
@@ -310,10 +320,11 @@ def extract_segments(subject: str, summary: Dict) -> List[EEGSegment]:
         else:
             # File has seizures; extract interictal from gaps
             window_samples = int(WINDOW_SEC * fs)
+            step = window_samples  # Non-overlapping windows
             seizure_ranges = [(sz['start'], sz['end']) for sz in file_info['seizures']]
 
             count = 0
-            for start in range(0, n_samples - window_samples, int(30 * fs)):
+            for start in range(0, n_samples - window_samples, step):
                 if count >= MAX_INTERICTAL_PER_FILE:
                     break
 
@@ -393,6 +404,149 @@ def preprocess_segment(data: np.ndarray, fs: float) -> np.ndarray:
         processed[ch] = signal
 
     return processed
+
+
+# =============================================================================
+# PHASE 4b: KAGGLE WINNER FEATURE EXTRACTION
+# =============================================================================
+
+def extract_band_power(data: np.ndarray, fs: float) -> np.ndarray:
+    """
+    Extract relative log power in frequency bands (Tier 1 features).
+
+    Args:
+        data: EEG array (n_channels, n_samples)
+        fs: Sampling frequency
+
+    Returns:
+        Feature array (n_channels * n_bands,)
+    """
+    from scipy.signal import welch
+
+    n_channels = data.shape[0]
+    n_bands = len(FREQ_BANDS)
+    features = np.zeros((n_channels, n_bands))
+
+    for ch in range(n_channels):
+        nperseg = min(512, data.shape[1] // 4)
+        if nperseg < 16:
+            nperseg = data.shape[1]
+
+        freqs, psd = welch(data[ch], fs=fs, nperseg=nperseg)
+        total_power = np.sum(psd) + 1e-10
+
+        for i, (band_name, (low, high)) in enumerate(FREQ_BANDS.items()):
+            idx = np.where((freqs >= low) & (freqs <= high))[0]
+            if len(idx) > 0:
+                band_power = np.sum(psd[idx])
+                features[ch, i] = np.log10(band_power / total_power + 1e-10)
+            else:
+                features[ch, i] = -10
+
+    return features.flatten()
+
+
+def extract_statistics(data: np.ndarray) -> np.ndarray:
+    """
+    Extract statistical features per channel (Tier 2 features).
+
+    Features: mean, std, min, max, skewness, kurtosis
+    """
+    from scipy.stats import skew, kurtosis
+
+    n_channels = data.shape[0]
+    features = np.zeros((n_channels, 6))
+
+    for ch in range(n_channels):
+        x = data[ch]
+        features[ch, 0] = np.mean(x)
+        features[ch, 1] = np.std(x)
+        features[ch, 2] = np.min(x)
+        features[ch, 3] = np.max(x)
+        features[ch, 4] = skew(x)
+        features[ch, 5] = kurtosis(x)
+
+    return features.flatten()
+
+
+def extract_correlation_features(data: np.ndarray) -> np.ndarray:
+    """
+    Extract cross-channel correlation features (Tier 3 features).
+    """
+    corr = np.corrcoef(data)
+    idx = np.triu_indices(corr.shape[0], k=1)
+    features = corr[idx]
+    return np.nan_to_num(features, nan=0.0)
+
+
+def extract_spectral_edge(data: np.ndarray, fs: float, percentile: float = 95) -> np.ndarray:
+    """
+    Extract spectral edge frequency (Tier 4 features).
+
+    SEF95: frequency below which 95% of spectral power lies.
+    """
+    from scipy.signal import welch
+
+    n_channels = data.shape[0]
+    features = np.zeros(n_channels)
+
+    for ch in range(n_channels):
+        nperseg = min(512, data.shape[1] // 4)
+        if nperseg < 16:
+            nperseg = data.shape[1]
+
+        freqs, psd = welch(data[ch], fs=fs, nperseg=nperseg)
+        cumsum = np.cumsum(psd)
+        total = cumsum[-1] + 1e-10
+
+        # Find frequency at percentile
+        threshold = percentile / 100.0 * total
+        idx = np.searchsorted(cumsum, threshold)
+        if idx < len(freqs):
+            features[ch] = freqs[idx]
+        else:
+            features[ch] = freqs[-1]
+
+    return features
+
+
+def extract_all_features(data: np.ndarray, fs: float) -> np.ndarray:
+    """
+    Extract full Kaggle winner feature set for one window.
+
+    Tiers:
+    - Tier 1: Relative log band power (n_channels * 6 bands)
+    - Tier 2: Statistics (n_channels * 6 stats)
+    - Tier 3: Cross-channel correlations (n_channels choose 2)
+    - Tier 4: Spectral edge frequency (n_channels)
+    """
+    features = []
+
+    # Tier 1: Band power
+    features.append(extract_band_power(data, fs))
+
+    # Tier 2: Statistics
+    features.append(extract_statistics(data))
+
+    # Tier 3: Correlations
+    if data.shape[0] > 1:
+        features.append(extract_correlation_features(data))
+
+    # Tier 4: Spectral edge
+    features.append(extract_spectral_edge(data, fs))
+
+    return np.concatenate(features)
+
+
+def aggregate_features_max(feature_list: List[np.ndarray]) -> np.ndarray:
+    """
+    MAX aggregation across multiple windows (Kaggle winner approach).
+
+    Takes the maximum value for each feature across all windows.
+    """
+    if not feature_list:
+        return np.array([])
+    return np.max(np.array(feature_list), axis=0)
 
 
 # =============================================================================
@@ -745,6 +899,192 @@ def print_report(stats: Dict):
 
 
 # =============================================================================
+# PHASE 8: XGBOOST LOSO CROSS-VALIDATION
+# =============================================================================
+
+@dataclass
+class FeatureSegment:
+    """A segment with extracted features for classification."""
+    subject: str
+    label: str
+    features: np.ndarray = field(repr=False)
+
+
+def extract_feature_segments(segments: List[EEGSegment]) -> List[FeatureSegment]:
+    """
+    Extract Kaggle winner features from EEG segments.
+
+    Applies preprocessing and full Tier 1-4 feature extraction.
+    """
+    feature_segments = []
+
+    for seg in segments:
+        if seg.data is None or seg.data.size == 0:
+            continue
+
+        # Preprocess
+        data = preprocess_segment(seg.data, seg.fs)
+
+        # Extract features
+        features = extract_all_features(data, seg.fs)
+
+        feature_segments.append(FeatureSegment(
+            subject=seg.subject,
+            label=seg.label,
+            features=features,
+        ))
+
+    return feature_segments
+
+
+def run_loso_xgboost(feature_segments: List[FeatureSegment]) -> Dict:
+    """
+    Leave-One-Subject-Out cross-validation with XGBoost.
+
+    Kaggle winner approach:
+    - Train on all subjects except one
+    - Test on held-out subject
+    - Report per-subject and overall metrics
+    """
+    try:
+        from xgboost import XGBClassifier
+        use_xgboost = True
+    except ImportError:
+        from sklearn.ensemble import RandomForestClassifier
+        use_xgboost = False
+        print("XGBoost not available, using RandomForest")
+
+    from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+
+    # Get subjects and prepare data
+    subjects = sorted(set(s.subject for s in feature_segments))
+    label_map = {'interictal': 0, 'preictal': 1, 'ictal': 1}  # Binary: seizure-related vs not
+
+    results = {
+        'per_subject': {},
+        'overall': {},
+        'model_params': {},
+    }
+
+    all_preds = []
+    all_true = []
+    all_proba = []
+
+    print(f"\n{'='*90}")
+    print("LOSO XGBOOST CROSS-VALIDATION")
+    print(f"{'='*90}")
+    print(f"Subjects: {len(subjects)}")
+    print(f"Total segments: {len(feature_segments)}")
+
+    for test_subject in subjects:
+        # Split data
+        train_segs = [s for s in feature_segments if s.subject != test_subject]
+        test_segs = [s for s in feature_segments if s.subject == test_subject]
+
+        if not train_segs or not test_segs:
+            continue
+
+        X_train = np.array([s.features for s in train_segs])
+        y_train = np.array([label_map.get(s.label, 0) for s in train_segs])
+
+        X_test = np.array([s.features for s in test_segs])
+        y_test = np.array([label_map.get(s.label, 0) for s in test_segs])
+
+        # Handle NaN/Inf
+        X_train = np.nan_to_num(X_train, nan=0.0, posinf=0.0, neginf=0.0)
+        X_test = np.nan_to_num(X_test, nan=0.0, posinf=0.0, neginf=0.0)
+
+        # Check for class balance
+        if len(np.unique(y_train)) < 2 or len(np.unique(y_test)) < 2:
+            print(f"  {test_subject}: skipped (single class)")
+            continue
+
+        # Train classifier
+        if use_xgboost:
+            model = XGBClassifier(
+                n_estimators=100,
+                max_depth=5,
+                learning_rate=0.1,
+                random_state=42,
+                use_label_encoder=False,
+                eval_metric='logloss',
+                verbosity=0,
+            )
+        else:
+            model = RandomForestClassifier(
+                n_estimators=100,
+                max_depth=10,
+                random_state=42,
+            )
+
+        model.fit(X_train, y_train)
+
+        # Predict
+        y_pred = model.predict(X_test)
+        y_proba = model.predict_proba(X_test)[:, 1]
+
+        # Metrics
+        acc = accuracy_score(y_test, y_pred)
+        prec = precision_score(y_test, y_pred, zero_division=0)
+        rec = recall_score(y_test, y_pred, zero_division=0)
+        f1 = f1_score(y_test, y_pred, zero_division=0)
+
+        try:
+            auc = roc_auc_score(y_test, y_proba)
+        except ValueError:
+            auc = 0.5
+
+        results['per_subject'][test_subject] = {
+            'n_train': len(X_train),
+            'n_test': len(X_test),
+            'accuracy': float(acc),
+            'precision': float(prec),
+            'recall': float(rec),
+            'f1': float(f1),
+            'auc': float(auc),
+        }
+
+        all_preds.extend(y_pred.tolist())
+        all_true.extend(y_test.tolist())
+        all_proba.extend(y_proba.tolist())
+
+        print(f"  {test_subject}: Acc={acc:.3f}  Prec={prec:.3f}  Rec={rec:.3f}  F1={f1:.3f}  AUC={auc:.3f}")
+
+    # Overall metrics
+    if all_preds:
+        all_preds = np.array(all_preds)
+        all_true = np.array(all_true)
+        all_proba = np.array(all_proba)
+
+        results['overall'] = {
+            'n_segments': len(all_true),
+            'accuracy': float(accuracy_score(all_true, all_preds)),
+            'precision': float(precision_score(all_true, all_preds, zero_division=0)),
+            'recall': float(recall_score(all_true, all_preds, zero_division=0)),
+            'f1': float(f1_score(all_true, all_preds, zero_division=0)),
+            'auc': float(roc_auc_score(all_true, all_proba)) if len(np.unique(all_true)) > 1 else 0.5,
+        }
+
+        print(f"\n{'='*90}")
+        print("OVERALL LOSO RESULTS")
+        print(f"{'='*90}")
+        print(f"  Accuracy:  {results['overall']['accuracy']:.3f}")
+        print(f"  Precision: {results['overall']['precision']:.3f}")
+        print(f"  Recall:    {results['overall']['recall']:.3f}")
+        print(f"  F1 Score:  {results['overall']['f1']:.3f}")
+        print(f"  AUC:       {results['overall']['auc']:.3f}")
+
+    results['model_params'] = {
+        'classifier': 'XGBoost' if use_xgboost else 'RandomForest',
+        'window_sec': WINDOW_SEC,
+        'n_estimators': 100,
+        'max_depth': 5 if use_xgboost else 10,
+    }
+
+    return results
+
+
+# =============================================================================
 # MAIN
 # =============================================================================
 
@@ -815,6 +1155,7 @@ def main():
     print("#" * 90)
 
     all_results = []
+    all_segments = []  # Keep raw segments for classification
 
     for subj, summary in sorted(all_summaries.items()):
         print(f"\n{'='*60}")
@@ -827,6 +1168,9 @@ def main():
         n_inter = sum(1 for s in segments if s.label == 'interictal')
         print(f"  Segments: {n_ictal} ictal, {n_preictal} preictal, {n_inter} interictal")
 
+        # Keep segments for LOSO CV
+        all_segments.extend(segments)
+
         for i, seg in enumerate(segments):
             result = analyze_segment(seg)
             if result:
@@ -838,6 +1182,7 @@ def main():
         print(f"  Done: {len([r for r in all_results if r.subject == subj])} results")
 
     print(f"\nTotal results: {len(all_results)}")
+    print(f"Total segments for classification: {len(all_segments)}")
 
     # ------------------------------------------------------------------
     # PHASE 6+7: STATISTICS AND REPORTING
@@ -849,6 +1194,19 @@ def main():
     stats = compute_statistics(all_results)
     print_report(stats)
 
+    # ------------------------------------------------------------------
+    # PHASE 8: XGBOOST LOSO CROSS-VALIDATION
+    # ------------------------------------------------------------------
+    print("\n" + "#" * 90)
+    print("# PHASE 8: XGBOOST LOSO CLASSIFICATION")
+    print("#" * 90)
+
+    print("\nExtracting Kaggle winner features...")
+    feature_segments = extract_feature_segments(all_segments)
+    print(f"Extracted features for {len(feature_segments)} segments")
+
+    loso_results = run_loso_xgboost(feature_segments)
+
     # Save results
     results_data = [asdict(r) for r in all_results]
     with open(OUTPUT_DIR / 'segment_results.json', 'w') as f:
@@ -856,6 +1214,9 @@ def main():
 
     with open(OUTPUT_DIR / 'statistics.json', 'w') as f:
         json.dump(stats, f, indent=2, default=float)
+
+    with open(OUTPUT_DIR / 'loso_classification.json', 'w') as f:
+        json.dump(loso_results, f, indent=2, default=float)
 
     # CSV export
     import csv
@@ -866,6 +1227,9 @@ def main():
             writer.writerows(results_data)
 
     print(f"\nResults saved to {OUTPUT_DIR}/")
+    print(f"  - segment_results.json/csv (Julia boundary analysis)")
+    print(f"  - statistics.json (statistical comparisons)")
+    print(f"  - loso_classification.json (XGBoost LOSO CV results)")
     print(f"Completed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 90)
 
