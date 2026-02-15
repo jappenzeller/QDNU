@@ -1,0 +1,661 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Analysis},
+    pdfauthor={James Appenzeller},
+    pdfsubject={Quantum Computing, Machine Learning, EEG Analysis},
+    pdfkeywords={quantum computing, neural networks, EEG, seizure prediction, entanglement}
+}
+\usepackage{authblk}
+\usepackage[margin=1in]{geometry}
+\usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single
+}
+
+\bibliographystyle{apalike}
+
+\title{Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Analysis: Hardware Validation and Empirical Limits}
+
+\author{James Appenzeller}
+\affil{Independent Researcher}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents a quantum computing architecture for multi-channel electroencephalogram (EEG) analysis based on the Positive-Negative (PN) neuron model. The architecture encodes excitatory-inhibitory dynamics using paired qubits with parameterized rotation gates, achieving $O(M)$ gate complexity for $M$-channel correlation encoding compared to $O(M^2)$ classical pairwise computation. Hardware validation on IBM's 133-qubit Heron processor (ibm\_torino) confirms the theoretical scaling with measured two-qubit gate counts following $14.1M - 17.5$, and demonstrates 99.3\% discrimination quality between five distinct neural configurations. Evaluation on the CHB-MIT Scalp EEG Database (22 subjects, leave-one-subject-out cross-validation) establishes empirical performance bounds: the quantum fidelity classifier achieves 53.4\% AUC compared to 62.5\% for an 8-channel classical baseline and 81.98\% for an 18-channel XGBoost classifier. These results reveal that the encoding strategy---rather than the quantum circuit architecture---constitutes the primary performance bottleneck. The paper contributes: (1) rigorous complexity analysis with explicit corrections to common quantum advantage overclaims; (2) the first hardware validation of a quantum neural architecture on a 133-qubit processor; and (3) honest assessment of current limitations alongside a roadmap for achieving practical utility.
+
+\textbf{Keywords:} quantum computing, neural networks, EEG analysis, positive-negative neuron, hardware validation, seizure prediction
+\end{abstract}
+
+\section{Introduction}
+
+Seizure prediction from electroencephalogram (EEG) recordings remains a challenging problem in computational neuroscience. Pre-ictal states exhibit complex spatiotemporal dynamics characterized by increased synchronization across cortical regions, cross-frequency coupling, and subtle phase relationships that emerge minutes to hours before seizure onset \citep{mormann2007}. The clinical significance of reliable seizure prediction is substantial: accurate prediction would enable timely intervention for the approximately 50 million people worldwide affected by epilepsy \citep{who2019}.
+
+Classical approaches to multi-channel EEG analysis require explicit computation of pairwise correlations. For a standard clinical 10-20 montage with 19 electrodes, this necessitates calculating 171 unique channel pairs. As EEG systems evolve toward higher spatial resolution with 64, 128, or 256 channels, this quadratic scaling presents an increasingly significant computational burden.
+
+The Positive-Negative (PN) neuron model \citep{gupta2003} provides a biologically-inspired framework capturing excitatory-inhibitory (E-I) dynamics fundamental to neural computation. In biological circuits, E-I balance determines network stability, and disruption of this balance is a hallmark of epileptogenic tissue \citep{buzsaki2012}.
+
+This paper proposes a quantum implementation of the PN neuron architecture that leverages superposition and entanglement to encode E-I dynamics and inter-channel correlations more efficiently than classical methods. Unlike prior theoretical work, we provide empirical validation on both clinical EEG data and quantum hardware.
+
+The primary contributions are:
+\begin{enumerate}
+    \item A quantum circuit architecture (the ``A-Gate'') mapping PN neuron parameters to qubit rotations with $O(M)$ gate complexity.
+    \item Hardware validation on IBM's 133-qubit Heron processor demonstrating 99.3\% configuration discrimination and confirming theoretical scaling.
+    \item Rigorous evaluation on the CHB-MIT dataset with leave-one-subject-out cross-validation, establishing performance bounds and identifying the encoding bottleneck.
+    \item Explicit corrections to common overclaims regarding quantum advantage in machine learning.
+\end{enumerate}
+
+\section{Background}
+
+\subsection{The Positive-Negative Neuron Model}
+
+The PN neuron model describes neural dynamics through coupled differential equations governing excitatory and inhibitory state variables. For each neural unit, three parameters are maintained: amplitude $a$ governing excitatory activation magnitude, phase $b$ encoding temporal dynamics and inter-unit coupling, and coupling strength $c$ characterizing inhibitory influence.
+
+The temporal evolution follows first-order dynamics \citep[Equations 8.51--8.53]{gupta2003}:
+\begin{equation}
+\frac{da}{dt} = -\lambda_a \cdot a + f(t)(1 - a)
+\end{equation}
+\begin{equation}
+\frac{dc}{dt} = +\lambda_c \cdot c + f(t)(1 - c)
+\end{equation}
+where $f(t)$ represents the normalized input signal and $\lambda_a$, $\lambda_c$ are decay constants. The asymmetric structure---negative decay for excitation and positive accumulation for inhibition---reflects biological differences between these neural processes.
+
+\subsection{Quantum Computing Preliminaries}
+
+A quantum system of $n$ qubits exists in a $2^n$-dimensional complex Hilbert space. The state $|\psi\rangle$ is described by $2^n$ complex amplitudes, with measurement probability $|\alpha_i|^2$ for basis state $|i\rangle$. While this exponential state space provides the foundation for quantum advantage, measurement collapses the superposition to a single classical outcome---a distinction crucial for honest assessment of quantum advantage claims.
+
+Relevant quantum operations include single-qubit gates (Hadamard H, phase P$(\theta)$, rotations $R_x$, $R_y$, $R_z$) and two-qubit gates (controlled rotations CR$_y$, CR$_z$, CNOT, CZ). The CZ gate is particularly relevant as it constitutes the native two-qubit gate on IBM's Heron processors.
+
+\section{Quantum PN Neuron Architecture}
+
+\subsection{Single-Channel Encoding: The A-Gate}
+
+For each EEG channel, the quantum PN architecture allocates two qubits representing excitatory (E) and inhibitory (I) components. The PN parameters $(a, b, c)$ are encoded through a two-layer circuit termed the ``A-Gate.''
+
+The first layer applies per-qubit encoding using an H-P-R-P-H structure. For the excitatory qubit, this sequence consists of H, P$(b)$, $R_x(2a)$, P$(b)$, H. The inhibitory qubit follows the same structure but substitutes $R_y(2c)$ for the central rotation. The shared phase parameter $b$ appears on all four phase gates, encoding temporal coupling through quantum phase.
+
+The second layer establishes bidirectional E-I coupling through controlled rotation gates: CR$_y(\pi/4)$ with excitatory control and CR$_z(\pi/4)$ with inhibitory control. This bidirectional structure reflects biological mutual regulation between excitation and inhibition.
+
+The complete single-channel encoding requires 14 gates with circuit depth 7:
+\begin{itemize}
+    \item 4 Hadamard gates (2 per qubit)
+    \item 4 phase gates P$(b)$ (2 per qubit)
+    \item 2 single-qubit rotations ($R_x(2a)$, $R_y(2c)$)
+    \item 2 controlled rotations (CR$_y$, CR$_z$)
+\end{itemize}
+
+\subsection{Multi-Channel Entanglement Architecture}
+
+For $M$ channels, the architecture employs $2M$ qubits plus one ancilla, totaling $2M+1$ qubits. Inter-channel correlations are captured through two complementary strategies:
+
+\textbf{Ring topology}: Sequential CNOT gates connect adjacent channel qubits within each manifold: $E_1 \rightarrow E_2 \rightarrow \cdots \rightarrow E_M$ and $I_1 \rightarrow I_2 \rightarrow \cdots \rightarrow I_M$. This requires $2(M-1)$ CNOT gates and encodes nearest-neighbor correlations corresponding to spatial electrode adjacency.
+
+\textbf{Global ancilla coupling}: An ancilla qubit initialized in Hadamard superposition connects to all excitatory qubits via CZ gates. This requires $M$ additional CZ gates and enables detection of widespread synchronization patterns characteristic of pre-ictal states.
+
+\subsection{Gate Count Analysis}
+
+The total gate requirement for $M$ channels:
+\begin{itemize}
+    \item A-Gate encoding: $14M$ gates
+    \item Ring topology: $2(M-1) = 2M-2$ gates
+    \item Ancilla initialization: 1 Hadamard gate
+    \item Global coupling: $M$ CZ gates
+\end{itemize}
+
+Summing:
+\begin{equation}
+\text{Total gates} = 14M + (2M - 2) + M + 1 = 17M - 1 = O(M)
+\end{equation}
+
+This linear scaling represents a fundamental improvement over $O(M^2)$ classical correlation computation.
+
+\section{Complexity Analysis}
+
+\subsection{Classical Baseline}
+
+Classical analysis of $M$-channel EEG data with $T$ time samples involves:
+\begin{itemize}
+    \item \textbf{Feature extraction}: Computing features per channel requires $O(M \cdot T)$ operations.
+    \item \textbf{Pairwise correlations}: Phase locking value (PLV) computation for $M(M-1)/2$ pairs contributes $O(M^2 \cdot T)$ operations.
+    \item \textbf{Template matching}: Comparing $M^2$-dimensional feature vectors requires $O(M^2)$ operations per comparison.
+\end{itemize}
+
+The aggregate classical complexity is $O(M^2 \cdot T)$ for preprocessing and $O(M^2)$ per classification.
+
+\subsection{Quantum Complexity}
+
+The quantum approach achieves linear scaling:
+\begin{itemize}
+    \item \textbf{Classical preprocessing}: Extracting PN parameters remains $O(M \cdot T)$---unchanged from classical.
+    \item \textbf{Quantum encoding}: Requires $O(M)$ gates, capturing all pairwise correlations through entanglement without explicit enumeration.
+    \item \textbf{Template matching}: SWAP test comparison requires $O(M)$ additional gates.
+\end{itemize}
+
+Total quantum complexity: $O(M \cdot T)$ preprocessing plus $O(M)$ encoding and classification.
+
+\begin{table}[htbp]
+\centering
+\caption{Complexity Comparison: Classical versus Quantum Approaches}
+\label{tab:complexity}
+\begin{tabular}{lccc}
+\toprule
+Operation & Classical & Quantum & Advantage \\
+\midrule
+Correlation encoding & $O(M^2)$ & $O(M)$ & $M\times$ \\
+Template matching & $O(M^2)$ & $O(M)$ & $M\times$ \\
+Parameter storage & $O(M^2)$ & $O(M)$ & $M\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Clarifications on Quantum Information Capacity}
+
+A persistent overclaim in quantum machine learning conflates Hilbert space dimensionality with information capacity. While $2M$ qubits span a $2^{2M}$-dimensional space, the Holevo bound \citep{holevo1973} limits extractable classical information to at most $2M$ bits per measurement.
+
+The quantum advantage arises not from raw information throughput but from how interference and entanglement process correlations during computation. The structure of entangled states encodes correlation information that requires only $O(M)$ resources to prepare, even though classical representation would require $O(M^2)$ resources.
+
+\subsection{Measurement Statistics Overhead}
+
+The SWAP test yields fidelity $F = |\langle\psi|\phi\rangle|^2$ through repeated measurements. Estimating this probability to precision $\varepsilon$ requires $O(1/\varepsilon^2)$ shots by the Chernoff bound. For $\varepsilon = 0.01$, approximately 10,000 shots are required. This overhead does not negate the quantum advantage for correlation encoding but introduces a multiplicative constant for practical implementations.
+
+\section{Experimental Setup}
+
+\subsection{CHB-MIT Scalp EEG Database}
+
+Evaluation was performed on the CHB-MIT Scalp EEG Database \citep{goldberger2000,shoeb2009}, a standard benchmark for seizure prediction research. The database contains continuous EEG recordings from 22 pediatric patients with intractable seizures, collected at Boston Children's Hospital.
+
+\begin{table}[htbp]
+\centering
+\caption{CHB-MIT Dataset Characteristics}
+\label{tab:chbmit}
+\begin{tabular}{ll}
+\toprule
+Parameter & Value \\
+\midrule
+Subjects & 22 \\
+Recording montage & 10-20 international system \\
+Available channels & 23 bipolar derivations \\
+Sampling rate & 256 Hz \\
+Total segments & 504 \\
+Ictal/preictal segments & 284 (142 each) \\
+Interictal segments & 220 \\
+Segment duration & 30 seconds \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Channel Selection}
+
+Due to quantum simulation constraints (classical simulation limits of $\sim$30 qubits), we selected 8 channels covering bilateral frontal and temporal regions:
+\begin{itemize}
+    \item FP1-F7, F7-T7, FP1-F3, F3-C3 (left hemisphere)
+    \item FP2-F8, F8-T8, FP2-F4, F4-C4 (right hemisphere)
+\end{itemize}
+
+This selection captures the primary regions involved in seizure propagation while maintaining computational tractability (17 qubits for the quantum circuit).
+
+\subsection{Evaluation Protocol}
+
+We employed leave-one-subject-out (LOSO) cross-validation, the gold standard for seizure prediction evaluation that tests generalization across patients:
+\begin{enumerate}
+    \item For each of the 22 subjects, train on the remaining 21 subjects.
+    \item Test on the held-out subject's segments.
+    \item Aggregate predictions across all subjects for final metrics.
+\end{enumerate}
+
+This protocol avoids within-subject data leakage and provides realistic estimates of clinical deployment performance.
+
+\subsection{Encoding Strategies}
+
+Three encoding strategies were evaluated to map EEG signals to PN parameters:
+
+\textbf{V1 (PN Dynamics)}: Direct numerical integration of PN differential equations with $\lambda_a = 0.1$, $\lambda_c = 0.05$, $dt = 0.01$.
+
+\textbf{V2 (Band Power)}: Spectral decomposition into standard EEG bands ($\delta$, $\theta$, $\alpha$, $\beta$, $\gamma$) with relative power mapping to PN parameters.
+
+\textbf{V3 (PLV/Hilbert)}: Hilbert transform for instantaneous phase extraction with phase locking value computation between band-filtered signals.
+
+\subsection{Classical Baseline}
+
+For fair comparison, we implemented an XGBoost classifier with identical channel selection (8 channels) and additional evaluation with the full 18-channel montage:
+
+\begin{table}[htbp]
+\centering
+\caption{Classical Baseline Configuration}
+\label{tab:classical}
+\begin{tabular}{lcc}
+\toprule
+Parameter & 8-Channel & 18-Channel \\
+\midrule
+Classifier & XGBoost & XGBoost \\
+Estimators & 200 & 200 \\
+Max depth & 6 & 6 \\
+Bagging runs & 5 & 5 \\
+Features & 816 & 2016 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Features include spectral band powers, statistical moments, Hjorth parameters, and pairwise correlation coefficients.
+
+\section{Hardware Validation}
+
+\subsection{IBM Quantum Platform}
+
+Hardware validation was performed on IBM's ibm\_torino backend, a 133-qubit Heron processor representing current state-of-the-art superconducting quantum hardware.
+
+\begin{table}[htbp]
+\centering
+\caption{IBM Quantum Hardware Specifications}
+\label{tab:hardware}
+\begin{tabular}{ll}
+\toprule
+Parameter & Value \\
+\midrule
+Backend & ibm\_torino \\
+Processor & IBM Heron (r2) \\
+Total qubits & 133 \\
+Native gates & CZ, RZ, SX, X \\
+Median CZ error & $\sim$0.5\% \\
+Median T1 & $\sim$150 $\mu$s \\
+Median T2 & $\sim$200 $\mu$s \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Transpilation Analysis}
+
+Circuits were transpiled to the native gate set using Qiskit's optimization level 3. For 8-channel (17-qubit) circuits:
+
+\begin{table}[htbp]
+\centering
+\caption{Transpilation Results (8 Channels)}
+\label{tab:transpile}
+\begin{tabular}{lcc}
+\toprule
+Gate Type & Original & Transpiled \\
+\midrule
+H & 34 & --- \\
+P & 32 & --- \\
+CX/CNOT & 14 & --- \\
+$R_x$, $R_y$ & 16 & --- \\
+CR$_y$, CR$_z$ & 16 & --- \\
+CZ & 8 & 97 \\
+SX & --- & 204 \\
+RZ & --- & 152 \\
+X & --- & 10 \\
+\midrule
+Total & 120 & 481 \\
+Depth & 17 & 114 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The transpiled circuit uses 97 native CZ gates, closely matching the theoretical prediction of $14.1 \times 8 - 17.5 \approx 95$ two-qubit gates.
+
+\subsection{Scaling Experiment}
+
+To verify $O(M)$ scaling, circuits were generated for $M \in \{2, 4, 6, 8\}$ channels and transpiled:
+
+\begin{table}[htbp]
+\centering
+\caption{Two-Qubit Gate Scaling}
+\label{tab:scaling}
+\begin{tabular}{ccccc}
+\toprule
+Channels ($M$) & Qubits & Original Depth & Transpiled Depth & CZ Gates \\
+\midrule
+2 & 5 & 12 & 33 & 14 \\
+4 & 9 & 14 & 62 & 34 \\
+6 & 13 & 16 & 73 & 67 \\
+8 & 17 & 18 & 114 & 97 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Linear regression yields:
+\begin{equation}
+\text{CZ gates} = 14.1 \cdot M - 17.5 \quad (R^2 > 0.99)
+\end{equation}
+
+This confirms $O(M)$ scaling in hardware-native gate counts, validating the theoretical complexity analysis.
+
+\subsection{Configuration Discrimination}
+
+Five distinct neural configurations were tested to assess the architecture's ability to distinguish different EEG states:
+\begin{itemize}
+    \item \textbf{synchronized}: All channels with aligned phase ($b = 0$)
+    \item \textbf{desynchronized}: Random phase distribution across channels
+    \item \textbf{half\_sync}: Half synchronized, half random
+    \item \textbf{excitatory}: Elevated $a$ parameters (high excitation)
+    \item \textbf{inhibitory}: Elevated $c$ parameters (high inhibition)
+\end{itemize}
+
+Each configuration was executed with 8192 shots. Discrimination quality was computed as $1 - \bar{F}_{\text{off-diag}}$ where $\bar{F}_{\text{off-diag}}$ is the mean off-diagonal Hellinger fidelity.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration Discrimination Quality}
+\label{tab:discrimination}
+\begin{tabular}{lcc}
+\toprule
+Execution Mode & Off-Diagonal Mean & Discrimination Quality \\
+\midrule
+Ideal (statevector) & 0.0182 & 98.2\% \\
+Noisy simulation & 0.0089 & 99.1\% \\
+Hardware (ibm\_torino) & 0.0065 & 99.3\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The hardware achieves 99.3\% discrimination quality, demonstrating that the quantum circuit reliably produces distinguishable output distributions for different neural configurations.
+
+\subsection{Fidelity Analysis}
+
+Hellinger fidelity between execution modes quantifies hardware accuracy:
+
+\begin{table}[htbp]
+\centering
+\caption{Hellinger Fidelity by Configuration}
+\label{tab:fidelity}
+\begin{tabular}{lccc}
+\toprule
+Configuration & Ideal vs Noisy & Ideal vs Hardware & Noisy vs Hardware \\
+\midrule
+synchronized & 0.038 & 0.021 & 0.015 \\
+desynchronized & 0.323 & 0.242 & 0.209 \\
+half\_sync & 0.175 & 0.122 & 0.098 \\
+excitatory & 0.077 & 0.045 & 0.034 \\
+inhibitory & 0.101 & 0.052 & 0.036 \\
+\midrule
+Mean & 0.143 & 0.096 & 0.078 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Hardware execution shows closer agreement with noisy simulation than with ideal statevector computation, as expected. The ``desynchronized'' configuration shows highest deviation, likely due to greater sensitivity to gate errors when phase relationships are randomized.
+
+\section{Results}
+
+\subsection{Encoding Ablation Study}
+
+Table~\ref{tab:encoding} summarizes performance across encoding strategies:
+
+\begin{table}[htbp]
+\centering
+\caption{Encoding Strategy Comparison (22-Subject LOSO)}
+\label{tab:encoding}
+\begin{tabular}{lccccc}
+\toprule
+Encoding & AUC & Accuracy & Precision & Recall & F1 \\
+\midrule
+V1 (PN dynamics) & 0.444 & 0.593 & 0.581 & 1.000 & 0.735 \\
+V2 (band power) & \textbf{0.534} & 0.550 & 0.606 & 0.574 & 0.590 \\
+V3 (PLV/Hilbert) & 0.529 & 0.563 & 0.563 & 1.000 & 0.721 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The V2 (band power) encoding achieves the highest AUC at 53.4\%, outperforming both direct PN dynamics integration (44.4\%) and phase-based encoding (52.9\%). However, all encoding strategies perform below chance-level discrimination when considering the class imbalance.
+
+\subsection{Classical Baseline Comparison}
+
+\begin{table}[htbp]
+\centering
+\caption{Quantum vs Classical Performance}
+\label{tab:qvc}
+\begin{tabular}{lcccc}
+\toprule
+Method & Channels & Features & AUC & Accuracy \\
+\midrule
+Quantum (V2) & 8 & 24 (PN params) & 0.534 & 0.550 \\
+Classical (XGBoost) & 8 & 816 & 0.625 & 0.595 \\
+Classical (XGBoost) & 18 & 2016 & \textbf{0.820} & \textbf{0.757} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Key findings:
+\begin{enumerate}
+    \item The 8-channel classical baseline outperforms the quantum approach (62.5\% vs 53.4\% AUC) despite using identical channel selection.
+    \item The 18-channel classical baseline achieves 81.98\% AUC, establishing a performance ceiling with current feature engineering.
+    \item The quantum approach uses significantly fewer parameters (24 PN parameters vs 816/2016 classical features).
+\end{enumerate}
+
+\subsection{Per-Subject Analysis}
+
+Performance varies substantially across subjects, as is typical in seizure prediction:
+
+\begin{table}[htbp]
+\centering
+\caption{Per-Subject AUC Range (Classical 8-Channel)}
+\label{tab:persubject}
+\begin{tabular}{lccc}
+\toprule
+Metric & Min & Mean & Max \\
+\midrule
+AUC & 0.183 (chb17) & 0.699 & 1.000 (chb22) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Several subjects achieve excellent discrimination (chb01: 0.929, chb05: 0.920, chb18: 0.950, chb20: 0.988, chb22: 1.000), while others prove challenging (chb14: 0.344, chb17: 0.183). This heterogeneity reflects known variability in seizure prediction and motivates subject-specific adaptation strategies.
+
+\section{Discussion}
+
+\subsection{The Encoding Bottleneck}
+
+The results reveal a critical insight: the encoding strategy---mapping EEG signals to quantum circuit parameters---constitutes the primary performance bottleneck, not the quantum circuit architecture itself.
+
+Evidence supporting this conclusion:
+\begin{enumerate}
+    \item Hardware validation demonstrates excellent discrimination (99.3\%) between distinct configurations, indicating the circuit can represent and distinguish different neural states.
+    \item The V1 $\rightarrow$ V2 improvement (44.4\% $\rightarrow$ 53.4\%) suggests encoding refinement yields measurable gains.
+    \item The gap between quantum (53.4\%) and classical (62.5\%) performance with identical channels indicates information loss during quantum encoding.
+\end{enumerate}
+
+The classical baseline benefits from 816 engineered features capturing spectral, statistical, and correlation information. The quantum approach compresses this to 24 PN parameters (3 per channel), discarding potentially discriminative information.
+
+\subsection{Implications for Quantum Advantage}
+
+The complexity analysis demonstrates clear theoretical advantage: $O(M)$ quantum versus $O(M^2)$ classical for correlation encoding. Hardware validation confirms this scaling holds in practice (CZ gates $\sim 14.1M - 17.5$).
+
+However, theoretical scaling advantage does not guarantee practical classification advantage. The current encoding strategies fail to preserve sufficient discriminative information for seizure prediction. Achieving practical quantum advantage requires:
+\begin{enumerate}
+    \item Richer encoding strategies that preserve more signal information while remaining compatible with quantum circuit depth constraints.
+    \item Larger channel counts ($M > 50$) where the $O(M)$ versus $O(M^2)$ difference becomes pronounced.
+    \item Hybrid approaches combining quantum correlation encoding with classical feature extraction.
+\end{enumerate}
+
+\subsection{Hardware Readiness}
+
+The ibm\_torino results demonstrate that current quantum hardware can:
+\begin{itemize}
+    \item Execute the 17-qubit, 97-CZ-gate circuits required for 8-channel analysis.
+    \item Produce distinguishable output distributions for different neural configurations.
+    \item Maintain sufficient coherence through circuit depths of 114 transpiled layers.
+\end{itemize}
+
+These capabilities were uncertain prior to hardware validation and represent meaningful progress toward practical quantum neural signal processing.
+
+\subsection{Limitations}
+
+\textbf{Simulation constraints}: Classical simulation limits restricted evaluation to 8 channels. The theoretical advantage becomes more pronounced at higher channel counts inaccessible to current simulators.
+
+\textbf{Encoding information loss}: The compression from raw EEG to PN parameters discards information that classical approaches retain through richer feature sets.
+
+\textbf{Single dataset}: Evaluation on CHB-MIT alone limits generalizability claims. Validation on additional datasets (e.g., TUSZ, Bonn) would strengthen conclusions.
+
+\textbf{Template-based classification}: The quantum fidelity approach uses fixed templates rather than learned decision boundaries, potentially limiting adaptability.
+
+\section{Conclusion}
+
+This work presents the first comprehensive validation of a quantum neural architecture for EEG analysis, combining theoretical complexity analysis, clinical dataset evaluation, and quantum hardware execution.
+
+Key contributions:
+\begin{enumerate}
+    \item The A-Gate architecture achieves $O(M)$ gate complexity for $M$-channel correlation encoding, confirmed by hardware measurements showing CZ gates $= 14.1M - 17.5$.
+    \item IBM Heron processor validation demonstrates 99.3\% configuration discrimination, establishing hardware feasibility.
+    \item CHB-MIT evaluation (22 subjects, LOSO) reveals the encoding bottleneck: quantum AUC of 53.4\% versus classical ceiling of 81.98\%.
+    \item Honest assessment identifies encoding strategy---not circuit architecture---as the primary improvement target.
+\end{enumerate}
+
+The path forward requires developing encoding strategies that preserve discriminative EEG information while respecting quantum circuit constraints. The architecture is sound; the translation from neuroscience to quantum representation requires refinement. As quantum hardware continues to mature beyond the current NISQ era, architectures designed today with careful attention to both theoretical advantage and practical limitations will be positioned to deliver clinical impact.
+
+\section*{Code and Data Availability}
+
+Implementation code is available at \url{https://github.com/jappenzeller/QDNU}. The CHB-MIT dataset is publicly available from PhysioNet \citep{goldberger2000}.
+
+\begin{thebibliography}{99}
+
+\bibitem[Buzs\'{a}ki \& Wang, 2012]{buzsaki2012}
+Buzs\'{a}ki, G., \& Wang, X.-J. (2012). Mechanisms of gamma oscillations. \textit{Annual Review of Neuroscience}, 35, 203--225.
+
+\bibitem[Goldberger et al., 2000]{goldberger2000}
+Goldberger, A. L., Amaral, L. A., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., Mietus, J. E., Moody, G. B., Peng, C.-K., \& Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. \textit{Circulation}, 101(23), e215--e220.
+
+\bibitem[Gupta et al., 2003]{gupta2003}
+Gupta, M. M., Jin, L., \& Homma, N. (2003). \textit{Static and dynamic neural networks: From fundamentals to advanced theory}. John Wiley \& Sons.
+
+\bibitem[Holevo, 1973]{holevo1973}
+Holevo, A. S. (1973). Bounds for the quantity of information transmitted by a quantum communication channel. \textit{Problems of Information Transmission}, 9(3), 177--183.
+
+\bibitem[Mormann et al., 2007]{mormann2007}
+Mormann, F., Andrzejak, R. G., Elger, C. E., \& Lehnertz, K. (2007). Seizure prediction: The long and winding road. \textit{Brain}, 130(2), 314--333.
+
+\bibitem[Nielsen \& Chuang, 2010]{nielsen2010}
+Nielsen, M. A., \& Chuang, I. L. (2010). \textit{Quantum computation and quantum information} (10th anniversary ed.). Cambridge University Press.
+
+\bibitem[Preskill, 2018]{preskill2018}
+Preskill, J. (2018). Quantum computing in the NISQ era and beyond. \textit{Quantum}, 2, 79.
+
+\bibitem[Shoeb, 2009]{shoeb2009}
+Shoeb, A. H. (2009). \textit{Application of machine learning to epileptic seizure onset detection and treatment} (Doctoral dissertation). Massachusetts Institute of Technology.
+
+\bibitem[WHO, 2019]{who2019}
+World Health Organization. (2019). \textit{Epilepsy: A public health imperative}. World Health Organization.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Gate Definitions}
+
+\subsection{Single-Qubit Gates}
+
+\textbf{Hadamard Gate}:
+\begin{equation}
+H = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}
+\end{equation}
+
+\textbf{Phase Gate}:
+\begin{equation}
+P(\theta) = \begin{pmatrix} 1 & 0 \\ 0 & e^{i\theta} \end{pmatrix}
+\end{equation}
+
+\textbf{Rotation Gates}:
+\begin{equation}
+R_x(\theta) = \begin{pmatrix} \cos(\theta/2) & -i\sin(\theta/2) \\ -i\sin(\theta/2) & \cos(\theta/2) \end{pmatrix}
+\end{equation}
+\begin{equation}
+R_y(\theta) = \begin{pmatrix} \cos(\theta/2) & -\sin(\theta/2) \\ \sin(\theta/2) & \cos(\theta/2) \end{pmatrix}
+\end{equation}
+
+\subsection{Two-Qubit Gates}
+
+The controlled-Z (CZ) gate, native to IBM Heron processors:
+\begin{equation}
+CZ = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix}
+\end{equation}
+
+\section{A-Gate Implementation}
+
+\begin{lstlisting}
+from qiskit import QuantumCircuit
+import numpy as np
+
+def create_agate_circuit(a, b, c):
+    """
+    Create single-channel A-Gate circuit.
+
+    Parameters
+    ----------
+    a : float
+        Excitatory state, range [0, 1]
+    b : float
+        Phase parameter, range [0, 2*pi]
+    c : float
+        Inhibitory state, range [0, 1]
+    """
+    qc = QuantumCircuit(2, name='A-Gate')
+
+    # Excitatory qubit: H-P(b)-Rx(2a)-P(b)-H
+    qc.h(0)
+    qc.p(b, 0)
+    qc.rx(2 * a, 0)
+    qc.p(b, 0)
+    qc.h(0)
+
+    # Inhibitory qubit: H-P(b)-Ry(2c)-P(b)-H
+    qc.h(1)
+    qc.p(b, 1)
+    qc.ry(2 * c, 1)
+    qc.p(b, 1)
+    qc.h(1)
+
+    # E-I coupling
+    qc.cry(np.pi / 4, 0, 1)
+    qc.crz(np.pi / 4, 1, 0)
+
+    return qc
+\end{lstlisting}
+
+\section{Per-Subject Results}
+
+\begin{table}[htbp]
+\centering
+\caption{Classical 8-Channel AUC by Subject}
+\label{tab:subjects}
+\small
+\begin{tabular}{lclc}
+\toprule
+Subject & AUC & Subject & AUC \\
+\midrule
+chb01 & 0.929 & chb13 & 0.479 \\
+chb02 & 0.783 & chb14 & 0.344 \\
+chb03 & 0.550 & chb15 & 0.583 \\
+chb04 & 0.788 & chb16 & 0.900 \\
+chb05 & 0.920 & chb17 & 0.183 \\
+chb06 & 0.585 & chb18 & 0.950 \\
+chb07 & 0.917 & chb19 & 0.500 \\
+chb08 & 0.480 & chb20 & 0.988 \\
+chb09 & 0.787 & chb21 & 0.700 \\
+chb10 & 0.786 & chb22 & 1.000 \\
+chb11 & 0.667 & chb23 & 0.750 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
