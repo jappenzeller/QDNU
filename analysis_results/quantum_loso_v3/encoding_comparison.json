@@ -1,0 +1,17 @@
+{
+  "v1": {
+    "encoding": "PN dynamics (sample-by-sample)",
+    "auc": 0.444,
+    "problem": "dt saturation"
+  },
+  "v2": {
+    "encoding": "Band-power ratios",
+    "auc": 0.534,
+    "problem": "Power direction varies by patient"
+  },
+  "v3": {
+    "encoding": "Hilbert PLV (theta)",
+    "auc": 0.5291293213828425,
+    "problem": "Tests architecture design premise"
+  }
+}

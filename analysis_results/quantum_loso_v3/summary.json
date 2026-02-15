@@ -1,0 +1,56 @@
+{
+  "n_subjects": 22,
+  "n_segments": 504,
+  "n_ictal": 142,
+  "n_preictal": 142,
+  "n_interictal": 220,
+  "best_band": "theta",
+  "quantum_results": {
+    "n_segments": 504,
+    "accuracy": 0.5634920634920635,
+    "precision": 0.5634920634920635,
+    "recall": 1.0,
+    "f1": 0.7208121827411168,
+    "auc": 0.5291293213828425
+  },
+  "classical_results": {
+    "n_segments": 504,
+    "accuracy": 0.5952380952380952,
+    "precision": 0.6333333333333333,
+    "recall": 0.6690140845070423,
+    "f1": 0.6506849315068494,
+    "auc": 0.6253361075544175
+  },
+  "all_bands": {
+    "theta_alpha": {
+      "n_segments": 504,
+      "accuracy": 0.5634920634920635,
+      "precision": 0.5634920634920635,
+      "recall": 1.0,
+      "f1": 0.7208121827411168,
+      "auc": 0.45971510883482714
+    },
+    "alpha_beta": {
+      "n_segments": 504,
+      "accuracy": 0.5634920634920635,
+      "precision": 0.5634920634920635,
+      "recall": 1.0,
+      "f1": 0.7208121827411168,
+      "auc": 0.5011843790012804
+    },
+    "theta": {
+      "n_segments": 504,
+      "accuracy": 0.5634920634920635,
+      "precision": 0.5634920634920635,
+      "recall": 1.0,
+      "f1": 0.7208121827411168,
+      "auc": 0.5291293213828425
+    }
+  },
+  "encoding_evolution": {
+    "v1_pn_dynamics": 0.444,
+    "v2_band_power": 0.534,
+    "v3_plv": 0.5291293213828425
+  },
+  "completed": "2026-02-15T11:01:24.751127"
+}
