@@ -1,0 +1,51 @@
+{
+  "n_subjects": 22,
+  "n_segments": 504,
+  "n_ictal": 142,
+  "n_preictal": 142,
+  "n_interictal": 220,
+  "quantum_results": {
+    "n_segments": 504,
+    "accuracy": 0.5932539682539683,
+    "precision": 0.5807770961145194,
+    "recall": 1.0,
+    "f1": 0.7347994825355757,
+    "auc": 0.4443982074263764
+  },
+  "classical_results": {
+    "n_segments": 504,
+    "accuracy": 0.5634920634920635,
+    "precision": 0.603225806451613,
+    "recall": 0.6584507042253521,
+    "f1": 0.6296296296296297,
+    "auc": 0.5989116517285531
+  },
+  "quantum_params": {
+    "classifier": "Quantum-QPNN",
+    "n_channels": 8,
+    "n_qubits": 17,
+    "lambda_a": 0.1,
+    "lambda_c": 0.05,
+    "dt": 0.01,
+    "window_sec": 30.0
+  },
+  "classical_params": {
+    "classifier": "XGBoost-8ch",
+    "n_channels": 8,
+    "n_estimators": 200,
+    "n_bags": 5,
+    "n_features": 156,
+    "window_sec": 30.0
+  },
+  "channels": [
+    "FP1-F7",
+    "F7-T7",
+    "FP1-F3",
+    "F3-C3",
+    "FP2-F8",
+    "F8-T8",
+    "FP2-F4",
+    "F4-C4"
+  ],
+  "completed": "2026-02-15T08:13:58.559929"
+}
