@@ -1,0 +1,38 @@
+{
+  "completed": "2026-02-15T14:36:22.375999",
+  "backend": "ibm_torino",
+  "configs_tested": [
+    "synchronized",
+    "desynchronized",
+    "half_sync",
+    "excitatory",
+    "inhibitory"
+  ],
+  "shots": 8192,
+  "fidelity_summary": {
+    "ideal_vs_noisy": {
+      "mean": 0.14282725691895037,
+      "std": 0.10073129218373279,
+      "min": 0.0381780996659123,
+      "max": 0.3233996763333702
+    },
+    "ideal_vs_hardware": {
+      "mean": 0.09646827094538743,
+      "std": 0.08025874643710418,
+      "min": 0.021145689380607156,
+      "max": 0.24234896253776986
+    },
+    "noisy_vs_hardware": {
+      "mean": 0.07847655930865918,
+      "std": 0.07094154429562367,
+      "min": 0.015289834467091055,
+      "max": 0.20897004821228524
+    }
+  },
+  "discrimination_quality": {
+    "ideal": 0.9817753473745565,
+    "noisy": 0.9910569442013462,
+    "hardware": 0.9934523783718358
+  },
+  "hardware_executed": true
+}
