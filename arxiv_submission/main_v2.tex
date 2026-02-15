@@ -106,6 +106,13 @@ The complete single-channel encoding requires 14 gates with circuit depth 7:
     \item 2 controlled rotations (CR$_y$, CR$_z$)
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/agate_circuit.png}
+\caption{The A-Gate circuit encodes PN neuron parameters $(a, b, c)$ using two qubits. The excitatory qubit undergoes H-P$(b)$-$R_x(2a)$-P$(b)$-H encoding while the inhibitory qubit uses $R_y(2c)$. Bidirectional E-I coupling is established through CR$_y(\pi/4)$ and CR$_z(\pi/4)$ gates.}
+\label{fig:agate}
+\end{figure}
+
 \subsection{Multi-Channel Entanglement Architecture}
 
 For $M$ channels, the architecture employs $2M$ qubits plus one ancilla, totaling $2M+1$ qubits. Inter-channel correlations are captured through two complementary strategies:
@@ -130,6 +137,13 @@ Summing:
 \end{equation}
 
 This linear scaling represents a fundamental improvement over $O(M^2)$ classical correlation computation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/multichannel_circuit.png}
+\caption{Multi-channel circuit architecture for $M=4$ channels (9 qubits). Each channel is encoded by an A-Gate, followed by ring topology entanglement within E and I manifolds, and global ancilla coupling via CZ gates. Total gate count: $17M - 1 = O(M)$.}
+\label{fig:multichannel}
+\end{figure}
 
 \section{Complexity Analysis}
 
@@ -169,6 +183,13 @@ Parameter storage & $O(M^2)$ & $O(M)$ & $M\times$ \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/complexity_comparison.png}
+\caption{Computational complexity scaling: classical $O(M^2)$ versus quantum $O(M)$ for correlation encoding. The advantage factor grows linearly with channel count, reaching 8$\times$ for our 8-channel implementation and approaching 64$\times$ for high-density 64-channel systems.}
+\label{fig:complexity}
+\end{figure}
 
 \subsection{Clarifications on Quantum Information Capacity}
 
@@ -342,6 +363,13 @@ Linear regression yields:
 
 This confirms $O(M)$ scaling in hardware-native gate counts, validating the theoretical complexity analysis.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/ibm_scaling.png}
+\caption{Hardware scaling validation on ibm\_torino. Two-qubit (CZ) gate counts follow the linear relationship $14.1M - 17.5$ with $R^2 > 0.99$, confirming $O(M)$ complexity.}
+\label{fig:scaling}
+\end{figure}
+
 \subsection{Configuration Discrimination}
 
 Five distinct neural configurations were tested to assess the architecture's ability to distinguish different EEG states:
@@ -371,6 +399,13 @@ Hardware (ibm\_torino) & 0.0065 & 99.3\% \\
 \end{table}
 
 The hardware achieves 99.3\% discrimination quality, demonstrating that the quantum circuit reliably produces distinguishable output distributions for different neural configurations.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/ibm_discrimination_heatmap.png}
+\caption{Configuration discrimination matrix from ibm\_torino hardware execution. Diagonal elements are 1.0 (self-similarity); off-diagonal values show low cross-configuration Hellinger fidelity, yielding 99.3\% discrimination quality.}
+\label{fig:discrimination}
+\end{figure}
 
 \subsection{Fidelity Analysis}
 
@@ -420,6 +455,13 @@ V3 (PLV/Hilbert) & 0.529 & 0.563 & 0.563 & 1.000 & 0.721 \\
 
 The V2 (band power) encoding achieves the highest AUC at 53.4\%, outperforming both direct PN dynamics integration (44.4\%) and phase-based encoding (52.9\%). However, all encoding strategies perform below chance-level discrimination when considering the class imbalance.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/encoding_ablation.png}
+\caption{Encoding strategy comparison on CHB-MIT dataset (22-subject LOSO). V2 (band power) encoding achieves the best quantum performance at 53.4\% AUC, but remains below the 8-channel classical baseline (62.5\%) and 18-channel ceiling (81.98\%).}
+\label{fig:encoding}
+\end{figure}
+
 \subsection{Classical Baseline Comparison}
 
 \begin{table}[htbp]
@@ -462,6 +504,13 @@ AUC & 0.183 (chb17) & 0.699 & 1.000 (chb22) \\
 \end{table}
 
 Several subjects achieve excellent discrimination (chb01: 0.929, chb05: 0.920, chb18: 0.950, chb20: 0.988, chb22: 1.000), while others prove challenging (chb14: 0.344, chb17: 0.183). This heterogeneity reflects known variability in seizure prediction and motivates subject-specific adaptation strategies.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/per_subject_auc.png}
+\caption{Per-subject AUC distribution for the classical 8-channel baseline. Performance varies substantially across subjects, with several achieving near-perfect discrimination while others remain challenging. This heterogeneity is characteristic of seizure prediction tasks.}
+\label{fig:subjects}
+\end{figure}
 
 \section{Discussion}
 
