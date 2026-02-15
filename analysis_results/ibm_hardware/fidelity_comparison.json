@@ -1,0 +1,26 @@
+{
+  "configs": [
+    "synchronized",
+    "desynchronized",
+    "half_sync",
+    "excitatory",
+    "inhibitory"
+  ],
+  "ideal_vs_noisy": {
+    "synchronized": 0.028457602892771442,
+    "desynchronized": 0.27828672999955295,
+    "half_sync": 0.13653069541843546,
+    "excitatory": 0.06274948883072767,
+    "inhibitory": 0.08432986013747926
+  },
+  "ideal_vs_hardware": {},
+  "noisy_vs_hardware": {},
+  "summary": {
+    "ideal_vs_noisy": {
+      "mean": 0.11807087545579334,
+      "std": 0.08745208465499887,
+      "min": 0.028457602892771442,
+      "max": 0.27828672999955295
+    }
+  }
+}

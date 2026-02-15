@@ -1,0 +1,43 @@
+{
+  "channel_counts": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "qubits": [
+    5,
+    9,
+    13,
+    17
+  ],
+  "original_depth": [
+    12,
+    14,
+    16,
+    18
+  ],
+  "transpiled_depth": [
+    47,
+    95,
+    124,
+    216
+  ],
+  "two_qubit_gates": [
+    14,
+    42,
+    66,
+    96
+  ],
+  "total_gates": [
+    103,
+    275,
+    443,
+    620
+  ],
+  "linear_fit": {
+    "slope": 13.499999999999996,
+    "intercept": -12.999999999999956,
+    "formula": "2Q_gates \u2248 13.5*M + -13.0"
+  }
+}

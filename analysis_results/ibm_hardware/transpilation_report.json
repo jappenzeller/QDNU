@@ -1,0 +1,228 @@
+{
+  "backend": "fake_sherbrooke",
+  "basis_gates": [
+    "ecr",
+    "id",
+    "rz",
+    "sx",
+    "x"
+  ],
+  "backend_qubits": 127,
+  "circuits": {
+    "synchronized": {
+      "original_depth": 17,
+      "transpiled_depth": 216,
+      "original_gates": {
+        "h": 34,
+        "p": 32,
+        "cx": 14,
+        "rx": 8,
+        "ry": 8,
+        "cry": 8,
+        "crz": 8,
+        "cz": 8
+      },
+      "transpiled_gates": {
+        "rz": 307,
+        "sx": 190,
+        "ecr": 96,
+        "measure": 17,
+        "x": 10,
+        "barrier": 1
+      },
+      "two_qubit_gates": 96,
+      "physical_qubits": 127,
+      "layout": [
+        78,
+        116,
+        121,
+        117,
+        120,
+        119,
+        118,
+        101,
+        110,
+        100,
+        99,
+        79,
+        91,
+        77,
+        80,
+        98,
+        81
+      ]
+    },
+    "desynchronized": {
+      "original_depth": 17,
+      "transpiled_depth": 216,
+      "original_gates": {
+        "h": 34,
+        "p": 32,
+        "cx": 14,
+        "rx": 8,
+        "ry": 8,
+        "cry": 8,
+        "crz": 8,
+        "cz": 8
+      },
+      "transpiled_gates": {
+        "rz": 310,
+        "sx": 190,
+        "ecr": 96,
+        "measure": 17,
+        "x": 10,
+        "barrier": 1
+      },
+      "two_qubit_gates": 96,
+      "physical_qubits": 127,
+      "layout": [
+        78,
+        116,
+        121,
+        117,
+        120,
+        119,
+        118,
+        101,
+        110,
+        100,
+        99,
+        79,
+        91,
+        77,
+        80,
+        98,
+        81
+      ]
+    },
+    "half_sync": {
+      "original_depth": 17,
+      "transpiled_depth": 216,
+      "original_gates": {
+        "h": 34,
+        "p": 32,
+        "cx": 14,
+        "rx": 8,
+        "ry": 8,
+        "cry": 8,
+        "crz": 8,
+        "cz": 8
+      },
+      "transpiled_gates": {
+        "rz": 307,
+        "sx": 190,
+        "ecr": 96,
+        "measure": 17,
+        "x": 10,
+        "barrier": 1
+      },
+      "two_qubit_gates": 96,
+      "physical_qubits": 127,
+      "layout": [
+        78,
+        116,
+        121,
+        117,
+        120,
+        119,
+        118,
+        101,
+        110,
+        100,
+        99,
+        79,
+        91,
+        77,
+        80,
+        98,
+        81
+      ]
+    },
+    "excitatory": {
+      "original_depth": 17,
+      "transpiled_depth": 216,
+      "original_gates": {
+        "h": 34,
+        "p": 32,
+        "cx": 14,
+        "rx": 8,
+        "ry": 8,
+        "cry": 8,
+        "crz": 8,
+        "cz": 8
+      },
+      "transpiled_gates": {
+        "rz": 308,
+        "sx": 190,
+        "ecr": 96,
+        "measure": 17,
+        "x": 10,
+        "barrier": 1
+      },
+      "two_qubit_gates": 96,
+      "physical_qubits": 127,
+      "layout": [
+        78,
+        116,
+        121,
+        117,
+        120,
+        119,
+        118,
+        101,
+        110,
+        100,
+        99,
+        79,
+        91,
+        77,
+        80,
+        98,
+        81
+      ]
+    },
+    "inhibitory": {
+      "original_depth": 17,
+      "transpiled_depth": 216,
+      "original_gates": {
+        "h": 34,
+        "p": 32,
+        "cx": 14,
+        "rx": 8,
+        "ry": 8,
+        "cry": 8,
+        "crz": 8,
+        "cz": 8
+      },
+      "transpiled_gates": {
+        "rz": 308,
+        "sx": 190,
+        "ecr": 96,
+        "measure": 17,
+        "x": 10,
+        "barrier": 1
+      },
+      "two_qubit_gates": 96,
+      "physical_qubits": 127,
+      "layout": [
+        78,
+        116,
+        121,
+        117,
+        120,
+        119,
+        118,
+        101,
+        110,
+        100,
+        99,
+        79,
+        91,
+        77,
+        80,
+        98,
+        81
+      ]
+    }
+  }
+}
