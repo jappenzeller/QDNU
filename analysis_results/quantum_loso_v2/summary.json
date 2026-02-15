@@ -1,0 +1,54 @@
+{
+  "n_subjects": 22,
+  "n_segments": 504,
+  "n_ictal": 142,
+  "n_preictal": 142,
+  "n_interictal": 220,
+  "quantum_results": {
+    "n_segments": 504,
+    "accuracy": 0.5496031746031746,
+    "precision": 0.6059479553903345,
+    "recall": 0.573943661971831,
+    "f1": 0.5895117540687161,
+    "auc": 0.5344110115236875
+  },
+  "classical_results": {
+    "n_segments": 504,
+    "accuracy": 0.5952380952380952,
+    "precision": 0.6333333333333333,
+    "recall": 0.6690140845070423,
+    "f1": 0.6506849315068494,
+    "auc": 0.6253361075544175
+  },
+  "quantum_params": {
+    "classifier": "Quantum-QPNN-DualTemplate",
+    "n_channels": 8,
+    "n_qubits": 17,
+    "pn_method": "band_power",
+    "window_sec": 30.0
+  },
+  "classical_params": {
+    "classifier": "XGBoost-8ch-V2",
+    "n_channels": 8,
+    "n_estimators": 200,
+    "n_bags": 5,
+    "n_features": 816,
+    "window_sec": 30.0
+  },
+  "channels": [
+    "FP1-F7",
+    "F7-T7",
+    "FP1-F3",
+    "F3-C3",
+    "FP2-F8",
+    "F8-T8",
+    "FP2-F4",
+    "F4-C4"
+  ],
+  "fixes": [
+    "band_power_pnstate",
+    "dual_template",
+    "full_v2_features"
+  ],
+  "completed": "2026-02-15T09:04:38.058267"
+}
