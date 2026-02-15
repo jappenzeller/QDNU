@@ -37,3 +37,6 @@ julia_3d_exports/
 julia_3d_sequence/
 agate_parameter_space/
 
+# Large derived artifacts
+*.npz
+

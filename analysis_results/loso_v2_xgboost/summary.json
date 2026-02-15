@@ -1,0 +1,27 @@
+{
+  "n_subjects": 22,
+  "n_segments": 486,
+  "n_ictal": 124,
+  "n_preictal": 142,
+  "n_interictal": 220,
+  "loso_results": {
+    "n_segments": 486,
+    "accuracy": 0.757201646090535,
+    "precision": 0.7761194029850746,
+    "recall": 0.7819548872180451,
+    "f1": 0.7790262172284644,
+    "auc": 0.8197710184552292
+  },
+  "model_params": {
+    "classifier": "XGBoost",
+    "n_estimators": 200,
+    "n_bags": 5,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "window_sec": 30.0,
+    "n_features": 2016,
+    "n_channels": 18,
+    "feature_set": "ClassicalBaselineV4_XGBoost"
+  },
+  "completed": "2026-02-15T00:02:17.815089"
+}
