@@ -1,0 +1,155 @@
+{
+  "tier": "tier1",
+  "aggregation": null,
+  "n_channels": 8,
+  "channels": [
+    "FP1-F7",
+    "F7-T7",
+    "FP1-F3",
+    "F3-C3",
+    "FP2-F8",
+    "F8-T8",
+    "FP2-F4",
+    "F4-C4"
+  ],
+  "window_sec": 30.0,
+  "n_subjects": 22,
+  "overall_auc": 0.5869275461380725,
+  "mean_auc": 0.6611309523809524,
+  "std_auc": 0.22146892451625422,
+  "per_subject": {
+    "chb01": {
+      "auc": 1.0,
+      "n_samples": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb02": {
+      "auc": 0.96,
+      "n_samples": 15,
+      "n_seizure": 5,
+      "n_non_seizure": 10
+    },
+    "chb03": {
+      "auc": 0.4285714285714286,
+      "n_samples": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb04": {
+      "auc": 0.55,
+      "n_samples": 18,
+      "n_seizure": 8,
+      "n_non_seizure": 10
+    },
+    "chb05": {
+      "auc": 0.8600000000000001,
+      "n_samples": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb06": {
+      "auc": 0.275,
+      "n_samples": 26,
+      "n_seizure": 16,
+      "n_non_seizure": 10
+    },
+    "chb07": {
+      "auc": 0.7999999999999999,
+      "n_samples": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb08": {
+      "auc": 0.5,
+      "n_samples": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb09": {
+      "auc": 0.8250000000000001,
+      "n_samples": 18,
+      "n_seizure": 8,
+      "n_non_seizure": 10
+    },
+    "chb10": {
+      "auc": 0.6142857142857142,
+      "n_samples": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb11": {
+      "auc": 0.7333333333333334,
+      "n_samples": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb13": {
+      "auc": 0.47500000000000003,
+      "n_samples": 34,
+      "n_seizure": 24,
+      "n_non_seizure": 10
+    },
+    "chb14": {
+      "auc": 0.2571428571428571,
+      "n_samples": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb15": {
+      "auc": 0.3725,
+      "n_samples": 50,
+      "n_seizure": 40,
+      "n_non_seizure": 10
+    },
+    "chb16": {
+      "auc": 0.8,
+      "n_samples": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb17": {
+      "auc": 0.5166666666666667,
+      "n_samples": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb18": {
+      "auc": 0.6666666666666666,
+      "n_samples": 22,
+      "n_seizure": 12,
+      "n_non_seizure": 10
+    },
+    "chb19": {
+      "auc": 0.8666666666666667,
+      "n_samples": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb20": {
+      "auc": 0.875,
+      "n_samples": 26,
+      "n_seizure": 16,
+      "n_non_seizure": 10
+    },
+    "chb21": {
+      "auc": 0.4428571428571428,
+      "n_samples": 17,
+      "n_seizure": 7,
+      "n_non_seizure": 10
+    },
+    "chb22": {
+      "auc": 0.8333333333333334,
+      "n_samples": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb23": {
+      "auc": 0.8928571428571429,
+      "n_samples": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    }
+  },
+  "timestamp": "2026-02-21T09:13:29.189311"
+}
