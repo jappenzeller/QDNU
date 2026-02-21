@@ -1,0 +1,71 @@
+{
+  "backend": "ibm_torino",
+  "encoding_variant": "PLV_theta_alpha",
+  "shots": 1024,
+  "error_mitigation": "none",
+  "ch8": {
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4"
+    ],
+    "overall_auc": 0.511003861003861,
+    "per_subject": {
+      "chb01": {
+        "auc": 0.6857142857142857,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb03": {
+        "auc": 0.4357142857142857,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb05": {
+        "auc": 0.61,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb07": {
+        "auc": 0.6666666666666666,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb11": {
+        "auc": 0.2833333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb14": {
+        "auc": 0.6,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.38749999999999996,
+        "n_samples": 18,
+        "n_seizure": 8
+      }
+    }
+  },
+  "simulation_ch8_auc": 0.4595,
+  "delta_hardware_vs_simulation": 0.05150386100386095,
+  "prior_hardware_auc": null,
+  "delta_vs_prior": null,
+  "subjects_completed": [
+    "chb01",
+    "chb03",
+    "chb05",
+    "chb07",
+    "chb11",
+    "chb14",
+    "chb21"
+  ],
+  "subjects_skipped": [],
+  "timestamp": "2026-02-21T15:29:55.280370"
+}
