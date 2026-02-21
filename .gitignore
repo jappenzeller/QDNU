@@ -40,3 +40,17 @@ agate_parameter_space/
 # Large derived artifacts
 *.npz
 
+# Submission packages (not for public repo)
+arxiv_submission/*.pdf
+arxiv_submission/*.log
+arxiv_submission/*.tar.gz
+arxiv_submission/submission_package/
+springer_submission/
+springer_submission.zip
+
+# Blender backup files
+*.blend1
+
+# Windows artifacts
+nul
+
