@@ -1,0 +1,178 @@
+{
+  "overall_auc_max": 0.5728298017771702,
+  "overall_auc_mean": 0.5698735475051265,
+  "mean_auc_max": 0.6747132034632036,
+  "mean_auc_mean": 0.656314935064935,
+  "std_auc_max": 0.21452605091622462,
+  "std_auc_mean": 0.22060002794539788,
+  "per_subject": {
+    "chb01": {
+      "auc_max": 0.9642857142857143,
+      "auc_mean": 0.9785714285714286,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb02": {
+      "auc_max": 0.86,
+      "auc_mean": 0.8400000000000001,
+      "n_segments": 15,
+      "n_seizure": 5,
+      "n_non_seizure": 10
+    },
+    "chb03": {
+      "auc_max": 0.9357142857142857,
+      "auc_mean": 0.9285714285714286,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb04": {
+      "auc_max": 0.5875,
+      "auc_mean": 0.6625,
+      "n_segments": 18,
+      "n_seizure": 8,
+      "n_non_seizure": 10
+    },
+    "chb05": {
+      "auc_max": 0.8799999999999999,
+      "auc_mean": 0.8,
+      "n_segments": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb06": {
+      "auc_max": 0.45625,
+      "auc_mean": 0.51875,
+      "n_segments": 26,
+      "n_seizure": 16,
+      "n_non_seizure": 10
+    },
+    "chb07": {
+      "auc_max": 0.8,
+      "auc_mean": 0.7,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb08": {
+      "auc_max": 0.8,
+      "auc_mean": 0.8400000000000001,
+      "n_segments": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb09": {
+      "auc_max": 0.9,
+      "auc_mean": 0.775,
+      "n_segments": 18,
+      "n_seizure": 8,
+      "n_non_seizure": 10
+    },
+    "chb10": {
+      "auc_max": 0.7,
+      "auc_mean": 0.5857142857142857,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb11": {
+      "auc_max": 0.8333333333333333,
+      "auc_mean": 0.8,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb13": {
+      "auc_max": 0.30833333333333335,
+      "auc_mean": 0.26249999999999996,
+      "n_segments": 34,
+      "n_seizure": 24,
+      "n_non_seizure": 10
+    },
+    "chb14": {
+      "auc_max": 0.3071428571428571,
+      "auc_mean": 0.21428571428571427,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb15": {
+      "auc_max": 0.40249999999999997,
+      "auc_mean": 0.345,
+      "n_segments": 50,
+      "n_seizure": 40,
+      "n_non_seizure": 10
+    },
+    "chb16": {
+      "auc_max": 0.8,
+      "auc_mean": 0.8300000000000001,
+      "n_segments": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb17": {
+      "auc_max": 0.8666666666666667,
+      "auc_mean": 0.8666666666666667,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb18": {
+      "auc_max": 0.45833333333333337,
+      "auc_mean": 0.4916666666666667,
+      "n_segments": 22,
+      "n_seizure": 12,
+      "n_non_seizure": 10
+    },
+    "chb19": {
+      "auc_max": 0.5333333333333333,
+      "auc_mean": 0.5166666666666666,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb20": {
+      "auc_max": 0.6812499999999999,
+      "auc_mean": 0.66875,
+      "n_segments": 26,
+      "n_seizure": 16,
+      "n_non_seizure": 10
+    },
+    "chb21": {
+      "auc_max": 0.3142857142857143,
+      "auc_mean": 0.2857142857142857,
+      "n_segments": 17,
+      "n_seizure": 7,
+      "n_non_seizure": 10
+    },
+    "chb22": {
+      "auc_max": 0.8333333333333333,
+      "auc_mean": 0.8500000000000001,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb23": {
+      "auc_max": 0.6214285714285713,
+      "auc_mean": 0.6785714285714286,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    }
+  },
+  "method": "MDM",
+  "n_channels": 8,
+  "channels": [
+    "FP1-F7",
+    "F7-T7",
+    "FP1-F3",
+    "F3-C3",
+    "FP2-F8",
+    "F8-T8",
+    "FP2-F4",
+    "F4-C4"
+  ],
+  "sub_window_sec": 1.0,
+  "timestamp": "2026-02-21T09:46:15.963184"
+}

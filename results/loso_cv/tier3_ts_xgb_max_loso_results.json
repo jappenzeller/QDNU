@@ -1,0 +1,178 @@
+{
+  "overall_auc_max": 0.6313568010936432,
+  "overall_auc_mean": 0.6086807928913192,
+  "mean_auc_max": 0.7112472943722944,
+  "mean_auc_mean": 0.6517586580086581,
+  "std_auc_max": 0.2107264182535665,
+  "std_auc_mean": 0.24396665041541488,
+  "per_subject": {
+    "chb01": {
+      "auc_max": 0.9928571428571429,
+      "auc_mean": 0.9714285714285713,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb02": {
+      "auc_max": 0.88,
+      "auc_mean": 0.9400000000000001,
+      "n_segments": 15,
+      "n_seizure": 5,
+      "n_non_seizure": 10
+    },
+    "chb03": {
+      "auc_max": 0.35,
+      "auc_mean": 0.22142857142857142,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb04": {
+      "auc_max": 0.8999999999999999,
+      "auc_mean": 0.8624999999999999,
+      "n_segments": 18,
+      "n_seizure": 8,
+      "n_non_seizure": 10
+    },
+    "chb05": {
+      "auc_max": 0.9,
+      "auc_mean": 0.8200000000000001,
+      "n_segments": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb06": {
+      "auc_max": 0.4375,
+      "auc_mean": 0.2375,
+      "n_segments": 26,
+      "n_seizure": 16,
+      "n_non_seizure": 10
+    },
+    "chb07": {
+      "auc_max": 0.9500000000000001,
+      "auc_mean": 0.8,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb08": {
+      "auc_max": 0.6,
+      "auc_mean": 0.5,
+      "n_segments": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb09": {
+      "auc_max": 0.8625,
+      "auc_mean": 0.825,
+      "n_segments": 18,
+      "n_seizure": 8,
+      "n_non_seizure": 10
+    },
+    "chb10": {
+      "auc_max": 0.7857142857142857,
+      "auc_mean": 0.6642857142857143,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb11": {
+      "auc_max": 0.7,
+      "auc_mean": 0.5833333333333334,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb13": {
+      "auc_max": 0.4833333333333334,
+      "auc_mean": 0.41666666666666663,
+      "n_segments": 34,
+      "n_seizure": 24,
+      "n_non_seizure": 10
+    },
+    "chb14": {
+      "auc_max": 0.6428571428571429,
+      "auc_mean": 0.42142857142857143,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    },
+    "chb15": {
+      "auc_max": 0.4049999999999999,
+      "auc_mean": 0.47000000000000003,
+      "n_segments": 50,
+      "n_seizure": 40,
+      "n_non_seizure": 10
+    },
+    "chb16": {
+      "auc_max": 0.68,
+      "auc_mean": 0.52,
+      "n_segments": 20,
+      "n_seizure": 10,
+      "n_non_seizure": 10
+    },
+    "chb17": {
+      "auc_max": 0.35,
+      "auc_mean": 0.3333333333333333,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb18": {
+      "auc_max": 0.8916666666666666,
+      "auc_mean": 0.8166666666666667,
+      "n_segments": 22,
+      "n_seizure": 12,
+      "n_non_seizure": 10
+    },
+    "chb19": {
+      "auc_max": 0.8833333333333333,
+      "auc_mean": 1.0,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb20": {
+      "auc_max": 0.83125,
+      "auc_mean": 0.9875,
+      "n_segments": 26,
+      "n_seizure": 16,
+      "n_non_seizure": 10
+    },
+    "chb21": {
+      "auc_max": 0.5,
+      "auc_mean": 0.4571428571428571,
+      "n_segments": 17,
+      "n_seizure": 7,
+      "n_non_seizure": 10
+    },
+    "chb22": {
+      "auc_max": 1.0,
+      "auc_mean": 0.8833333333333333,
+      "n_segments": 16,
+      "n_seizure": 6,
+      "n_non_seizure": 10
+    },
+    "chb23": {
+      "auc_max": 0.6214285714285716,
+      "auc_mean": 0.6071428571428571,
+      "n_segments": 24,
+      "n_seizure": 14,
+      "n_non_seizure": 10
+    }
+  },
+  "method": "TS+XGBoost",
+  "n_channels": 8,
+  "channels": [
+    "FP1-F7",
+    "F7-T7",
+    "FP1-F3",
+    "F3-C3",
+    "FP2-F8",
+    "F8-T8",
+    "FP2-F4",
+    "F4-C4"
+  ],
+  "sub_window_sec": 1.0,
+  "timestamp": "2026-02-21T09:47:41.126983"
+}
