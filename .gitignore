@@ -54,3 +54,6 @@ springer_submission.zip
 # Windows artifacts
 nul
 
+# Local Claude Code settings
+.claude/settings.local.json
+
