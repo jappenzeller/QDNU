@@ -1,0 +1,109 @@
+{
+  "audit_date": "2026-02-21",
+  "purpose": "Identify best encoding from prior quantum results and track chb11/chb21 performance",
+  "files_audited": [
+    "analysis_results/quantum_loso/quantum_results.json",
+    "analysis_results/quantum_loso/summary.json",
+    "analysis_results/quantum_loso_v2/quantum_results.json",
+    "analysis_results/quantum_loso_v2/summary.json",
+    "analysis_results/quantum_loso_v3/quantum_theta_results.json",
+    "analysis_results/quantum_loso_v3/quantum_theta_alpha_results.json",
+    "analysis_results/quantum_loso_v3/quantum_alpha_beta_results.json",
+    "analysis_results/quantum_loso_v3/encoding_comparison.json",
+    "analysis_results/ibm_hardware/summary.json",
+    "analysis_results/ibm_hardware/fidelity_comparison.json",
+    "results/hardware_validation/ch8_heron_loso_results.json"
+  ],
+  "encoding_variants": {
+    "V1_PN_dynamics": {
+      "encoding": "PN dynamics (sample-by-sample)",
+      "source": "analysis_results/quantum_loso/",
+      "overall_auc": 0.444,
+      "problem": "dt saturation"
+    },
+    "V2_band_power": {
+      "encoding": "Band-power ratios",
+      "source": "analysis_results/quantum_loso_v2/",
+      "overall_auc": 0.534,
+      "problem": "Power direction varies by patient"
+    },
+    "V3_PLV_theta": {
+      "encoding": "Hilbert PLV 4-8Hz",
+      "source": "analysis_results/quantum_loso_v3/quantum_theta_results.json",
+      "overall_auc": 0.5291,
+      "aggregation": "MAX"
+    },
+    "V3_PLV_theta_alpha": {
+      "encoding": "Hilbert PLV 4-13Hz",
+      "source": "analysis_results/quantum_loso_v3/quantum_theta_alpha_results.json",
+      "overall_auc": 0.4597,
+      "aggregation": "MAX"
+    },
+    "V3_PLV_alpha_beta": {
+      "encoding": "Hilbert PLV 8-30Hz",
+      "source": "analysis_results/quantum_loso_v3/quantum_alpha_beta_results.json",
+      "overall_auc": 0.5012,
+      "aggregation": "MAX"
+    }
+  },
+  "best_simulation_encoding": {
+    "variant": "V2_band_power",
+    "auc": 0.534,
+    "note": "Band-power ratios produced highest overall simulation AUC"
+  },
+  "hardware_loso_results": {
+    "file": "results/hardware_validation/ch8_heron_loso_results.json",
+    "backend": "ibm_torino",
+    "encoding": "V3_PLV_theta_alpha",
+    "overall_auc": 0.5110,
+    "simulation_auc_same_encoding": 0.4597,
+    "delta_hw_vs_sim": 0.0515,
+    "note": "Hardware exceeded simulation by 5.15%"
+  },
+  "prior_ibm_hardware_experiments": {
+    "directory": "analysis_results/ibm_hardware/",
+    "backend": "ibm_torino",
+    "experiment_type": "fidelity_discrimination",
+    "note": "These experiments tested sync/desync neural pattern discrimination, NOT seizure detection LOSO",
+    "discrimination_quality": {
+      "ideal": 0.9818,
+      "noisy": 0.9911,
+      "hardware": 0.9935
+    }
+  },
+  "chb11_performance": {
+    "V1_PN": 0.3167,
+    "V2_band_power": 0.5167,
+    "V3_PLV_theta": 0.5000,
+    "V3_PLV_theta_alpha": 0.6333,
+    "V3_PLV_alpha_beta": 0.9000,
+    "hardware_PLV_theta_alpha": 0.2833,
+    "best_simulation": "V3_PLV_alpha_beta",
+    "best_simulation_auc": 0.9000,
+    "hardware_degradation": "Hardware AUC 0.283 vs simulation 0.633 for same encoding (theta_alpha)"
+  },
+  "chb21_performance": {
+    "V1_PN": 0.2500,
+    "V2_band_power": 0.5125,
+    "V3_PLV_theta": 0.3500,
+    "V3_PLV_theta_alpha": 0.6625,
+    "V3_PLV_alpha_beta": 0.6500,
+    "hardware_PLV_theta_alpha": 0.3875,
+    "best_simulation": "V3_PLV_theta_alpha",
+    "best_simulation_auc": 0.6625,
+    "hardware_degradation": "Hardware AUC 0.387 vs simulation 0.662 for same encoding (theta_alpha)"
+  },
+  "key_findings": [
+    "Only one hardware LOSO classification exists (ch8_heron_loso_results.json)",
+    "Prior IBM hardware runs were fidelity experiments, not seizure detection",
+    "Best simulation encoding is V2_band_power (AUC 0.534), not tested on hardware",
+    "Hardware PLV theta_alpha (0.511) exceeds its simulation AUC (0.460) by 5.15%",
+    "chb11 and chb21 show strong performance degradation on hardware vs simulation",
+    "alpha_beta encoding produces best chb11 simulation AUC (0.900) but untested on hardware"
+  ],
+  "recommendations": [
+    "Test V2_band_power encoding on hardware (highest simulation AUC)",
+    "Test alpha_beta encoding on hardware for chb11/chb21 improvement",
+    "Investigate why chb11/chb21 degrade more on hardware than overall average"
+  ]
+}
