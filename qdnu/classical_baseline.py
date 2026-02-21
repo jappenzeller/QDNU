@@ -2,13 +2,17 @@
 Classical Baseline for Seizure Detection
 
 Implements the core approach from Kaggle seizure detection winners:
-- Bandpass filtering (0.5-128 Hz) + 60 Hz notch
-- Relative log power in 6 frequency bands
+- Bandpass filtering (0.5-40 Hz for scalp EEG) + 60 Hz notch
+- Per-channel z-score normalization
+- Relative log power in 4 frequency bands (delta, theta, alpha, beta)
 - XGBoost classifier
 
 This provides a fair comparison point for QPNN evaluation.
 
 Reference: Barachant et al. (2016) - Melbourne University Seizure Prediction Challenge
+
+NOTE: For CHB-MIT scalp EEG (256 Hz), use 0.5-40 Hz bandpass.
+      The 40 Hz cutoff removes muscle artifacts while preserving EEG content.
 """
 
 import numpy as np
@@ -23,40 +27,46 @@ import warnings
 # PREPROCESSING (from Kaggle winners)
 # =============================================================================
 
-def preprocess_eeg(data: np.ndarray, fs: int = 400,
-                   lowcut: float = 0.5, highcut: float = 128.0,
-                   notch_freq: float = 60.0) -> np.ndarray:
+def preprocess_eeg(data: np.ndarray, fs: int = 256,
+                   lowcut: float = 0.5, highcut: float = 40.0,
+                   notch_freq: float = 60.0,
+                   normalize: str = 'channel') -> np.ndarray:
     """
-    Preprocess EEG using Kaggle winner approach.
+    Preprocess EEG using standard clinical pipeline.
 
     Steps:
-    1. Demean
-    2. Bandpass filter (Butterworth 5th order)
-    3. Notch filter at 60 Hz
+    1. Demean (per channel)
+    2. Bandpass filter (Butterworth 5th order, zero-phase)
+    3. Notch filter at 60 Hz (Q=30)
+    4. Per-channel z-score normalization
 
     Args:
         data: EEG array (n_channels, n_samples)
-        fs: Sampling frequency
-        lowcut: Low cutoff for bandpass
-        highcut: High cutoff for bandpass
+        fs: Sampling frequency (default 256 Hz for CHB-MIT)
+        lowcut: Low cutoff for bandpass (default 0.5 Hz)
+        highcut: High cutoff for bandpass (default 40 Hz for scalp EEG)
         notch_freq: Frequency for notch filter (60 Hz for US, 50 Hz for EU)
+        normalize: 'channel' for per-channel z-score, 'global' for all channels, None to skip
 
     Returns:
         Preprocessed EEG array
     """
-    # Demean
+    data = data.astype(np.float64).copy()
+
+    # Demean per channel
     data = data - np.mean(data, axis=1, keepdims=True)
 
-    # Bandpass filter
+    # Bandpass filter (0.5-40 Hz for scalp EEG)
     nyq = fs / 2
     low = lowcut / nyq
     high = min(highcut / nyq, 0.99)  # Ensure < 1
 
-    try:
-        b, a = signal.butter(5, [low, high], btype='band')
-        data = signal.filtfilt(b, a, data, axis=1)
-    except ValueError as e:
-        warnings.warn(f"Bandpass filter failed: {e}. Using raw data.")
+    if low > 0 and low < high:
+        try:
+            b, a = signal.butter(5, [low, high], btype='band')
+            data = signal.filtfilt(b, a, data, axis=1)
+        except ValueError as e:
+            warnings.warn(f"Bandpass filter failed: {e}. Using raw data.")
 
     # Notch filter at 60 Hz (if within Nyquist)
     if notch_freq < nyq:
@@ -66,6 +76,17 @@ def preprocess_eeg(data: np.ndarray, fs: int = 400,
         except ValueError as e:
             warnings.warn(f"Notch filter failed: {e}")
 
+    # Per-channel z-score normalization
+    if normalize == 'channel':
+        for ch in range(data.shape[0]):
+            std = np.std(data[ch])
+            if std > 1e-10:
+                data[ch] = (data[ch] - np.mean(data[ch])) / std
+    elif normalize == 'global':
+        std = np.std(data)
+        if std > 1e-10:
+            data = (data - np.mean(data)) / std
+
     return data
 
 
@@ -73,14 +94,14 @@ def preprocess_eeg(data: np.ndarray, fs: int = 400,
 # FEATURE EXTRACTION (from Kaggle winners)
 # =============================================================================
 
-# Standard EEG frequency bands
+# Standard EEG frequency bands (for 40 Hz cutoff)
+# Gamma bands removed since they exceed 40 Hz bandpass
 FREQ_BANDS = {
     'delta': (0.5, 4),
     'theta': (4, 8),
-    'alpha': (8, 15),
-    'beta': (15, 30),
-    'low_gamma': (30, 70),
-    'high_gamma': (70, 128)
+    'alpha': (8, 13),
+    'beta': (13, 30),
+    'low_gamma': (30, 40)  # Limited to bandpass cutoff
 }
 
 

@@ -1,0 +1,38 @@
+{
+  "patient_id": "chb18",
+  "feature_dim": 1176,
+  "feature_breakdown": {
+    "fft_magnitude": 1120,
+    "freq_eigenvalues": 28,
+    "time_eigenvalues": 28
+  },
+  "n_channels": 28,
+  "n_seizures": 6,
+  "cv_auc_mean": 0.9512172443819593,
+  "cv_auc_std": 0.07082671015770377,
+  "cv_auc_per_fold": [
+    0.9998666666666666,
+    0.8081481481481483,
+    0.9139994232987313,
+    0.9996694214876033,
+    0.9868800461361015,
+    0.9987397605545054
+  ],
+  "n_valid_folds": 6,
+  "preprocessing": {
+    "bandpass": [
+      0.5,
+      40
+    ],
+    "notch": 60,
+    "window_sec": 1,
+    "normalize": "channel"
+  },
+  "classifier": {
+    "type": "RandomForest",
+    "n_estimators": 500,
+    "max_depth": 10
+  },
+  "feature_type": "MichaelHills_correlation_eigenvalue",
+  "timestamp": "2026-02-21T08:29:57.726758"
+}

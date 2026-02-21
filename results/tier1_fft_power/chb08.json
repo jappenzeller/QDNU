@@ -1,0 +1,31 @@
+{
+  "patient_id": "chb08",
+  "feature_dim": 115,
+  "n_channels": 23,
+  "n_seizures": 5,
+  "cv_auc_mean": 0.9905954954611499,
+  "cv_auc_std": 0.009152068006772434,
+  "cv_auc_per_fold": [
+    0.9982672731210743,
+    0.995881809787627,
+    0.9745674612014553,
+    0.9861979166666667,
+    0.9980630165289256
+  ],
+  "n_valid_folds": 5,
+  "preprocessing": {
+    "bandpass": [
+      0.5,
+      40
+    ],
+    "notch": 60,
+    "window_sec": 1,
+    "normalize": "channel"
+  },
+  "classifier": {
+    "type": "RandomForest",
+    "n_estimators": 500,
+    "max_depth": 10
+  },
+  "timestamp": "2026-02-21T07:40:27.126898"
+}

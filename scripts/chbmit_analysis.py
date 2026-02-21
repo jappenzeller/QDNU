@@ -353,12 +353,18 @@ def extract_segments(subject: str, summary: Dict) -> List[EEGSegment]:
 # PHASE 4: PREPROCESSING
 # =============================================================================
 
-def preprocess_segment(data: np.ndarray, fs: float) -> np.ndarray:
+def preprocess_segment(data: np.ndarray, fs: float,
+                       lowcut: float = 0.5, highcut: float = 40.0) -> np.ndarray:
     """
-    Preprocess EEG segment.
-    - Bandpass filter: 0.5 - 128 Hz
-    - Notch filter: 60 Hz
+    Preprocess EEG segment for scalp EEG (CHB-MIT).
+
+    Pipeline:
+    - Bandpass filter: 0.5-40 Hz (5th order Butterworth, zero-phase)
+    - Notch filter: 60 Hz (Q=30)
     - Z-score normalization per channel
+
+    NOTE: 40 Hz cutoff is standard for scalp EEG to remove muscle artifacts
+          while preserving clinically relevant EEG content (delta through beta).
     """
     from scipy.signal import butter, filtfilt, iirnotch
 
@@ -371,20 +377,20 @@ def preprocess_segment(data: np.ndarray, fs: float) -> np.ndarray:
     processed = np.zeros_like(data, dtype=np.float64)
 
     for ch in range(n_channels):
-        signal = data[ch].astype(np.float64)
+        sig = data[ch].astype(np.float64)
 
         # Remove DC offset
-        signal = signal - np.mean(signal)
+        sig = sig - np.mean(sig)
 
-        # Bandpass: 0.5 - min(128, Nyquist-1) Hz
+        # Bandpass: 0.5-40 Hz for scalp EEG
         nyq = fs / 2
-        low = 0.5 / nyq
-        high = min(128, nyq - 1) / nyq
+        low = lowcut / nyq
+        high = min(highcut, nyq - 1) / nyq
         if low < high and low > 0:
             try:
-                order = min(4, max(1, n_samples // 12 - 1))
+                order = min(5, max(1, n_samples // 12 - 1))
                 b, a = butter(order, [low, high], btype='band')
-                signal = filtfilt(b, a, signal, padlen=min(3*max(len(a),len(b)), n_samples-1))
+                sig = filtfilt(b, a, sig, padlen=min(3*max(len(a),len(b)), n_samples-1))
             except Exception:
                 pass
 
@@ -392,16 +398,16 @@ def preprocess_segment(data: np.ndarray, fs: float) -> np.ndarray:
         if fs > 120:
             try:
                 b_notch, a_notch = iirnotch(60.0, 30.0, fs)
-                signal = filtfilt(b_notch, a_notch, signal, padlen=min(3*max(len(a_notch),len(b_notch)), n_samples-1))
+                sig = filtfilt(b_notch, a_notch, sig, padlen=min(3*max(len(a_notch),len(b_notch)), n_samples-1))
             except Exception:
                 pass
 
-        # Z-score normalization
-        std = np.std(signal)
+        # Z-score normalization per channel
+        std = np.std(sig)
         if std > 1e-10:
-            signal = (signal - np.mean(signal)) / std
+            sig = (sig - np.mean(sig)) / std
 
-        processed[ch] = signal
+        processed[ch] = sig
 
     return processed
 
