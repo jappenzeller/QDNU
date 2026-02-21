@@ -1,0 +1,54 @@
+{
+  "method": "Quantum_QPNN_PLV_MAX",
+  "timestamp": "2026-02-21T11:50:00",
+  "ch8": {
+    "channels": ["FP1-F7", "F7-T7", "FP1-F3", "F3-C3", "FP2-F8", "F8-T8", "FP2-F4", "F4-C4"],
+    "n_channels": 8,
+    "n_qubits": 17,
+    "overall_auc": 0.4595,
+    "mean_auc": 0.4563,
+    "std_auc": 0.1252,
+    "band": "4-13Hz",
+    "aggregation": "MAX",
+    "runtime_minutes": 47,
+    "per_subject": {
+      "chb01": {"auc": 0.4786},
+      "chb02": {"auc": 0.2833},
+      "chb03": {"auc": 0.4643},
+      "chb04": {"auc": 0.3125},
+      "chb05": {"auc": 0.4100},
+      "chb06": {"auc": 0.5950},
+      "chb07": {"auc": 0.6500},
+      "chb08": {"auc": 0.3700},
+      "chb09": {"auc": 0.3000},
+      "chb10": {"auc": 0.5357},
+      "chb11": {"auc": 0.6500},
+      "chb13": {"auc": 0.4333},
+      "chb14": {"auc": 0.6438},
+      "chb15": {"auc": 0.5325},
+      "chb16": {"auc": 0.4300},
+      "chb17": {"auc": 0.3833},
+      "chb18": {"auc": 0.2500},
+      "chb19": {"auc": 0.5000},
+      "chb20": {"auc": 0.5625},
+      "chb21": {"auc": 0.6625},
+      "chb22": {"auc": 0.4667},
+      "chb23": {"auc": 0.4000}
+    }
+  },
+  "ch12": {
+    "n_channels": 12,
+    "n_qubits": 25,
+    "error": "INFEASIBLE",
+    "reason": "Exponential scaling: 25 qubits requires 512 MB state vectors. No subjects completed after 35+ minutes of computation.",
+    "estimated_time_per_subject": ">60 min"
+  },
+  "ch16": {
+    "n_channels": 16,
+    "n_qubits": 33,
+    "error": "INFEASIBLE",
+    "reason": "Exponential scaling: 33 qubits requires 128 GB state vectors. Would exceed available memory.",
+    "estimated_state_size_gb": 128
+  },
+  "key_finding": "Quantum statevector simulation scales as O(2^n) where n=2M+1 qubits for M channels. Classical methods scale as O(M^2). This exponential gap makes quantum simulation impractical beyond 8-10 channels."
+}
