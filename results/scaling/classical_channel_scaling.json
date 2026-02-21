@@ -1,0 +1,400 @@
+{
+  "method": "Tier2_MAX_XGBoost",
+  "timestamp": "2026-02-21T10:02:17.805930",
+  "ch8": {
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4"
+    ],
+    "n_channels": 8,
+    "overall_auc": 0.7233595352016404,
+    "mean_auc": 0.820013528138528,
+    "std_auc": 0.13350426525455933,
+    "per_subject": {
+      "chb01": {
+        "auc": 1.0,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "auc": 0.8200000000000001,
+        "n_samples": 15,
+        "n_seizure": 5
+      },
+      "chb03": {
+        "auc": 0.6857142857142857,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "auc": 0.7875,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "auc": 1.0,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "auc": 0.4625,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb07": {
+        "auc": 0.9333333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "auc": 0.7600000000000001,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "auc": 0.9375,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "auc": 0.9142857142857141,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "auc": 0.7833333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "auc": 0.6791666666666667,
+        "n_samples": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "auc": 0.6357142857142857,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb15": {
+        "auc": 0.7575000000000001,
+        "n_samples": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "auc": 0.8400000000000001,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb17": {
+        "auc": 0.7833333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "auc": 0.7916666666666667,
+        "n_samples": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "auc": 0.8,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "auc": 0.96875,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.7428571428571428,
+        "n_samples": 17,
+        "n_seizure": 7
+      },
+      "chb22": {
+        "auc": 1.0,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "auc": 0.9571428571428571,
+        "n_samples": 24,
+        "n_seizure": 14
+      }
+    }
+  },
+  "ch12": {
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4",
+      "C3-P3",
+      "C4-P4",
+      "CZ-PZ",
+      "FZ-CZ"
+    ],
+    "n_channels": 12,
+    "overall_auc": 0.711637047163363,
+    "mean_auc": 0.8102299783549785,
+    "std_auc": 0.13386632066436402,
+    "per_subject": {
+      "chb01": {
+        "auc": 1.0,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "auc": 0.9600000000000001,
+        "n_samples": 15,
+        "n_seizure": 5
+      },
+      "chb03": {
+        "auc": 0.6499999999999999,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "auc": 0.7625000000000001,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "auc": 0.96,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "auc": 0.60625,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb07": {
+        "auc": 0.9333333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "auc": 0.5800000000000001,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "auc": 0.85,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "auc": 0.7428571428571429,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "auc": 0.8166666666666667,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "auc": 0.675,
+        "n_samples": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "auc": 0.5785714285714285,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb15": {
+        "auc": 0.7125,
+        "n_samples": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "auc": 0.87,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb17": {
+        "auc": 0.7666666666666667,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "auc": 0.8333333333333334,
+        "n_samples": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "auc": 0.9166666666666666,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "auc": 0.9749999999999999,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.7571428571428571,
+        "n_samples": 17,
+        "n_seizure": 7
+      },
+      "chb22": {
+        "auc": 1.0,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "auc": 0.8785714285714286,
+        "n_samples": 24,
+        "n_seizure": 14
+      }
+    }
+  },
+  "ch16": {
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4",
+      "C3-P3",
+      "C4-P4",
+      "CZ-PZ",
+      "FZ-CZ",
+      "P3-O1",
+      "P4-O2",
+      "P7-O1",
+      "P8-O2"
+    ],
+    "n_channels": 16,
+    "overall_auc": 0.7183697881066301,
+    "mean_auc": 0.82558170995671,
+    "std_auc": 0.13181782342753864,
+    "per_subject": {
+      "chb01": {
+        "auc": 1.0,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "auc": 0.9400000000000001,
+        "n_samples": 15,
+        "n_seizure": 5
+      },
+      "chb03": {
+        "auc": 0.6428571428571429,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "auc": 0.8624999999999999,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "auc": 0.97,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "auc": 0.7437499999999999,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb07": {
+        "auc": 0.8833333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "auc": 0.6200000000000001,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "auc": 0.9249999999999999,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "auc": 0.85,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "auc": 0.75,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "auc": 0.6458333333333334,
+        "n_samples": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "auc": 0.5214285714285714,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb15": {
+        "auc": 0.7475,
+        "n_samples": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "auc": 0.91,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb17": {
+        "auc": 0.75,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "auc": 0.8416666666666667,
+        "n_samples": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "auc": 0.9,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "auc": 0.9875,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.7714285714285715,
+        "n_samples": 17,
+        "n_seizure": 7
+      },
+      "chb22": {
+        "auc": 1.0,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "auc": 0.9,
+        "n_samples": 24,
+        "n_seizure": 14
+      }
+    }
+  }
+}
