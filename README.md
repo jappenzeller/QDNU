@@ -17,6 +17,19 @@ A rigorous complexity analysis demonstrates that correlation encoding scales as 
 
 ---
 
+## Platform
+
+**Live Visualization:** <https://d3i29ccoc82f1t.cloudfront.net>
+
+Interactive Three.js visualization of quantum state trajectories showing:
+
+- Gate-by-gate circuit evolution on SPD manifold
+- IBM Heron topology mapping (17 qubits)
+- Polarity inversion between patients (chb01 vs chb11)
+- Web Audio sonification of boundary distance
+
+---
+
 ## Results
 
 Validation on the Kaggle American Epilepsy Society Seizure Prediction Challenge dataset (Dog_1 subject):
