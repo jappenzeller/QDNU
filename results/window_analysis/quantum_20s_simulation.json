@@ -1,0 +1,123 @@
+{
+  "config": {
+    "backend": "statevector_simulation",
+    "encoding": "PLV_theta_alpha",
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4"
+    ],
+    "window_seconds": 20.0,
+    "n_qubits": 17
+  },
+  "overall_raw_auc": 0.38629343629343627,
+  "overall_calibrated_auc": 0.6302041997354498,
+  "calibration_lift": 0.24391076344201357,
+  "n_inverted": 6,
+  "per_subject": {
+    "chb01": {
+      "raw_auc": 0.5142857142857142,
+      "calibrated_auc": 0.5142857142857142,
+      "polarity": "standard",
+      "polarity_hw_1.95s": "standard",
+      "polarity_tier3": "standard",
+      "matches_hw": true,
+      "matches_tier3": true,
+      "n_samples": 24,
+      "n_seizure": 14
+    },
+    "chb03": {
+      "raw_auc": 0.37142857142857144,
+      "calibrated_auc": 0.6285714285714286,
+      "polarity": "inverted",
+      "polarity_hw_1.95s": "inverted",
+      "polarity_tier3": "inverted",
+      "matches_hw": true,
+      "matches_tier3": true,
+      "n_samples": 24,
+      "n_seizure": 14
+    },
+    "chb05": {
+      "raw_auc": 0.29000000000000004,
+      "calibrated_auc": 0.71,
+      "polarity": "inverted",
+      "polarity_hw_1.95s": "standard",
+      "polarity_tier3": "standard",
+      "matches_hw": false,
+      "matches_tier3": false,
+      "n_samples": 20,
+      "n_seizure": 10
+    },
+    "chb07": {
+      "raw_auc": 0.3833333333333333,
+      "calibrated_auc": 0.6166666666666667,
+      "polarity": "inverted",
+      "polarity_hw_1.95s": "standard",
+      "polarity_tier3": "standard",
+      "matches_hw": false,
+      "matches_tier3": false,
+      "n_samples": 16,
+      "n_seizure": 6
+    },
+    "chb11": {
+      "raw_auc": 0.2833333333333333,
+      "calibrated_auc": 0.7166666666666667,
+      "polarity": "inverted",
+      "polarity_hw_1.95s": "inverted",
+      "polarity_tier3": "standard",
+      "matches_hw": true,
+      "matches_tier3": false,
+      "n_samples": 16,
+      "n_seizure": 6
+    },
+    "chb14": {
+      "raw_auc": 0.38125,
+      "calibrated_auc": 0.61875,
+      "polarity": "inverted",
+      "polarity_hw_1.95s": "standard",
+      "polarity_tier3": "inverted",
+      "matches_hw": false,
+      "matches_tier3": true,
+      "n_samples": 26,
+      "n_seizure": 16
+    },
+    "chb21": {
+      "raw_auc": 0.35,
+      "calibrated_auc": 0.65,
+      "polarity": "inverted",
+      "polarity_hw_1.95s": "inverted",
+      "polarity_tier3": "inverted",
+      "matches_hw": true,
+      "matches_tier3": true,
+      "n_samples": 18,
+      "n_seizure": 8
+    }
+  },
+  "polarity_concordance": {
+    "n_matches_hw_1.95s": 4,
+    "n_matches_tier3": 4,
+    "hw_concordance_rate": 0.5714285714285714,
+    "tier3_concordance_rate": 0.5714285714285714
+  },
+  "inversion_analysis": {
+    "sim_1.95s_raw": 0.4597,
+    "sim_1.95s_calibrated": 0.5403,
+    "sim_20s_raw": 0.38629343629343627,
+    "sim_20s_calibrated": 0.6302041997354498,
+    "hw_1.95s_raw": 0.5241,
+    "hw_1.95s_calibrated": 0.6365,
+    "window_effect_on_simulation": -0.07340656370656373,
+    "inversion_persists_at_20s": false,
+    "interpretation": "Inversion is fundamental to encoding geometry, not window-dependent"
+  },
+  "aggregation": {
+    "note": "Single sub-window per segment - MAX/MEAN/STD are identical",
+    "auc": 0.38629343629343627
+  },
+  "timestamp": "2026-02-22T09:49:33.436521"
+}

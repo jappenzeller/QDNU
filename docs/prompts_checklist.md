@@ -157,6 +157,22 @@ Last updated: 2026-02-22
 - **Finding**: Polarity inversion is THE explanation for Riemannian underperformance in cross-patient evaluation.
 - **Implication**: The polarity discovered via quantum hardware is not quantum-specific — it's a geometric property of the SPD manifold visible in any direction-preserving method.
 
+### PROMPT 017-SIM — Quantum PLV CH8, 20s Windows, Statevector Simulation
+
+- **Status**: DONE
+- **Script**: `scripts/quantum_20s_simulation.py`
+- **Output**: `results/window_analysis/quantum_20s_simulation.json`
+- **Key Results**:
+  - Simulation raw AUC: 0.386 (DECREASED from 0.460 at 1.95s)
+  - Simulation calibrated AUC: 0.630
+  - Inverted subjects: 6/7 (vs 3/7 on hardware at 1.95s)
+  - Window effect on simulation: -0.073 (longer windows make it WORSE)
+- **Finding**: Simulation-hardware inversion is FUNDAMENTAL to encoding geometry, NOT window-dependent
+- **Prediction for March 22**: Hardware at 20s should still beat simulation (~0.63 calibrated)
+- **Polarity concordance**:
+  - Simulation 20s vs Hardware 1.95s: 4/7 (57%)
+  - Simulation 20s vs Tier 3 20s: 4/7 (57%)
+
 ---
 
 ## Scheduled for March 22, 2026+ (Credits Reset)
