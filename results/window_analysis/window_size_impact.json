@@ -1,0 +1,592 @@
+{
+  "experiment_config": {
+    "window_sizes_seconds": [
+      1,
+      2,
+      5,
+      10,
+      15,
+      20,
+      30
+    ],
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4"
+    ],
+    "subjects": [
+      "chb01",
+      "chb03",
+      "chb05",
+      "chb07",
+      "chb11",
+      "chb14",
+      "chb21"
+    ],
+    "segment_duration_seconds": 30
+  },
+  "tier2_max": {
+    "1": {
+      "overall_auc": 0.8026156941649899,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.9285714285714286,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.8928571428571428,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 1.0,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.9666666666666668,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.9666666666666667,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.5142857142857142,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.7714285714285715,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 52,
+      "aggregation": {
+        "max": 0.8026156941649899,
+        "mean": 0.6551307847082495,
+        "std": 0.6816901408450704
+      }
+    },
+    "2": {
+      "overall_auc": 0.7847082494969819,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.9857142857142858,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.8928571428571428,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.9800000000000001,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 1.0,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 1.0,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.4357142857142857,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.7,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 26,
+      "aggregation": {
+        "max": 0.7847082494969819,
+        "mean": 0.6331991951710263,
+        "std": 0.8004024144869215
+      }
+    },
+    "5": {
+      "overall_auc": 0.7953722334004024,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.9357142857142857,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.9785714285714286,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 1.0,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 1.0,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.9833333333333334,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.37142857142857144,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.8571428571428571,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 10,
+      "aggregation": {
+        "max": 0.7953722334004024,
+        "mean": 0.6722334004024144,
+        "std": 0.8585513078470826
+      }
+    },
+    "10": {
+      "overall_auc": 0.7730382293762575,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.9071428571428571,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.9857142857142858,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.9800000000000001,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.9666666666666668,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.6833333333333333,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.45,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.7000000000000001,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 5,
+      "aggregation": {
+        "max": 0.7730382293762575,
+        "mean": 0.6822937625754527,
+        "std": null
+      }
+    },
+    "15": {
+      "overall_auc": 0.7778672032193159,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.7857142857142857,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.9857142857142858,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.96,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 1.0,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.7333333333333334,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.5071428571428571,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.7428571428571429,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 3,
+      "aggregation": {
+        "max": 0.7778672032193159,
+        "mean": 0.712072434607646,
+        "std": null
+      }
+    },
+    "20": {
+      "overall_auc": 0.872635814889336,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.9428571428571428,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.9928571428571429,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 1.0,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 1.0,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 1.0,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.8571428571428571,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.7285714285714286,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 2,
+      "aggregation": {
+        "max": 0.872635814889336,
+        "mean": 0.7430583501006036,
+        "std": null
+      }
+    },
+    "30": {
+      "overall_auc": 0.8342052313883299,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.9285714285714286,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.9857142857142858,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 1.0,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.9666666666666668,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.9833333333333334,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.65,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.7285714285714285,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 2,
+      "aggregation": {
+        "max": 0.8342052313883299,
+        "mean": 0.7205231388329979,
+        "std": null
+      }
+    }
+  },
+  "tier3_riemannian": {
+    "1": {
+      "overall_auc": 0.4408450704225352,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.6928571428571428,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.22857142857142854,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.6300000000000001,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.75,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.7333333333333333,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.41428571428571426,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.2571428571428571,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 30
+    },
+    "2": {
+      "overall_auc": 0.44607645875251506,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.7000000000000001,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.2357142857142857,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.67,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.7333333333333334,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.7,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.4214285714285714,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.2571428571428571,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 15
+    },
+    "5": {
+      "overall_auc": 0.44808853118712266,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.7285714285714286,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.25,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.68,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.6833333333333333,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.6833333333333333,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.44999999999999996,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.12857142857142856,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 6
+    },
+    "10": {
+      "overall_auc": 0.4579476861167003,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.7571428571428571,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.24285714285714283,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.72,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.7166666666666668,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.6833333333333333,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.4714285714285714,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.11428571428571427,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 3
+    },
+    "15": {
+      "overall_auc": 0.4625754527162978,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.8357142857142856,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.2928571428571428,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.78,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.6833333333333333,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.6666666666666667,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.4285714285714286,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.18571428571428572,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 2
+    },
+    "20": {
+      "overall_auc": 0.4929577464788733,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.7714285714285715,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.2357142857142857,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.73,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.7666666666666666,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.6833333333333333,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.4928571428571428,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.38571428571428573,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 1
+    },
+    "30": {
+      "overall_auc": 0.45975855130784715,
+      "per_subject": {
+        "chb01": {
+          "auc": 0.8,
+          "n_samples": 24
+        },
+        "chb03": {
+          "auc": 0.20714285714285713,
+          "n_samples": 24
+        },
+        "chb05": {
+          "auc": 0.71,
+          "n_samples": 20
+        },
+        "chb07": {
+          "auc": 0.7333333333333334,
+          "n_samples": 16
+        },
+        "chb11": {
+          "auc": 0.7333333333333333,
+          "n_samples": 16
+        },
+        "chb14": {
+          "auc": 0.4642857142857143,
+          "n_samples": 24
+        },
+        "chb21": {
+          "auc": 0.21428571428571427,
+          "n_samples": 17
+        }
+      },
+      "n_subwindows_per_segment": 1
+    }
+  },
+  "covariance_quality": {
+    "1": {
+      "median_condition_raw": 106.57331738646909,
+      "median_condition_regularized": 67.29091243893515,
+      "pct_ill_conditioned": 4.149839855173374
+    },
+    "2": {
+      "median_condition_raw": 77.49903281923329,
+      "median_condition_regularized": 60.134151113716,
+      "pct_ill_conditioned": 2.3995535714285716
+    },
+    "5": {
+      "median_condition_raw": 63.49783936552257,
+      "median_condition_regularized": 55.71593846547938,
+      "pct_ill_conditioned": 0.9810791871058164
+    },
+    "10": {
+      "median_condition_raw": 55.30301526651937,
+      "median_condition_regularized": 51.49453726049131,
+      "pct_ill_conditioned": 0.5649717514124294
+    },
+    "15": {
+      "median_condition_raw": 53.348946232809865,
+      "median_condition_regularized": 50.78379370585759,
+      "pct_ill_conditioned": 0.21551724137931033
+    },
+    "20": {
+      "median_condition_raw": 51.04631170563739,
+      "median_condition_regularized": 48.9710071560765,
+      "pct_ill_conditioned": 0.32051282051282054
+    },
+    "30": {
+      "median_condition_raw": 49.11477948729011,
+      "median_condition_regularized": 47.441619965626835,
+      "pct_ill_conditioned": 0.0
+    }
+  },
+  "quantum_projection": {
+    "current_tier2_auc": 0.7234,
+    "current_window_seconds": 1.95,
+    "best_tier2_auc": 0.872635814889336,
+    "best_window_seconds": 20.0,
+    "projected_improvement": 0.1492358148893359
+  }
+}

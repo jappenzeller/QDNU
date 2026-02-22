@@ -123,6 +123,25 @@ Last updated: 2026-02-22
 
 ---
 
+## Window Size Analysis Phase
+
+### PROMPT 015 — Window Size Impact on Classical Baselines
+
+- **Status**: DONE
+- **Script**: `scripts/window_size_experiment.py`
+- **Output**:
+  - `results/window_analysis/window_size_impact.json`
+  - `results/window_analysis/window_size_report.md`
+- **Key Results**:
+  - Best Tier 2 MAX: 0.8726 AUC at 20s windows (vs 0.80 at 1s)
+  - Condition number: drops from 67.3 (1s) to 47.4 (30s)
+  - Tier 3 Riemannian: modest improvement 0.44 → 0.49 with longer windows
+  - **Projected classical ceiling at 20s: 0.87 AUC** (vs current 0.72 at 1.95s)
+- **Finding**: Window size is a major AUC bottleneck. +0.15 AUC available from 20s windows alone.
+- **Implication**: Quantum encoding may benefit similarly from longer windows.
+
+---
+
 ## Scheduled for March 22, 2026+ (Credits Reset)
 
 ### PROMPT 013 — CH12 Hardware (PLV segment-level)
