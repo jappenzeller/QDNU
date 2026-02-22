@@ -4,56 +4,66 @@ A quantum computing architecture for multi-channel EEG seizure prediction based 
 
 **Author:** James Appenzeller, Independent Researcher
 
+[![Platform](https://img.shields.io/badge/Platform-qdnu.ai-00d4ff)](https://qdnu.ai)
+[![Visualization](https://img.shields.io/badge/Viz-Interactive_3D-f59e0b)](https://qdnu.ai/viz/)
 [![Paper](https://img.shields.io/badge/Paper-quantum__pn__neuron__paper.md-blue)](paper/quantum_pn_neuron_paper.md)
-[![arXiv](https://img.shields.io/badge/arXiv-cs.LG-b31b1b)](paper/QDNU.pdf)
 
 ---
 
 ## Abstract
 
-This project presents a quantum computing architecture based on the Positive-Negative (PN) neuron model for multi-channel electroencephalogram (EEG) analysis. The proposed quantum PN neuron encodes excitatory-inhibitory dynamics using paired qubits with parameterized rotation gates, leveraging quantum entanglement to capture inter-channel correlations efficiently.
+This project presents a quantum computing architecture based on the Positive-Negative (PN) neuron model for multi-channel electroencephalogram (EEG) seizure prediction. The proposed A-Gate circuit encodes excitatory-inhibitory dynamics using paired qubits with parameterized rotation gates, leveraging quantum entanglement to capture inter-channel phase synchronization efficiently.
 
-A rigorous complexity analysis demonstrates that correlation encoding scales as **O(M) quantum gates** compared to **O(M²) classical operations** for M channels. The architecture shows theoretical promise for seizure prediction applications, with empirical validation demonstrating clear separation between ictal and interictal EEG patterns.
-
----
-
-## Platform
-
-**Live Visualization:** <https://qdnu.ai>
-
-Interactive Three.js visualization of quantum state trajectories showing:
-
-- Gate-by-gate circuit evolution on SPD manifold
-- IBM Heron topology mapping (17 qubits)
-- Polarity inversion between patients (chb01 vs chb11)
-- Web Audio sonification of boundary distance
+Validated on the CHB-MIT Scalp EEG Database using Leave-One-Subject-Out (LOSO) cross-validation, the 8-channel quantum circuit (17 qubits) achieves **0.637 AUC** on IBM Heron r2 hardware after polarity calibration, compared to **0.7419 AUC** for the strongest classical baseline.
 
 ---
 
-## Results
+## Live Platform
 
-Validation on the Kaggle American Epilepsy Society Seizure Prediction Challenge dataset (Dog_1 subject):
+**[https://qdnu.ai](https://qdnu.ai)** — Project portal with research overview
+
+**[https://qdnu.ai/viz/](https://qdnu.ai/viz/)** — Interactive 3D visualization
+
+The visualization shows gate-by-gate quantum state trajectories on a PCA projection of the SPD covariance manifold:
+
+- **Circuit Diagram** — Real-time gate execution highlighting
+- **SPD Manifold** — 3D trajectory with polarity divergence between patients
+- **IBM Heron Topology** — Physical qubit layout (ibm_torino, 17 qubits)
+- **Audio Sonification** — Boundary distance mapped to pitch
+
+---
+
+## Key Results
+
+### Hardware Validation (IBM Heron r2, CHB-MIT, LOSO)
 
 | Metric | Value |
 |--------|-------|
-| **Accuracy** | **72.4%** |
-| Ictal Fidelity | 0.894 ± 0.090 |
-| Interictal Fidelity | 0.722 ± 0.193 |
-| Fidelity Separation | 0.173 |
-| Precision | 66.7% |
-| Recall | 85.7% |
-| Specificity | 60.0% |
-| F1 Score | 75.0% |
+| **Calibrated Hardware AUC** | **0.637** |
+| Raw Hardware AUC | 0.531 |
+| Classical Baseline (XGBoost) | 0.7419 |
+| Hardware-Classical Gap | 0.105 (14% relative) |
+| Gap Reduction from Calibration | 56.4% |
 
-*Results obtained using 4-channel quantum circuit (9 qubits, 60 gates), symmetric PN dynamics, and optimized threshold (0.82).*
+### Per-Patient Hardware Results
 
-### Dashboard
+| Patient | Raw AUC | Calibrated AUC | Polarity |
+|---------|---------|----------------|----------|
+| chb01   | 0.686   | 0.686          | Standard |
+| chb03   | 0.436   | 0.564          | Inverted |
+| chb05   | 0.610   | 0.610          | Standard |
+| chb07   | 0.667   | 0.667          | Standard |
+| chb11   | 0.283   | 0.717          | Inverted |
+| chb14   | 0.600   | 0.600          | Standard |
+| chb21   | 0.388   | 0.613          | Inverted |
 
-![QDNU Dashboard](paper/figures/qdnu_dashboard.png)
+### Key Findings
 
-### Quantum Fidelity Distribution
+1. **Polarity Calibration**: Patient-specific polarity inversion corrects for individual differences in seizure manifestation, reducing the hardware-classical gap by 56%.
 
-![Fidelity Distribution](paper/figures/fidelity_distribution.png)
+2. **Encoding Geometry**: PLV-based phase encoding captures temporal dynamics that correlation eigenvalues miss. CC_freq encoding produces 0.87 fidelity between ictal/interictal states (non-discriminative).
+
+3. **O(M) vs O(M²) Scaling**: Quantum architecture encodes M-channel correlations in O(M) gates versus O(M²) classical operations.
 
 ---
 
@@ -63,53 +73,36 @@ Validation on the Kaggle American Epilepsy Society Seizure Prediction Challenge 
 
 The core component is the **A-Gate**, a 2-qubit circuit encoding a single PN neuron channel:
 
-![A-Gate Circuit](paper/figures/agate_circuit.png)
+```text
+     ┌───┐┌──────────┐     ┌───────────┐
+E: ──┤ H ├┤ P(b)     ├──■──┤ Ry(a·π/2) ├──
+     └───┘└──────────┘  │  └───────────┘
+     ┌───┐┌──────────┐┌─┴─┐┌───────────┐
+I: ──┤ H ├┤ P(b)     ├┤ X ├┤ Ry(c·π/2) ├──
+     └───┘└──────────┘└───┘└───────────┘
+```
 
 **Parameters:**
-- `a`: Excitatory state amplitude [0, 1]
-- `b`: Shared phase (E-I coupling) [0, 2π]
-- `c`: Inhibitory state amplitude [0, 1]
+- `a`: Excitatory amplitude (PLV theta-alpha)
+- `b`: Shared phase (E-I coupling)
+- `c`: Inhibitory amplitude (PLV theta-alpha)
 
-**Circuit properties:**
-- 14 gates per channel (4 H, 4 P, 2 R, 2 CR)
-- Bidirectional E-I coupling via CRy and CRz
-- Shared phase parameter encodes temporal dynamics
+### 8-Channel Circuit (17 Qubits)
 
-### Multi-Channel Architecture
-
-For M EEG channels, the quantum circuit uses:
-- **Qubits:** 2M + 1 (channel qubits + ancilla)
-- **Gates:** 17M - 2
-- **Depth:** O(M)
-
-![Multi-Channel Circuit](paper/figures/multichannel_circuit.png)
+| Property       | Value |
+|----------------|-------|
+| Logical qubits | 17    |
+| CZ gates       | 97    |
+| Total gates    | ~200  |
+| Circuit depth  | O(M)  |
 
 ### Complexity Advantage
 
-| Operation | Classical | Quantum | Advantage Factor |
-|-----------|-----------|---------|------------------|
-| Correlation encoding | O(M²) | O(M) | M× |
-| Template matching | O(M²) | O(M) | M× |
-| Parameter storage | O(M²) | O(M) | M× |
-
-For 19-channel clinical EEG: **19× reduction** in correlation complexity.
-
----
-
-## PN Dynamics
-
-The Positive-Negative neuron model captures excitatory-inhibitory dynamics:
-
-$$\frac{da}{dt} = -\lambda_a \cdot a + f(t)(1 - a)$$
-
-$$\frac{dc}{dt} = +\lambda_c \cdot c + f(t)(1 - c)$$
-
-Where:
-- `f(t)` = normalized EEG input (RMS envelope)
-- `λ_a` = excitatory decay rate (default: 0.1)
-- `λ_c` = inhibitory growth rate (default: 0.05)
-
-![PN Dynamics](paper/figures/pn_dynamics.png)
+| Operation            | Classical | Quantum | Advantage |
+|----------------------|-----------|---------|-----------|
+| Correlation encoding | O(M²)     | O(M)    | M×        |
+| Template matching    | O(M²)     | O(M)    | M×        |
+| Parameter storage    | O(M²)     | O(M)    | M×        |
 
 ---
 
@@ -124,41 +117,32 @@ pip install -r requirements.txt
 **Requirements:**
 - Python 3.9+
 - Qiskit 1.0+
-- NumPy, SciPy, Matplotlib
-- (Optional) Kaggle EEG dataset for validation
+- qiskit-ibm-runtime (for hardware execution)
+- NumPy, SciPy, scikit-learn, XGBoost
+- pyedflib (for CHB-MIT EDF files)
 
 ## Quick Start
 
 ```python
 from qdnu import create_single_channel_agate
-from visualization.quantum import extract_visualization_data
 
-# Create A-Gate circuit
+# Create A-Gate circuit with PLV parameters
 circuit = create_single_channel_agate(a=0.6, b=1.2, c=0.4)
-
-# Extract quantum state visualization
-viz = extract_visualization_data(circuit)
-print(f"Concurrence: {viz['concurrence']:.4f}")
-print(f"Bloch E: {viz['bloch_E']}")
-print(f"Bloch I: {viz['bloch_I']}")
+print(circuit.draw())
 ```
 
-### Run Dashboard
+### Run Hardware Validation
 
 ```bash
-python scripts/dashboard.py
+# Requires IBM Quantum credentials
+python scripts/hardware_validation.py --patient chb01 --backend ibm_torino
 ```
 
-### Run Harmonic Oscillator Visualization
+### Generate 3D Assets
 
-```python
-from visualization.dynamics import run_oscillator_demo
-
-config, history, viz, figures = run_oscillator_demo(
-    duration=20.0,
-    drive_frequency=0.2,
-    save_dir='paper/figures/harmonic_oscillator'
-)
+```bash
+export MESHY_API_KEY="your_key"
+python scripts/generate_meshy_assets.py
 ```
 
 ---
@@ -167,76 +151,62 @@ config, history, viz, figures = run_oscillator_demo(
 
 ```
 QDNU/
-├── qdnu/                          # Core quantum library (importable)
-│   ├── quantum_agate.py           # A-Gate circuit implementation
-│   ├── pn_dynamics.py             # PN neuron dynamics
-│   ├── multichannel_circuit.py    # Multi-channel quantum circuit
-│   ├── template_trainer.py        # Template-based classifier
-│   ├── seizure_predictor.py       # Fidelity-based prediction
-│   └── quantum_backends.py        # Backend utilities
-├── visualization/                 # Visualization modules by type
-│   ├── quantum/                   # Quantum state visualization
-│   │   ├── agate_visualization.py # Bloch spheres, entanglement
-│   │   └── fractal_generator.py   # Julia set fingerprints
-│   ├── dynamics/                  # Dynamical systems
-│   │   ├── phase_analysis.py      # Phase space analysis
-│   │   └── harmonic_oscillator.py # 4D limit cycle visualization
-│   ├── animation/                 # Animated visualizations
-│   │   └── limit_cycle_julia_explorer.py
-│   └── interactive/               # Real-time explorers
-│       └── interactive_explorer.py
-├── eeg/                           # EEG data handling
-│   ├── eeg_loader.py              # Kaggle dataset loader
-│   └── eeg_visualizer.py          # EEG plotting utilities
-├── scripts/                       # Runnable scripts
-│   ├── dashboard.py               # Results dashboard generator
-│   ├── benchmark.py               # Quantum vs classical comparison
-│   └── main_pipeline.py           # End-to-end pipeline
-├── paper/                         # Publication materials
-│   ├── quantum_pn_neuron_paper.md # Full paper (markdown)
-│   ├── QDNU.pdf                   # arXiv submission preview
-│   └── figures/                   # Publication figures
-│       ├── qdnu_dashboard.png
-│       ├── fidelity_distribution.png
-│       ├── phase_analysis/
-│       └── harmonic_oscillator/
-├── docs/                          # Documentation
-└── README.md
+├── qdnu/                      # Core quantum library
+│   ├── quantum_agate.py       # A-Gate circuit implementation
+│   ├── pn_dynamics.py         # PN neuron dynamics
+│   └── multichannel_circuit.py
+├── scripts/                   # Executable scripts
+│   ├── hardware_validation.py # IBM Heron execution
+│   ├── tier3_combined_loso.py # Classical baseline
+│   ├── generate_meshy_assets.py # 3D asset generation
+│   └── generate_figures.py    # Publication figures
+├── sagemaker/                 # AWS SageMaker training
+│   └── train_chbmit.py        # CHB-MIT preprocessing
+├── qdnu-infra/                # Web infrastructure
+│   └── static/
+│       ├── index.html         # Portal page
+│       └── viz/               # 3D visualization
+├── results/                   # Experiment outputs
+│   ├── hardware_validation/   # IBM hardware results
+│   └── patient_analysis/      # Per-patient profiles
+├── paper/                     # Publication materials
+│   ├── quantum_pn_neuron_paper.md
+│   └── figures/
+└── .aws/                      # AWS configuration
+    └── config                 # SSO profile for deployment
 ```
 
 ---
 
-## Visualization Gallery
+## Dataset
 
-### Bloch Spheres & Julia Fractals
+**CHB-MIT Scalp EEG Database** (PhysioNet)
 
-The quantum state of each PN neuron can be visualized as:
-- **Bloch spheres** for E (excitatory) and I (inhibitory) qubits
-- **Julia set fractals** as unique "fingerprints" of the quantum state
-- **Concurrence** measuring E-I entanglement
+- 22 patients (pediatric subjects with intractable seizures)
+- 8 EEG channels (bipolar montage): FP1-F7, F7-T7, FP1-F3, F3-C3, FP2-F8, F8-T8, FP2-F4, F4-C4
+- 256 Hz sampling rate
+- Leave-One-Subject-Out cross-validation
 
-### Phase Space Analysis
+---
 
-- 2D/3D phase portraits
-- Fixed point analysis with stability classification
-- Nullclines and vector fields
-- Bifurcation diagrams
+## Classical Baseline
 
-### 4D Harmonic Oscillator
+**Tier 3 Combined (XGBoost):** 0.7419 AUC
 
-Under periodic driving, the system traces limit cycles in 4D space (a, b, c, concurrence):
-- 3D trajectory visualization
-- Poincaré sections
-- Lissajous phase relationships
+| Feature Set                           | AUC        |
+|---------------------------------------|------------|
+| log-FFT (1-47Hz) + CC eigenvalues     | **0.7419** |
+| Correlation eigenvalues (MAX pooling) | 0.7234     |
+| Riemannian tangent space              | 0.6314     |
+| CC_freq eigenvalues only              | 0.5445     |
 
 ---
 
 ## References
 
+- Shoeb, A. H. (2009). Application of machine learning to epileptic seizure onset detection and treatment. MIT PhD thesis.
 - Gupta, A., et al. (2024). Positive-negative neuron model for excitatory-inhibitory neural dynamics.
-- Holevo, A. S. (1973). Bounds for the quantity of information transmitted by a quantum communication channel.
-- Mormann, F., et al. (2007). Seizure prediction: the long and winding road. Brain.
-- American Epilepsy Society Seizure Prediction Challenge. Kaggle Competition.
+- IBM Quantum. (2024). Heron processor architecture.
 
 ---
 
@@ -249,10 +219,11 @@ Research use only. Contact author for collaboration.
 ## Citation
 
 ```bibtex
-@article{appenzeller2025qdnu,
-  title={Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Analysis},
+@article{appenzeller2026qdnu,
+  title={Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Seizure Prediction},
   author={Appenzeller, James},
-  year={2025},
-  url={https://github.com/jappenzeller/QDNU}
+  year={2026},
+  url={https://qdnu.ai},
+  note={IBM Heron r2 hardware validation, CHB-MIT dataset}
 }
 ```
