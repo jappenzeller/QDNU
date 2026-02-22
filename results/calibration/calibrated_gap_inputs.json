@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-02-22T06:11:57.870565",
+  "classical_ceiling": 0.7234,
+  "ch8": {
+    "raw_overall_auc": 0.5241326530612245,
+    "calibrated_overall_auc": 0.636547619047619,
+    "calibration_lift": 0.11241496598639455,
+    "n_subjects": 7,
+    "n_inverted": 3,
+    "inverted_subjects": [
+      "chb03",
+      "chb11",
+      "chb21"
+    ],
+    "per_subject": {
+      "chb01": {
+        "raw": 0.6857142857142857,
+        "calibrated": 0.6857142857142857,
+        "polarity": "standard"
+      },
+      "chb03": {
+        "raw": 0.4357142857142857,
+        "calibrated": 0.5642857142857143,
+        "polarity": "inverted"
+      },
+      "chb05": {
+        "raw": 0.61,
+        "calibrated": 0.61,
+        "polarity": "standard"
+      },
+      "chb07": {
+        "raw": 0.6666666666666666,
+        "calibrated": 0.6666666666666666,
+        "polarity": "standard"
+      },
+      "chb11": {
+        "raw": 0.2833333333333333,
+        "calibrated": 0.7166666666666667,
+        "polarity": "inverted"
+      },
+      "chb14": {
+        "raw": 0.6,
+        "calibrated": 0.6,
+        "polarity": "standard"
+      },
+      "chb21": {
+        "raw": 0.38749999999999996,
+        "calibrated": 0.6125,
+        "polarity": "inverted"
+      }
+    }
+  },
+  "raw_gap_ch8": 0.19926734693877557,
+  "calibrated_gap_ch8": 0.08685238095238101,
+  "gap_reduction_from_calibration": 0.11241496598639455,
+  "future_run_requirements": {
+    "store_sub_window_scores": true,
+    "reason_sub_window": "STD aggregation requires all 30 sub-window predictions per segment, not just MAX. Barachant showed STD > MAX (0.805 vs 0.776). STD is also naturally polarity-robust \u2014 it detects presence of transient regardless of direction.",
+    "store_per_patient_raw_scores": true,
+    "reason_raw_scores": "Enables exact calibrated overall AUC recomputation and ROC curve analysis with polarity correction applied."
+  },
+  "projection_note": "PROMPT 010 should produce two scenarios: Scenario A (Raw) uses raw hardware AUC for conservative projection. Scenario B (Calibrated) uses polarity-calibrated AUC for realistic projection assuming per-patient sign bit calibration.",
+  "simulation_ch8_auc": 0.5344110115236875,
+  "simulation_gap_ch8": 0.1889889884763125
+}

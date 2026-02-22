@@ -1,0 +1,343 @@
+{
+  "encoding": "V2_band_power",
+  "backend": "statevector_simulation",
+  "timestamp": "2026-02-21T15:51:56.227595",
+  "ch4": {
+    "n_qubits": 9,
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3"
+    ],
+    "overall_auc": 0.5221510883482715,
+    "per_subject": {
+      "chb01": {
+        "auc": 0.9071428571428571,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "auc": 0.26666666666666666,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb03": {
+        "auc": 0.6571428571428571,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "auc": 0.5375,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "auc": 0.5800000000000001,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "auc": 0.8,
+        "n_samples": 30,
+        "n_seizure": 20
+      },
+      "chb07": {
+        "auc": 0.5166666666666666,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "auc": 0.53,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "auc": 0.3875,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "auc": 0.6857142857142855,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "auc": 0.6333333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "auc": 0.6083333333333333,
+        "n_samples": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "auc": 0.39375,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb15": {
+        "auc": 0.49000000000000005,
+        "n_samples": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "auc": 0.235,
+        "n_samples": 30,
+        "n_seizure": 20
+      },
+      "chb17": {
+        "auc": 0.19999999999999998,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "auc": 0.5583333333333333,
+        "n_samples": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "auc": 0.5333333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "auc": 0.71875,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.575,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb22": {
+        "auc": 0.65,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "auc": 0.6142857142857143,
+        "n_samples": 24,
+        "n_seizure": 14
+      }
+    },
+    "feasible": true,
+    "runtime_sec": 314.6007125377655,
+    "estimated_memory_gb": 7.62939453125e-06
+  },
+  "ch8": {
+    "n_qubits": 17,
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4"
+    ],
+    "overall_auc": 0.5344110115236875,
+    "per_subject": {
+      "chb01": {
+        "auc": 0.8785714285714286,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "auc": 0.16666666666666663,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb03": {
+        "auc": 0.5642857142857143,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "auc": 0.375,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "auc": 0.5800000000000001,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "auc": 0.8049999999999999,
+        "n_samples": 30,
+        "n_seizure": 20
+      },
+      "chb07": {
+        "auc": 0.36666666666666664,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "auc": 0.6,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "auc": 0.4125,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "auc": 0.5785714285714285,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "auc": 0.5166666666666666,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "auc": 0.9500000000000001,
+        "n_samples": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "auc": 0.55625,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb15": {
+        "auc": 0.39,
+        "n_samples": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "auc": 0.375,
+        "n_samples": 30,
+        "n_seizure": 20
+      },
+      "chb17": {
+        "auc": 0.6,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "auc": 0.5083333333333333,
+        "n_samples": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "auc": 0.7166666666666666,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "auc": 0.73125,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.5125,
+        "n_samples": 18,
+        "n_seizure": 8
+      },
+      "chb22": {
+        "auc": 0.7,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "auc": 0.5714285714285714,
+        "n_samples": 24,
+        "n_seizure": 14
+      }
+    },
+    "feasible": true,
+    "runtime_sec": 723.6081869602203,
+    "estimated_memory_gb": 0.001953125
+  },
+  "ch12": {
+    "n_qubits": 25,
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4",
+      "C3-P3",
+      "C4-P4",
+      "CZ-PZ",
+      "FZ-CZ"
+    ],
+    "overall_auc": 0.6436293436293437,
+    "per_subject": {
+      "chb01": {
+        "auc": 1.0,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb03": {
+        "auc": 0.6,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb05": {
+        "auc": 0.52,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb07": {
+        "auc": 0.25,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb11": {
+        "auc": 0.5166666666666667,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb14": {
+        "auc": 0.61875,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.625,
+        "n_samples": 18,
+        "n_seizure": 8
+      }
+    },
+    "feasible": true,
+    "runtime_sec": 13586.895776748657,
+    "estimated_memory_gb": 0.5
+  },
+  "ch16": {
+    "n_qubits": 33,
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4",
+      "C3-P3",
+      "C4-P4",
+      "CZ-PZ",
+      "FZ-CZ",
+      "P3-O1",
+      "P4-O2",
+      "P7-O1",
+      "P8-O2"
+    ],
+    "overall_auc": null,
+    "per_subject": {},
+    "feasible": false,
+    "failure_reason": "state_vector_size_gb: 128.00, available_gb: 45.55",
+    "estimated_memory_gb": 128.0
+  }
+}

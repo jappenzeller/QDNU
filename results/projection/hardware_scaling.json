@@ -1,0 +1,119 @@
+{
+  "timestamp": "2026-02-22T06:29:45.158862",
+  "ch4": {
+    "backend": "ibm_torino",
+    "encoding": "V2_band_power",
+    "mitigation": "none",
+    "shots": 1024,
+    "n_qubits": 9,
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3"
+    ],
+    "overall_auc": 0.5,
+    "per_subject": {
+      "chb01": {
+        "auc": 0.5,
+        "n_samples": 24,
+        "n_seizure": 7
+      },
+      "chb03": {
+        "auc": 0.5,
+        "n_samples": 24,
+        "n_seizure": 7
+      },
+      "chb05": {
+        "auc": 0.5,
+        "n_samples": 20,
+        "n_seizure": 5
+      },
+      "chb07": {
+        "auc": 0.5,
+        "n_samples": 16,
+        "n_seizure": 3
+      },
+      "chb11": {
+        "auc": 0.5,
+        "n_samples": 16,
+        "n_seizure": 3
+      },
+      "chb14": {
+        "auc": 0.5,
+        "n_samples": 26,
+        "n_seizure": 8
+      },
+      "chb21": {
+        "auc": 0.5,
+        "n_samples": 18,
+        "n_seizure": 4
+      }
+    }
+  },
+  "ch8": {
+    "backend": "ibm_torino",
+    "encoding": "PLV_theta_alpha",
+    "mitigation": "none",
+    "shots": 1024,
+    "n_qubits": 17,
+    "overall_auc": 0.511003861003861,
+    "per_subject": {
+      "chb01": {
+        "auc": 0.6857142857142857,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb03": {
+        "auc": 0.4357142857142857,
+        "n_samples": 24,
+        "n_seizure": 14
+      },
+      "chb05": {
+        "auc": 0.61,
+        "n_samples": 20,
+        "n_seizure": 10
+      },
+      "chb07": {
+        "auc": 0.6666666666666666,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb11": {
+        "auc": 0.2833333333333333,
+        "n_samples": 16,
+        "n_seizure": 6
+      },
+      "chb14": {
+        "auc": 0.6,
+        "n_samples": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "auc": 0.38749999999999996,
+        "n_samples": 18,
+        "n_seizure": 8
+      }
+    },
+    "note": "encoding differs from ch4 \u2014 gap not directly comparable"
+  },
+  "gap_table": [
+    {
+      "channels": 4,
+      "qubits": 9,
+      "sim_auc": 0.5221510883482715,
+      "hw_auc": 0.5,
+      "gap": 0.022151088348271508,
+      "encoding_match": true
+    },
+    {
+      "channels": 8,
+      "qubits": 17,
+      "sim_auc": 0.5344110115236875,
+      "hw_auc": 0.511003861003861,
+      "gap": 0.02340715051982656,
+      "encoding_mismatch": true,
+      "note": "CH8 uses PLV_theta_alpha, CH4 uses V2_band_power"
+    }
+  ]
+}

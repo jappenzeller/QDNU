@@ -1,0 +1,168 @@
+{
+  "timestamp": "2026-02-22T08:33:32.253231",
+  "clinical_threshold": 0.7,
+  "gap_trajectory": [
+    {
+      "ch_key": "ch4",
+      "channels": 4,
+      "qubits": 9,
+      "sim_auc": 0.5221510883482715,
+      "sim_feasible": true,
+      "hw_auc": 0.5,
+      "hw_encoding": "V2_band_power",
+      "gap": 0.022151088348271508,
+      "gap_pct": 4.242275625306534
+    },
+    {
+      "ch_key": "ch8",
+      "channels": 8,
+      "qubits": 17,
+      "sim_auc": 0.5344110115236875,
+      "sim_feasible": true,
+      "hw_auc": 0.511003861003861,
+      "hw_encoding": "PLV_theta_alpha",
+      "gap": 0.02340715051982656,
+      "gap_pct": 4.379990309909444
+    },
+    {
+      "ch_key": "ch12",
+      "channels": 12,
+      "qubits": 25,
+      "sim_auc": 0.6436293436293437,
+      "sim_feasible": true,
+      "hw_auc": null,
+      "hw_encoding": null,
+      "gap": null
+    },
+    {
+      "ch_key": "ch16",
+      "channels": 16,
+      "qubits": 33,
+      "sim_auc": null,
+      "sim_feasible": false,
+      "hw_auc": null,
+      "hw_encoding": null,
+      "gap": null
+    }
+  ],
+  "gap_model": {
+    "model": "linear",
+    "n_points": 2,
+    "slope": 0.00015700777144438013,
+    "intercept": 0.020738018405272077,
+    "data_points": [
+      {
+        "qubits": 9,
+        "gap": 0.022151088348271508
+      },
+      {
+        "qubits": 17,
+        "gap": 0.02340715051982656
+      }
+    ],
+    "predictions": {
+      "q25": {
+        "qubits": 25,
+        "predicted_gap": 0.02466321269138158,
+        "channels": 12
+      },
+      "q33": {
+        "qubits": 33,
+        "predicted_gap": 0.02591927486293662,
+        "channels": 16
+      },
+      "q41": {
+        "qubits": 41,
+        "predicted_gap": 0.02717533703449166,
+        "channels": 20
+      },
+      "q49": {
+        "qubits": 49,
+        "predicted_gap": 0.028431399206046704,
+        "channels": 24
+      }
+    },
+    "interpretation": "positive slope = gap worsens with qubits, negative = gap improves"
+  },
+  "current_best": {
+    "sim_best": {
+      "ch_key": "ch12",
+      "auc": 0.6436293436293437,
+      "qubits": 25
+    },
+    "hw_raw_best": {
+      "ch_key": "ch8",
+      "auc": 0.511003861003861,
+      "qubits": 17
+    },
+    "hw_calibrated_best": {
+      "ch_key": "ch8",
+      "auc": 0.636547619047619,
+      "qubits": 17,
+      "lift_from_raw": 0.11241496598639455
+    }
+  },
+  "classical_ceiling": {
+    "ch_key": "ch8",
+    "auc": 0.7233595352016404
+  },
+  "scenarios": {
+    "A_raw": {
+      "name": "Raw Hardware AUC",
+      "description": "Conservative projection using uncalibrated hardware AUC",
+      "current_auc": 0.511003861003861,
+      "gap_to_threshold": 0.18899613899613898,
+      "status": "below_threshold"
+    },
+    "B_calibrated": {
+      "name": "Polarity-Calibrated AUC",
+      "description": "Realistic projection with per-patient sign bit calibration",
+      "current_auc": 0.636547619047619,
+      "gap_to_threshold": 0.06345238095238093,
+      "calibration_lift": 0.11241496598639455,
+      "status": "below_threshold"
+    },
+    "C_simulation_ceiling": {
+      "name": "Simulation Ceiling",
+      "description": "Theoretical maximum with perfect hardware",
+      "current_auc": 0.6436293436293437,
+      "gap_to_threshold": 0.0563706563706563,
+      "status": "below_threshold"
+    }
+  },
+  "hardware_requirements": {
+    "current_2q_gate_fidelity": 0.995,
+    "target_2q_gate_fidelity": 0.999,
+    "current_circuit_depth": "O(M) ~ 17 for CH8",
+    "critical_bottlenecks": [
+      "Decoherence during circuit execution",
+      "CNOT/CZ gate errors accumulating",
+      "Measurement errors (~1%)",
+      "Patient-dependent polarity inversion"
+    ],
+    "mitigation_strategies": [
+      "Per-patient polarity calibration (implemented)",
+      "Error mitigation via ZNE or PEC",
+      "Circuit compilation optimization",
+      "Shot averaging (currently 1024)"
+    ]
+  },
+  "timeline": {
+    "current_state": "CH8 achieves 0.64 AUC with polarity calibration",
+    "near_term": {
+      "action": "Complete CH12/CH16 hardware runs",
+      "expected_date": "2026-03-22+",
+      "purpose": "Establish 4-point scaling curve"
+    },
+    "medium_term": {
+      "action": "Error mitigation experiments",
+      "expected_impact": "Reduce sim-hw gap by 30-50%",
+      "purpose": "Approach simulation ceiling"
+    },
+    "long_term": {
+      "action": "Higher qubit counts with better hardware",
+      "expected_impact": "Exceed clinical threshold",
+      "purpose": "Clinically deployable system"
+    }
+  }
+}
