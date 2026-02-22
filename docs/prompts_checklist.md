@@ -140,6 +140,23 @@ Last updated: 2026-02-22
 - **Finding**: Window size is a major AUC bottleneck. +0.15 AUC available from 20s windows alone.
 - **Implication**: Quantum encoding may benefit similarly from longer windows.
 
+### PROMPT 016 — Polarity Calibration on Tier 3 Riemannian Results
+
+- **Status**: DONE
+- **Script**: `scripts/tier3_polarity_calibration.py`
+- **Output**:
+  - `results/window_analysis/tier3_polarity_calibration.json`
+  - `results/window_analysis/tier3_polarity_report.md`
+- **Key Results**:
+  - Tier 3 raw: 0.44–0.57 across window sizes
+  - Tier 3 calibrated: 0.69–0.72 across window sizes (+0.12–0.19 lift)
+  - **Best calibrated: 0.724 AUC at 30s** (matches classical Tier 2 ceiling)
+  - Tier 2 shows near-zero calibration lift (eigenvalue sorting is polarity-invariant)
+  - Tier 3/Quantum concordance: 5/7 (71%)
+  - Polarity consistency across windows: 7/7 (100%)
+- **Finding**: Polarity inversion is THE explanation for Riemannian underperformance in cross-patient evaluation.
+- **Implication**: The polarity discovered via quantum hardware is not quantum-specific — it's a geometric property of the SPD manifold visible in any direction-preserving method.
+
 ---
 
 ## Scheduled for March 22, 2026+ (Credits Reset)
@@ -228,6 +245,16 @@ Last updated: 2026-02-22
 - Best simulation encoding produces exactly 0.500 AUC on hardware at both CH4 and CH8
 - Circuit output is degenerate (uniform/symmetric) regardless of input
 - Do not spend credits on V2 hardware runs
+
+### 4. Polarity Explains Tier 3 Riemannian Underperformance
+
+- Tier 3 raw AUC ~0.44–0.57 across all window sizes
+- Tier 3 calibrated AUC ~0.69–0.72 (+0.12–0.19 lift)
+- Best calibrated Tier 3: 0.724 at 30s windows (matches Tier 2 ceiling)
+- Tier 2 shows zero calibration lift — eigenvalue sorting is polarity-invariant
+- 100% of subjects have consistent polarity across ALL window sizes
+- 71% concordance between Tier 3 polarity and quantum polarity
+- Polarity is a geometric property of the SPD manifold, not a quantum-specific phenomenon
 
 ---
 

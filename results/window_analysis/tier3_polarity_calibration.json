@@ -1,0 +1,693 @@
+{
+  "per_window_size": {
+    "1": {
+      "tier3_raw_auc": 0.516,
+      "tier3_calibrated_auc": 0.6962,
+      "tier3_calibration_lift": 0.1802,
+      "tier2_raw_auc": 0.8518,
+      "tier2_calibrated_auc": 0.8518,
+      "tier2_calibration_lift": 0.0,
+      "n_tier3_inverted": 3,
+      "n_tier2_inverted": 0,
+      "per_subject": {
+        "chb01": {
+          "tier3_raw": 0.6929,
+          "tier3_calibrated": 0.6929,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9286,
+          "tier2_calibrated": 0.9286,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb03": {
+          "tier3_raw": 0.2286,
+          "tier3_calibrated": 0.7714,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.8929,
+          "tier2_calibrated": 0.8929,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        },
+        "chb05": {
+          "tier3_raw": 0.63,
+          "tier3_calibrated": 0.63,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb07": {
+          "tier3_raw": 0.75,
+          "tier3_calibrated": 0.75,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9667,
+          "tier2_calibrated": 0.9667,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb11": {
+          "tier3_raw": 0.7333,
+          "tier3_calibrated": 0.7333,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9667,
+          "tier2_calibrated": 0.9667,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": false
+        },
+        "chb14": {
+          "tier3_raw": 0.4143,
+          "tier3_calibrated": 0.5857,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.5143,
+          "tier2_calibrated": 0.5143,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": false
+        },
+        "chb21": {
+          "tier3_raw": 0.2571,
+          "tier3_calibrated": 0.7429,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.7714,
+          "tier2_calibrated": 0.7714,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        }
+      }
+    },
+    "2": {
+      "tier3_raw_auc": 0.5197,
+      "tier3_calibrated_auc": 0.695,
+      "tier3_calibration_lift": 0.1753,
+      "tier2_raw_auc": 0.8443,
+      "tier2_calibrated_auc": 0.8662,
+      "tier2_calibration_lift": 0.0219,
+      "n_tier3_inverted": 3,
+      "n_tier2_inverted": 1,
+      "per_subject": {
+        "chb01": {
+          "tier3_raw": 0.7,
+          "tier3_calibrated": 0.7,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9857,
+          "tier2_calibrated": 0.9857,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb03": {
+          "tier3_raw": 0.2357,
+          "tier3_calibrated": 0.7643,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.8929,
+          "tier2_calibrated": 0.8929,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        },
+        "chb05": {
+          "tier3_raw": 0.67,
+          "tier3_calibrated": 0.67,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.98,
+          "tier2_calibrated": 0.98,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb07": {
+          "tier3_raw": 0.7333,
+          "tier3_calibrated": 0.7333,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb11": {
+          "tier3_raw": 0.7,
+          "tier3_calibrated": 0.7,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": false
+        },
+        "chb14": {
+          "tier3_raw": 0.4214,
+          "tier3_calibrated": 0.5786,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.4357,
+          "tier2_calibrated": 0.5643,
+          "tier2_polarity": "inverted",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": false
+        },
+        "chb21": {
+          "tier3_raw": 0.2571,
+          "tier3_calibrated": 0.7429,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.7,
+          "tier2_calibrated": 0.7,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        }
+      }
+    },
+    "5": {
+      "tier3_raw_auc": 0.5102,
+      "tier3_calibrated_auc": 0.7019,
+      "tier3_calibration_lift": 0.1917,
+      "tier2_raw_auc": 0.8593,
+      "tier2_calibrated_auc": 0.9031,
+      "tier2_calibration_lift": 0.0438,
+      "n_tier3_inverted": 3,
+      "n_tier2_inverted": 1,
+      "per_subject": {
+        "chb01": {
+          "tier3_raw": 0.7286,
+          "tier3_calibrated": 0.7286,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9357,
+          "tier2_calibrated": 0.9357,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb03": {
+          "tier3_raw": 0.25,
+          "tier3_calibrated": 0.75,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.9786,
+          "tier2_calibrated": 0.9786,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        },
+        "chb05": {
+          "tier3_raw": 0.68,
+          "tier3_calibrated": 0.68,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb07": {
+          "tier3_raw": 0.6833,
+          "tier3_calibrated": 0.6833,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb11": {
+          "tier3_raw": 0.6833,
+          "tier3_calibrated": 0.6833,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9833,
+          "tier2_calibrated": 0.9833,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": false
+        },
+        "chb14": {
+          "tier3_raw": 0.45,
+          "tier3_calibrated": 0.55,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.3714,
+          "tier2_calibrated": 0.6286,
+          "tier2_polarity": "inverted",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": false
+        },
+        "chb21": {
+          "tier3_raw": 0.1286,
+          "tier3_calibrated": 0.8714,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.8571,
+          "tier2_calibrated": 0.8571,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        }
+      }
+    },
+    "10": {
+      "tier3_raw_auc": 0.5252,
+      "tier3_calibrated_auc": 0.7155,
+      "tier3_calibration_lift": 0.1903,
+      "tier2_raw_auc": 0.8094,
+      "tier2_calibrated_auc": 0.8264,
+      "tier2_calibration_lift": 0.017,
+      "n_tier3_inverted": 3,
+      "n_tier2_inverted": 1,
+      "per_subject": {
+        "chb01": {
+          "tier3_raw": 0.7571,
+          "tier3_calibrated": 0.7571,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9071,
+          "tier2_calibrated": 0.9071,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb03": {
+          "tier3_raw": 0.2429,
+          "tier3_calibrated": 0.7571,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.9857,
+          "tier2_calibrated": 0.9857,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        },
+        "chb05": {
+          "tier3_raw": 0.72,
+          "tier3_calibrated": 0.72,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.98,
+          "tier2_calibrated": 0.98,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb07": {
+          "tier3_raw": 0.7167,
+          "tier3_calibrated": 0.7167,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9667,
+          "tier2_calibrated": 0.9667,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb11": {
+          "tier3_raw": 0.6833,
+          "tier3_calibrated": 0.6833,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.6833,
+          "tier2_calibrated": 0.6833,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": false
+        },
+        "chb14": {
+          "tier3_raw": 0.4714,
+          "tier3_calibrated": 0.5286,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.45,
+          "tier2_calibrated": 0.55,
+          "tier2_polarity": "inverted",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": false
+        },
+        "chb21": {
+          "tier3_raw": 0.1143,
+          "tier3_calibrated": 0.8857,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.7,
+          "tier2_calibrated": 0.7,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        }
+      }
+    },
+    "15": {
+      "tier3_raw_auc": 0.5513,
+      "tier3_calibrated_auc": 0.7219,
+      "tier3_calibration_lift": 0.1706,
+      "tier2_raw_auc": 0.8103,
+      "tier2_calibrated_auc": 0.8103,
+      "tier2_calibration_lift": 0.0,
+      "n_tier3_inverted": 3,
+      "n_tier2_inverted": 0,
+      "per_subject": {
+        "chb01": {
+          "tier3_raw": 0.8357,
+          "tier3_calibrated": 0.8357,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.7857,
+          "tier2_calibrated": 0.7857,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb03": {
+          "tier3_raw": 0.2929,
+          "tier3_calibrated": 0.7071,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.9857,
+          "tier2_calibrated": 0.9857,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        },
+        "chb05": {
+          "tier3_raw": 0.78,
+          "tier3_calibrated": 0.78,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.96,
+          "tier2_calibrated": 0.96,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb07": {
+          "tier3_raw": 0.6833,
+          "tier3_calibrated": 0.6833,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb11": {
+          "tier3_raw": 0.6667,
+          "tier3_calibrated": 0.6667,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.7333,
+          "tier2_calibrated": 0.7333,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": false
+        },
+        "chb14": {
+          "tier3_raw": 0.4286,
+          "tier3_calibrated": 0.5714,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.5071,
+          "tier2_calibrated": 0.5071,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": false
+        },
+        "chb21": {
+          "tier3_raw": 0.1857,
+          "tier3_calibrated": 0.8143,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.7429,
+          "tier2_calibrated": 0.7429,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        }
+      }
+    },
+    "20": {
+      "tier3_raw_auc": 0.5699,
+      "tier3_calibrated_auc": 0.6899,
+      "tier3_calibration_lift": 0.12,
+      "tier2_raw_auc": 0.932,
+      "tier2_calibrated_auc": 0.932,
+      "tier2_calibration_lift": 0.0,
+      "n_tier3_inverted": 3,
+      "n_tier2_inverted": 0,
+      "per_subject": {
+        "chb01": {
+          "tier3_raw": 0.7714,
+          "tier3_calibrated": 0.7714,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9429,
+          "tier2_calibrated": 0.9429,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb03": {
+          "tier3_raw": 0.2357,
+          "tier3_calibrated": 0.7643,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.9929,
+          "tier2_calibrated": 0.9929,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        },
+        "chb05": {
+          "tier3_raw": 0.73,
+          "tier3_calibrated": 0.73,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb07": {
+          "tier3_raw": 0.7667,
+          "tier3_calibrated": 0.7667,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb11": {
+          "tier3_raw": 0.6833,
+          "tier3_calibrated": 0.6833,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": false
+        },
+        "chb14": {
+          "tier3_raw": 0.4929,
+          "tier3_calibrated": 0.5071,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.8571,
+          "tier2_calibrated": 0.8571,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": false
+        },
+        "chb21": {
+          "tier3_raw": 0.3857,
+          "tier3_calibrated": 0.6143,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.7286,
+          "tier2_calibrated": 0.7286,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        }
+      }
+    },
+    "30": {
+      "tier3_raw_auc": 0.5434,
+      "tier3_calibrated_auc": 0.7242,
+      "tier3_calibration_lift": 0.1808,
+      "tier2_raw_auc": 0.8874,
+      "tier2_calibrated_auc": 0.8874,
+      "tier2_calibration_lift": 0.0,
+      "n_tier3_inverted": 3,
+      "n_tier2_inverted": 0,
+      "per_subject": {
+        "chb01": {
+          "tier3_raw": 0.8,
+          "tier3_calibrated": 0.8,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9286,
+          "tier2_calibrated": 0.9286,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb03": {
+          "tier3_raw": 0.2071,
+          "tier3_calibrated": 0.7929,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.9857,
+          "tier2_calibrated": 0.9857,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        },
+        "chb05": {
+          "tier3_raw": 0.71,
+          "tier3_calibrated": 0.71,
+          "tier3_polarity": "standard",
+          "tier2_raw": 1.0,
+          "tier2_calibrated": 1.0,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb07": {
+          "tier3_raw": 0.7333,
+          "tier3_calibrated": 0.7333,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9667,
+          "tier2_calibrated": 0.9667,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": true
+        },
+        "chb11": {
+          "tier3_raw": 0.7333,
+          "tier3_calibrated": 0.7333,
+          "tier3_polarity": "standard",
+          "tier2_raw": 0.9833,
+          "tier2_calibrated": 0.9833,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": false
+        },
+        "chb14": {
+          "tier3_raw": 0.4643,
+          "tier3_calibrated": 0.5357,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.65,
+          "tier2_calibrated": 0.65,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "standard",
+          "tier3_matches_quantum": false
+        },
+        "chb21": {
+          "tier3_raw": 0.2143,
+          "tier3_calibrated": 0.7857,
+          "tier3_polarity": "inverted",
+          "tier2_raw": 0.7286,
+          "tier2_calibrated": 0.7286,
+          "tier2_polarity": "standard",
+          "quantum_polarity": "inverted",
+          "tier3_matches_quantum": true
+        }
+      }
+    }
+  },
+  "polarity_stability": {
+    "chb01": {
+      "tier3_polarity_across_windows": [
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard"
+      ],
+      "is_consistent": true,
+      "dominant_polarity": "standard",
+      "quantum_polarity": "standard",
+      "tier3_matches_quantum": true
+    },
+    "chb03": {
+      "tier3_polarity_across_windows": [
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted"
+      ],
+      "is_consistent": true,
+      "dominant_polarity": "inverted",
+      "quantum_polarity": "inverted",
+      "tier3_matches_quantum": true
+    },
+    "chb05": {
+      "tier3_polarity_across_windows": [
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard"
+      ],
+      "is_consistent": true,
+      "dominant_polarity": "standard",
+      "quantum_polarity": "standard",
+      "tier3_matches_quantum": true
+    },
+    "chb07": {
+      "tier3_polarity_across_windows": [
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard"
+      ],
+      "is_consistent": true,
+      "dominant_polarity": "standard",
+      "quantum_polarity": "standard",
+      "tier3_matches_quantum": true
+    },
+    "chb11": {
+      "tier3_polarity_across_windows": [
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard",
+        "standard"
+      ],
+      "is_consistent": true,
+      "dominant_polarity": "standard",
+      "quantum_polarity": "inverted",
+      "tier3_matches_quantum": false
+    },
+    "chb14": {
+      "tier3_polarity_across_windows": [
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted"
+      ],
+      "is_consistent": true,
+      "dominant_polarity": "inverted",
+      "quantum_polarity": "standard",
+      "tier3_matches_quantum": false
+    },
+    "chb21": {
+      "tier3_polarity_across_windows": [
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted",
+        "inverted"
+      ],
+      "is_consistent": true,
+      "dominant_polarity": "inverted",
+      "quantum_polarity": "inverted",
+      "tier3_matches_quantum": true
+    }
+  },
+  "concordance_summary": {
+    "n_subjects": 7,
+    "n_with_quantum_data": 7,
+    "n_tier3_quantum_concordant": 5,
+    "concordance_rate": 0.71,
+    "n_polarity_consistent_across_windows": 7,
+    "polarity_window_consistency_rate": 1.0
+  }
+}
