@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ================================================================================
-PROMPT 012 - Hardware Scaling: 16 Channels PLV on IBM Heron (Mar 22+)
+PROMPT 014 - Hardware Scaling: 16 Channels PLV on IBM Heron (Mar 22+)
 ================================================================================
 
 16-channel hardware run using segment-level PLV encoding.
@@ -468,7 +468,7 @@ def run_hardware_loso(channels: List[str], subjects: List[str], backend) -> Dict
 
 def main():
     print("=" * 70)
-    print("PROMPT 012 - Hardware Scaling: 16 Channels PLV on IBM Heron")
+    print("PROMPT 014 - Hardware Scaling: 16 Channels PLV on IBM Heron")
     print("=" * 70)
     print(f"Scheduled for: March 22, 2026+ or subsequent window")
     print(f"Cost estimate: ~63s (9s/subject x 7 subjects)")
