@@ -346,6 +346,24 @@
             color: #555;
             text-align: right;
         }
+
+        /* Audio controls */
+        .control-separator {
+            color: rgba(255,255,255,0.2);
+            margin: 0 8px;
+        }
+
+        .audio-hint {
+            font-size: 10px;
+            color: #555;
+            margin-left: 6px;
+        }
+
+        #btn-mute.audio-on {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
     </style>
 </head>
 <body>
@@ -447,6 +465,13 @@
 
         <div class="gate-counter">
             Gate: <span class="current" id="gate-current">0</span> / <span id="gate-total">120</span>
+        </div>
+
+        <span class="control-separator">|</span>
+
+        <div class="control-group">
+            <button class="btn" id="btn-mute" title="Toggle audio (M)">🔇 Audio</button>
+            <span class="audio-hint">Press M</span>
         </div>
     </div>
 
@@ -634,6 +659,21 @@
         'chb01-interictal': 0x4488ff,
         'chb11-ictal': 0xff8800,
         'chb11-interictal': 0x44aaff
+    };
+
+    // Audio state
+    let audioCtx = null;
+    let masterGain = null;
+    let oscillators = {};
+    let oscGains = {};
+    let audioMuted = true; // Start muted, enable on user gesture
+
+    // Audio configuration
+    const OSC_CONFIG = {
+        'chb01-ictal':       { type: 'sine',     baseFreq: 220 },
+        'chb01-interictal':  { type: 'triangle', baseFreq: 330 },
+        'chb11-ictal':       { type: 'sine',     baseFreq: 220 },
+        'chb11-interictal':  { type: 'triangle', baseFreq: 330 }
     };
 
     // =========================================================================
@@ -1082,6 +1122,129 @@
     }
 
     // =========================================================================
+    // AUDIO SONIFICATION
+    // =========================================================================
+
+    function initAudio() {
+        if (audioCtx) return;
+
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Master gain
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0.6;
+        masterGain.connect(audioCtx.destination);
+
+        // Create oscillators for each trajectory
+        Object.keys(OSC_CONFIG).forEach(key => {
+            const config = OSC_CONFIG[key];
+
+            // Oscillator
+            const osc = audioCtx.createOscillator();
+            osc.type = config.type;
+            osc.frequency.value = config.baseFreq;
+
+            // Per-oscillator gain
+            const gain = audioCtx.createGain();
+            gain.gain.value = 0; // Start silent
+
+            // Connect: osc -> gain -> master -> destination
+            osc.connect(gain);
+            gain.connect(masterGain);
+
+            osc.start();
+
+            oscillators[key] = osc;
+            oscGains[key] = gain;
+        });
+
+        console.log('Audio initialized');
+    }
+
+    function boundaryToFreq(boundaryDist, baseFreq = 220) {
+        // boundary_dist range: approximately -0.25 to +0.25
+        // Map to [baseFreq * 0.5, baseFreq * 2.0] (one octave down to one up)
+        const normalized = (boundaryDist + 0.25) / 0.50; // 0 to 1
+        const clamped = Math.max(0, Math.min(1, normalized));
+        // Exponential pitch mapping feels linear to human perception
+        return baseFreq * Math.pow(2, clamped * 2 - 1);
+    }
+
+    function updateAudio() {
+        if (!audioCtx || audioMuted) return;
+
+        const patients = currentPatient === 'both' ? ['chb01', 'chb11'] : [currentPatient];
+        const states = [];
+        if (showIctal) states.push('ictal');
+        if (showInterictal) states.push('interictal');
+
+        const t = audioCtx.currentTime;
+        const stepDuration = speed / 1000; // Convert ms to seconds
+
+        Object.keys(OSC_CONFIG).forEach(key => {
+            const [patient, state] = key.split('-');
+            const osc = oscillators[key];
+            const gain = oscGains[key];
+            const config = OSC_CONFIG[key];
+
+            const isActive = patients.includes(patient) && states.includes(state);
+
+            if (isActive && data && data.patients[patient] && data.patients[patient][state]) {
+                const trajectory = data.patients[patient][state];
+                if (currentGate < trajectory.length) {
+                    const point = trajectory[currentGate];
+                    const newFreq = boundaryToFreq(point.boundary_distance, config.baseFreq);
+
+                    // Smooth frequency transition
+                    osc.frequency.cancelScheduledValues(t);
+                    osc.frequency.setValueAtTime(osc.frequency.value, t);
+                    osc.frequency.linearRampToValueAtTime(newFreq, t + 0.05);
+
+                    // Gain envelope for this gate tick
+                    gain.gain.cancelScheduledValues(t);
+                    gain.gain.setValueAtTime(0, t);
+                    gain.gain.linearRampToValueAtTime(0.15, t + 0.02); // 20ms attack
+                    gain.gain.setValueAtTime(0.15, t + Math.max(0.03, stepDuration - 0.02));
+                    gain.gain.linearRampToValueAtTime(0, t + stepDuration); // Release
+                }
+            } else {
+                // Silence inactive oscillators
+                gain.gain.cancelScheduledValues(t);
+                gain.gain.linearRampToValueAtTime(0, t + 0.05);
+            }
+        });
+    }
+
+    function silenceAudio() {
+        if (!audioCtx) return;
+
+        const t = audioCtx.currentTime;
+        Object.values(oscGains).forEach(gain => {
+            gain.gain.cancelScheduledValues(t);
+            gain.gain.linearRampToValueAtTime(0, t + 0.1); // 100ms fade out
+        });
+    }
+
+    function toggleMute() {
+        audioMuted = !audioMuted;
+        const btn = document.getElementById('btn-mute');
+
+        if (audioMuted) {
+            btn.textContent = '🔇 Audio';
+            btn.classList.remove('audio-on');
+            silenceAudio();
+        } else {
+            // Initialize audio on first unmute (user gesture requirement)
+            initAudio();
+            btn.textContent = '🔊 Audio';
+            btn.classList.add('audio-on');
+            if (isPlaying) {
+                updateAudio();
+            }
+        }
+    }
+
+    // =========================================================================
     // CONTROLS
     // =========================================================================
 
@@ -1116,6 +1279,7 @@
                 btn.classList.add('active');
                 currentPatient = btn.dataset.patient;
                 updateVisualization();
+                if (isPlaying && !audioMuted) updateAudio();
             });
         });
 
@@ -1124,12 +1288,14 @@
             showIctal = !showIctal;
             e.target.classList.toggle('active', showIctal);
             updateVisualization();
+            if (isPlaying && !audioMuted) updateAudio();
         });
 
         document.getElementById('btn-interictal').addEventListener('click', (e) => {
             showInterictal = !showInterictal;
             e.target.classList.toggle('active', showInterictal);
             updateVisualization();
+            if (isPlaying && !audioMuted) updateAudio();
         });
 
         document.getElementById('btn-boundary').addEventListener('click', (e) => {
@@ -1137,6 +1303,9 @@
             e.target.classList.toggle('active', showBoundary);
             updateVisualization();
         });
+
+        // Mute button
+        document.getElementById('btn-mute').addEventListener('click', toggleMute);
 
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
@@ -1147,6 +1316,8 @@
                 stepForward();
             } else if (e.code === 'ArrowLeft') {
                 stepBackward();
+            } else if (e.code === 'KeyM') {
+                toggleMute();
             }
         });
     }
@@ -1158,9 +1329,16 @@
         if (isPlaying) {
             btn.innerHTML = '&#9208;'; // Pause
             playInterval = setInterval(stepForward, speed);
+            // Start audio if not muted
+            if (!audioMuted) {
+                initAudio(); // Ensure initialized on user gesture
+                updateAudio();
+            }
         } else {
             btn.innerHTML = '&#9654;'; // Play
             clearInterval(playInterval);
+            // Gracefully silence audio
+            silenceAudio();
         }
     }
 
@@ -1168,6 +1346,10 @@
         if (currentGate < totalGates - 1) {
             currentGate++;
             updateVisualization();
+            // Update audio if playing and not muted
+            if (isPlaying && !audioMuted) {
+                updateAudio();
+            }
         } else if (isPlaying) {
             togglePlay(); // Stop at end
         }
