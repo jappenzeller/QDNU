@@ -1,0 +1,1516 @@
+{
+  "audit_timestamp": "2026-02-22T06:05:34.579447",
+  "aggregate": {
+    "raw_overall_hw_auc": 0.5241326530612245,
+    "calibrated_overall_auc": 0.636547619047619,
+    "n_hw_subjects": 7,
+    "n_inverted": 3,
+    "calibration_lift": 0.11241496598639455
+  },
+  "mandelbrot_concordance": {
+    "patients_in_both_analyses": 4,
+    "polarity_matches_direction": 2,
+    "concordance_rate": 0.5,
+    "interpretation": "inconclusive"
+  },
+  "classification_summary": {
+    "STRONG": {
+      "n": 2,
+      "avg_calibrated_auc": 0.6761904761904762
+    },
+    "UNTESTED-PROMISING": {
+      "n": 11,
+      "avg_calibrated_auc": null
+    },
+    "MODERATE": {
+      "n": 4,
+      "avg_calibrated_auc": 0.5966964285714287
+    },
+    "STRONG-INVERTED": {
+      "n": 1,
+      "avg_calibrated_auc": 0.7166666666666667
+    },
+    "UNTESTED": {
+      "n": 4,
+      "avg_calibrated_auc": null
+    }
+  },
+  "patient_profiles": {
+    "chb01": {
+      "subject": "chb01",
+      "classical_ch8_auc": 1.0,
+      "hardware_runs": [
+        {
+          "encoding": "PLV_theta_alpha",
+          "backend": "HARDWARE: ibm_torino",
+          "raw_auc": 0.6857142857142857,
+          "calibrated_auc": 0.6857142857142857,
+          "polarity": "standard",
+          "beats_classical": false
+        }
+      ],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.3142857142857143,
+          "calibrated_auc": 0.6857142857142857,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.8785714285714286,
+          "calibrated_auc": 0.8785714285714286,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.4785714285714286,
+          "calibrated_auc": 0.5214285714285714,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.47857142857142854,
+          "calibrated_auc": 0.5214285714285715,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.3357142857142857,
+          "calibrated_auc": 0.6642857142857144,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.4786,
+          "calibrated_auc": 0.5214,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.8785714285714286,
+          "calibrated_auc": 0.8785714285714286,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": 0.6857142857142857,
+      "best_hardware_calibrated_auc": 0.6857142857142857,
+      "best_simulation_calibrated_auc": 0.8785714285714286,
+      "hw_sim_gap": 0.19285714285714284,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_inside",
+      "polarity_matches_mandelbrot": false,
+      "classification": "STRONG"
+    },
+    "chb02": {
+      "subject": "chb02",
+      "classical_ch8_auc": 0.8200000000000001,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.6166666666666667,
+          "calibrated_auc": 0.6166666666666667,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.16666666666666663,
+          "calibrated_auc": 0.8333333333333334,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.29999999999999993,
+          "calibrated_auc": 0.7000000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.28333333333333327,
+          "calibrated_auc": 0.7166666666666668,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.5166666666666666,
+          "calibrated_auc": 0.5166666666666666,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.2833,
+          "calibrated_auc": 0.7167,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.16666666666666663,
+          "calibrated_auc": 0.8333333333333334,
+          "polarity": "inverted"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.8333333333333334,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_outside",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb03": {
+      "subject": "chb03",
+      "classical_ch8_auc": 0.6857142857142857,
+      "hardware_runs": [
+        {
+          "encoding": "PLV_theta_alpha",
+          "backend": "HARDWARE: ibm_torino",
+          "raw_auc": 0.4357142857142857,
+          "calibrated_auc": 0.5642857142857143,
+          "polarity": "inverted",
+          "beats_classical": false
+        }
+      ],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.3142857142857143,
+          "calibrated_auc": 0.6857142857142857,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.5642857142857143,
+          "calibrated_auc": 0.5642857142857143,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.5071428571428571,
+          "calibrated_auc": 0.5071428571428571,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.4642857142857143,
+          "calibrated_auc": 0.5357142857142857,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.9500000000000001,
+          "calibrated_auc": 0.9500000000000001,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.4643,
+          "calibrated_auc": 0.5357000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.5642857142857143,
+          "calibrated_auc": 0.5642857142857143,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": 0.4357142857142857,
+      "best_hardware_calibrated_auc": 0.5642857142857143,
+      "best_simulation_calibrated_auc": 0.9500000000000001,
+      "hw_sim_gap": 0.3857142857142858,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_inside",
+      "polarity_matches_mandelbrot": true,
+      "classification": "MODERATE"
+    },
+    "chb04": {
+      "subject": "chb04",
+      "classical_ch8_auc": 0.7875,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.325,
+          "calibrated_auc": 0.675,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.375,
+          "calibrated_auc": 0.625,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.8,
+          "calibrated_auc": 0.8,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.3,
+          "calibrated_auc": 0.7,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.5750000000000001,
+          "calibrated_auc": 0.5750000000000001,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.3125,
+          "calibrated_auc": 0.6875,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.375,
+          "calibrated_auc": 0.625,
+          "polarity": "inverted"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.8,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_outside",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb05": {
+      "subject": "chb05",
+      "classical_ch8_auc": 1.0,
+      "hardware_runs": [
+        {
+          "encoding": "PLV_theta_alpha",
+          "backend": "HARDWARE: ibm_torino",
+          "raw_auc": 0.61,
+          "calibrated_auc": 0.61,
+          "polarity": "standard",
+          "beats_classical": false
+        }
+      ],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.26999999999999996,
+          "calibrated_auc": 0.73,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.5800000000000001,
+          "calibrated_auc": 0.5800000000000001,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.6600000000000001,
+          "calibrated_auc": 0.6600000000000001,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.41000000000000003,
+          "calibrated_auc": 0.59,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.59,
+          "calibrated_auc": 0.59,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.41,
+          "calibrated_auc": 0.5900000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.5800000000000001,
+          "calibrated_auc": 0.5800000000000001,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": 0.61,
+      "best_hardware_calibrated_auc": 0.61,
+      "best_simulation_calibrated_auc": 0.73,
+      "hw_sim_gap": 0.12,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_outside",
+      "polarity_matches_mandelbrot": true,
+      "classification": "MODERATE"
+    },
+    "chb06": {
+      "subject": "chb06",
+      "classical_ch8_auc": 0.4625,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.45999999999999996,
+          "calibrated_auc": 0.54,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.8049999999999999,
+          "calibrated_auc": 0.8049999999999999,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.505,
+          "calibrated_auc": 0.505,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.59,
+          "calibrated_auc": 0.59,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.545,
+          "calibrated_auc": 0.545,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.595,
+          "calibrated_auc": 0.595,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.8049999999999999,
+          "calibrated_auc": 0.8049999999999999,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.8049999999999999,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_outside",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb07": {
+      "subject": "chb07",
+      "classical_ch8_auc": 0.9333333333333333,
+      "hardware_runs": [
+        {
+          "encoding": "PLV_theta_alpha",
+          "backend": "HARDWARE: ibm_torino",
+          "raw_auc": 0.6666666666666666,
+          "calibrated_auc": 0.6666666666666666,
+          "polarity": "standard",
+          "beats_classical": false
+        }
+      ],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.26666666666666666,
+          "calibrated_auc": 0.7333333333333334,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.36666666666666664,
+          "calibrated_auc": 0.6333333333333333,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.7000000000000001,
+          "calibrated_auc": 0.7000000000000001,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.6166666666666667,
+          "calibrated_auc": 0.6166666666666667,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.7666666666666666,
+          "calibrated_auc": 0.7666666666666666,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.65,
+          "calibrated_auc": 0.65,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.36666666666666664,
+          "calibrated_auc": 0.6333333333333333,
+          "polarity": "inverted"
+        }
+      ],
+      "best_hardware_raw_auc": 0.6666666666666666,
+      "best_hardware_calibrated_auc": 0.6666666666666666,
+      "best_simulation_calibrated_auc": 0.7666666666666666,
+      "hw_sim_gap": 0.09999999999999998,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_inside",
+      "polarity_matches_mandelbrot": false,
+      "classification": "STRONG"
+    },
+    "chb08": {
+      "subject": "chb08",
+      "classical_ch8_auc": 0.7600000000000001,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.24999999999999997,
+          "calibrated_auc": 0.75,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.4,
+          "calibrated_auc": 0.6,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.42999999999999994,
+          "calibrated_auc": 0.5700000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.37,
+          "calibrated_auc": 0.63,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.75,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "ictal_outside",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb09": {
+      "subject": "chb09",
+      "classical_ch8_auc": 0.9375,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.42500000000000004,
+          "calibrated_auc": 0.575,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.4125,
+          "calibrated_auc": 0.5875,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.55,
+          "calibrated_auc": 0.55,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.26250000000000007,
+          "calibrated_auc": 0.7374999999999999,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.7875,
+          "calibrated_auc": 0.7875,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.3,
+          "calibrated_auc": 0.7,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.4125,
+          "calibrated_auc": 0.5875,
+          "polarity": "inverted"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.7875,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb10": {
+      "subject": "chb10",
+      "classical_ch8_auc": 0.9142857142857141,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.7357142857142858,
+          "calibrated_auc": 0.7357142857142858,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.5785714285714285,
+          "calibrated_auc": 0.5785714285714285,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.44285714285714284,
+          "calibrated_auc": 0.5571428571428572,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.5357142857142857,
+          "calibrated_auc": 0.5357142857142857,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.26428571428571423,
+          "calibrated_auc": 0.7357142857142858,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.5357,
+          "calibrated_auc": 0.5357,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.5785714285714285,
+          "calibrated_auc": 0.5785714285714285,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.7357142857142858,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb11": {
+      "subject": "chb11",
+      "classical_ch8_auc": 0.7833333333333333,
+      "hardware_runs": [
+        {
+          "encoding": "PLV_theta_alpha",
+          "backend": "HARDWARE: ibm_torino",
+          "raw_auc": 0.2833333333333333,
+          "calibrated_auc": 0.7166666666666667,
+          "polarity": "inverted",
+          "beats_classical": false
+        }
+      ],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.31666666666666665,
+          "calibrated_auc": 0.6833333333333333,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.5166666666666666,
+          "calibrated_auc": 0.5166666666666666,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.5,
+          "calibrated_auc": 0.5,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.6333333333333333,
+          "calibrated_auc": 0.6333333333333333,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.9,
+          "calibrated_auc": 0.9,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.65,
+          "calibrated_auc": 0.65,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.5166666666666666,
+          "calibrated_auc": 0.5166666666666666,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": 0.2833333333333333,
+      "best_hardware_calibrated_auc": 0.7166666666666667,
+      "best_simulation_calibrated_auc": 0.9,
+      "hw_sim_gap": 0.18333333333333335,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "STRONG-INVERTED"
+    },
+    "chb13": {
+      "subject": "chb13",
+      "classical_ch8_auc": 0.6791666666666667,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.20833333333333334,
+          "calibrated_auc": 0.7916666666666666,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.9500000000000001,
+          "calibrated_auc": 0.9500000000000001,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.4875,
+          "calibrated_auc": 0.5125,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.4375,
+          "calibrated_auc": 0.5625,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.5166666666666667,
+          "calibrated_auc": 0.5166666666666667,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.4333,
+          "calibrated_auc": 0.5667,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.9500000000000001,
+          "calibrated_auc": 0.9500000000000001,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.9500000000000001,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb14": {
+      "subject": "chb14",
+      "classical_ch8_auc": 0.6357142857142857,
+      "hardware_runs": [
+        {
+          "encoding": "PLV_theta_alpha",
+          "backend": "HARDWARE: ibm_torino",
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard",
+          "beats_classical": false
+        }
+      ],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.53125,
+          "calibrated_auc": 0.53125,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.55625,
+          "calibrated_auc": 0.55625,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.63125,
+          "calibrated_auc": 0.63125,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.65,
+          "calibrated_auc": 0.65,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.36250000000000004,
+          "calibrated_auc": 0.6375,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.6438,
+          "calibrated_auc": 0.6438,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.55625,
+          "calibrated_auc": 0.55625,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": 0.6,
+      "best_hardware_calibrated_auc": 0.6,
+      "best_simulation_calibrated_auc": 0.65,
+      "hw_sim_gap": 0.050000000000000044,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "MODERATE"
+    },
+    "chb15": {
+      "subject": "chb15",
+      "classical_ch8_auc": 0.7575000000000001,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.515,
+          "calibrated_auc": 0.515,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.39,
+          "calibrated_auc": 0.61,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.48250000000000004,
+          "calibrated_auc": 0.5175,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.5549999999999999,
+          "calibrated_auc": 0.5549999999999999,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.47250000000000003,
+          "calibrated_auc": 0.5275,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.5325,
+          "calibrated_auc": 0.5325,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.39,
+          "calibrated_auc": 0.61,
+          "polarity": "inverted"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.61,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED"
+    },
+    "chb16": {
+      "subject": "chb16",
+      "classical_ch8_auc": 0.8400000000000001,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.57,
+          "calibrated_auc": 0.57,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.375,
+          "calibrated_auc": 0.625,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.44,
+          "calibrated_auc": 0.56,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.435,
+          "calibrated_auc": 0.565,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.44499999999999995,
+          "calibrated_auc": 0.555,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.43,
+          "calibrated_auc": 0.5700000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.375,
+          "calibrated_auc": 0.625,
+          "polarity": "inverted"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.625,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED"
+    },
+    "chb17": {
+      "subject": "chb17",
+      "classical_ch8_auc": 0.7833333333333333,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.39999999999999997,
+          "calibrated_auc": 0.6000000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.4333333333333333,
+          "calibrated_auc": 0.5666666666666667,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.41666666666666663,
+          "calibrated_auc": 0.5833333333333334,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.5333333333333333,
+          "calibrated_auc": 0.5333333333333333,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.3833,
+          "calibrated_auc": 0.6167,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.6167,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED"
+    },
+    "chb18": {
+      "subject": "chb18",
+      "classical_ch8_auc": 0.7916666666666667,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.9416666666666667,
+          "calibrated_auc": 0.9416666666666667,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.5083333333333333,
+          "calibrated_auc": 0.5083333333333333,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.5333333333333333,
+          "calibrated_auc": 0.5333333333333333,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.25,
+          "calibrated_auc": 0.75,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.43333333333333335,
+          "calibrated_auc": 0.5666666666666667,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.25,
+          "calibrated_auc": 0.75,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.5083333333333333,
+          "calibrated_auc": 0.5083333333333333,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.9416666666666667,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb19": {
+      "subject": "chb19",
+      "classical_ch8_auc": 0.8,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.3333333333333333,
+          "calibrated_auc": 0.6666666666666667,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.7166666666666666,
+          "calibrated_auc": 0.7166666666666666,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.6333333333333333,
+          "calibrated_auc": 0.6333333333333333,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.5333333333333333,
+          "calibrated_auc": 0.5333333333333333,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.3,
+          "calibrated_auc": 0.7,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.5,
+          "calibrated_auc": 0.5,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.7166666666666666,
+          "calibrated_auc": 0.7166666666666666,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.7166666666666666,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb20": {
+      "subject": "chb20",
+      "classical_ch8_auc": 0.96875,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.39999999999999997,
+          "calibrated_auc": 0.6000000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.73125,
+          "calibrated_auc": 0.73125,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.4124999999999999,
+          "calibrated_auc": 0.5875000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.54375,
+          "calibrated_auc": 0.54375,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.48749999999999993,
+          "calibrated_auc": 0.5125000000000001,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.5625,
+          "calibrated_auc": 0.5625,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.73125,
+          "calibrated_auc": 0.73125,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.73125,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb21": {
+      "subject": "chb21",
+      "classical_ch8_auc": 0.7428571428571428,
+      "hardware_runs": [
+        {
+          "encoding": "PLV_theta_alpha",
+          "backend": "HARDWARE: ibm_torino",
+          "raw_auc": 0.38749999999999996,
+          "calibrated_auc": 0.6125,
+          "polarity": "inverted",
+          "beats_classical": false
+        }
+      ],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.25,
+          "calibrated_auc": 0.75,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.5125,
+          "calibrated_auc": 0.5125,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.35,
+          "calibrated_auc": 0.65,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.6625,
+          "calibrated_auc": 0.6625,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.65,
+          "calibrated_auc": 0.65,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.6625,
+          "calibrated_auc": 0.6625,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.5125,
+          "calibrated_auc": 0.5125,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": 0.38749999999999996,
+      "best_hardware_calibrated_auc": 0.6125,
+      "best_simulation_calibrated_auc": 0.75,
+      "hw_sim_gap": 0.13749999999999996,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "MODERATE"
+    },
+    "chb22": {
+      "subject": "chb22",
+      "classical_ch8_auc": 1.0,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.6499999999999999,
+          "calibrated_auc": 0.6499999999999999,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.7,
+          "calibrated_auc": 0.7,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.7166666666666667,
+          "calibrated_auc": 0.7166666666666667,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.4333333333333333,
+          "calibrated_auc": 0.5666666666666667,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.2333333333333333,
+          "calibrated_auc": 0.7666666666666667,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.4667,
+          "calibrated_auc": 0.5333,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.7,
+          "calibrated_auc": 0.7,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.7666666666666667,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED-PROMISING"
+    },
+    "chb23": {
+      "subject": "chb23",
+      "classical_ch8_auc": 0.9571428571428571,
+      "hardware_runs": [],
+      "simulation_runs": [
+        {
+          "encoding": "V1_PN_dynamics",
+          "backend": "not_logged",
+          "raw_auc": 0.4,
+          "calibrated_auc": 0.6,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V2_band_power (band_power)",
+          "backend": "not_logged",
+          "raw_auc": 0.5714285714285714,
+          "calibrated_auc": 0.5714285714285714,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-8",
+          "backend": "not_logged",
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard"
+        },
+        {
+          "encoding": "V3_PLV_4-13",
+          "backend": "not_logged",
+          "raw_auc": 0.42857142857142855,
+          "calibrated_auc": 0.5714285714285714,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "V3_PLV_8-30",
+          "backend": "not_logged",
+          "raw_auc": 0.43571428571428567,
+          "calibrated_auc": 0.5642857142857143,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "not_logged",
+          "raw_auc": 0.4,
+          "calibrated_auc": 0.6,
+          "polarity": "inverted"
+        },
+        {
+          "encoding": "not_logged",
+          "backend": "simulation: statevector_simulation",
+          "raw_auc": 0.5714285714285714,
+          "calibrated_auc": 0.5714285714285714,
+          "polarity": "standard"
+        }
+      ],
+      "best_hardware_raw_auc": null,
+      "best_hardware_calibrated_auc": null,
+      "best_simulation_calibrated_auc": 0.6,
+      "hw_sim_gap": null,
+      "polarity_consistent_across_runs": false,
+      "mandelbrot_direction": "not_available",
+      "polarity_matches_mandelbrot": null,
+      "classification": "UNTESTED"
+    }
+  },
+  "data_sparsity_notes": [
+    "Hardware runs per patient: min=0, max=1",
+    "Subjects with hardware data: 7 / 22",
+    "Single-run hardware patients: 7"
+  ]
+}

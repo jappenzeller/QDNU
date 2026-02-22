@@ -1,0 +1,387 @@
+{
+  "audit_timestamp": "2026-02-22T05:50:31.034082",
+  "all_quantum_result_files": [
+    {
+      "path": "analysis_results\\quantum_loso\\quantum_results.json",
+      "backend": "not_logged",
+      "encoding": "V1_PN_dynamics",
+      "mitigation": "not_logged",
+      "overall_auc": 0.4443982074263764,
+      "per_subject": {
+        "chb01": 0.3142857142857143,
+        "chb02": 0.6166666666666667,
+        "chb03": 0.3142857142857143,
+        "chb04": 0.325,
+        "chb05": 0.26999999999999996,
+        "chb06": 0.45999999999999996,
+        "chb07": 0.26666666666666666,
+        "chb08": 0.24999999999999997,
+        "chb09": 0.42500000000000004,
+        "chb10": 0.7357142857142858,
+        "chb11": 0.31666666666666665,
+        "chb13": 0.20833333333333334,
+        "chb14": 0.53125,
+        "chb15": 0.515,
+        "chb16": 0.57,
+        "chb17": 0.39999999999999997,
+        "chb18": 0.9416666666666667,
+        "chb19": 0.3333333333333333,
+        "chb20": 0.39999999999999997,
+        "chb21": 0.25,
+        "chb22": 0.6499999999999999,
+        "chb23": 0.4
+      },
+      "timestamp": "not_logged",
+      "n_qubits": 17,
+      "n_channels": 8
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v2\\quantum_results.json",
+      "backend": "not_logged",
+      "encoding": "V2_band_power (band_power)",
+      "mitigation": "not_logged",
+      "overall_auc": 0.5344110115236875,
+      "per_subject": {
+        "chb01": 0.8785714285714286,
+        "chb02": 0.16666666666666663,
+        "chb03": 0.5642857142857143,
+        "chb04": 0.375,
+        "chb05": 0.5800000000000001,
+        "chb06": 0.8049999999999999,
+        "chb07": 0.36666666666666664,
+        "chb08": 0.6,
+        "chb09": 0.4125,
+        "chb10": 0.5785714285714285,
+        "chb11": 0.5166666666666666,
+        "chb13": 0.9500000000000001,
+        "chb14": 0.55625,
+        "chb15": 0.39,
+        "chb16": 0.375,
+        "chb17": 0.6,
+        "chb18": 0.5083333333333333,
+        "chb19": 0.7166666666666666,
+        "chb20": 0.73125,
+        "chb21": 0.5125,
+        "chb22": 0.7,
+        "chb23": 0.5714285714285714
+      },
+      "timestamp": "not_logged",
+      "n_qubits": 17,
+      "n_channels": 8
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_theta_results.json",
+      "backend": "not_logged",
+      "encoding": "V3_PLV_4-8",
+      "mitigation": "not_logged",
+      "overall_auc": 0.5291293213828425,
+      "per_subject": {
+        "chb01": 0.4785714285714286,
+        "chb02": 0.29999999999999993,
+        "chb03": 0.5071428571428571,
+        "chb04": 0.8,
+        "chb05": 0.6600000000000001,
+        "chb06": 0.505,
+        "chb07": 0.7000000000000001,
+        "chb08": 0.6,
+        "chb09": 0.55,
+        "chb10": 0.44285714285714284,
+        "chb11": 0.5,
+        "chb13": 0.4875,
+        "chb14": 0.63125,
+        "chb15": 0.48250000000000004,
+        "chb16": 0.44,
+        "chb17": 0.4333333333333333,
+        "chb18": 0.5333333333333333,
+        "chb19": 0.6333333333333333,
+        "chb20": 0.4124999999999999,
+        "chb21": 0.35,
+        "chb22": 0.7166666666666667,
+        "chb23": 0.6
+      },
+      "timestamp": "not_logged",
+      "n_qubits": 17,
+      "n_channels": 8
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_theta_alpha_results.json",
+      "backend": "not_logged",
+      "encoding": "V3_PLV_4-13",
+      "mitigation": "not_logged",
+      "overall_auc": 0.45971510883482714,
+      "per_subject": {
+        "chb01": 0.47857142857142854,
+        "chb02": 0.28333333333333327,
+        "chb03": 0.4642857142857143,
+        "chb04": 0.3,
+        "chb05": 0.41000000000000003,
+        "chb06": 0.59,
+        "chb07": 0.6166666666666667,
+        "chb08": 0.4,
+        "chb09": 0.26250000000000007,
+        "chb10": 0.5357142857142857,
+        "chb11": 0.6333333333333333,
+        "chb13": 0.4375,
+        "chb14": 0.65,
+        "chb15": 0.5549999999999999,
+        "chb16": 0.435,
+        "chb17": 0.41666666666666663,
+        "chb18": 0.25,
+        "chb19": 0.5333333333333333,
+        "chb20": 0.54375,
+        "chb21": 0.6625,
+        "chb22": 0.4333333333333333,
+        "chb23": 0.42857142857142855
+      },
+      "timestamp": "not_logged",
+      "n_qubits": 17,
+      "n_channels": 8
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_alpha_beta_results.json",
+      "backend": "not_logged",
+      "encoding": "V3_PLV_8-30",
+      "mitigation": "not_logged",
+      "overall_auc": 0.5011843790012804,
+      "per_subject": {
+        "chb01": 0.3357142857142857,
+        "chb02": 0.5166666666666666,
+        "chb03": 0.9500000000000001,
+        "chb04": 0.5750000000000001,
+        "chb05": 0.59,
+        "chb06": 0.545,
+        "chb07": 0.7666666666666666,
+        "chb08": 0.42999999999999994,
+        "chb09": 0.7875,
+        "chb10": 0.26428571428571423,
+        "chb11": 0.9,
+        "chb13": 0.5166666666666667,
+        "chb14": 0.36250000000000004,
+        "chb15": 0.47250000000000003,
+        "chb16": 0.44499999999999995,
+        "chb17": 0.5333333333333333,
+        "chb18": 0.43333333333333335,
+        "chb19": 0.3,
+        "chb20": 0.48749999999999993,
+        "chb21": 0.65,
+        "chb22": 0.2333333333333333,
+        "chb23": 0.43571428571428567
+      },
+      "timestamp": "not_logged",
+      "n_qubits": 17,
+      "n_channels": 8
+    },
+    {
+      "path": "results\\scaling\\quantum_channel_scaling.json",
+      "backend": "not_logged",
+      "encoding": "not_logged",
+      "mitigation": "not_logged",
+      "overall_auc": 0.4595,
+      "per_subject": {
+        "chb01": 0.4786,
+        "chb02": 0.2833,
+        "chb03": 0.4643,
+        "chb04": 0.3125,
+        "chb05": 0.41,
+        "chb06": 0.595,
+        "chb07": 0.65,
+        "chb08": 0.37,
+        "chb09": 0.3,
+        "chb10": 0.5357,
+        "chb11": 0.65,
+        "chb13": 0.4333,
+        "chb14": 0.6438,
+        "chb15": 0.5325,
+        "chb16": 0.43,
+        "chb17": 0.3833,
+        "chb18": 0.25,
+        "chb19": 0.5,
+        "chb20": 0.5625,
+        "chb21": 0.6625,
+        "chb22": 0.4667,
+        "chb23": 0.4
+      },
+      "timestamp": "2026-02-21T11:50:00",
+      "n_qubits": null,
+      "n_channels": null
+    },
+    {
+      "path": "results\\hardware_validation\\ch8_heron_loso_results.json",
+      "backend": "HARDWARE: ibm_torino",
+      "encoding": "PLV_theta_alpha",
+      "mitigation": "none",
+      "overall_auc": 0.511003861003861,
+      "per_subject": {
+        "chb01": 0.6857142857142857,
+        "chb03": 0.4357142857142857,
+        "chb05": 0.61,
+        "chb07": 0.6666666666666666,
+        "chb11": 0.2833333333333333,
+        "chb14": 0.6,
+        "chb21": 0.38749999999999996
+      },
+      "timestamp": "2026-02-21T15:29:55.280370",
+      "n_qubits": null,
+      "n_channels": null,
+      "shots": 1024
+    },
+    {
+      "path": "results\\projection\\simulation_scaling.json",
+      "backend": "simulation: statevector_simulation",
+      "encoding": "not_logged",
+      "mitigation": "not_logged",
+      "overall_auc": 0.5344110115236875,
+      "per_subject": {
+        "chb01": 0.8785714285714286,
+        "chb02": 0.16666666666666663,
+        "chb03": 0.5642857142857143,
+        "chb04": 0.375,
+        "chb05": 0.5800000000000001,
+        "chb06": 0.8049999999999999,
+        "chb07": 0.36666666666666664,
+        "chb08": 0.6,
+        "chb09": 0.4125,
+        "chb10": 0.5785714285714285,
+        "chb11": 0.5166666666666666,
+        "chb13": 0.9500000000000001,
+        "chb14": 0.55625,
+        "chb15": 0.39,
+        "chb16": 0.375,
+        "chb17": 0.6,
+        "chb18": 0.5083333333333333,
+        "chb19": 0.7166666666666666,
+        "chb20": 0.73125,
+        "chb21": 0.5125,
+        "chb22": 0.7,
+        "chb23": 0.5714285714285714
+      },
+      "timestamp": "2026-02-21T15:51:56.227595",
+      "n_qubits": null,
+      "n_channels": null
+    }
+  ],
+  "best_hardware_result": {
+    "path": "results\\hardware_validation\\ch8_heron_loso_results.json",
+    "encoding": "PLV_theta_alpha",
+    "mitigation": "none",
+    "overall_auc": 0.511003861003861
+  },
+  "best_simulation_result": {
+    "path": "analysis_results\\quantum_loso_v2\\quantum_results.json",
+    "encoding": "V2_band_power (band_power)",
+    "overall_auc": 0.5344110115236875
+  },
+  "chb11_history": [
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_alpha_beta_results.json",
+      "encoding": "V3_PLV_8-30",
+      "backend_type": "simulation",
+      "auc": 0.9
+    },
+    {
+      "path": "results\\scaling\\quantum_channel_scaling.json",
+      "encoding": "not_logged",
+      "backend_type": "simulation",
+      "auc": 0.65
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_theta_alpha_results.json",
+      "encoding": "V3_PLV_4-13",
+      "backend_type": "simulation",
+      "auc": 0.6333333333333333
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v2\\quantum_results.json",
+      "encoding": "V2_band_power (band_power)",
+      "backend_type": "simulation",
+      "auc": 0.5166666666666666
+    },
+    {
+      "path": "results\\projection\\simulation_scaling.json",
+      "encoding": "not_logged",
+      "backend_type": "simulation",
+      "auc": 0.5166666666666666
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_theta_results.json",
+      "encoding": "V3_PLV_4-8",
+      "backend_type": "simulation",
+      "auc": 0.5
+    },
+    {
+      "path": "analysis_results\\quantum_loso\\quantum_results.json",
+      "encoding": "V1_PN_dynamics",
+      "backend_type": "simulation",
+      "auc": 0.31666666666666665
+    },
+    {
+      "path": "results\\hardware_validation\\ch8_heron_loso_results.json",
+      "encoding": "PLV_theta_alpha",
+      "backend_type": "hardware",
+      "auc": 0.2833333333333333
+    }
+  ],
+  "chb21_history": [
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_theta_alpha_results.json",
+      "encoding": "V3_PLV_4-13",
+      "backend_type": "simulation",
+      "auc": 0.6625
+    },
+    {
+      "path": "results\\scaling\\quantum_channel_scaling.json",
+      "encoding": "not_logged",
+      "backend_type": "simulation",
+      "auc": 0.6625
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_alpha_beta_results.json",
+      "encoding": "V3_PLV_8-30",
+      "backend_type": "simulation",
+      "auc": 0.65
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v2\\quantum_results.json",
+      "encoding": "V2_band_power (band_power)",
+      "backend_type": "simulation",
+      "auc": 0.5125
+    },
+    {
+      "path": "results\\projection\\simulation_scaling.json",
+      "encoding": "not_logged",
+      "backend_type": "simulation",
+      "auc": 0.5125
+    },
+    {
+      "path": "results\\hardware_validation\\ch8_heron_loso_results.json",
+      "encoding": "PLV_theta_alpha",
+      "backend_type": "hardware",
+      "auc": 0.38749999999999996
+    },
+    {
+      "path": "analysis_results\\quantum_loso_v3\\quantum_theta_results.json",
+      "encoding": "V3_PLV_4-8",
+      "backend_type": "simulation",
+      "auc": 0.35
+    },
+    {
+      "path": "analysis_results\\quantum_loso\\quantum_results.json",
+      "encoding": "V1_PN_dynamics",
+      "backend_type": "simulation",
+      "auc": 0.25
+    }
+  ],
+  "encoding_variants_found": [
+    "V1_PN_dynamics",
+    "V2_band_power (band_power)",
+    "V3_PLV_4-13",
+    "V3_PLV_4-8",
+    "PLV_theta_alpha",
+    "V3_PLV_8-30"
+  ],
+  "notes": [
+    "Only one hardware LOSO run exists: results\\hardware_validation\\ch8_heron_loso_results.json with AUC 0.5110",
+    "chb11: Best simulation AUC 0.900 (V3_PLV_8-30), hardware AUC 0.283 (PLV_theta_alpha)",
+    "chb21: Best simulation AUC 0.662 (V3_PLV_4-13), hardware AUC 0.387 (PLV_theta_alpha)"
+  ]
+}
