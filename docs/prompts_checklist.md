@@ -161,6 +161,30 @@ Last updated: 2026-02-22
 
 ## Scheduled for March 22, 2026+ (Credits Reset)
 
+### Execution Priority
+
+| Priority | Prompt | Description | Qubits | Est. Cost | Running Total |
+|----------|--------|-------------|--------|-----------|---------------|
+| 1 | **017** | Quantum PLV CH8, 20s windows | 17 | ~45s | 45s |
+| 2 | **013** | CH12 PLV hardware | 25 | ~63s | 108s |
+| 3 | **014** | CH16 PLV hardware | 33 | ~63s | 171s |
+| — | Buffer | — | — | — | 429s remaining |
+
+Total: ~171s out of 600s budget. Leaves 429s for reruns/debugging.
+
+### PROMPT 017 — Quantum PLV CH8 with 20-Second Windows (HIGHEST PRIORITY)
+
+- **Status**: READY (waiting for credits)
+- **Script**: `scripts/quantum_20s_hardware.py`
+- **Output**: `results/window_analysis/quantum_20s_hardware.json`
+- **Backend**: IBM Torino
+- **Encoding**: PLV_theta_alpha (SAME as PROMPT 006)
+- **Window**: 20 seconds (was 1.95s)
+- **Qubits**: 17
+- **Cost estimate**: ~45s (faster — 1 circuit/segment instead of ~15)
+- **Rationale**: PROMPT 015 showed 20s windows improve Tier 2 from 0.72→0.87. This tests whether quantum encoding benefits similarly.
+- **Key question**: Does calibrated quantum at 20s exceed 0.72 (competitive with classical)?
+
 ### PROMPT 013 — CH12 Hardware (PLV segment-level)
 
 - **Status**: READY (waiting for credits)
@@ -182,8 +206,8 @@ Last updated: 2026-02-22
 
 ### PROMPT 010-R — Rerun Projection with 4-Point Curve
 
-- **Status**: PENDING (after PROMPT 013 + 014 complete)
-- **Purpose**: Generate 4-point hardware scaling curve (CH4/CH8/CH12/CH16)
+- **Status**: PENDING (after PROMPT 013 + 014 + 017 complete)
+- **Purpose**: Generate 4-point hardware scaling curve + window size comparison
 - **Cost**: Free (local computation)
 
 ---
