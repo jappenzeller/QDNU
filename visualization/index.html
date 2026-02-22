@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-GATE Quantum State Trajectories</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: #080810;
+            color: #e8e8e8;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background: rgba(8, 8, 16, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: #00d4ff;
+            letter-spacing: 3px;
+        }
+
+        .header-info {
+            margin-left: auto;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Main panels container */
+        .panels {
+            display: flex;
+            height: calc(100vh - 48px - 60px);
+            margin-top: 48px;
+        }
+
+        /* Panel 1 - Circuit Diagram */
+        .panel-circuit {
+            width: 20%;
+            border-right: 1px solid rgba(255,255,255,0.07);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .panel-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .circuit-container {
+            height: calc(100% - 40px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .circuit-scroll {
+            position: absolute;
+            width: 100%;
+            transition: transform 0.15s ease-out;
+        }
+
+        .gate-row {
+            display: flex;
+            align-items: center;
+            padding: 4px 12px;
+            font-size: 11px;
+            opacity: 0.4;
+            transition: opacity 0.15s, background 0.15s;
+        }
+
+        .gate-row.active {
+            opacity: 1;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .gate-row.near {
+            opacity: 0.7;
+        }
+
+        .gate-index {
+            width: 36px;
+            color: #555;
+            font-size: 10px;
+        }
+
+        .gate-box {
+            padding: 3px 8px;
+            border-radius: 2px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-right: 8px;
+            min-width: 32px;
+            text-align: center;
+        }
+
+        .gate-box.single { background: rgba(0, 212, 255, 0.3); color: #00d4ff; }
+        .gate-box.two-qubit { background: rgba(245, 158, 11, 0.3); color: #f59e0b; }
+
+        .gate-qubits {
+            color: #888;
+            font-size: 10px;
+        }
+
+        /* Panel 2 - SPD Manifold (Three.js) */
+        .panel-manifold {
+            width: 55%;
+            position: relative;
+        }
+
+        #three-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .manifold-caption {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            font-size: 12px;
+            color: #888;
+            background: rgba(8, 8, 16, 0.8);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .manifold-caption .highlight {
+            color: #00d4ff;
+        }
+
+        .endpoint-labels {
+            position: absolute;
+            top: 60px;
+            left: 16px;
+            font-size: 11px;
+            display: none;
+        }
+
+        .endpoint-labels.visible {
+            display: block;
+        }
+
+        .endpoint-label {
+            padding: 4px 8px;
+            margin-bottom: 4px;
+            border-radius: 2px;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .endpoint-label.chb01-ictal { border-left: 3px solid #ff4455; }
+        .endpoint-label.chb01-interictal { border-left: 3px solid #4488ff; }
+        .endpoint-label.chb11-ictal { border-left: 3px solid #ff8800; }
+        .endpoint-label.chb11-interictal { border-left: 3px solid #44aaff; }
+
+        /* Panel 3 - Heron Topology */
+        .panel-topology {
+            width: 25%;
+            border-left: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .topology-container {
+            height: calc(100% - 40px);
+            padding: 16px;
+        }
+
+        #topology-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .qubit-inactive {
+            fill: #1a1a2e;
+            stroke: none;
+        }
+
+        .qubit-active {
+            fill: #2a2a4e;
+            stroke: rgba(255,255,255,0.2);
+            stroke-width: 1;
+        }
+
+        .qubit-highlight {
+            fill: #00d4ff;
+            stroke: #00d4ff;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 4px #00d4ff);
+        }
+
+        .qubit-highlight-two {
+            fill: #f59e0b;
+            stroke: #f59e0b;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 4px #f59e0b);
+        }
+
+        .edge {
+            stroke: rgba(255,255,255,0.1);
+            stroke-width: 1;
+        }
+
+        .edge-highlight {
+            stroke: #f59e0b;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 3px #f59e0b);
+        }
+
+        .qubit-label {
+            fill: #666;
+            font-size: 8px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .qubit-group:hover .qubit-label {
+            opacity: 1;
+        }
+
+        /* Controls bar */
+        .controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(8, 8, 16, 0.95);
+            border-top: 1px solid rgba(255,255,255,0.07);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 24px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #ccc;
+            padding: 6px 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .btn.active {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+
+        .btn-icon {
+            width: 32px;
+            padding: 6px;
+            text-align: center;
+        }
+
+        .speed-slider {
+            width: 100px;
+            accent-color: #00d4ff;
+        }
+
+        .gate-counter {
+            font-size: 13px;
+            color: #888;
+            min-width: 100px;
+        }
+
+        .gate-counter .current {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        /* Legend */
+        .legend {
+            position: absolute;
+            top: 60px;
+            right: 16px;
+            font-size: 11px;
+            background: rgba(8, 8, 16, 0.8);
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 3px;
+            border-radius: 1px;
+        }
+
+        .axis-labels {
+            position: absolute;
+            bottom: 60px;
+            right: 16px;
+            font-size: 10px;
+            color: #555;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">A-GATE</div>
+        <div class="header-info">
+            Quantum State Trajectory Visualization | 17 qubits | PLV theta-alpha encoding
+        </div>
+    </div>
+
+    <!-- Main panels -->
+    <div class="panels">
+        <!-- Panel 1: Circuit Diagram -->
+        <div class="panel-circuit">
+            <div class="panel-title">Circuit Diagram</div>
+            <div class="circuit-container">
+                <div class="circuit-scroll" id="circuit-scroll"></div>
+            </div>
+        </div>
+
+        <!-- Panel 2: SPD Manifold -->
+        <div class="panel-manifold">
+            <div class="panel-title">SPD Manifold Trajectory</div>
+            <canvas id="three-canvas"></canvas>
+
+            <div class="legend" id="legend">
+                <div class="legend-item" data-traj="chb01-ictal">
+                    <div class="legend-color" style="background: #ff4455;"></div>
+                    <span>chb01 ictal</span>
+                </div>
+                <div class="legend-item" data-traj="chb01-interictal">
+                    <div class="legend-color" style="background: #4488ff;"></div>
+                    <span>chb01 interictal</span>
+                </div>
+                <div class="legend-item" data-traj="chb11-ictal">
+                    <div class="legend-color" style="background: #ff8800;"></div>
+                    <span>chb11 ictal</span>
+                </div>
+                <div class="legend-item" data-traj="chb11-interictal">
+                    <div class="legend-color" style="background: #44aaff;"></div>
+                    <span>chb11 interictal</span>
+                </div>
+            </div>
+
+            <div class="endpoint-labels" id="endpoint-labels">
+                <div class="endpoint-label chb01-ictal">chb01 ictal: -0.190</div>
+                <div class="endpoint-label chb01-interictal">chb01 interictal: +0.068</div>
+                <div class="endpoint-label chb11-ictal">chb11 ictal: +0.211</div>
+                <div class="endpoint-label chb11-interictal">chb11 interictal: +0.001</div>
+            </div>
+
+            <div class="manifold-caption" id="caption">
+                <span class="highlight">chb01</span> — Standard Polarity | Hardware AUC: 0.686
+            </div>
+
+            <div class="axis-labels">
+                X: Boundary Separation (81.4%)<br>
+                Y: State Entropy (18.5%)<br>
+                Z: E-I Balance
+            </div>
+        </div>
+
+        <!-- Panel 3: Heron Topology -->
+        <div class="panel-topology">
+            <div class="panel-title">IBM Heron Topology</div>
+            <div class="topology-container">
+                <svg id="topology-svg" viewBox="0 0 300 400"></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <div class="control-group">
+            <button class="btn btn-icon" id="btn-start" title="Go to start">&#9198;</button>
+            <button class="btn btn-icon" id="btn-play" title="Play/Pause (Space)">&#9654;</button>
+            <button class="btn btn-icon" id="btn-end" title="Go to end">&#9197;</button>
+        </div>
+
+        <div class="control-group">
+            <span class="control-label">Speed</span>
+            <input type="range" class="speed-slider" id="speed-slider" min="20" max="500" value="80">
+        </div>
+
+        <div class="control-group">
+            <span class="control-label">Patient</span>
+            <button class="btn active" id="btn-chb01" data-patient="chb01">chb01</button>
+            <button class="btn" id="btn-chb11" data-patient="chb11">chb11</button>
+            <button class="btn" id="btn-both" data-patient="both">Both</button>
+        </div>
+
+        <div class="control-group">
+            <span class="control-label">Show</span>
+            <button class="btn active" id="btn-ictal" data-toggle="ictal">Ictal</button>
+            <button class="btn active" id="btn-interictal" data-toggle="interictal">Interictal</button>
+            <button class="btn active" id="btn-boundary" data-toggle="boundary">Boundary</button>
+        </div>
+
+        <div class="gate-counter">
+            Gate: <span class="current" id="gate-current">0</span> / <span id="gate-total">120</span>
+        </div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+    // OrbitControls inline (minimal version)
+    THREE.OrbitControls = function(object, domElement) {
+        this.object = object;
+        this.domElement = domElement;
+        this.target = new THREE.Vector3();
+        this.enableDamping = true;
+        this.dampingFactor = 0.05;
+        this.rotateSpeed = 0.5;
+        this.zoomSpeed = 1.0;
+
+        const scope = this;
+        const STATE = { NONE: -1, ROTATE: 0, ZOOM: 1, PAN: 2 };
+        let state = STATE.NONE;
+
+        const rotateStart = new THREE.Vector2();
+        const rotateEnd = new THREE.Vector2();
+        const rotateDelta = new THREE.Vector2();
+
+        let spherical = new THREE.Spherical();
+        let sphericalDelta = new THREE.Spherical();
+        let scale = 1;
+
+        function getAutoRotationAngle() { return 2 * Math.PI / 60 / 60 * 0; }
+        function getZoomScale() { return Math.pow(0.95, scope.zoomSpeed); }
+
+        function rotateLeft(angle) { sphericalDelta.theta -= angle; }
+        function rotateUp(angle) { sphericalDelta.phi -= angle; }
+
+        this.update = function() {
+            const offset = new THREE.Vector3();
+            const quat = new THREE.Quaternion().setFromUnitVectors(object.up, new THREE.Vector3(0, 1, 0));
+            const quatInverse = quat.clone().invert();
+
+            offset.copy(object.position).sub(scope.target);
+            offset.applyQuaternion(quat);
+            spherical.setFromVector3(offset);
+
+            spherical.theta += sphericalDelta.theta;
+            spherical.phi += sphericalDelta.phi;
+            spherical.phi = Math.max(0.01, Math.min(Math.PI - 0.01, spherical.phi));
+            spherical.radius *= scale;
+            spherical.radius = Math.max(0.5, Math.min(20, spherical.radius));
+
+            offset.setFromSpherical(spherical);
+            offset.applyQuaternion(quatInverse);
+
+            object.position.copy(scope.target).add(offset);
+            object.lookAt(scope.target);
+
+            sphericalDelta.theta *= (1 - scope.dampingFactor);
+            sphericalDelta.phi *= (1 - scope.dampingFactor);
+            scale = 1;
+
+            return false;
+        };
+
+        function onMouseDown(event) {
+            event.preventDefault();
+            if (event.button === 0) {
+                state = STATE.ROTATE;
+                rotateStart.set(event.clientX, event.clientY);
+            }
+            document.addEventListener('mousemove', onMouseMove, false);
+            document.addEventListener('mouseup', onMouseUp, false);
+        }
+
+        function onMouseMove(event) {
+            if (state === STATE.ROTATE) {
+                rotateEnd.set(event.clientX, event.clientY);
+                rotateDelta.subVectors(rotateEnd, rotateStart).multiplyScalar(scope.rotateSpeed);
+                rotateLeft(2 * Math.PI * rotateDelta.x / domElement.clientHeight);
+                rotateUp(2 * Math.PI * rotateDelta.y / domElement.clientHeight);
+                rotateStart.copy(rotateEnd);
+            }
+        }
+
+        function onMouseUp() {
+            state = STATE.NONE;
+            document.removeEventListener('mousemove', onMouseMove, false);
+            document.removeEventListener('mouseup', onMouseUp, false);
+        }
+
+        function onWheel(event) {
+            event.preventDefault();
+            if (event.deltaY < 0) scale /= getZoomScale();
+            else scale *= getZoomScale();
+        }
+
+        domElement.addEventListener('mousedown', onMouseDown, false);
+        domElement.addEventListener('wheel', onWheel, { passive: false });
+
+        this.update();
+    };
+    </script>
+
+    <script>
+    // =========================================================================
+    // MAIN APPLICATION
+    // =========================================================================
+
+    // Stub data for file:// protocol fallback
+    const STUB_DATA = {
+        metadata: {
+            n_logical_qubits: 17,
+            n_gates: 5,
+            gate_types: ["h", "p", "rx"],
+            channel_labels: ["FP1-F7", "F7-T7", "FP1-F3", "F3-C3", "FP2-F8", "F8-T8", "FP2-F4", "F4-C4"],
+            pca_explained_variance: [0.814, 0.185, 0.0005]
+        },
+        patients: {
+            chb01: {
+                polarity: "standard",
+                hardware_auc_raw: 0.686,
+                ictal: [
+                    {gate_index: 0, gate_type: "h", gate_qubits: [1], pca: [-0.1, 0, 0], boundary_distance: -0.1},
+                    {gate_index: 1, gate_type: "p", gate_qubits: [1], pca: [-0.12, 0.05, 0], boundary_distance: -0.12},
+                    {gate_index: 2, gate_type: "rx", gate_qubits: [1], pca: [-0.15, 0.08, 0], boundary_distance: -0.15},
+                    {gate_index: 3, gate_type: "h", gate_qubits: [2], pca: [-0.17, 0.1, 0], boundary_distance: -0.17},
+                    {gate_index: 4, gate_type: "p", gate_qubits: [2], pca: [-0.19, 0.12, 0], boundary_distance: -0.19}
+                ],
+                interictal: [
+                    {gate_index: 0, gate_type: "h", gate_qubits: [1], pca: [0.02, 0, 0], boundary_distance: 0.02},
+                    {gate_index: 1, gate_type: "p", gate_qubits: [1], pca: [0.04, 0.02, 0], boundary_distance: 0.04},
+                    {gate_index: 2, gate_type: "rx", gate_qubits: [1], pca: [0.05, 0.04, 0], boundary_distance: 0.05},
+                    {gate_index: 3, gate_type: "h", gate_qubits: [2], pca: [0.06, 0.05, 0], boundary_distance: 0.06},
+                    {gate_index: 4, gate_type: "p", gate_qubits: [2], pca: [0.068, 0.06, 0], boundary_distance: 0.068}
+                ]
+            },
+            chb11: {
+                polarity: "inverted",
+                hardware_auc_raw: 0.283,
+                ictal: [
+                    {gate_index: 0, gate_type: "h", gate_qubits: [1], pca: [0.05, 0, 0], boundary_distance: 0.05},
+                    {gate_index: 1, gate_type: "p", gate_qubits: [1], pca: [0.1, 0.03, 0], boundary_distance: 0.1},
+                    {gate_index: 2, gate_type: "rx", gate_qubits: [1], pca: [0.14, 0.06, 0], boundary_distance: 0.14},
+                    {gate_index: 3, gate_type: "h", gate_qubits: [2], pca: [0.18, 0.08, 0], boundary_distance: 0.18},
+                    {gate_index: 4, gate_type: "p", gate_qubits: [2], pca: [0.21, 0.1, 0], boundary_distance: 0.21}
+                ],
+                interictal: [
+                    {gate_index: 0, gate_type: "h", gate_qubits: [1], pca: [0.0, 0, 0], boundary_distance: 0.0},
+                    {gate_index: 1, gate_type: "p", gate_qubits: [1], pca: [0.0, 0.01, 0], boundary_distance: 0.0},
+                    {gate_index: 2, gate_type: "rx", gate_qubits: [1], pca: [0.001, 0.02, 0], boundary_distance: 0.001},
+                    {gate_index: 3, gate_type: "h", gate_qubits: [2], pca: [0.001, 0.03, 0], boundary_distance: 0.001},
+                    {gate_index: 4, gate_type: "p", gate_qubits: [2], pca: [0.001, 0.035, 0], boundary_distance: 0.001}
+                ]
+            }
+        }
+    };
+
+    const STUB_TOPOLOGY = {
+        active_qubits: [10, 11, 12, 17, 18, 27, 28, 29, 30, 31, 32, 33, 36, 37, 48, 49, 52],
+        coupling_edges: [[31,29],[31,33],[31,30],[31,32],[17,18],[48,49],[27,28],[27,29],[36,37],[28,29],[28,30],[29,30],[33,32],[30,32],[12,11],[12,10],[11,10]],
+        logical_to_physical_layout: [31,17,48,27,49,36,52,28,37,29,33,30,12,32,11,18,10]
+    };
+
+    // State
+    let data = null;
+    let topology = null;
+    let currentGate = 0;
+    let totalGates = 120;
+    let isPlaying = false;
+    let playInterval = null;
+    let speed = 80; // ms per gate
+    let currentPatient = 'chb01'; // 'chb01', 'chb11', 'both'
+    let showIctal = true;
+    let showInterictal = true;
+    let showBoundary = true;
+
+    // Three.js objects
+    let scene, camera, renderer, controls;
+    let trajectoryLines = {};
+    let trajectorySpheres = {};
+    let trailPoints = {};
+    let boundaryPlane, boundaryGrid;
+
+    // Colors
+    const COLORS = {
+        'chb01-ictal': 0xff4455,
+        'chb01-interictal': 0x4488ff,
+        'chb11-ictal': 0xff8800,
+        'chb11-interictal': 0x44aaff
+    };
+
+    // =========================================================================
+    // INITIALIZATION
+    // =========================================================================
+
+    async function loadData() {
+        try {
+            const [trajResponse, topoResponse] = await Promise.all([
+                fetch('../visualization_data/circuit_trajectories.json'),
+                fetch('../visualization_data/heron_topology.json')
+            ]);
+
+            if (!trajResponse.ok || !topoResponse.ok) throw new Error('Fetch failed');
+
+            data = await trajResponse.json();
+            topology = await topoResponse.json();
+        } catch (e) {
+            console.warn('Using stub data (file:// protocol or fetch failed):', e);
+            data = STUB_DATA;
+            topology = STUB_TOPOLOGY;
+        }
+
+        totalGates = data.patients.chb01.ictal.length;
+        document.getElementById('gate-total').textContent = totalGates;
+
+        init();
+    }
+
+    function init() {
+        initThreeJS();
+        initCircuitDiagram();
+        initTopology();
+        initControls();
+        updateVisualization();
+        animate();
+    }
+
+    // =========================================================================
+    // THREE.JS SETUP
+    // =========================================================================
+
+    function initThreeJS() {
+        const canvas = document.getElementById('three-canvas');
+        const container = canvas.parentElement;
+
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x080810);
+
+        const aspect = container.clientWidth / container.clientHeight;
+        camera = new THREE.PerspectiveCamera(60, aspect, 0.01, 100);
+        camera.position.set(1.5, 1, 2.5);
+
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        controls = new THREE.OrbitControls(camera, canvas);
+        controls.enableDamping = true;
+        controls.target.set(0, 0, 0);
+
+        // Boundary plane at X=0
+        const planeGeo = new THREE.PlaneGeometry(3, 3);
+        const planeMat = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.08,
+            side: THREE.DoubleSide
+        });
+        boundaryPlane = new THREE.Mesh(planeGeo, planeMat);
+        boundaryPlane.rotation.y = Math.PI / 2;
+        scene.add(boundaryPlane);
+
+        // Grid on boundary
+        const gridHelper = new THREE.GridHelper(3, 10, 0x333333, 0x222222);
+        gridHelper.rotation.z = Math.PI / 2;
+        gridHelper.material.transparent = true;
+        gridHelper.material.opacity = 0.15;
+        boundaryGrid = gridHelper;
+        scene.add(gridHelper);
+
+        // Axes
+        const axesHelper = new THREE.AxesHelper(1.5);
+        axesHelper.material.transparent = true;
+        axesHelper.material.opacity = 0.3;
+        scene.add(axesHelper);
+
+        // Create trajectory objects
+        createTrajectoryObjects();
+
+        // Ambient light
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        // Handle resize
+        window.addEventListener('resize', onWindowResize);
+    }
+
+    function createTrajectoryObjects() {
+        const patients = ['chb01', 'chb11'];
+        const states = ['ictal', 'interictal'];
+
+        patients.forEach(patient => {
+            states.forEach(state => {
+                const key = `${patient}-${state}`;
+                const color = COLORS[key];
+
+                // Line geometry (will be updated each frame)
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(totalGates * 3);
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setDrawRange(0, 0);
+
+                const material = new THREE.LineBasicMaterial({ color, linewidth: 2 });
+                const line = new THREE.Line(geometry, material);
+                trajectoryLines[key] = line;
+                scene.add(line);
+
+                // Current position sphere
+                const sphereGeo = new THREE.SphereGeometry(0.04, 16, 16);
+                const sphereMat = new THREE.MeshBasicMaterial({ color });
+                const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+                trajectorySpheres[key] = sphere;
+                scene.add(sphere);
+
+                // Glow sphere
+                const glowGeo = new THREE.SphereGeometry(0.08, 16, 16);
+                const glowMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.3 });
+                const glow = new THREE.Mesh(glowGeo, glowMat);
+                sphere.add(glow);
+
+                // Trail points
+                const trailGeo = new THREE.BufferGeometry();
+                const trailPositions = new Float32Array(15 * 3);
+                const trailColors = new Float32Array(15 * 3);
+                trailGeo.setAttribute('position', new THREE.BufferAttribute(trailPositions, 3));
+                trailGeo.setAttribute('color', new THREE.BufferAttribute(trailColors, 3));
+
+                const trailMat = new THREE.PointsMaterial({
+                    size: 0.02,
+                    vertexColors: true,
+                    transparent: true
+                });
+                const trail = new THREE.Points(trailGeo, trailMat);
+                trailPoints[key] = trail;
+                scene.add(trail);
+            });
+        });
+    }
+
+    function onWindowResize() {
+        const container = document.getElementById('three-canvas').parentElement;
+        const aspect = container.clientWidth / container.clientHeight;
+        camera.aspect = aspect;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+
+    // =========================================================================
+    // CIRCUIT DIAGRAM
+    // =========================================================================
+
+    function initCircuitDiagram() {
+        const container = document.getElementById('circuit-scroll');
+        const trajectory = data.patients.chb01.ictal;
+
+        trajectory.forEach((gate, i) => {
+            const row = document.createElement('div');
+            row.className = 'gate-row';
+            row.dataset.index = i;
+
+            const isTwoQubit = ['cx', 'cz', 'cry', 'crz'].includes(gate.gate_type);
+
+            row.innerHTML = `
+                <span class="gate-index">${String(i).padStart(3, '0')}</span>
+                <span class="gate-box ${isTwoQubit ? 'two-qubit' : 'single'}">${gate.gate_type.toUpperCase()}</span>
+                <span class="gate-qubits">q[${gate.gate_qubits.join(', ')}]</span>
+            `;
+
+            container.appendChild(row);
+        });
+    }
+
+    function updateCircuitDiagram() {
+        const rows = document.querySelectorAll('.gate-row');
+        const container = document.getElementById('circuit-scroll');
+        const containerHeight = container.parentElement.clientHeight;
+        const rowHeight = 28;
+
+        rows.forEach((row, i) => {
+            row.classList.remove('active', 'near');
+            const distance = Math.abs(i - currentGate);
+
+            if (i === currentGate) {
+                row.classList.add('active');
+            } else if (distance <= 8) {
+                row.classList.add('near');
+            }
+        });
+
+        // Scroll to center current gate
+        const scrollY = currentGate * rowHeight - containerHeight / 2 + rowHeight / 2;
+        container.style.transform = `translateY(${-Math.max(0, scrollY)}px)`;
+    }
+
+    // =========================================================================
+    // TOPOLOGY SVG
+    // =========================================================================
+
+    function initTopology() {
+        const svg = document.getElementById('topology-svg');
+        const activeQubits = topology.active_qubits;
+        const edges = topology.coupling_edges;
+        const layout = topology.logical_to_physical_layout;
+
+        // Simple layout - position qubits in a grid-like pattern
+        const qubitPositions = {};
+
+        // Create approximate positions based on qubit indices
+        // IBM Torino has a heavy-hex layout, we'll approximate
+        activeQubits.forEach((q, i) => {
+            // Spread qubits in a roughly circular pattern
+            const angle = (i / activeQubits.length) * 2 * Math.PI - Math.PI / 2;
+            const radius = 100;
+            const cx = 150 + radius * Math.cos(angle);
+            const cy = 200 + radius * Math.sin(angle) * 0.8;
+            qubitPositions[q] = { x: cx, y: cy };
+        });
+
+        // Draw edges first (so they're behind qubits)
+        edges.forEach(([q1, q2]) => {
+            if (qubitPositions[q1] && qubitPositions[q2]) {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', qubitPositions[q1].x);
+                line.setAttribute('y1', qubitPositions[q1].y);
+                line.setAttribute('x2', qubitPositions[q2].x);
+                line.setAttribute('y2', qubitPositions[q2].y);
+                line.setAttribute('class', 'edge');
+                line.dataset.q1 = q1;
+                line.dataset.q2 = q2;
+                svg.appendChild(line);
+            }
+        });
+
+        // Draw qubits
+        activeQubits.forEach((q, i) => {
+            const pos = qubitPositions[q];
+            const logicalIdx = layout.indexOf(q);
+
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            group.setAttribute('class', 'qubit-group');
+            group.dataset.physical = q;
+            group.dataset.logical = logicalIdx;
+
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', pos.x);
+            circle.setAttribute('cy', pos.y);
+            circle.setAttribute('r', 12);
+            circle.setAttribute('class', 'qubit-active');
+            circle.dataset.physical = q;
+
+            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            label.setAttribute('x', pos.x);
+            label.setAttribute('y', pos.y);
+            label.setAttribute('class', 'qubit-label');
+            label.textContent = `q${q}`;
+
+            group.appendChild(circle);
+            group.appendChild(label);
+            svg.appendChild(group);
+        });
+    }
+
+    function updateTopology() {
+        const trajectory = data.patients.chb01.ictal;
+        if (currentGate >= trajectory.length) return;
+
+        const gate = trajectory[currentGate];
+        const layout = topology.logical_to_physical_layout;
+
+        // Reset all qubits and edges
+        document.querySelectorAll('.qubit-active, .qubit-highlight, .qubit-highlight-two').forEach(el => {
+            el.setAttribute('class', 'qubit-active');
+        });
+        document.querySelectorAll('.edge, .edge-highlight').forEach(el => {
+            el.setAttribute('class', 'edge');
+        });
+
+        // Highlight active qubits
+        const isTwoQubit = ['cx', 'cz', 'cry', 'crz'].includes(gate.gate_type);
+        const highlightClass = isTwoQubit ? 'qubit-highlight-two' : 'qubit-highlight';
+
+        gate.gate_qubits.forEach(logicalQ => {
+            const physicalQ = layout[logicalQ];
+            const qubit = document.querySelector(`circle[data-physical="${physicalQ}"]`);
+            if (qubit) {
+                qubit.setAttribute('class', highlightClass);
+            }
+        });
+
+        // Highlight edge if two-qubit gate
+        if (isTwoQubit && gate.gate_qubits.length === 2) {
+            const [q1, q2] = gate.gate_qubits.map(q => layout[q]);
+            document.querySelectorAll('.edge').forEach(edge => {
+                const eq1 = parseInt(edge.dataset.q1);
+                const eq2 = parseInt(edge.dataset.q2);
+                if ((eq1 === q1 && eq2 === q2) || (eq1 === q2 && eq2 === q1)) {
+                    edge.setAttribute('class', 'edge-highlight');
+                }
+            });
+        }
+    }
+
+    // =========================================================================
+    // UPDATE VISUALIZATION
+    // =========================================================================
+
+    function updateVisualization() {
+        updateTrajectories();
+        updateCircuitDiagram();
+        updateTopology();
+        updateCaption();
+        updateLegend();
+
+        document.getElementById('gate-current').textContent = currentGate;
+
+        // Show endpoint labels at final gate
+        const endpointLabels = document.getElementById('endpoint-labels');
+        if (currentGate >= totalGates - 1) {
+            endpointLabels.classList.add('visible');
+        } else {
+            endpointLabels.classList.remove('visible');
+        }
+    }
+
+    function updateTrajectories() {
+        const patients = currentPatient === 'both' ? ['chb01', 'chb11'] : [currentPatient];
+        const states = [];
+        if (showIctal) states.push('ictal');
+        if (showInterictal) states.push('interictal');
+
+        // Hide/show trajectories
+        Object.keys(trajectoryLines).forEach(key => {
+            const [patient, state] = key.split('-');
+            const visible = patients.includes(patient) && states.includes(state);
+            trajectoryLines[key].visible = visible;
+            trajectorySpheres[key].visible = visible;
+            trailPoints[key].visible = visible;
+        });
+
+        // Update boundary visibility
+        boundaryPlane.visible = showBoundary;
+        boundaryGrid.visible = showBoundary;
+
+        // Update visible trajectories
+        patients.forEach(patient => {
+            states.forEach(state => {
+                const key = `${patient}-${state}`;
+                const trajectory = data.patients[patient][state];
+                if (!trajectory) return;
+
+                const line = trajectoryLines[key];
+                const sphere = trajectorySpheres[key];
+                const trail = trailPoints[key];
+
+                // Update line
+                const positions = line.geometry.attributes.position.array;
+                for (let i = 0; i <= currentGate && i < trajectory.length; i++) {
+                    const pca = trajectory[i].pca;
+                    positions[i * 3] = pca[0] * 2;     // Scale X
+                    positions[i * 3 + 1] = pca[1] * 4; // Scale Y
+                    positions[i * 3 + 2] = pca[2] * 0.3; // Compress Z
+                }
+                line.geometry.attributes.position.needsUpdate = true;
+                line.geometry.setDrawRange(0, Math.min(currentGate + 1, trajectory.length));
+
+                // Update sphere position
+                if (currentGate < trajectory.length) {
+                    const pca = trajectory[currentGate].pca;
+                    sphere.position.set(pca[0] * 2, pca[1] * 4, pca[2] * 0.3);
+                }
+
+                // Update trail
+                const trailPositions = trail.geometry.attributes.position.array;
+                const trailColors = trail.geometry.attributes.color.array;
+                const color = new THREE.Color(COLORS[key]);
+
+                for (let j = 0; j < 15; j++) {
+                    const trailIdx = currentGate - j;
+                    if (trailIdx >= 0 && trailIdx < trajectory.length) {
+                        const pca = trajectory[trailIdx].pca;
+                        trailPositions[j * 3] = pca[0] * 2;
+                        trailPositions[j * 3 + 1] = pca[1] * 4;
+                        trailPositions[j * 3 + 2] = pca[2] * 0.3;
+
+                        const alpha = 1 - j / 15;
+                        trailColors[j * 3] = color.r * alpha;
+                        trailColors[j * 3 + 1] = color.g * alpha;
+                        trailColors[j * 3 + 2] = color.b * alpha;
+                    } else {
+                        trailPositions[j * 3] = 0;
+                        trailPositions[j * 3 + 1] = -100; // Hide off-screen
+                        trailPositions[j * 3 + 2] = 0;
+                    }
+                }
+                trail.geometry.attributes.position.needsUpdate = true;
+                trail.geometry.attributes.color.needsUpdate = true;
+            });
+        });
+    }
+
+    function updateCaption() {
+        const caption = document.getElementById('caption');
+
+        if (currentPatient === 'chb01') {
+            caption.innerHTML = '<span class="highlight">chb01</span> — Standard Polarity | Hardware AUC: 0.686';
+        } else if (currentPatient === 'chb11') {
+            caption.innerHTML = '<span class="highlight">chb11</span> — Inverted Polarity | Raw: 0.283 → Calibrated: 0.717';
+        } else {
+            caption.innerHTML = 'Same circuit — <span class="highlight">opposite polarity directions</span>';
+        }
+    }
+
+    function updateLegend() {
+        const patients = currentPatient === 'both' ? ['chb01', 'chb11'] : [currentPatient];
+
+        document.querySelectorAll('.legend-item').forEach(item => {
+            const traj = item.dataset.traj;
+            const [patient, state] = traj.split('-');
+            const visible = patients.includes(patient) &&
+                           ((state === 'ictal' && showIctal) || (state === 'interictal' && showInterictal));
+            item.style.display = visible ? 'flex' : 'none';
+        });
+
+        // Update endpoint labels visibility
+        document.querySelectorAll('.endpoint-label').forEach(label => {
+            const classes = label.className.split(' ');
+            const trajClass = classes.find(c => c.startsWith('chb'));
+            if (trajClass) {
+                const [patient, state] = trajClass.split('-');
+                const visible = patients.includes(patient) &&
+                               ((state === 'ictal' && showIctal) || (state === 'interictal' && showInterictal));
+                label.style.display = visible ? 'block' : 'none';
+            }
+        });
+    }
+
+    // =========================================================================
+    // CONTROLS
+    // =========================================================================
+
+    function initControls() {
+        // Play/Pause
+        document.getElementById('btn-play').addEventListener('click', togglePlay);
+
+        // Start/End
+        document.getElementById('btn-start').addEventListener('click', () => {
+            currentGate = 0;
+            updateVisualization();
+        });
+
+        document.getElementById('btn-end').addEventListener('click', () => {
+            currentGate = totalGates - 1;
+            updateVisualization();
+        });
+
+        // Speed slider
+        document.getElementById('speed-slider').addEventListener('input', (e) => {
+            speed = parseInt(e.target.value);
+            if (isPlaying) {
+                clearInterval(playInterval);
+                playInterval = setInterval(stepForward, speed);
+            }
+        });
+
+        // Patient selection
+        document.querySelectorAll('[data-patient]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('[data-patient]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentPatient = btn.dataset.patient;
+                updateVisualization();
+            });
+        });
+
+        // Toggle buttons
+        document.getElementById('btn-ictal').addEventListener('click', (e) => {
+            showIctal = !showIctal;
+            e.target.classList.toggle('active', showIctal);
+            updateVisualization();
+        });
+
+        document.getElementById('btn-interictal').addEventListener('click', (e) => {
+            showInterictal = !showInterictal;
+            e.target.classList.toggle('active', showInterictal);
+            updateVisualization();
+        });
+
+        document.getElementById('btn-boundary').addEventListener('click', (e) => {
+            showBoundary = !showBoundary;
+            e.target.classList.toggle('active', showBoundary);
+            updateVisualization();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                togglePlay();
+            } else if (e.code === 'ArrowRight') {
+                stepForward();
+            } else if (e.code === 'ArrowLeft') {
+                stepBackward();
+            }
+        });
+    }
+
+    function togglePlay() {
+        isPlaying = !isPlaying;
+        const btn = document.getElementById('btn-play');
+
+        if (isPlaying) {
+            btn.innerHTML = '&#9208;'; // Pause
+            playInterval = setInterval(stepForward, speed);
+        } else {
+            btn.innerHTML = '&#9654;'; // Play
+            clearInterval(playInterval);
+        }
+    }
+
+    function stepForward() {
+        if (currentGate < totalGates - 1) {
+            currentGate++;
+            updateVisualization();
+        } else if (isPlaying) {
+            togglePlay(); // Stop at end
+        }
+    }
+
+    function stepBackward() {
+        if (currentGate > 0) {
+            currentGate--;
+            updateVisualization();
+        }
+    }
+
+    // =========================================================================
+    // ANIMATION LOOP
+    // =========================================================================
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+    // =========================================================================
+    // START
+    // =========================================================================
+
+    loadData();
+    </script>
+</body>
+</html>
