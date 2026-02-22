@@ -2,6 +2,10 @@
 
 **Title:** Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Seizure Prediction
 
+**Platform:** <https://d3i29ccoc82f1t.cloudfront.net>
+**Visualization:** <https://d3i29ccoc82f1t.cloudfront.net/viz/>
+**Repository:** <https://github.com/jappenzeller/QDNU>
+
 ## Abstract
 
 We present a quantum computing architecture based on the Positive-Negative (PN) neuron model for multi-channel electroencephalogram (EEG) seizure prediction. The proposed A-Gate circuit encodes excitatory-inhibitory dynamics using paired qubits with parameterized rotation gates, leveraging quantum entanglement to capture inter-channel phase synchronization efficiently.
@@ -50,8 +54,22 @@ The finding that eigenvalues alone underperform spectral features (0.54 vs 0.74 
 - Classifier: XGBoost (200 trees, depth 6, 5-bag ensemble)
 - Temporal aggregation: MAX pooling over 1-second sub-windows
 - Validation: Leave-One-Subject-Out cross-validation
-- Dataset: CHB-MIT, 8 patients (chb01-chb11 subset)
+- Dataset: CHB-MIT, 22 patients (full cohort, LOSO cross-validation)
 - Channels: 8 (FP1-F7, F7-T7, FP1-F3, F3-C3, FP2-F8, F8-T8, FP2-F4, F4-C4)
+
+---
+
+## Future Work
+
+We tested an alternative quantum encoding variant (V6) using frequency-domain correlation eigenvalues (CC_freq) in place of PLV parameters. Statevector simulation fidelity between ictal and interictal states was 0.867 under CC_freq encoding, compared to discriminative separation under PLV encoding, indicating near-identical quantum state representations that cannot be distinguished by the measurement basis. The CC_freq and PLV encodings are negatively correlated (r = -0.78), suggesting they capture orthogonal aspects of EEG structure — amplitude correlation versus phase synchrony — with phase synchrony being the geometry most accessible to the current circuit architecture.
+
+---
+
+## Supplementary Material
+
+**Interactive Visualization:** <https://d3i29ccoc82f1t.cloudfront.net/viz/>
+
+An interactive visualization of the gate-by-gate quantum state trajectories is available at the URL above. The visualization renders the A-Gate circuit evolution on a PCA projection of the SPD covariance manifold for two representative patients: chb01 (standard polarity, hardware AUC 0.686) and chb11 (inverted polarity, raw AUC 0.283 → calibrated 0.717 after polarity correction). The polarity inversion — chb01 ictal state ending at boundary distance -0.190 versus chb11 ictal state at +0.211 on the same fixed circuit — is rendered as both a visual trajectory divergence and an auditory sonification in which the chb01 ictal tone descends in pitch while the chb11 ictal tone ascends. Three synchronized panels show the logical circuit diagram, the 3D manifold trajectory, and the IBM Heron (ibm_torino) physical qubit topology with gate-triggered highlights.
 
 ---
 
