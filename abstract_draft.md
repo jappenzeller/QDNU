@@ -2,8 +2,8 @@
 
 **Title:** Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Seizure Prediction
 
-**Platform:** <https://d3i29ccoc82f1t.cloudfront.net>
-**Visualization:** <https://d3i29ccoc82f1t.cloudfront.net/viz/>
+**Platform:** <https://qdnu.ai>
+**Visualization:** <https://qdnu.ai/viz/>
 **Repository:** <https://github.com/jappenzeller/QDNU>
 
 ## Abstract
@@ -67,7 +67,7 @@ We tested an alternative quantum encoding variant (V6) using frequency-domain co
 
 ## Supplementary Material
 
-**Interactive Visualization:** <https://d3i29ccoc82f1t.cloudfront.net/viz/>
+**Interactive Visualization:** <https://qdnu.ai/viz/>
 
 An interactive visualization of the gate-by-gate quantum state trajectories is available at the URL above. The visualization renders the A-Gate circuit evolution on a PCA projection of the SPD covariance manifold for two representative patients: chb01 (standard polarity, hardware AUC 0.686) and chb11 (inverted polarity, raw AUC 0.283 → calibrated 0.717 after polarity correction). The polarity inversion — chb01 ictal state ending at boundary distance -0.190 versus chb11 ictal state at +0.211 on the same fixed circuit — is rendered as both a visual trajectory divergence and an auditory sonification in which the chb01 ictal tone descends in pitch while the chb11 ictal tone ascends. Three synchronized panels show the logical circuit diagram, the 3D manifold trajectory, and the IBM Heron (ibm_torino) physical qubit topology with gate-triggered highlights.
 

@@ -19,7 +19,7 @@ A rigorous complexity analysis demonstrates that correlation encoding scales as 
 
 ## Platform
 
-**Live Visualization:** <https://d3i29ccoc82f1t.cloudfront.net>
+**Live Visualization:** <https://qdnu.ai>
 
 Interactive Three.js visualization of quantum state trajectories showing:
 
