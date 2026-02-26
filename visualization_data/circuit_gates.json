@@ -1,0 +1,937 @@
+{
+  "n_qubits": 17,
+  "n_gates": 120,
+  "n_columns": 17,
+  "channel_labels": [
+    "FP1-F7",
+    "F7-T7",
+    "FP1-F3",
+    "F3-C3",
+    "FP2-F8",
+    "F8-T8",
+    "FP2-F4",
+    "F4-C4"
+  ],
+  "gates": [
+    {
+      "type": "H",
+      "index": 0,
+      "step": 0,
+      "qubit": 1
+    },
+    {
+      "type": "P",
+      "index": 1,
+      "step": 1,
+      "qubit": 1
+    },
+    {
+      "type": "RX",
+      "index": 2,
+      "step": 2,
+      "qubit": 1
+    },
+    {
+      "type": "P",
+      "index": 3,
+      "step": 3,
+      "qubit": 1
+    },
+    {
+      "type": "H",
+      "index": 4,
+      "step": 4,
+      "qubit": 1
+    },
+    {
+      "type": "H",
+      "index": 5,
+      "step": 0,
+      "qubit": 2
+    },
+    {
+      "type": "P",
+      "index": 6,
+      "step": 1,
+      "qubit": 2
+    },
+    {
+      "type": "RY",
+      "index": 7,
+      "step": 2,
+      "qubit": 2
+    },
+    {
+      "type": "P",
+      "index": 8,
+      "step": 3,
+      "qubit": 2
+    },
+    {
+      "type": "H",
+      "index": 9,
+      "step": 4,
+      "qubit": 2
+    },
+    {
+      "type": "CRY",
+      "index": 10,
+      "step": 5,
+      "qubits": [
+        1,
+        2
+      ],
+      "control": 1,
+      "target": 2
+    },
+    {
+      "type": "CRZ",
+      "index": 11,
+      "step": 6,
+      "qubits": [
+        2,
+        1
+      ],
+      "control": 2,
+      "target": 1
+    },
+    {
+      "type": "H",
+      "index": 12,
+      "step": 0,
+      "qubit": 3
+    },
+    {
+      "type": "P",
+      "index": 13,
+      "step": 1,
+      "qubit": 3
+    },
+    {
+      "type": "RX",
+      "index": 14,
+      "step": 2,
+      "qubit": 3
+    },
+    {
+      "type": "P",
+      "index": 15,
+      "step": 3,
+      "qubit": 3
+    },
+    {
+      "type": "H",
+      "index": 16,
+      "step": 4,
+      "qubit": 3
+    },
+    {
+      "type": "H",
+      "index": 17,
+      "step": 0,
+      "qubit": 4
+    },
+    {
+      "type": "P",
+      "index": 18,
+      "step": 1,
+      "qubit": 4
+    },
+    {
+      "type": "RY",
+      "index": 19,
+      "step": 2,
+      "qubit": 4
+    },
+    {
+      "type": "P",
+      "index": 20,
+      "step": 3,
+      "qubit": 4
+    },
+    {
+      "type": "H",
+      "index": 21,
+      "step": 4,
+      "qubit": 4
+    },
+    {
+      "type": "CRY",
+      "index": 22,
+      "step": 5,
+      "qubits": [
+        3,
+        4
+      ],
+      "control": 3,
+      "target": 4
+    },
+    {
+      "type": "CRZ",
+      "index": 23,
+      "step": 6,
+      "qubits": [
+        4,
+        3
+      ],
+      "control": 4,
+      "target": 3
+    },
+    {
+      "type": "H",
+      "index": 24,
+      "step": 0,
+      "qubit": 5
+    },
+    {
+      "type": "P",
+      "index": 25,
+      "step": 1,
+      "qubit": 5
+    },
+    {
+      "type": "RX",
+      "index": 26,
+      "step": 2,
+      "qubit": 5
+    },
+    {
+      "type": "P",
+      "index": 27,
+      "step": 3,
+      "qubit": 5
+    },
+    {
+      "type": "H",
+      "index": 28,
+      "step": 4,
+      "qubit": 5
+    },
+    {
+      "type": "H",
+      "index": 29,
+      "step": 0,
+      "qubit": 6
+    },
+    {
+      "type": "P",
+      "index": 30,
+      "step": 1,
+      "qubit": 6
+    },
+    {
+      "type": "RY",
+      "index": 31,
+      "step": 2,
+      "qubit": 6
+    },
+    {
+      "type": "P",
+      "index": 32,
+      "step": 3,
+      "qubit": 6
+    },
+    {
+      "type": "H",
+      "index": 33,
+      "step": 4,
+      "qubit": 6
+    },
+    {
+      "type": "CRY",
+      "index": 34,
+      "step": 5,
+      "qubits": [
+        5,
+        6
+      ],
+      "control": 5,
+      "target": 6
+    },
+    {
+      "type": "CRZ",
+      "index": 35,
+      "step": 6,
+      "qubits": [
+        6,
+        5
+      ],
+      "control": 6,
+      "target": 5
+    },
+    {
+      "type": "H",
+      "index": 36,
+      "step": 0,
+      "qubit": 7
+    },
+    {
+      "type": "P",
+      "index": 37,
+      "step": 1,
+      "qubit": 7
+    },
+    {
+      "type": "RX",
+      "index": 38,
+      "step": 2,
+      "qubit": 7
+    },
+    {
+      "type": "P",
+      "index": 39,
+      "step": 3,
+      "qubit": 7
+    },
+    {
+      "type": "H",
+      "index": 40,
+      "step": 4,
+      "qubit": 7
+    },
+    {
+      "type": "H",
+      "index": 41,
+      "step": 0,
+      "qubit": 8
+    },
+    {
+      "type": "P",
+      "index": 42,
+      "step": 1,
+      "qubit": 8
+    },
+    {
+      "type": "RY",
+      "index": 43,
+      "step": 2,
+      "qubit": 8
+    },
+    {
+      "type": "P",
+      "index": 44,
+      "step": 3,
+      "qubit": 8
+    },
+    {
+      "type": "H",
+      "index": 45,
+      "step": 4,
+      "qubit": 8
+    },
+    {
+      "type": "CRY",
+      "index": 46,
+      "step": 5,
+      "qubits": [
+        7,
+        8
+      ],
+      "control": 7,
+      "target": 8
+    },
+    {
+      "type": "CRZ",
+      "index": 47,
+      "step": 6,
+      "qubits": [
+        8,
+        7
+      ],
+      "control": 8,
+      "target": 7
+    },
+    {
+      "type": "H",
+      "index": 48,
+      "step": 0,
+      "qubit": 9
+    },
+    {
+      "type": "P",
+      "index": 49,
+      "step": 1,
+      "qubit": 9
+    },
+    {
+      "type": "RX",
+      "index": 50,
+      "step": 2,
+      "qubit": 9
+    },
+    {
+      "type": "P",
+      "index": 51,
+      "step": 3,
+      "qubit": 9
+    },
+    {
+      "type": "H",
+      "index": 52,
+      "step": 4,
+      "qubit": 9
+    },
+    {
+      "type": "H",
+      "index": 53,
+      "step": 0,
+      "qubit": 10
+    },
+    {
+      "type": "P",
+      "index": 54,
+      "step": 1,
+      "qubit": 10
+    },
+    {
+      "type": "RY",
+      "index": 55,
+      "step": 2,
+      "qubit": 10
+    },
+    {
+      "type": "P",
+      "index": 56,
+      "step": 3,
+      "qubit": 10
+    },
+    {
+      "type": "H",
+      "index": 57,
+      "step": 4,
+      "qubit": 10
+    },
+    {
+      "type": "CRY",
+      "index": 58,
+      "step": 5,
+      "qubits": [
+        9,
+        10
+      ],
+      "control": 9,
+      "target": 10
+    },
+    {
+      "type": "CRZ",
+      "index": 59,
+      "step": 6,
+      "qubits": [
+        10,
+        9
+      ],
+      "control": 10,
+      "target": 9
+    },
+    {
+      "type": "H",
+      "index": 60,
+      "step": 0,
+      "qubit": 11
+    },
+    {
+      "type": "P",
+      "index": 61,
+      "step": 1,
+      "qubit": 11
+    },
+    {
+      "type": "RX",
+      "index": 62,
+      "step": 2,
+      "qubit": 11
+    },
+    {
+      "type": "P",
+      "index": 63,
+      "step": 3,
+      "qubit": 11
+    },
+    {
+      "type": "H",
+      "index": 64,
+      "step": 4,
+      "qubit": 11
+    },
+    {
+      "type": "H",
+      "index": 65,
+      "step": 0,
+      "qubit": 12
+    },
+    {
+      "type": "P",
+      "index": 66,
+      "step": 1,
+      "qubit": 12
+    },
+    {
+      "type": "RY",
+      "index": 67,
+      "step": 2,
+      "qubit": 12
+    },
+    {
+      "type": "P",
+      "index": 68,
+      "step": 3,
+      "qubit": 12
+    },
+    {
+      "type": "H",
+      "index": 69,
+      "step": 4,
+      "qubit": 12
+    },
+    {
+      "type": "CRY",
+      "index": 70,
+      "step": 5,
+      "qubits": [
+        11,
+        12
+      ],
+      "control": 11,
+      "target": 12
+    },
+    {
+      "type": "CRZ",
+      "index": 71,
+      "step": 6,
+      "qubits": [
+        12,
+        11
+      ],
+      "control": 12,
+      "target": 11
+    },
+    {
+      "type": "H",
+      "index": 72,
+      "step": 0,
+      "qubit": 13
+    },
+    {
+      "type": "P",
+      "index": 73,
+      "step": 1,
+      "qubit": 13
+    },
+    {
+      "type": "RX",
+      "index": 74,
+      "step": 2,
+      "qubit": 13
+    },
+    {
+      "type": "P",
+      "index": 75,
+      "step": 3,
+      "qubit": 13
+    },
+    {
+      "type": "H",
+      "index": 76,
+      "step": 4,
+      "qubit": 13
+    },
+    {
+      "type": "H",
+      "index": 77,
+      "step": 0,
+      "qubit": 14
+    },
+    {
+      "type": "P",
+      "index": 78,
+      "step": 1,
+      "qubit": 14
+    },
+    {
+      "type": "RY",
+      "index": 79,
+      "step": 2,
+      "qubit": 14
+    },
+    {
+      "type": "P",
+      "index": 80,
+      "step": 3,
+      "qubit": 14
+    },
+    {
+      "type": "H",
+      "index": 81,
+      "step": 4,
+      "qubit": 14
+    },
+    {
+      "type": "CRY",
+      "index": 82,
+      "step": 5,
+      "qubits": [
+        13,
+        14
+      ],
+      "control": 13,
+      "target": 14
+    },
+    {
+      "type": "CRZ",
+      "index": 83,
+      "step": 6,
+      "qubits": [
+        14,
+        13
+      ],
+      "control": 14,
+      "target": 13
+    },
+    {
+      "type": "H",
+      "index": 84,
+      "step": 0,
+      "qubit": 15
+    },
+    {
+      "type": "P",
+      "index": 85,
+      "step": 1,
+      "qubit": 15
+    },
+    {
+      "type": "RX",
+      "index": 86,
+      "step": 2,
+      "qubit": 15
+    },
+    {
+      "type": "P",
+      "index": 87,
+      "step": 3,
+      "qubit": 15
+    },
+    {
+      "type": "H",
+      "index": 88,
+      "step": 4,
+      "qubit": 15
+    },
+    {
+      "type": "H",
+      "index": 89,
+      "step": 0,
+      "qubit": 16
+    },
+    {
+      "type": "P",
+      "index": 90,
+      "step": 1,
+      "qubit": 16
+    },
+    {
+      "type": "RY",
+      "index": 91,
+      "step": 2,
+      "qubit": 16
+    },
+    {
+      "type": "P",
+      "index": 92,
+      "step": 3,
+      "qubit": 16
+    },
+    {
+      "type": "H",
+      "index": 93,
+      "step": 4,
+      "qubit": 16
+    },
+    {
+      "type": "CRY",
+      "index": 94,
+      "step": 5,
+      "qubits": [
+        15,
+        16
+      ],
+      "control": 15,
+      "target": 16
+    },
+    {
+      "type": "CRZ",
+      "index": 95,
+      "step": 6,
+      "qubits": [
+        16,
+        15
+      ],
+      "control": 16,
+      "target": 15
+    },
+    {
+      "type": "CX",
+      "index": 96,
+      "step": 7,
+      "qubits": [
+        1,
+        3
+      ],
+      "control": 1,
+      "target": 3
+    },
+    {
+      "type": "CX",
+      "index": 97,
+      "step": 8,
+      "qubits": [
+        3,
+        5
+      ],
+      "control": 3,
+      "target": 5
+    },
+    {
+      "type": "CX",
+      "index": 98,
+      "step": 9,
+      "qubits": [
+        5,
+        7
+      ],
+      "control": 5,
+      "target": 7
+    },
+    {
+      "type": "CX",
+      "index": 99,
+      "step": 10,
+      "qubits": [
+        7,
+        9
+      ],
+      "control": 7,
+      "target": 9
+    },
+    {
+      "type": "CX",
+      "index": 100,
+      "step": 11,
+      "qubits": [
+        9,
+        11
+      ],
+      "control": 9,
+      "target": 11
+    },
+    {
+      "type": "CX",
+      "index": 101,
+      "step": 12,
+      "qubits": [
+        11,
+        13
+      ],
+      "control": 11,
+      "target": 13
+    },
+    {
+      "type": "CX",
+      "index": 102,
+      "step": 13,
+      "qubits": [
+        13,
+        15
+      ],
+      "control": 13,
+      "target": 15
+    },
+    {
+      "type": "CX",
+      "index": 103,
+      "step": 7,
+      "qubits": [
+        2,
+        4
+      ],
+      "control": 2,
+      "target": 4
+    },
+    {
+      "type": "CX",
+      "index": 104,
+      "step": 8,
+      "qubits": [
+        4,
+        6
+      ],
+      "control": 4,
+      "target": 6
+    },
+    {
+      "type": "CX",
+      "index": 105,
+      "step": 9,
+      "qubits": [
+        6,
+        8
+      ],
+      "control": 6,
+      "target": 8
+    },
+    {
+      "type": "CX",
+      "index": 106,
+      "step": 10,
+      "qubits": [
+        8,
+        10
+      ],
+      "control": 8,
+      "target": 10
+    },
+    {
+      "type": "CX",
+      "index": 107,
+      "step": 11,
+      "qubits": [
+        10,
+        12
+      ],
+      "control": 10,
+      "target": 12
+    },
+    {
+      "type": "CX",
+      "index": 108,
+      "step": 12,
+      "qubits": [
+        12,
+        14
+      ],
+      "control": 12,
+      "target": 14
+    },
+    {
+      "type": "CX",
+      "index": 109,
+      "step": 13,
+      "qubits": [
+        14,
+        16
+      ],
+      "control": 14,
+      "target": 16
+    },
+    {
+      "type": "H",
+      "index": 110,
+      "step": 0,
+      "qubit": 0
+    },
+    {
+      "type": "CZ",
+      "index": 111,
+      "step": 8,
+      "qubits": [
+        1,
+        0
+      ],
+      "control": 1,
+      "target": 0
+    },
+    {
+      "type": "CZ",
+      "index": 112,
+      "step": 9,
+      "qubits": [
+        3,
+        0
+      ],
+      "control": 3,
+      "target": 0
+    },
+    {
+      "type": "CZ",
+      "index": 113,
+      "step": 10,
+      "qubits": [
+        5,
+        0
+      ],
+      "control": 5,
+      "target": 0
+    },
+    {
+      "type": "CZ",
+      "index": 114,
+      "step": 11,
+      "qubits": [
+        7,
+        0
+      ],
+      "control": 7,
+      "target": 0
+    },
+    {
+      "type": "CZ",
+      "index": 115,
+      "step": 12,
+      "qubits": [
+        9,
+        0
+      ],
+      "control": 9,
+      "target": 0
+    },
+    {
+      "type": "CZ",
+      "index": 116,
+      "step": 13,
+      "qubits": [
+        11,
+        0
+      ],
+      "control": 11,
+      "target": 0
+    },
+    {
+      "type": "CZ",
+      "index": 117,
+      "step": 14,
+      "qubits": [
+        13,
+        0
+      ],
+      "control": 13,
+      "target": 0
+    },
+    {
+      "type": "CZ",
+      "index": 118,
+      "step": 15,
+      "qubits": [
+        15,
+        0
+      ],
+      "control": 15,
+      "target": 0
+    },
+    {
+      "type": "H",
+      "index": 119,
+      "step": 16,
+      "qubit": 0
+    }
+  ],
+  "gate_types": [
+    "CRY",
+    "CRZ",
+    "CX",
+    "CZ",
+    "H",
+    "P",
+    "RX",
+    "RY"
+  ]
+}
