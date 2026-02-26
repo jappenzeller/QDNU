@@ -58,3 +58,6 @@ nul
 # AWS configuration (uses SSO, no secrets but keep local)
 .aws/
 
+# Environment variables
+.env
+
