@@ -23,9 +23,8 @@ research/
 *_dashboard.png
 *.png
 
-# But keep publication figures
-!paper/figures/*.png
-!paper/figures/**/*.png
+# Paper directory (not for public repo)
+paper/
 
 # AWS Infrastructure (separate repo)
 qdnu-infra/
