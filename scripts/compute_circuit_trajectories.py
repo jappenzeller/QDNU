@@ -413,8 +413,99 @@ def compute_pca_projections(all_feature_vectors: List[np.ndarray],
 # HERON TOPOLOGY GENERATION
 # =============================================================================
 
+# IBM Torino (ibm_torino) heavy-hex qubit coordinates
+# Source: IBM Quantum backend.configuration().qubit_coordinates
+# Format: qubit_index -> [row, col]
+IBMQ_TORINO_COORDS = {
+    0:  [0, 0],   1:  [0, 1],   2:  [0, 2],   3:  [0, 3],   4:  [0, 4],
+    5:  [0, 5],   6:  [0, 6],   7:  [0, 7],   8:  [0, 8],   9:  [0, 9],
+    10: [0, 10],  11: [0, 11],  12: [0, 12],
+    13: [1, 1],   14: [1, 3],   15: [1, 5],   16: [1, 7],   17: [1, 9],  18: [1, 11],
+    19: [2, 0],   20: [2, 1],   21: [2, 2],   22: [2, 3],   23: [2, 4],
+    24: [2, 5],   25: [2, 6],   26: [2, 7],   27: [2, 8],   28: [2, 9],
+    29: [2, 10],  30: [2, 11],  31: [2, 12],
+    32: [3, 1],   33: [3, 3],   34: [3, 5],   35: [3, 7],   36: [3, 9],  37: [3, 11],
+    38: [4, 0],   39: [4, 1],   40: [4, 2],   41: [4, 3],   42: [4, 4],
+    43: [4, 5],   44: [4, 6],   45: [4, 7],   46: [4, 8],   47: [4, 9],
+    48: [4, 10],  49: [4, 11],  50: [4, 12],
+    51: [5, 1],   52: [5, 3],   53: [5, 5],   54: [5, 7],   55: [5, 9],  56: [5, 11],
+    57: [6, 0],   58: [6, 1],   59: [6, 2],   60: [6, 3],   61: [6, 4],
+    62: [6, 5],   63: [6, 6],   64: [6, 7],   65: [6, 8],   66: [6, 9],
+    67: [6, 10],  68: [6, 11],  69: [6, 12],
+    70: [7, 1],   71: [7, 3],   72: [7, 5],   73: [7, 7],   74: [7, 9],  75: [7, 11],
+    76: [8, 0],   77: [8, 1],   78: [8, 2],   79: [8, 3],   80: [8, 4],
+    81: [8, 5],   82: [8, 6],   83: [8, 7],   84: [8, 8],   85: [8, 9],
+    86: [8, 10],  87: [8, 11],  88: [8, 12],
+    89: [9, 1],   90: [9, 3],   91: [9, 5],   92: [9, 7],   93: [9, 9],  94: [9, 11],
+    95: [10, 0],  96: [10, 1],  97: [10, 2],  98: [10, 3],  99: [10, 4],
+    100:[10, 5],  101:[10, 6],  102:[10, 7],  103:[10, 8],  104:[10, 9],
+    105:[10, 10], 106:[10, 11], 107:[10, 12],
+    108:[11, 1],  109:[11, 3],  110:[11, 5],  111:[11, 7],  112:[11, 9], 113:[11, 11],
+    114:[12, 0],  115:[12, 1],  116:[12, 2],  117:[12, 3],  118:[12, 4],
+    119:[12, 5],  120:[12, 6],  121:[12, 7],  122:[12, 8],  123:[12, 9],
+    124:[12, 10], 125:[12, 11], 126:[12, 12],
+    127:[13, 1],  128:[13, 3],  129:[13, 5],  130:[13, 7],  131:[13, 9], 132:[13, 11],
+}
+
+# Heavy-hex coupling map for ibm_torino (bidirectional, store only q1<q2)
+# Rows of main qubits connect to each other; flag qubits connect two main-row qubits
+IBMQ_TORINO_EDGES = [
+    # Row 0
+    [0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,12],
+    # Row 0 <-> Flag row 1
+    [1,13],[3,14],[5,15],[7,16],[9,17],[11,18],
+    # Flag row 1 <-> Row 2
+    [13,20],[14,22],[15,24],[16,26],[17,28],[18,30],
+    # Row 2
+    [19,20],[20,21],[21,22],[22,23],[23,24],[24,25],[25,26],[26,27],[27,28],[28,29],[29,30],[30,31],
+    # Row 2 <-> Flag row 3
+    [20,32],[22,33],[24,34],[26,35],[28,36],[30,37],
+    # Flag row 3 <-> Row 4
+    [32,39],[33,41],[34,43],[35,45],[36,47],[37,49],
+    # Row 4
+    [38,39],[39,40],[40,41],[41,42],[42,43],[43,44],[44,45],[45,46],[46,47],[47,48],[48,49],[49,50],
+    # Row 4 <-> Flag row 5
+    [39,51],[41,52],[43,53],[45,54],[47,55],[49,56],
+    # Flag row 5 <-> Row 6
+    [51,58],[52,60],[53,62],[54,64],[55,66],[56,68],
+    # Row 6
+    [57,58],[58,59],[59,60],[60,61],[61,62],[62,63],[63,64],[64,65],[65,66],[66,67],[67,68],[68,69],
+    # Row 6 <-> Flag row 7
+    [58,70],[60,71],[62,72],[64,73],[66,74],[68,75],
+    # Flag row 7 <-> Row 8
+    [70,77],[71,79],[72,81],[73,83],[74,85],[75,87],
+    # Row 8
+    [76,77],[77,78],[78,79],[79,80],[80,81],[81,82],[82,83],[83,84],[84,85],[85,86],[86,87],[87,88],
+    # Row 8 <-> Flag row 9
+    [77,89],[79,90],[81,91],[83,92],[85,93],[87,94],
+    # Flag row 9 <-> Row 10
+    [89,96],[90,98],[91,100],[92,102],[93,104],[94,106],
+    # Row 10
+    [95,96],[96,97],[97,98],[98,99],[99,100],[100,101],[101,102],[102,103],[103,104],[104,105],[105,106],[106,107],
+    # Row 10 <-> Flag row 11
+    [96,108],[98,109],[100,110],[102,111],[104,112],[106,113],
+    # Flag row 11 <-> Row 12
+    [108,115],[109,117],[110,119],[111,121],[112,123],[113,125],
+    # Row 12
+    [114,115],[115,116],[116,117],[117,118],[118,119],[119,120],[120,121],[121,122],[122,123],[123,124],[124,125],[125,126],
+    # Row 12 <-> Flag row 13
+    [115,127],[117,128],[119,129],[121,130],[123,131],[125,132],
+]
+
+
+def _hardcoded_torino_topology(active_qubits: List[int]) -> Tuple[Dict[int, List[int]], List[List[int]]]:
+    """Get coordinates and coupling edges for active qubits from hardcoded IBM Torino data."""
+    active_set = set(active_qubits)
+    qubit_coords = {q: IBMQ_TORINO_COORDS[q] for q in active_qubits if q in IBMQ_TORINO_COORDS}
+    coupling_edges = [
+        e for e in IBMQ_TORINO_EDGES
+        if e[0] in active_set and e[1] in active_set
+    ]
+    return qubit_coords, coupling_edges
+
+
 def generate_heron_topology() -> Dict:
-    """Generate heron_topology.json from transpilation report."""
+    """Generate IBM Torino Heron heavy-hex topology with real 2D coordinates."""
 
     if not TRANSPILATION_FILE.exists():
         logger.warning(f"Transpilation file not found: {TRANSPILATION_FILE}")
@@ -423,23 +514,53 @@ def generate_heron_topology() -> Dict:
     with open(TRANSPILATION_FILE) as f:
         transpilation = json.load(f)
 
-    # Use the 'synchronized' circuit as reference
     layout = transpilation['circuits']['synchronized']['layout']
-
-    # Build coupling edges (subset relevant to our qubits)
-    # IBM Torino has heavy-hex topology - we'll infer edges from layout
     active_qubits = sorted(set(layout))
 
-    # Approximate coupling based on layout proximity
-    # In reality, we'd query the backend coupling map
-    coupling_edges = []
-    for i, q1 in enumerate(layout):
-        for j, q2 in enumerate(layout):
-            if i < j and abs(q1 - q2) <= 2:  # Adjacent physical qubits
-                coupling_edges.append([q1, q2])
+    # Try to get real coordinates from IBM backend, fall back to hardcoded
+    try:
+        from qiskit_ibm_runtime import QiskitRuntimeService
+        service = QiskitRuntimeService()
+        backend = service.backend('ibm_torino')
+        config = backend.configuration()
+
+        # qubit_coordinates is list of [row, col] per qubit, 0-indexed
+        all_coords = config.qubit_coordinates
+        qubit_coords = {q: all_coords[q] for q in active_qubits}
+
+        # Real coupling map from backend
+        coupling_map = config.coupling_map
+        active_set = set(active_qubits)
+        coupling_edges = [
+            [q1, q2] for q1, q2 in coupling_map
+            if q1 in active_set and q2 in active_set and q1 < q2
+        ]
+
+        logger.info(f"Got real coordinates for {len(qubit_coords)} qubits from ibm_torino")
+
+    except Exception as e:
+        logger.warning(f"Could not query backend ({e}), using hardcoded IBM Torino coordinates")
+        qubit_coords, coupling_edges = _hardcoded_torino_topology(active_qubits)
+
+    # Normalize coordinates to [0, 1] range for the viz
+    rows = [c[0] for c in qubit_coords.values()]
+    cols = [c[1] for c in qubit_coords.values()]
+    row_min, row_max = min(rows), max(rows)
+    col_min, col_max = min(cols), max(cols)
+    row_range = max(row_max - row_min, 1)
+    col_range = max(col_max - col_min, 1)
+
+    qubit_positions = {
+        str(q): {
+            "row": coords[0],
+            "col": coords[1],
+            "x_norm": (coords[1] - col_min) / col_range,  # col -> x
+            "y_norm": (coords[0] - row_min) / row_range,  # row -> y
+        }
+        for q, coords in qubit_coords.items()
+    }
 
     # Gate to physical qubit mapping
-    # For logical gates, map based on qubit indices
     n_logical = len(layout)
     gate_to_physical = {}
     for i in range(n_logical):
@@ -449,6 +570,7 @@ def generate_heron_topology() -> Dict:
         "backend": transpilation['backend'],
         "n_physical_qubits": transpilation['backend_qubits'],
         "active_qubits": active_qubits,
+        "qubit_positions": qubit_positions,
         "coupling_edges": coupling_edges,
         "logical_to_physical_layout": layout,
         "gate_to_physical": gate_to_physical,
