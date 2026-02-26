@@ -4,7 +4,7 @@
 
 [![Platform](https://img.shields.io/badge/Platform-qdnu.ai-00d4ff)](https://qdnu.ai)
 [![Visualization](https://img.shields.io/badge/Viz-Interactive_3D-f59e0b)](https://qdnu.ai/viz/)
-[![arXiv](https://img.shields.io/badge/arXiv-cs.LG-b31b1b)](arxiv_submission/main_v2.pdf)
+[![TechRxiv](https://img.shields.io/badge/TechRxiv-Preprint-1a73e8)](https://www.techrxiv.org/users/1029972/articles/1389742-quantum-positive-negative-neuron-architecture-for-multi-channel-eeg-analysis-hardware-validation-and-empirical-limits)
 
 **Author:** James Appenzeller, Independent Researcher
 
@@ -36,10 +36,10 @@ Validated on the **CHB-MIT Scalp EEG Database** using Leave-One-Subject-Out (LOS
 | [qdnu.ai/viz/](https://qdnu.ai/viz/) | Interactive 3D quantum state visualization |
 
 The visualization shows gate-by-gate quantum state trajectories on a PCA projection of the SPD covariance manifold, including:
+
 - Real-time circuit diagram execution
 - 3D manifold trajectory with polarity divergence
 - IBM Heron physical qubit topology (ibm_torino)
-- Audio sonification of boundary distance
 
 ---
 
@@ -187,17 +187,15 @@ QDNU/
 │   ├── hardware_validation.py # IBM Heron execution
 │   ├── tier3_combined_loso.py # Classical baseline (0.7419 AUC)
 │   ├── generate_figures.py    # Publication figures
-│   └── generate_meshy_assets.py # 3D asset generation
+│   └── export_circuit_gates.py # Visualization data export
+├── visualization/             # Interactive 3D visualization
+│   └── index.html             # Three.js SPD manifold viewer
+├── visualization_data/        # Precomputed trajectory data
+│   ├── circuit_trajectories.json
+│   ├── circuit_gates.json
+│   └── heron_topology.json
 ├── sagemaker/                 # AWS SageMaker training
 │   └── train_chbmit.py        # CHB-MIT preprocessing
-├── arxiv_submission/          # Paper LaTeX source
-│   ├── main_v2.tex            # Current manuscript
-│   ├── main_v2.pdf            # Compiled PDF
-│   └── figures/               # Publication figures
-├── qdnu-infra/                # Web infrastructure (gitignored)
-│   └── static/
-│       ├── index.html         # Portal page
-│       └── viz/               # 3D visualization
 ├── results/                   # Experiment outputs
 │   ├── hardware_validation/   # IBM hardware results
 │   └── patient_analysis/      # Per-patient profiles
@@ -211,10 +209,11 @@ QDNU/
 **Interactive Visualization:** [qdnu.ai/viz/](https://qdnu.ai/viz/)
 
 The visualization renders A-Gate circuit evolution on a PCA projection of the SPD covariance manifold for two representative patients:
+
 - **chb01** (standard polarity): Hardware AUC 0.686, boundary distance -0.190
 - **chb11** (inverted polarity): Raw AUC 0.283 → Calibrated 0.717, boundary distance +0.211
 
-The polarity inversion is rendered as both visual trajectory divergence and auditory sonification (descending pitch for chb01 ictal, ascending for chb11). Three synchronized panels show the logical circuit diagram, 3D manifold trajectory, and IBM Heron physical qubit topology.
+Three synchronized panels show the logical circuit diagram, 3D manifold trajectory, and IBM Heron physical qubit topology.
 
 ---
 
@@ -240,8 +239,8 @@ Research use only. Contact author for collaboration.
   title={Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Analysis: Hardware Validation and Empirical Limits},
   author={Appenzeller, James},
   year={2026},
-  journal={arXiv preprint},
-  url={https://qdnu.ai},
+  journal={TechRxiv preprint},
+  url={https://www.techrxiv.org/users/1029972/articles/1389742-quantum-positive-negative-neuron-architecture-for-multi-channel-eeg-analysis-hardware-validation-and-empirical-limits},
   note={IBM Heron r2 hardware validation, CHB-MIT dataset, LOSO cross-validation}
 }
 ```

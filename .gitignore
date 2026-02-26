@@ -41,10 +41,7 @@ agate_parameter_space/
 *.npz
 
 # Submission packages (not for public repo)
-arxiv_submission/*.pdf
-arxiv_submission/*.log
-arxiv_submission/*.tar.gz
-arxiv_submission/submission_package/
+arxiv_submission/
 springer_submission/
 springer_submission.zip
 
