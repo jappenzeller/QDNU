@@ -1,0 +1,9 @@
+{
+  "exp_a_tier2b_upper_tri": {
+    "per_subject": {
+      "chb01": {
+        "raw_auc": 0.8991596638655461,
+        "calibrated_auc": 0.8991596638655461,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 

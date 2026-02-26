@@ -1,0 +1,2268 @@
+{
+  "1_95s": {
+    "tier2a": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.2184873949579832,
+          "calibrated_auc": 0.7815126050420168,
+          "polarity": "inverted",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.2564102564102564,
+          "calibrated_auc": 0.7435897435897436,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb03": {
+          "raw_auc": 0.5546218487394958,
+          "calibrated_auc": 0.5546218487394958,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.17857142857142858,
+          "calibrated_auc": 0.8214285714285714,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.48,
+          "calibrated_auc": 0.52,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.49,
+          "calibrated_auc": 0.51,
+          "polarity": "inverted",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb07": {
+          "raw_auc": 0.43589743589743585,
+          "calibrated_auc": 0.5641025641025641,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.4,
+          "calibrated_auc": 0.6,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.875,
+          "calibrated_auc": 0.875,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.5378151260504201,
+          "calibrated_auc": 0.5378151260504201,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.7948717948717948,
+          "calibrated_auc": 0.7948717948717948,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.5113636363636364,
+          "calibrated_auc": 0.5113636363636364,
+          "polarity": "standard",
+          "n_test": 34,
+          "n_seizure": 12
+        },
+        "chb14": {
+          "raw_auc": 0.5763888888888888,
+          "calibrated_auc": 0.5763888888888888,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb15": {
+          "raw_auc": 0.6383333333333333,
+          "calibrated_auc": 0.6383333333333333,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb16": {
+          "raw_auc": 0.61,
+          "calibrated_auc": 0.61,
+          "polarity": "standard",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb17": {
+          "raw_auc": 0.43589743589743585,
+          "calibrated_auc": 0.5641025641025641,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.4270833333333333,
+          "calibrated_auc": 0.5729166666666667,
+          "polarity": "inverted",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.41025641025641024,
+          "calibrated_auc": 0.5897435897435898,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.638888888888889,
+          "calibrated_auc": 0.638888888888889,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.75,
+          "calibrated_auc": 0.75,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb22": {
+          "raw_auc": 0.6666666666666666,
+          "calibrated_auc": 0.6666666666666666,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.4705882352941176,
+          "calibrated_auc": 0.5294117647058825,
+          "polarity": "inverted",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.5162337324737057,
+      "overall_calibrated_auc": 0.6341253751447602,
+      "calibration_lift": 0.11789164267105445,
+      "n_inverted": 11,
+      "n_subjects": 22,
+      "n_features": 8,
+      "description": "Tier 2A (eigenvalues only)"
+    },
+    "exp_c_tier2a_plus": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.6050420168067226,
+          "calibrated_auc": 0.6050420168067226,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.41025641025641024,
+          "calibrated_auc": 0.5897435897435898,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb03": {
+          "raw_auc": 0.7731092436974789,
+          "calibrated_auc": 0.7731092436974789,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.7142857142857143,
+          "calibrated_auc": 0.7142857142857143,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.3333333333333333,
+          "calibrated_auc": 0.6666666666666667,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.315,
+          "calibrated_auc": 0.685,
+          "polarity": "inverted",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb07": {
+          "raw_auc": 0.641025641025641,
+          "calibrated_auc": 0.641025641025641,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.3866666666666667,
+          "calibrated_auc": 0.6133333333333333,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.75,
+          "calibrated_auc": 0.75,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.5714285714285714,
+          "calibrated_auc": 0.5714285714285714,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.5757575757575758,
+          "calibrated_auc": 0.5757575757575758,
+          "polarity": "standard",
+          "n_test": 34,
+          "n_seizure": 12
+        },
+        "chb14": {
+          "raw_auc": 0.5694444444444444,
+          "calibrated_auc": 0.5694444444444444,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb15": {
+          "raw_auc": 0.42666666666666664,
+          "calibrated_auc": 0.5733333333333334,
+          "polarity": "inverted",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb16": {
+          "raw_auc": 0.69,
+          "calibrated_auc": 0.69,
+          "polarity": "standard",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb17": {
+          "raw_auc": 0.30769230769230765,
+          "calibrated_auc": 0.6923076923076923,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.5104166666666666,
+          "calibrated_auc": 0.5104166666666666,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.4358974358974359,
+          "calibrated_auc": 0.5641025641025641,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.6597222222222222,
+          "calibrated_auc": 0.6597222222222222,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.5357142857142857,
+          "calibrated_auc": 0.5357142857142857,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb22": {
+          "raw_auc": 0.8461538461538461,
+          "calibrated_auc": 0.8461538461538461,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.453781512605042,
+          "calibrated_auc": 0.546218487394958,
+          "polarity": "inverted",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.5686997527873197,
+      "overall_calibrated_auc": 0.653309358867514,
+      "calibration_lift": 0.0846096060801943,
+      "n_inverted": 8,
+      "n_subjects": 22,
+      "n_features": 36,
+      "description": "Tier 2A+ (eigenvalues + upper triangle)"
+    },
+    "tier3": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.9327731092436975,
+          "calibrated_auc": 0.9327731092436975,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.46153846153846156,
+          "calibrated_auc": 0.5384615384615384,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb03": {
+          "raw_auc": 0.907563025210084,
+          "calibrated_auc": 0.907563025210084,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.9285714285714286,
+          "calibrated_auc": 0.9285714285714286,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.5466666666666666,
+          "calibrated_auc": 0.5466666666666666,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.43000000000000005,
+          "calibrated_auc": 0.57,
+          "polarity": "inverted",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb07": {
+          "raw_auc": 0.7948717948717949,
+          "calibrated_auc": 0.7948717948717949,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.6,
+          "calibrated_auc": 0.6,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.8035714285714285,
+          "calibrated_auc": 0.8035714285714285,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.5210084033613445,
+          "calibrated_auc": 0.5210084033613445,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.9743589743589745,
+          "calibrated_auc": 0.9743589743589745,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.5189393939393939,
+          "calibrated_auc": 0.5189393939393939,
+          "polarity": "standard",
+          "n_test": 34,
+          "n_seizure": 12
+        },
+        "chb14": {
+          "raw_auc": 0.3611111111111111,
+          "calibrated_auc": 0.6388888888888888,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb15": {
+          "raw_auc": 0.5316666666666666,
+          "calibrated_auc": 0.5316666666666666,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb16": {
+          "raw_auc": 0.9650000000000001,
+          "calibrated_auc": 0.9650000000000001,
+          "polarity": "standard",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb17": {
+          "raw_auc": 0.5128205128205128,
+          "calibrated_auc": 0.5128205128205128,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.7916666666666666,
+          "calibrated_auc": 0.7916666666666666,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.2777777777777778,
+          "calibrated_auc": 0.7222222222222222,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.30357142857142855,
+          "calibrated_auc": 0.6964285714285714,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb22": {
+          "raw_auc": 0.9487179487179487,
+          "calibrated_auc": 0.9487179487179487,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.8571428571428571,
+          "calibrated_auc": 0.8571428571428571,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.6804244389003749,
+      "overall_calibrated_auc": 0.7409700044459402,
+      "calibration_lift": 0.06054556554556534,
+      "n_inverted": 5,
+      "n_subjects": 22,
+      "n_features": 36,
+      "description": "Tier 3 (Riemannian tangent space)"
+    },
+    "tier2b_current": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.6134453781512605,
+          "calibrated_auc": 0.6134453781512605,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb03": {
+          "raw_auc": 0.8823529411764706,
+          "calibrated_auc": 0.8823529411764706,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.3928571428571428,
+          "calibrated_auc": 0.6071428571428572,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.49333333333333335,
+          "calibrated_auc": 0.5066666666666666,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.29500000000000004,
+          "calibrated_auc": 0.705,
+          "polarity": "inverted",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb07": {
+          "raw_auc": 0.4358974358974359,
+          "calibrated_auc": 0.5641025641025641,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.3466666666666667,
+          "calibrated_auc": 0.6533333333333333,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.28571428571428575,
+          "calibrated_auc": 0.7142857142857142,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.6974789915966386,
+          "calibrated_auc": 0.6974789915966386,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.8205128205128205,
+          "calibrated_auc": 0.8205128205128205,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.4204545454545454,
+          "calibrated_auc": 0.5795454545454546,
+          "polarity": "inverted",
+          "n_test": 34,
+          "n_seizure": 12
+        },
+        "chb14": {
+          "raw_auc": 0.4236111111111111,
+          "calibrated_auc": 0.5763888888888888,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb15": {
+          "raw_auc": 0.57,
+          "calibrated_auc": 0.57,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb16": {
+          "raw_auc": 0.825,
+          "calibrated_auc": 0.825,
+          "polarity": "standard",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb17": {
+          "raw_auc": 0.7692307692307693,
+          "calibrated_auc": 0.7692307692307693,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.8229166666666666,
+          "calibrated_auc": 0.8229166666666666,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.7948717948717948,
+          "calibrated_auc": 0.7948717948717948,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.3194444444444445,
+          "calibrated_auc": 0.6805555555555556,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.4642857142857143,
+          "calibrated_auc": 0.5357142857142857,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb22": {
+          "raw_auc": 0.7435897435897436,
+          "calibrated_auc": 0.7435897435897436,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.9831932773109243,
+          "calibrated_auc": 0.9831932773109243,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.6090844119487167,
+      "overall_calibrated_auc": 0.7111512592428368,
+      "calibration_lift": 0.10206684729412019,
+      "n_inverted": 10,
+      "n_subjects": 22,
+      "n_features": 336,
+      "description": "Tier 2B current (standard normalization)"
+    },
+    "exp_a_tier2b_upper_tri": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.6722689075630252,
+          "calibrated_auc": 0.6722689075630252,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.923076923076923,
+          "calibrated_auc": 0.923076923076923,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb03": {
+          "raw_auc": 0.9159663865546218,
+          "calibrated_auc": 0.9159663865546218,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.4821428571428571,
+          "calibrated_auc": 0.5178571428571429,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.36,
+          "calibrated_auc": 0.64,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.13,
+          "calibrated_auc": 0.87,
+          "polarity": "inverted",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb07": {
+          "raw_auc": 0.23076923076923075,
+          "calibrated_auc": 0.7692307692307693,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.32,
+          "calibrated_auc": 0.6799999999999999,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.6428571428571428,
+          "calibrated_auc": 0.6428571428571428,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.7310924369747899,
+          "calibrated_auc": 0.7310924369747899,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.846153846153846,
+          "calibrated_auc": 0.846153846153846,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.34848484848484845,
+          "calibrated_auc": 0.6515151515151516,
+          "polarity": "inverted",
+          "n_test": 34,
+          "n_seizure": 12
+        },
+        "chb14": {
+          "raw_auc": 0.4236111111111111,
+          "calibrated_auc": 0.5763888888888888,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb15": {
+          "raw_auc": 0.545,
+          "calibrated_auc": 0.545,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb16": {
+          "raw_auc": 0.855,
+          "calibrated_auc": 0.855,
+          "polarity": "standard",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb17": {
+          "raw_auc": 0.717948717948718,
+          "calibrated_auc": 0.717948717948718,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.6770833333333334,
+          "calibrated_auc": 0.6770833333333334,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.8974358974358974,
+          "calibrated_auc": 0.8974358974358974,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.3819444444444444,
+          "calibrated_auc": 0.6180555555555556,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.46428571428571425,
+          "calibrated_auc": 0.5357142857142858,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb22": {
+          "raw_auc": 0.846153846153846,
+          "calibrated_auc": 0.846153846153846,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.9243697478991596,
+          "calibrated_auc": 0.9243697478991596,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.6061656996449778,
+      "overall_calibrated_auc": 0.7296894990778682,
+      "calibration_lift": 0.12352379943289038,
+      "n_inverted": 9,
+      "n_subjects": 22,
+      "n_features": 392,
+      "description": "Tier 2B + upper triangle (freq + time)"
+    },
+    "exp_b_hills_norm": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.5966386554621849,
+          "calibrated_auc": 0.5966386554621849,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.8717948717948717,
+          "calibrated_auc": 0.8717948717948717,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb03": {
+          "raw_auc": 0.8823529411764706,
+          "calibrated_auc": 0.8823529411764706,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.375,
+          "calibrated_auc": 0.625,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.45333333333333337,
+          "calibrated_auc": 0.5466666666666666,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.15499999999999997,
+          "calibrated_auc": 0.845,
+          "polarity": "inverted",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb07": {
+          "raw_auc": 0.30769230769230765,
+          "calibrated_auc": 0.6923076923076923,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.25333333333333335,
+          "calibrated_auc": 0.7466666666666666,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.3392857142857143,
+          "calibrated_auc": 0.6607142857142857,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.7058823529411764,
+          "calibrated_auc": 0.7058823529411764,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.8717948717948717,
+          "calibrated_auc": 0.8717948717948717,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.428030303030303,
+          "calibrated_auc": 0.571969696969697,
+          "polarity": "inverted",
+          "n_test": 34,
+          "n_seizure": 12
+        },
+        "chb14": {
+          "raw_auc": 0.375,
+          "calibrated_auc": 0.625,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb15": {
+          "raw_auc": 0.5583333333333333,
+          "calibrated_auc": 0.5583333333333333,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb16": {
+          "raw_auc": 0.79,
+          "calibrated_auc": 0.79,
+          "polarity": "standard",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb17": {
+          "raw_auc": 0.6666666666666666,
+          "calibrated_auc": 0.6666666666666666,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.84375,
+          "calibrated_auc": 0.84375,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.9487179487179487,
+          "calibrated_auc": 0.9487179487179487,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.42361111111111116,
+          "calibrated_auc": 0.5763888888888888,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.4642857142857143,
+          "calibrated_auc": 0.5357142857142857,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb22": {
+          "raw_auc": 0.6923076923076923,
+          "calibrated_auc": 0.6923076923076923,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.9243697478991596,
+          "calibrated_auc": 0.9243697478991596,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.5875991317802814,
+      "overall_calibrated_auc": 0.71718351204648,
+      "calibration_lift": 0.12958438026619856,
+      "n_inverted": 10,
+      "n_subjects": 22,
+      "n_features": 336,
+      "description": "Tier 2B with Hills column-wise FFT normalization"
+    },
+    "exp_d_hills_faithful": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.680672268907563,
+          "calibrated_auc": 0.680672268907563,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.846153846153846,
+          "calibrated_auc": 0.846153846153846,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb03": {
+          "raw_auc": 0.8487394957983193,
+          "calibrated_auc": 0.8487394957983193,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.4464285714285714,
+          "calibrated_auc": 0.5535714285714286,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.6799999999999999,
+          "calibrated_auc": 0.6799999999999999,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.07999999999999999,
+          "calibrated_auc": 0.92,
+          "polarity": "inverted",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb07": {
+          "raw_auc": 0.4102564102564102,
+          "calibrated_auc": 0.5897435897435899,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.31999999999999995,
+          "calibrated_auc": 0.68,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.5178571428571429,
+          "calibrated_auc": 0.5178571428571429,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.7815126050420167,
+          "calibrated_auc": 0.7815126050420167,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.8717948717948718,
+          "calibrated_auc": 0.8717948717948718,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.4356060606060606,
+          "calibrated_auc": 0.5643939393939394,
+          "polarity": "inverted",
+          "n_test": 34,
+          "n_seizure": 12
+        },
+        "chb14": {
+          "raw_auc": 0.4236111111111111,
+          "calibrated_auc": 0.5763888888888888,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb15": {
+          "raw_auc": 0.5416666666666666,
+          "calibrated_auc": 0.5416666666666666,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb16": {
+          "raw_auc": 0.8,
+          "calibrated_auc": 0.8,
+          "polarity": "standard",
+          "n_test": 30,
+          "n_seizure": 10
+        },
+        "chb17": {
+          "raw_auc": 0.6923076923076923,
+          "calibrated_auc": 0.6923076923076923,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.7708333333333333,
+          "calibrated_auc": 0.7708333333333333,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.9487179487179487,
+          "calibrated_auc": 0.9487179487179487,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.4375,
+          "calibrated_auc": 0.5625,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.4107142857142857,
+          "calibrated_auc": 0.5892857142857143,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb22": {
+          "raw_auc": 0.7948717948717949,
+          "calibrated_auc": 0.7948717948717949,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.8571428571428571,
+          "calibrated_auc": 0.8571428571428571,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.6180175892141133,
+      "overall_calibrated_auc": 0.7121888220217099,
+      "calibration_lift": 0.09417123280759654,
+      "n_inverted": 8,
+      "n_subjects": 22,
+      "n_features": 392,
+      "description": "Hills faithful (column-wise norm + upper triangle)"
+    }
+  },
+  "20_00s": {
+    "tier2a": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.8067226890756302,
+          "calibrated_auc": 0.8067226890756302,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.5,
+          "calibrated_auc": 0.5,
+          "polarity": "standard",
+          "n_test": 15,
+          "n_seizure": 2
+        },
+        "chb03": {
+          "raw_auc": 0.48739495798319327,
+          "calibrated_auc": 0.5126050420168067,
+          "polarity": "inverted",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.41071428571428575,
+          "calibrated_auc": 0.5892857142857142,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.76,
+          "calibrated_auc": 0.76,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.425,
+          "calibrated_auc": 0.575,
+          "polarity": "inverted",
+          "n_test": 22,
+          "n_seizure": 2
+        },
+        "chb07": {
+          "raw_auc": 0.8461538461538461,
+          "calibrated_auc": 0.8461538461538461,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.48000000000000004,
+          "calibrated_auc": 0.52,
+          "polarity": "inverted",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.14285714285714285,
+          "calibrated_auc": 0.8571428571428572,
+          "polarity": "inverted",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.2689075630252101,
+          "calibrated_auc": 0.73109243697479,
+          "polarity": "inverted",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.6666666666666666,
+          "calibrated_auc": 0.6666666666666666,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.4681818181818182,
+          "calibrated_auc": 0.5318181818181817,
+          "polarity": "inverted",
+          "n_test": 32,
+          "n_seizure": 10
+        },
+        "chb14": {
+          "raw_auc": 0.14444444444444443,
+          "calibrated_auc": 0.8555555555555556,
+          "polarity": "inverted",
+          "n_test": 23,
+          "n_seizure": 5
+        },
+        "chb15": {
+          "raw_auc": 0.5416666666666666,
+          "calibrated_auc": 0.5416666666666666,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb17": {
+          "raw_auc": 0.7948717948717948,
+          "calibrated_auc": 0.7948717948717948,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.6666666666666667,
+          "calibrated_auc": 0.6666666666666667,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.7435897435897436,
+          "calibrated_auc": 0.7435897435897436,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.2638888888888889,
+          "calibrated_auc": 0.7361111111111112,
+          "polarity": "inverted",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.19047619047619044,
+          "calibrated_auc": 0.8095238095238095,
+          "polarity": "inverted",
+          "n_test": 17,
+          "n_seizure": 3
+        },
+        "chb22": {
+          "raw_auc": 0.6666666666666666,
+          "calibrated_auc": 0.6666666666666666,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.7058823529411764,
+          "calibrated_auc": 0.7058823529411764,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.5228929707080967,
+      "overall_calibrated_auc": 0.6865248477013184,
+      "calibration_lift": 0.16363187699322168,
+      "n_inverted": 10,
+      "n_subjects": 21,
+      "n_features": 8,
+      "description": "Tier 2A (eigenvalues only)"
+    },
+    "exp_c_tier2a_plus": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.73109243697479,
+          "calibrated_auc": 0.73109243697479,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.4230769230769231,
+          "calibrated_auc": 0.5769230769230769,
+          "polarity": "inverted",
+          "n_test": 15,
+          "n_seizure": 2
+        },
+        "chb03": {
+          "raw_auc": 0.6806722689075629,
+          "calibrated_auc": 0.6806722689075629,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.875,
+          "calibrated_auc": 0.875,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.8933333333333334,
+          "calibrated_auc": 0.8933333333333334,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.85,
+          "calibrated_auc": 0.85,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 2
+        },
+        "chb07": {
+          "raw_auc": 0.9487179487179487,
+          "calibrated_auc": 0.9487179487179487,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.9600000000000001,
+          "calibrated_auc": 0.9600000000000001,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.5,
+          "calibrated_auc": 0.5,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.8991596638655461,
+          "calibrated_auc": 0.8991596638655461,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.8974358974358974,
+          "calibrated_auc": 0.8974358974358974,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.4363636363636364,
+          "calibrated_auc": 0.5636363636363636,
+          "polarity": "inverted",
+          "n_test": 32,
+          "n_seizure": 10
+        },
+        "chb14": {
+          "raw_auc": 0.7777777777777779,
+          "calibrated_auc": 0.7777777777777779,
+          "polarity": "standard",
+          "n_test": 23,
+          "n_seizure": 5
+        },
+        "chb15": {
+          "raw_auc": 0.5566666666666666,
+          "calibrated_auc": 0.5566666666666666,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb17": {
+          "raw_auc": 0.6153846153846153,
+          "calibrated_auc": 0.6153846153846153,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.6041666666666666,
+          "calibrated_auc": 0.6041666666666666,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.641025641025641,
+          "calibrated_auc": 0.641025641025641,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.5694444444444444,
+          "calibrated_auc": 0.5694444444444444,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.3571428571428571,
+          "calibrated_auc": 0.6428571428571429,
+          "polarity": "inverted",
+          "n_test": 17,
+          "n_seizure": 3
+        },
+        "chb22": {
+          "raw_auc": 0.6153846153846153,
+          "calibrated_auc": 0.6153846153846153,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.7058823529411764,
+          "calibrated_auc": 0.7058823529411764,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.6922727498147665,
+      "overall_calibrated_auc": 0.7192648053782507,
+      "calibration_lift": 0.026992055563484163,
+      "n_inverted": 3,
+      "n_subjects": 21,
+      "n_features": 36,
+      "description": "Tier 2A+ (eigenvalues + upper triangle)"
+    },
+    "tier3": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.9915966386554622,
+          "calibrated_auc": 0.9915966386554622,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.9230769230769231,
+          "calibrated_auc": 0.9230769230769231,
+          "polarity": "standard",
+          "n_test": 15,
+          "n_seizure": 2
+        },
+        "chb03": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.6964285714285714,
+          "calibrated_auc": 0.6964285714285714,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.09999999999999998,
+          "calibrated_auc": 0.9,
+          "polarity": "inverted",
+          "n_test": 22,
+          "n_seizure": 2
+        },
+        "chb07": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.5454545454545455,
+          "calibrated_auc": 0.5454545454545455,
+          "polarity": "standard",
+          "n_test": 32,
+          "n_seizure": 10
+        },
+        "chb14": {
+          "raw_auc": 0.5,
+          "calibrated_auc": 0.5,
+          "polarity": "standard",
+          "n_test": 23,
+          "n_seizure": 5
+        },
+        "chb15": {
+          "raw_auc": 0.8333333333333334,
+          "calibrated_auc": 0.8333333333333334,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb17": {
+          "raw_auc": 0.5128205128205128,
+          "calibrated_auc": 0.5128205128205128,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.9791666666666666,
+          "calibrated_auc": 0.9791666666666666,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.8974358974358975,
+          "calibrated_auc": 0.8974358974358975,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.8958333333333334,
+          "calibrated_auc": 0.8958333333333334,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.880952380952381,
+          "calibrated_auc": 0.880952380952381,
+          "polarity": "standard",
+          "n_test": 17,
+          "n_seizure": 3
+        },
+        "chb22": {
+          "raw_auc": 0.846153846153846,
+          "calibrated_auc": 0.846153846153846,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.8382025071100702,
+      "overall_calibrated_auc": 0.8762977452053083,
+      "calibration_lift": 0.03809523809523818,
+      "n_inverted": 1,
+      "n_subjects": 21,
+      "n_features": 36,
+      "description": "Tier 3 (Riemannian tangent space)"
+    },
+    "tier2b_current": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.7983193277310924,
+          "calibrated_auc": 0.7983193277310924,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.9230769230769231,
+          "calibrated_auc": 0.9230769230769231,
+          "polarity": "standard",
+          "n_test": 15,
+          "n_seizure": 2
+        },
+        "chb03": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.6428571428571428,
+          "calibrated_auc": 0.6428571428571428,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.8666666666666667,
+          "calibrated_auc": 0.8666666666666667,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.17500000000000004,
+          "calibrated_auc": 0.825,
+          "polarity": "inverted",
+          "n_test": 22,
+          "n_seizure": 2
+        },
+        "chb07": {
+          "raw_auc": 0.9743589743589745,
+          "calibrated_auc": 0.9743589743589745,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.8666666666666667,
+          "calibrated_auc": 0.8666666666666667,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.8928571428571428,
+          "calibrated_auc": 0.8928571428571428,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.5966386554621848,
+          "calibrated_auc": 0.5966386554621848,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.4954545454545455,
+          "calibrated_auc": 0.5045454545454545,
+          "polarity": "inverted",
+          "n_test": 32,
+          "n_seizure": 10
+        },
+        "chb14": {
+          "raw_auc": 0.47777777777777775,
+          "calibrated_auc": 0.5222222222222223,
+          "polarity": "inverted",
+          "n_test": 23,
+          "n_seizure": 5
+        },
+        "chb15": {
+          "raw_auc": 0.5816666666666667,
+          "calibrated_auc": 0.5816666666666667,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb17": {
+          "raw_auc": 0.48717948717948717,
+          "calibrated_auc": 0.5128205128205128,
+          "polarity": "inverted",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.78125,
+          "calibrated_auc": 0.78125,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 0.9743589743589745,
+          "calibrated_auc": 0.9743589743589745,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.5069444444444444,
+          "calibrated_auc": 0.5069444444444444,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.7142857142857142,
+          "calibrated_auc": 0.7142857142857142,
+          "polarity": "standard",
+          "n_test": 17,
+          "n_seizure": 3
+        },
+        "chb22": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.8907563025210083,
+          "calibrated_auc": 0.8907563025210083,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.7450531148745435,
+      "overall_calibrated_auc": 0.7797757995972281,
+      "calibration_lift": 0.03472268472268458,
+      "n_inverted": 4,
+      "n_subjects": 21,
+      "n_features": 336,
+      "description": "Tier 2B current (standard normalization)"
+    },
+    "exp_a_tier2b_upper_tri": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.957983193277311,
+          "calibrated_auc": 0.957983193277311,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.6538461538461539,
+          "calibrated_auc": 0.6538461538461539,
+          "polarity": "standard",
+          "n_test": 15,
+          "n_seizure": 2
+        },
+        "chb03": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.8035714285714285,
+          "calibrated_auc": 0.8035714285714285,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.8533333333333334,
+          "calibrated_auc": 0.8533333333333334,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.22499999999999998,
+          "calibrated_auc": 0.775,
+          "polarity": "inverted",
+          "n_test": 22,
+          "n_seizure": 2
+        },
+        "chb07": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.9663865546218487,
+          "calibrated_auc": 0.9663865546218487,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.4045454545454546,
+          "calibrated_auc": 0.5954545454545455,
+          "polarity": "inverted",
+          "n_test": 32,
+          "n_seizure": 10
+        },
+        "chb14": {
+          "raw_auc": 0.6111111111111112,
+          "calibrated_auc": 0.6111111111111112,
+          "polarity": "standard",
+          "n_test": 23,
+          "n_seizure": 5
+        },
+        "chb15": {
+          "raw_auc": 0.6133333333333334,
+          "calibrated_auc": 0.6133333333333334,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb17": {
+          "raw_auc": 0.5128205128205128,
+          "calibrated_auc": 0.5128205128205128,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.7604166666666666,
+          "calibrated_auc": 0.7604166666666666,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.5902777777777777,
+          "calibrated_auc": 0.5902777777777777,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.8571428571428571,
+          "calibrated_auc": 0.8571428571428571,
+          "polarity": "standard",
+          "n_test": 17,
+          "n_seizure": 3
+        },
+        "chb22": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.8571428571428571,
+          "calibrated_auc": 0.8571428571428571,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.7936624397233641,
+      "overall_calibrated_auc": 0.8289438250047494,
+      "calibration_lift": 0.03528138528138525,
+      "n_inverted": 2,
+      "n_subjects": 21,
+      "n_features": 392,
+      "description": "Tier 2B + upper triangle (freq + time)"
+    },
+    "exp_b_hills_norm": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.8571428571428571,
+          "calibrated_auc": 0.8571428571428571,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.7692307692307692,
+          "calibrated_auc": 0.7692307692307692,
+          "polarity": "standard",
+          "n_test": 15,
+          "n_seizure": 2
+        },
+        "chb03": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.6071428571428571,
+          "calibrated_auc": 0.6071428571428571,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.7333333333333333,
+          "calibrated_auc": 0.7333333333333333,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.10000000000000003,
+          "calibrated_auc": 0.8999999999999999,
+          "polarity": "inverted",
+          "n_test": 22,
+          "n_seizure": 2
+        },
+        "chb07": {
+          "raw_auc": 0.9487179487179487,
+          "calibrated_auc": 0.9487179487179487,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 0.8666666666666667,
+          "calibrated_auc": 0.8666666666666667,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.9285714285714286,
+          "calibrated_auc": 0.9285714285714286,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 0.7647058823529411,
+          "calibrated_auc": 0.7647058823529411,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 0.9743589743589745,
+          "calibrated_auc": 0.9743589743589745,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.5045454545454545,
+          "calibrated_auc": 0.5045454545454545,
+          "polarity": "standard",
+          "n_test": 32,
+          "n_seizure": 10
+        },
+        "chb14": {
+          "raw_auc": 0.42222222222222217,
+          "calibrated_auc": 0.5777777777777778,
+          "polarity": "inverted",
+          "n_test": 23,
+          "n_seizure": 5
+        },
+        "chb15": {
+          "raw_auc": 0.545,
+          "calibrated_auc": 0.545,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb17": {
+          "raw_auc": 0.5128205128205128,
+          "calibrated_auc": 0.5128205128205128,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.7291666666666666,
+          "calibrated_auc": 0.7291666666666666,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.5208333333333333,
+          "calibrated_auc": 0.5208333333333333,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.5714285714285715,
+          "calibrated_auc": 0.5714285714285715,
+          "polarity": "standard",
+          "n_test": 17,
+          "n_seizure": 3
+        },
+        "chb22": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.9159663865546218,
+          "calibrated_auc": 0.9159663865546218,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.7272311364328171,
+      "overall_calibrated_auc": 0.7727337819354626,
+      "calibration_lift": 0.04550264550264549,
+      "n_inverted": 2,
+      "n_subjects": 21,
+      "n_features": 336,
+      "description": "Tier 2B with Hills column-wise FFT normalization"
+    },
+    "exp_d_hills_faithful": {
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.9327731092436974,
+          "calibrated_auc": 0.9327731092436974,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb02": {
+          "raw_auc": 0.6923076923076923,
+          "calibrated_auc": 0.6923076923076923,
+          "polarity": "standard",
+          "n_test": 15,
+          "n_seizure": 2
+        },
+        "chb03": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb04": {
+          "raw_auc": 0.8214285714285714,
+          "calibrated_auc": 0.8214285714285714,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb05": {
+          "raw_auc": 0.8800000000000001,
+          "calibrated_auc": 0.8800000000000001,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb06": {
+          "raw_auc": 0.125,
+          "calibrated_auc": 0.875,
+          "polarity": "inverted",
+          "n_test": 22,
+          "n_seizure": 2
+        },
+        "chb07": {
+          "raw_auc": 0.923076923076923,
+          "calibrated_auc": 0.923076923076923,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb08": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 20,
+          "n_seizure": 5
+        },
+        "chb09": {
+          "raw_auc": 0.9285714285714286,
+          "calibrated_auc": 0.9285714285714286,
+          "polarity": "standard",
+          "n_test": 18,
+          "n_seizure": 4
+        },
+        "chb10": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        },
+        "chb11": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb13": {
+          "raw_auc": 0.41363636363636364,
+          "calibrated_auc": 0.5863636363636364,
+          "polarity": "inverted",
+          "n_test": 32,
+          "n_seizure": 10
+        },
+        "chb14": {
+          "raw_auc": 0.4666666666666667,
+          "calibrated_auc": 0.5333333333333333,
+          "polarity": "inverted",
+          "n_test": 23,
+          "n_seizure": 5
+        },
+        "chb15": {
+          "raw_auc": 0.6016666666666667,
+          "calibrated_auc": 0.6016666666666667,
+          "polarity": "standard",
+          "n_test": 50,
+          "n_seizure": 20
+        },
+        "chb17": {
+          "raw_auc": 0.5897435897435896,
+          "calibrated_auc": 0.5897435897435896,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb18": {
+          "raw_auc": 0.65625,
+          "calibrated_auc": 0.65625,
+          "polarity": "standard",
+          "n_test": 22,
+          "n_seizure": 6
+        },
+        "chb19": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb20": {
+          "raw_auc": 0.6805555555555556,
+          "calibrated_auc": 0.6805555555555556,
+          "polarity": "standard",
+          "n_test": 26,
+          "n_seizure": 8
+        },
+        "chb21": {
+          "raw_auc": 0.9285714285714286,
+          "calibrated_auc": 0.9285714285714286,
+          "polarity": "standard",
+          "n_test": 17,
+          "n_seizure": 3
+        },
+        "chb22": {
+          "raw_auc": 1.0,
+          "calibrated_auc": 1.0,
+          "polarity": "standard",
+          "n_test": 16,
+          "n_seizure": 3
+        },
+        "chb23": {
+          "raw_auc": 0.9075630252100839,
+          "calibrated_auc": 0.9075630252100839,
+          "polarity": "standard",
+          "n_test": 24,
+          "n_seizure": 7
+        }
+      },
+      "overall_raw_auc": 0.7879910009846985,
+      "overall_calibrated_auc": 0.8351049980986955,
+      "calibration_lift": 0.047113997113997,
+      "n_inverted": 3,
+      "n_subjects": 21,
+      "n_features": 392,
+      "description": "Hills faithful (column-wise norm + upper triangle)"
+    }
+  },
+  "timestamp": "2026-02-22T16:56:41.376073"
+}

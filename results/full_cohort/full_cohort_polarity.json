@@ -1,0 +1,906 @@
+{
+  "config": {
+    "channels": [
+      "FP1-F7",
+      "F7-T7",
+      "FP1-F3",
+      "F3-C3",
+      "FP2-F8",
+      "F8-T8",
+      "FP2-F4",
+      "F4-C4"
+    ],
+    "n_channels": 8,
+    "window_sec": 20.0,
+    "exclude_subjects": [
+      "chb12",
+      "chb24"
+    ],
+    "validation_thresholds": {
+      "tier2a_min": 0.62,
+      "tier2a_max": 0.8,
+      "tier2b_min": 0.84,
+      "tier3_raw_max": 0.55,
+      "tier3_cal_min": 0.65
+    }
+  },
+  "n_subjects": 22,
+  "n_segments": 494,
+  "tier2a_eigenvalues": {
+    "description": "Minimal 8 eigenvalues - fair quantum comparator",
+    "n_features": 8,
+    "per_subject": {
+      "chb01": {
+        "raw_auc": 0.42142857142857143,
+        "calibrated_auc": 0.5785714285714285,
+        "polarity": "inverted",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "raw_auc": 0.64,
+        "calibrated_auc": 0.64,
+        "polarity": "standard",
+        "n_test": 15,
+        "n_seizure": 5
+      },
+      "chb03": {
+        "raw_auc": 0.2928571428571428,
+        "calibrated_auc": 0.7071428571428572,
+        "polarity": "inverted",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "raw_auc": 0.6625,
+        "calibrated_auc": 0.6625,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "raw_auc": 0.6,
+        "calibrated_auc": 0.6,
+        "polarity": "standard",
+        "n_test": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "raw_auc": 0.565,
+        "calibrated_auc": 0.565,
+        "polarity": "standard",
+        "n_test": 30,
+        "n_seizure": 20
+      },
+      "chb07": {
+        "raw_auc": 0.4666666666666667,
+        "calibrated_auc": 0.5333333333333333,
+        "polarity": "inverted",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "raw_auc": 0.39,
+        "calibrated_auc": 0.61,
+        "polarity": "inverted",
+        "n_test": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "raw_auc": 0.6,
+        "calibrated_auc": 0.6,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "raw_auc": 0.5,
+        "calibrated_auc": 0.5,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "raw_auc": 0.26666666666666666,
+        "calibrated_auc": 0.7333333333333334,
+        "polarity": "inverted",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "raw_auc": 0.5375,
+        "calibrated_auc": 0.5375,
+        "polarity": "standard",
+        "n_test": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "raw_auc": 0.4375,
+        "calibrated_auc": 0.5625,
+        "polarity": "inverted",
+        "n_test": 26,
+        "n_seizure": 16
+      },
+      "chb15": {
+        "raw_auc": 0.5775,
+        "calibrated_auc": 0.5775,
+        "polarity": "standard",
+        "n_test": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "raw_auc": 0.44545454545454544,
+        "calibrated_auc": 0.5545454545454546,
+        "polarity": "inverted",
+        "n_test": 21,
+        "n_seizure": 11
+      },
+      "chb17": {
+        "raw_auc": 0.41666666666666663,
+        "calibrated_auc": 0.5833333333333334,
+        "polarity": "inverted",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "raw_auc": 0.8,
+        "calibrated_auc": 0.8,
+        "polarity": "standard",
+        "n_test": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "raw_auc": 0.7,
+        "calibrated_auc": 0.7,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "raw_auc": 0.675,
+        "calibrated_auc": 0.675,
+        "polarity": "standard",
+        "n_test": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "raw_auc": 0.25,
+        "calibrated_auc": 0.75,
+        "polarity": "inverted",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb22": {
+        "raw_auc": 0.43333333333333335,
+        "calibrated_auc": 0.5666666666666667,
+        "polarity": "inverted",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "raw_auc": 0.7857142857142858,
+        "calibrated_auc": 0.7857142857142858,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      }
+    },
+    "raw_aucs": [
+      0.42142857142857143,
+      0.64,
+      0.2928571428571428,
+      0.6625,
+      0.6,
+      0.565,
+      0.4666666666666667,
+      0.39,
+      0.6,
+      0.5,
+      0.26666666666666666,
+      0.5375,
+      0.4375,
+      0.5775,
+      0.44545454545454544,
+      0.41666666666666663,
+      0.8,
+      0.7,
+      0.675,
+      0.25,
+      0.43333333333333335,
+      0.7857142857142858
+    ],
+    "calibrated_aucs": [
+      0.5785714285714285,
+      0.64,
+      0.7071428571428572,
+      0.6625,
+      0.6,
+      0.565,
+      0.5333333333333333,
+      0.61,
+      0.6,
+      0.5,
+      0.7333333333333334,
+      0.5375,
+      0.5625,
+      0.5775,
+      0.5545454545454546,
+      0.5833333333333334,
+      0.8,
+      0.7,
+      0.675,
+      0.75,
+      0.5666666666666667,
+      0.7857142857142858
+    ],
+    "overall_raw_auc": 0.5210812672176309,
+    "overall_calibrated_auc": 0.6283018496654861,
+    "calibration_lift": 0.10722058244785515,
+    "n_inverted": 10
+  },
+  "tier2b_full_features": {
+    "description": "Full MichaelHills features - classical ceiling",
+    "n_features": 336,
+    "per_subject": {
+      "chb01": {
+        "raw_auc": 0.8642857142857143,
+        "calibrated_auc": 0.8642857142857143,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "raw_auc": 0.98,
+        "calibrated_auc": 0.98,
+        "polarity": "standard",
+        "n_test": 15,
+        "n_seizure": 5
+      },
+      "chb03": {
+        "raw_auc": 0.9928571428571429,
+        "calibrated_auc": 0.9928571428571429,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "raw_auc": 0.9800000000000001,
+        "calibrated_auc": 0.9800000000000001,
+        "polarity": "standard",
+        "n_test": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "raw_auc": 0.52,
+        "calibrated_auc": 0.52,
+        "polarity": "standard",
+        "n_test": 30,
+        "n_seizure": 20
+      },
+      "chb07": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "raw_auc": 0.99,
+        "calibrated_auc": 0.99,
+        "polarity": "standard",
+        "n_test": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "raw_auc": 0.9083333333333333,
+        "calibrated_auc": 0.9083333333333333,
+        "polarity": "standard",
+        "n_test": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "raw_auc": 0.9125000000000001,
+        "calibrated_auc": 0.9125000000000001,
+        "polarity": "standard",
+        "n_test": 26,
+        "n_seizure": 16
+      },
+      "chb15": {
+        "raw_auc": 0.96,
+        "calibrated_auc": 0.96,
+        "polarity": "standard",
+        "n_test": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 21,
+        "n_seizure": 11
+      },
+      "chb17": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "raw_auc": 0.9624999999999999,
+        "calibrated_auc": 0.9624999999999999,
+        "polarity": "standard",
+        "n_test": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "raw_auc": 0.8875,
+        "calibrated_auc": 0.8875,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb22": {
+        "raw_auc": 1.0,
+        "calibrated_auc": 1.0,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "raw_auc": 0.9857142857142858,
+        "calibrated_auc": 0.9857142857142858,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      }
+    },
+    "raw_aucs": [
+      0.8642857142857143,
+      0.98,
+      0.9928571428571429,
+      1.0,
+      0.9800000000000001,
+      0.52,
+      1.0,
+      0.99,
+      1.0,
+      1.0,
+      1.0,
+      0.9083333333333333,
+      0.9125000000000001,
+      0.96,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.9624999999999999,
+      0.8875,
+      1.0,
+      0.9857142857142858
+    ],
+    "calibrated_aucs": [
+      0.8642857142857143,
+      0.98,
+      0.9928571428571429,
+      1.0,
+      0.9800000000000001,
+      0.52,
+      1.0,
+      0.99,
+      1.0,
+      1.0,
+      1.0,
+      0.9083333333333333,
+      0.9125000000000001,
+      0.96,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.9624999999999999,
+      0.8875,
+      1.0,
+      0.9857142857142858
+    ],
+    "overall_raw_auc": 0.9519859307359307,
+    "overall_calibrated_auc": 0.9519859307359307,
+    "calibration_lift": 0.0,
+    "n_inverted": 0
+  },
+  "tier3": {
+    "per_subject": {
+      "chb01": {
+        "raw_auc": 0.8642857142857143,
+        "calibrated_auc": 0.8642857142857143,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb02": {
+        "raw_auc": 0.6599999999999999,
+        "calibrated_auc": 0.6599999999999999,
+        "polarity": "standard",
+        "n_test": 15,
+        "n_seizure": 5
+      },
+      "chb03": {
+        "raw_auc": 0.3,
+        "calibrated_auc": 0.7,
+        "polarity": "inverted",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb04": {
+        "raw_auc": 0.5499999999999999,
+        "calibrated_auc": 0.5499999999999999,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb05": {
+        "raw_auc": 0.76,
+        "calibrated_auc": 0.76,
+        "polarity": "standard",
+        "n_test": 20,
+        "n_seizure": 10
+      },
+      "chb06": {
+        "raw_auc": 0.335,
+        "calibrated_auc": 0.665,
+        "polarity": "inverted",
+        "n_test": 30,
+        "n_seizure": 20
+      },
+      "chb07": {
+        "raw_auc": 0.5,
+        "calibrated_auc": 0.5,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb08": {
+        "raw_auc": 0.13,
+        "calibrated_auc": 0.87,
+        "polarity": "inverted",
+        "n_test": 20,
+        "n_seizure": 10
+      },
+      "chb09": {
+        "raw_auc": 0.5125,
+        "calibrated_auc": 0.5125,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb10": {
+        "raw_auc": 0.20714285714285713,
+        "calibrated_auc": 0.7928571428571429,
+        "polarity": "inverted",
+        "n_test": 24,
+        "n_seizure": 14
+      },
+      "chb11": {
+        "raw_auc": 0.5166666666666667,
+        "calibrated_auc": 0.5166666666666667,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb13": {
+        "raw_auc": 0.5125,
+        "calibrated_auc": 0.5125,
+        "polarity": "standard",
+        "n_test": 34,
+        "n_seizure": 24
+      },
+      "chb14": {
+        "raw_auc": 0.55,
+        "calibrated_auc": 0.55,
+        "polarity": "standard",
+        "n_test": 26,
+        "n_seizure": 16
+      },
+      "chb15": {
+        "raw_auc": 0.5475,
+        "calibrated_auc": 0.5475,
+        "polarity": "standard",
+        "n_test": 50,
+        "n_seizure": 40
+      },
+      "chb16": {
+        "raw_auc": 0.6454545454545455,
+        "calibrated_auc": 0.6454545454545455,
+        "polarity": "standard",
+        "n_test": 21,
+        "n_seizure": 11
+      },
+      "chb17": {
+        "raw_auc": 0.6166666666666667,
+        "calibrated_auc": 0.6166666666666667,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb18": {
+        "raw_auc": 0.5166666666666666,
+        "calibrated_auc": 0.5166666666666666,
+        "polarity": "standard",
+        "n_test": 22,
+        "n_seizure": 12
+      },
+      "chb19": {
+        "raw_auc": 0.7333333333333334,
+        "calibrated_auc": 0.7333333333333334,
+        "polarity": "standard",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb20": {
+        "raw_auc": 0.4625,
+        "calibrated_auc": 0.5375,
+        "polarity": "inverted",
+        "n_test": 26,
+        "n_seizure": 16
+      },
+      "chb21": {
+        "raw_auc": 0.9750000000000001,
+        "calibrated_auc": 0.9750000000000001,
+        "polarity": "standard",
+        "n_test": 18,
+        "n_seizure": 8
+      },
+      "chb22": {
+        "raw_auc": 0.21666666666666662,
+        "calibrated_auc": 0.7833333333333334,
+        "polarity": "inverted",
+        "n_test": 16,
+        "n_seizure": 6
+      },
+      "chb23": {
+        "raw_auc": 0.6785714285714285,
+        "calibrated_auc": 0.6785714285714285,
+        "polarity": "standard",
+        "n_test": 24,
+        "n_seizure": 14
+      }
+    },
+    "raw_aucs": [
+      0.8642857142857143,
+      0.6599999999999999,
+      0.3,
+      0.5499999999999999,
+      0.76,
+      0.335,
+      0.5,
+      0.13,
+      0.5125,
+      0.20714285714285713,
+      0.5166666666666667,
+      0.5125,
+      0.55,
+      0.5475,
+      0.6454545454545455,
+      0.6166666666666667,
+      0.5166666666666666,
+      0.7333333333333334,
+      0.4625,
+      0.9750000000000001,
+      0.21666666666666662,
+      0.6785714285714285
+    ],
+    "calibrated_aucs": [
+      0.8642857142857143,
+      0.6599999999999999,
+      0.7,
+      0.5499999999999999,
+      0.76,
+      0.665,
+      0.5,
+      0.87,
+      0.5125,
+      0.7928571428571429,
+      0.5166666666666667,
+      0.5125,
+      0.55,
+      0.5475,
+      0.6454545454545455,
+      0.6166666666666667,
+      0.5166666666666666,
+      0.7333333333333334,
+      0.5375,
+      0.9750000000000001,
+      0.7833333333333334,
+      0.6785714285714285
+    ],
+    "overall_raw_auc": 0.5359297520661156,
+    "overall_calibrated_auc": 0.6585379771743408,
+    "calibration_lift": 0.12260822510822522,
+    "n_inverted": 6
+  },
+  "polarity_concordance": {
+    "per_subject": {
+      "chb01": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb02": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb03": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "inverted"
+      },
+      "chb04": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb05": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb06": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "inverted"
+      },
+      "chb07": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb08": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "inverted"
+      },
+      "chb09": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb10": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "inverted"
+      },
+      "chb11": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb13": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb14": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb15": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb16": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb17": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb18": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb19": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb20": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "inverted"
+      },
+      "chb21": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "standard"
+      },
+      "chb22": {
+        "tier2a": "inverted",
+        "tier2b": "standard",
+        "tier3": "inverted"
+      },
+      "chb23": {
+        "tier2a": "standard",
+        "tier2b": "standard",
+        "tier3": "standard"
+      }
+    },
+    "t2a_t2b_agree": 12,
+    "t2a_t3_agree": 12,
+    "t2b_t3_agree": 16,
+    "all_agree": 9,
+    "total": 22,
+    "t2a_t2b_rate": 0.5454545454545454,
+    "t2a_t3_rate": 0.5454545454545454,
+    "t2b_t3_rate": 0.7272727272727273,
+    "all_agree_rate": 0.4090909090909091
+  },
+  "subgroup_analysis": {
+    "tier2a_inverted": [
+      "chb01",
+      "chb03",
+      "chb07",
+      "chb08",
+      "chb11",
+      "chb14",
+      "chb16",
+      "chb17",
+      "chb21",
+      "chb22"
+    ],
+    "tier2a_standard": [
+      "chb02",
+      "chb04",
+      "chb05",
+      "chb06",
+      "chb09",
+      "chb10",
+      "chb13",
+      "chb15",
+      "chb18",
+      "chb19",
+      "chb20",
+      "chb23"
+    ],
+    "tier2b_inverted": [],
+    "tier2b_standard": [
+      "chb01",
+      "chb02",
+      "chb03",
+      "chb04",
+      "chb05",
+      "chb06",
+      "chb07",
+      "chb08",
+      "chb09",
+      "chb10",
+      "chb11",
+      "chb13",
+      "chb14",
+      "chb15",
+      "chb16",
+      "chb17",
+      "chb18",
+      "chb19",
+      "chb20",
+      "chb21",
+      "chb22",
+      "chb23"
+    ],
+    "tier3_inverted": [
+      "chb03",
+      "chb06",
+      "chb08",
+      "chb10",
+      "chb20",
+      "chb22"
+    ],
+    "tier3_standard": [
+      "chb01",
+      "chb02",
+      "chb04",
+      "chb05",
+      "chb07",
+      "chb09",
+      "chb11",
+      "chb13",
+      "chb14",
+      "chb15",
+      "chb16",
+      "chb17",
+      "chb18",
+      "chb19",
+      "chb21",
+      "chb23"
+    ],
+    "summary": {
+      "tier2a_inverted_count": 10,
+      "tier2a_standard_count": 12,
+      "tier2b_inverted_count": 0,
+      "tier2b_standard_count": 22,
+      "tier3_inverted_count": 6,
+      "tier3_standard_count": 16
+    }
+  },
+  "wilcoxon_tests": {
+    "t3_vs_t2a": {
+      "statistic": 102.5,
+      "p_value": 0.4358460433198832,
+      "n_subjects": 22,
+      "t3_wins": 11,
+      "t2a_wins": 11,
+      "t3_mean": 0.6585379771743408,
+      "t2a_mean": 0.6283018496654861,
+      "significant_0.05": false
+    },
+    "t3_vs_t2b": {
+      "statistic": 4.0,
+      "p_value": 0.00010641560703078625,
+      "n_subjects": 22,
+      "t3_wins": 2,
+      "t2b_wins": 20,
+      "t3_mean": 0.6585379771743408,
+      "t2b_mean": 0.9519859307359307,
+      "significant_0.05": true
+    },
+    "t2a_vs_t2b": {
+      "statistic": 1.0,
+      "p_value": 4.607220995658188e-05,
+      "n_subjects": 22,
+      "t2a_wins": 1,
+      "t2b_wins": 21,
+      "t2a_mean": 0.6283018496654861,
+      "t2b_mean": 0.9519859307359307,
+      "significant_0.05": true
+    }
+  },
+  "timestamp": "2026-02-22T11:31:32.430612"
+}

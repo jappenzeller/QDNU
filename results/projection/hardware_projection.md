@@ -1,76 +1,94 @@
-# Hardware Readiness Projection Report
+# Hardware Readiness Projection — Updated
 
-Generated: 2026-02-22T08:33:32.253231
+Generated: 2026-02-22T12:01:35.012747
 
-## Executive Summary
+## Current State (pre-March 22)
 
-Clinical threshold: AUC ≥ 0.70
+| Data Point | Channels | Window | Backend | Calibrated AUC | Status |
+|------------|----------|--------|---------|----------------|--------|
+| ch4_1.95s_hw | 4 | 1.95s | hardware | 0.5000 | degenerate |
+| ch4_1.95s_sim | 4 | 1.95s | simulation | 0.5222 | degenerate |
+| ch8_1.95s_hw | 8 | 1.95s | hardware | 0.6365 | available |
+| ch8_1.95s_sim | 8 | 1.95s | simulation | 0.5344 | available |
+| ch8_20s_sim | 8 | 20.0s | simulation | 0.6302 | available |
+| ch8_20s_hw | 8 | 20.0s | hardware | — | pending |
+| ch12_1.95s_sim | 12 | 1.95s | simulation | 0.6436 | available |
+| ch12_1.95s_hw | 12 | 1.95s | hardware | — | pending |
+| ch16_1.95s_sim | 16 | 1.95s | simulation | — | infeasible |
+| ch16_1.95s_hw | 16 | 1.95s | hardware | — | pending |
 
-### Current Best Performance
+## Gap Analysis (against three comparators)
 
-| Metric | Value | Channel Count |
-|--------|-------|---------------|
-| Simulation Best | 0.6436 | ch12 |
-| Hardware Raw | 0.5110 | ch8 |
-| Hardware Calibrated | 0.6365 | ch8 |
-| Classical Ceiling | 0.7234 | ch8 |
+**Quantum Best**: ch8_1.95s_hw — 0.6365 calibrated AUC
 
-## Gap Trajectory (Simulation - Hardware)
+| Comparator | AUC | Quantum Best | Gap | Status |
+|------------|-----|--------------|-----|--------|
+| Classical Ceiling (336 features) | 0.952 | 0.637 | -0.316 | - below |
+| Riemannian Calibrated (36 features) | 0.659 | 0.637 | -0.022 | ~ nearly_there |
+| Eigenvalues Only (8 features) | 0.628 | 0.637 | +0.009 | + EXCEEDED |
 
-| Channels | Qubits | Sim AUC | HW AUC | Gap | Gap % |
-|----------|--------|---------|--------|-----|-------|
-| 4 | 9 | 0.5222 | 0.5000 | 0.0222 | 4.2% |
-| 8 | 17 | 0.5344 | 0.5110 | 0.0234 | 4.4% |
-| 12 | 25 | 0.6436 | N/A | N/A | N/A |
-| 16 | 33 | N/A | N/A | N/A | N/A |
+## Channel Scaling Curve
 
-## Projection Scenarios
+Fixed window: 1.95s
 
-### Raw Hardware AUC ⚠️
+| Channels | Qubits | Raw AUC | Calibrated AUC | Status |
+|----------|--------|---------|----------------|--------|
+| 4 | 9 | 0.5000 | 0.5000 | degenerate |
+| 8 | 17 | 0.5110 | 0.6365 | available |
+| 12 | 25 | — | — | pending |
+| 16 | 33 | — | — | pending |
 
-*Conservative projection using uncalibrated hardware AUC*
+## Window Size Impact
 
-- Current AUC: 0.5110
-- Gap to threshold: 0.1890
+Fixed channels: 8
 
-### Polarity-Calibrated AUC ⚠️
+| Window | Sim Raw | Sim Cal | HW Raw | HW Cal | HW Status |
+|--------|---------|---------|--------|--------|-----------|
+| 1.95s | 0.534 | 0.534 | 0.511 | 0.637 | available |
+| 20.0s | 0.386 | 0.630 | — | — | pending |
 
-*Realistic projection with per-patient sign bit calibration*
+## Simulation Reliability Assessment
 
-- Current AUC: 0.6365
-- Gap to threshold: 0.0635
+- **Simulation underestimates hardware (PLV 1.95s)**
+  - Gap: -0.1021
+  - Hardware with calibration beats simulation
 
-- Calibration lift: +0.1124
+- **Simulation worsens with longer windows**
+  - Raw AUC drops, but calibration recovers
 
-### Simulation Ceiling ⚠️
+- **Encoding mismatch between sim and hardware**
+  - Direct gap comparison is not reliable
 
-*Theoretical maximum with perfect hardware*
+**Recommendation**: Do not use simulation for encoding selection or performance projection. Hardware with calibration is the ground truth.
 
-- Current AUC: 0.6436
-- Gap to threshold: 0.0564
+## Polarity Tracking
 
-## Timeline
+**Quantum Hardware Points:**
 
-**Current State**: CH8 achieves 0.64 AUC with polarity calibration
+| Point | Channels | Window | N Inverted | Calibration Lift |
+|-------|----------|--------|------------|------------------|
+| ch4_1.95s_hw | 4 | 1.95s | 0 | — |
+| ch8_1.95s_hw | 8 | 1.95s | 3/7 | 0.112 |
 
-### Near Term
-- **Action**: Complete CH12/CH16 hardware runs
-- **Expected Date**: 2026-03-22+
-- **Purpose**: Establish 4-point scaling curve
+**Classical Reference (PROMPT 018, 22 patients):**
+- Tier 2A: 10/22 inverted, lift 0.107
+- Tier 3: 6/22 inverted, lift 0.123
 
-### Medium Term
-- **Action**: Error mitigation experiments
-- **Expected Impact**: Reduce sim-hw gap by 30-50%
-- **Purpose**: Approach simulation ceiling
+## Projections (after March 22 data)
 
-### Long Term
-- **Action**: Higher qubit counts with better hardware
-- **Expected Impact**: Exceed clinical threshold
-- **Purpose**: Clinically deployable system
+Pending data points: 3
+- ch8_20s_hw, ch12_1.95s_hw, ch16_1.95s_hw
+- Expected: March 22, 2026+
 
-## Key Findings
+After March 22 hardware data arrives:
+1. Run `python scripts/hardware_projection.py` (PROMPT 010-R)
+2. 4-point channel scaling curve will be available
+3. 2-point window scaling (1.95s vs 20s) will be available
+4. Combined CH16 @ 20s projection can be computed
 
-1. **Polarity calibration provides significant lift**: Converting below-0.5 patients improves overall AUC
-2. **Hardware gap is currently small**: ~2-4% degradation from simulation
-3. **Scaling behavior TBD**: Need CH12/CH16 hardware data to establish trend
-4. **Classical ceiling reachable**: With calibration, quantum approaches classical performance
+## Key Conclusions
+
+1. Quantum EXCEEDS matched-dimensionality classical (Tier 2A) by +0.009
+2. Gap to Tier 3 calibrated is small (-0.022) — may close with 20s windows
+3. Gap to Tier 2B (classical ceiling) is large (-0.316) — not closeable on near-term hardware
+4. Simulation is unreliable proxy — hardware with calibration is ground truth

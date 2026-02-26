@@ -1,0 +1,31 @@
+{
+  "patients": [
+    "chb01",
+    "chb02",
+    "chb03",
+    "chb04",
+    "chb05",
+    "chb06",
+    "chb07",
+    "chb08",
+    "chb09",
+    "chb10",
+    "chb11",
+    "chb13",
+    "chb14",
+    "chb15",
+    "chb16",
+    "chb17",
+    "chb18",
+    "chb19",
+    "chb20",
+    "chb21",
+    "chb22",
+    "chb23"
+  ],
+  "n_patients": 22,
+  "n_segments": 494,
+  "tier2a_features": 8,
+  "tier2b_features": 336,
+  "timestamp": "2026-02-22T11:31:04.634015"
+}

@@ -1,0 +1,104 @@
+{
+  "config": {
+    "backend": "qiskit_aer_statevector",
+    "encoding": "PLV_theta_alpha",
+    "channels": 8,
+    "n_qubits": 17,
+    "window_seconds": 1.95,
+    "channel_list": [
+      "FP1-F7",
+      "F7-T7",
+      "T7-P7",
+      "P7-O1",
+      "FP1-F3",
+      "F3-C3",
+      "C3-P3",
+      "P3-O1"
+    ],
+    "runtime_seconds": 898.4674820899963,
+    "cost_usd": 0
+  },
+  "overall_raw_auc": 0.4735289115646259,
+  "overall_calibrated_auc": 0.5878656462585035,
+  "calibration_lift": 0.11433673469387756,
+  "n_inverted": 4,
+  "per_subject": {
+    "chb01": {
+      "raw_auc": 0.5357142857142857,
+      "calibrated_auc": 0.5357142857142857,
+      "polarity": "standard",
+      "n_samples": 24,
+      "n_seizure": 14
+    },
+    "chb03": {
+      "raw_auc": 0.4785714285714286,
+      "calibrated_auc": 0.5214285714285714,
+      "polarity": "inverted",
+      "n_samples": 24,
+      "n_seizure": 14
+    },
+    "chb05": {
+      "raw_auc": 0.44000000000000006,
+      "calibrated_auc": 0.5599999999999999,
+      "polarity": "inverted",
+      "n_samples": 20,
+      "n_seizure": 10
+    },
+    "chb07": {
+      "raw_auc": 0.5666666666666667,
+      "calibrated_auc": 0.5666666666666667,
+      "polarity": "standard",
+      "n_samples": 16,
+      "n_seizure": 6
+    },
+    "chb11": {
+      "raw_auc": 0.3,
+      "calibrated_auc": 0.7,
+      "polarity": "inverted",
+      "n_samples": 16,
+      "n_seizure": 6
+    },
+    "chb14": {
+      "raw_auc": 0.38125,
+      "calibrated_auc": 0.61875,
+      "polarity": "inverted",
+      "n_samples": 26,
+      "n_seizure": 16
+    },
+    "chb21": {
+      "raw_auc": 0.6125,
+      "calibrated_auc": 0.6125,
+      "polarity": "standard",
+      "n_samples": 18,
+      "n_seizure": 8
+    }
+  },
+  "scaling_curve": {
+    "ch4": {
+      "qubits": 9,
+      "raw": 0.5490205627705627,
+      "calibrated": 0.6423917748917748,
+      "n_inverted": 6
+    },
+    "ch8": {
+      "qubits": 17,
+      "raw": 0.5661525974025973,
+      "calibrated": 0.6492586580086579,
+      "n_inverted": 6
+    },
+    "ch12": {
+      "qubits": 25,
+      "raw": 0.5900595238095239,
+      "calibrated": 0.6614880952380953,
+      "n_inverted": 1
+    },
+    "ch16": {
+      "qubits": 17,
+      "raw": 0.4735289115646259,
+      "calibrated": 0.5878656462585035,
+      "n_inverted": 4
+    }
+  },
+  "simulation_trend": "plateau",
+  "timestamp": "2026-02-22T13:20:21.819510"
+}

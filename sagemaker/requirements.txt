@@ -7,4 +7,6 @@
 # pyedflib is installed in the training script with --no-deps
 # to avoid pulling in incompatible numpy versions.
 #
-# This file is intentionally empty to prevent dependency conflicts.
+# For train_full_cohort.py (PROMPT 018):
+xgboost
+pyriemann

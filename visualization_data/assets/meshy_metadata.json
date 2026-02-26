@@ -1,0 +1,16 @@
+{
+  "generated": "2026-02-22T20:13:44Z",
+  "meshy_api_version": "v2",
+  "assets": {
+    "manifold_base": {
+      "method": "text-to-3d",
+      "task_id": "019c86fc-8fab-70e8-87c4-d2713c5e6084",
+      "path": "visualization_data\\assets\\manifold_base.glb",
+      "size_kb": 5272
+    },
+    "eeg_helmet": {
+      "skipped": true,
+      "reason": "no photo found"
+    }
+  }
+}

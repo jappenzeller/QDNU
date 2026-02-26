@@ -1,6 +1,6 @@
 # QDNU Prompts Checklist
 
-Last updated: 2026-02-22
+Last updated: 2026-02-22 (PROMPT 018 added)
 
 ## Classical Baseline Phase (PROMPT 001–006)
 
@@ -225,6 +225,42 @@ Total: ~171s out of 600s budget. Leaves 429s for reruns/debugging.
 - **Status**: PENDING (after PROMPT 013 + 014 + 017 complete)
 - **Purpose**: Generate 4-point hardware scaling curve + window size comparison
 - **Cost**: Free (local computation)
+
+---
+
+## Full Cohort Analysis Phase
+
+### PROMPT 018 — Full Cohort Polarity Analysis (SageMaker)
+
+- **Status**: READY (PROMPT 018-FIX applied)
+- **Scripts**:
+  - `sagemaker/train_full_cohort.py` — SageMaker entry point
+  - `sagemaker/launch_full_cohort.py` — SageMaker launcher
+- **Output**: `results/full_cohort/`
+  - `full_cohort_polarity.json`
+  - `full_cohort_report.md`
+  - Checkpoints: `checkpoint_features.json`, `checkpoint_validation.json`, `checkpoint_loso_progress.json`
+- **Backend**: AWS SageMaker (ml.m5.4xlarge)
+- **Subjects**: 22 (excluding chb12, chb24)
+- **Window**: 20s (PROMPT 015 optimal)
+- **Two-tier evaluation**:
+  - Tier 2: Correlation eigenvalues + XGBoost (matches PROMPT 015)
+  - Tier 3: Riemannian TangentSpace + LDA (Ledoit-Wolf)
+- **4-Phase Execution**:
+  - Phase 1: Feature extraction (~20 min)
+  - Phase 2: Validation gate (~2 min)
+  - Phase 3: Full cohort LOSO with incremental checkpointing (~5 min)
+  - Phase 4: Analysis + report (~0.5 min)
+- **Validation Thresholds** (tightened):
+  - Tier 2 calibrated >= 0.84 (PROMPT 015 got 0.873)
+  - Tier 3 raw <= 0.55 (polarity drag ceiling)
+  - Tier 3 calibrated >= 0.65 (recovery floor)
+- **Local validation**: `python sagemaker/train_full_cohort.py --local --data-dir H:/Data/PythonDNU/EEG/chbmit`
+- **Estimated cost**: ~$0.46 (ml.m5.4xlarge @ $0.922/hr × 30 min)
+- **Purpose**: Extend polarity discovery from 7 to 22 subjects to identify:
+  - Total polarity distribution across full cohort
+  - Tier 2/Tier 3 concordance rate (is polarity method-dependent?)
+  - Full cohort calibrated AUC estimates
 
 ---
 

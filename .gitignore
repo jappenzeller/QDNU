@@ -45,7 +45,9 @@ arxiv_submission/
 springer_submission/
 springer_submission.zip
 
-# Blender backup files
+# Blender files (too large for GitHub)
+blender/
+*.blend
 *.blend1
 
 # Windows artifacts
@@ -53,4 +55,7 @@ nul
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# AWS configuration (uses SSO, no secrets but keep local)
+.aws/
 
