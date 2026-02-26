@@ -104,6 +104,18 @@ The circuit consists of two layers:
 
 **Gate count**: 14 gates (H:4, P:4, R:2, CR:2) | **Depth**: 7
 
+### Transpiled Circuit
+
+Before execution on IBM hardware, the logical A-Gate circuit is **transpiled** to the backend's native gate set. This process:
+
+1. **Decomposes** high-level gates (H, P, Rx, Ry, CRy, CRz) into native gates (√X, Rz, CZ)
+2. **Maps** logical qubits to physical qubits based on hardware topology
+3. **Inserts SWAP gates** where needed for non-adjacent qubit interactions
+
+![Transpiled A-Gate Circuit](Diagrams/circuit-d6dfb5p54hss73b9mg90.svg)
+
+The expansion from 14 logical gates to ~30 native gates per channel reflects the cost of hardware abstraction. The full 8-channel circuit (17 qubits) transpiles to 97 CZ gates total.
+
 ### Multi-Channel Circuit (8 channels, 17 qubits)
 
 | Property       | Value |
