@@ -837,10 +837,14 @@
     let totalGates = 120;
     let columnToGateIndex = [];  // Maps column number to last gate index in that column
     let isPlaying = false;
-    let playInterval = null;
-    let speed = 80;
+    let lastAdvanceTime = 0;
+    let speed = 80;  // ms per gate advance
     let showIctal = true;
     let showInterictal = true;
+
+    // Lerp targets for smooth dot animation
+    const LERP_ALPHA = 0.12;  // Lower = smoother but slower
+    let sphereTargets = {};   // Target positions for each trajectory sphere
 
     // Three.js - SPD Manifold
     let scene, camera, renderer, controls;
@@ -1113,7 +1117,8 @@
         initCircuitBar();
         initControls();
         updateScene();
-        animate();
+        lastAdvanceTime = performance.now();
+        requestAnimationFrame(animate);
     }
 
     // =========================================================================
@@ -1139,25 +1144,103 @@
         controls.enableDamping = true;
         controls.target.set(0, 0, 0);
 
-        // Boundary plane at X=0
-        const planeGeo = new THREE.PlaneGeometry(3, 3);
+        // Compute boundary plane from trajectory endpoints (Option B from prompt)
+        // Fit plane by computing centroid between ictal and interictal endpoints
+        const computeBoundaryPlane = () => {
+            const ictalEnds = [];
+            const interictalEnds = [];
+
+            ['chb01', 'chb11'].forEach(patient => {
+                const patientData = data.patients[patient];
+                if (patientData) {
+                    if (patientData.ictal && patientData.ictal.length > 0) {
+                        const lastPoint = patientData.ictal[patientData.ictal.length - 1].pca;
+                        const projected = projectToWorld(lastPoint, projectionBasis);
+                        ictalEnds.push(new THREE.Vector3(projected.x, projected.y, projected.z));
+                    }
+                    if (patientData.interictal && patientData.interictal.length > 0) {
+                        const lastPoint = patientData.interictal[patientData.interictal.length - 1].pca;
+                        const projected = projectToWorld(lastPoint, projectionBasis);
+                        interictalEnds.push(new THREE.Vector3(projected.x, projected.y, projected.z));
+                    }
+                }
+            });
+
+            // Average centroids
+            const avgCentroid = (pts) => {
+                const sum = new THREE.Vector3();
+                pts.forEach(p => sum.add(p));
+                return sum.divideScalar(pts.length);
+            };
+
+            const ictalCentroid = avgCentroid(ictalEnds);
+            const interictalCentroid = avgCentroid(interictalEnds);
+
+            // Plane normal = direction from interictal to ictal centroid
+            const planeNormal = ictalCentroid.clone().sub(interictalCentroid).normalize();
+            // Plane center = midpoint between centroids
+            const planeCenter = ictalCentroid.clone().add(interictalCentroid).multiplyScalar(0.5);
+
+            // Debug logging
+            console.log('=== Boundary Plane Diagnostics ===');
+            console.table([
+                { patient: 'chb01', type: 'ictal', x: ictalEnds[0]?.x.toFixed(3), y: ictalEnds[0]?.y.toFixed(3), z: ictalEnds[0]?.z.toFixed(3) },
+                { patient: 'chb01', type: 'interictal', x: interictalEnds[0]?.x.toFixed(3), y: interictalEnds[0]?.y.toFixed(3), z: interictalEnds[0]?.z.toFixed(3) },
+                { patient: 'chb11', type: 'ictal', x: ictalEnds[1]?.x.toFixed(3), y: ictalEnds[1]?.y.toFixed(3), z: ictalEnds[1]?.z.toFixed(3) },
+                { patient: 'chb11', type: 'interictal', x: interictalEnds[1]?.x.toFixed(3), y: interictalEnds[1]?.y.toFixed(3), z: interictalEnds[1]?.z.toFixed(3) },
+            ]);
+            console.log('Plane center:', planeCenter);
+            console.log('Plane normal:', planeNormal);
+
+            return { center: planeCenter, normal: planeNormal };
+        };
+
+        const planeParams = computeBoundaryPlane();
+
+        // Compute plane size from all trajectory points
+        const allPts = [];
+        ['chb01', 'chb11'].forEach(patient => {
+            const patientData = data.patients[patient];
+            if (patientData) {
+                ['ictal', 'interictal'].forEach(state => {
+                    if (patientData[state]) {
+                        patientData[state].forEach(point => {
+                            const projected = projectToWorld(point.pca, projectionBasis);
+                            allPts.push(new THREE.Vector3(projected.x, projected.y, projected.z));
+                        });
+                    }
+                });
+            }
+        });
+        const bbox = new THREE.Box3().setFromPoints(allPts);
+        const bsize = bbox.getSize(new THREE.Vector3());
+        const planeSize = Math.max(bsize.x, bsize.y, bsize.z) * 1.3;
+
+        // Create boundary plane mesh
+        const planeGeo = new THREE.PlaneGeometry(planeSize, planeSize, 8, 8);
         const planeMat = new THREE.MeshBasicMaterial({
             color: 0xffffff,
             transparent: true,
-            opacity: 0.08,
-            side: THREE.DoubleSide
+            opacity: 0.06,
+            side: THREE.DoubleSide,
+            depthWrite: false
         });
         boundaryPlane = new THREE.Mesh(planeGeo, planeMat);
-        boundaryPlane.rotation.y = Math.PI / 2;
+
+        // Rotate plane to face the computed normal direction
+        const defaultNormal = new THREE.Vector3(0, 0, 1);
+        const quaternion = new THREE.Quaternion().setFromUnitVectors(defaultNormal, planeParams.normal);
+        boundaryPlane.setRotationFromQuaternion(quaternion);
+        boundaryPlane.position.copy(planeParams.center);
         scene.add(boundaryPlane);
 
-        // Grid
-        const gridHelper = new THREE.GridHelper(3, 10, 0x333333, 0x222222);
-        gridHelper.rotation.z = Math.PI / 2;
-        gridHelper.material.transparent = true;
-        gridHelper.material.opacity = 0.15;
-        boundaryGrid = gridHelper;
-        scene.add(gridHelper);
+        // Grid overlay on the plane
+        const gridGeo = new THREE.EdgesGeometry(new THREE.PlaneGeometry(planeSize, planeSize, 6, 6));
+        const gridMat = new THREE.LineBasicMaterial({ color: 0x334466, transparent: true, opacity: 0.25 });
+        boundaryGrid = new THREE.LineSegments(gridGeo, gridMat);
+        boundaryGrid.setRotationFromQuaternion(quaternion);
+        boundaryGrid.position.copy(planeParams.center);
+        scene.add(boundaryGrid);
 
         // Axes
         const axesHelper = new THREE.AxesHelper(1.5);
@@ -1208,6 +1291,12 @@
                 const glowMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.25 });
                 const glow = new THREE.Mesh(glowGeo, glowMat);
                 sphere.add(glow);
+
+                // Initialize lerp target with starting position
+                const startPca = data.patients[patient][state][0].pca;
+                const startPos = projectToWorld(startPca, projectionBasis);
+                sphereTargets[key] = new THREE.Vector3(startPos.x, startPos.y, startPos.z);
+                sphere.position.copy(sphereTargets[key]);
 
                 // Trail points
                 const trailGeo = new THREE.BufferGeometry();
@@ -1567,13 +1656,27 @@
                 line.geometry.attributes.position.needsUpdate = true;
                 line.geometry.setDrawRange(0, Math.min(maxGate + 1, trajectory.length));
 
-                // Update sphere position
-                const gateIdx = currentScene === 1 ? 0 : Math.min(actualGateIdx, trajectory.length - 1);
-                if (gateIdx < trajectory.length) {
-                    const pca = trajectory[gateIdx].pca;
-                    const projected = projectToWorld(pca, projectionBasis);
-                    sphere.position.set(projected.x, projected.y, projected.z);
-                }
+                // Compute target sphere position using interpolation between trajectory points
+                // Map circuit column to trajectory array (which is subsampled)
+                const trajectoryLength = trajectory.length;
+                const circuitProgress = currentScene === 1 ? 0 : currentCol / Math.max(totalGates - 1, 1);
+                const exactTrajIdx = circuitProgress * (trajectoryLength - 1);
+                const trajIdxLow = Math.floor(exactTrajIdx);
+                const trajIdxHigh = Math.min(trajIdxLow + 1, trajectoryLength - 1);
+                const trajFrac = exactTrajIdx - trajIdxLow;
+
+                // Interpolate between adjacent trajectory points for smooth motion
+                const pcaLow = trajectory[trajIdxLow].pca;
+                const pcaHigh = trajectory[trajIdxHigh].pca;
+                const interpPca = [
+                    pcaLow[0] + (pcaHigh[0] - pcaLow[0]) * trajFrac,
+                    pcaLow[1] + (pcaHigh[1] - pcaLow[1]) * trajFrac,
+                    pcaLow[2] + (pcaHigh[2] - pcaLow[2]) * trajFrac
+                ];
+                const projected = projectToWorld(interpPca, projectionBasis);
+
+                // Set target position (actual lerping happens in animate loop)
+                sphereTargets[key].set(projected.x, projected.y, projected.z);
 
                 // Update trail - convert columns to gate indices
                 if (currentScene === 2) {
@@ -1739,10 +1842,7 @@
 
         document.getElementById('speed-slider').addEventListener('input', (e) => {
             speed = parseInt(e.target.value);
-            if (isPlaying) {
-                clearInterval(playInterval);
-                playInterval = setInterval(stepForward, speed);
-            }
+            // Speed change takes effect automatically in animate loop
         });
 
         // Show toggles
@@ -1779,10 +1879,9 @@
 
         if (isPlaying) {
             btn.innerHTML = '&#9208;';
-            playInterval = setInterval(stepForward, speed);
+            lastAdvanceTime = performance.now();
         } else {
             btn.innerHTML = '&#9654;';
-            clearInterval(playInterval);
         }
     }
 
@@ -1812,8 +1911,34 @@
     // ANIMATION LOOP
     // =========================================================================
 
-    function animate() {
+    function animate(timestamp) {
         requestAnimationFrame(animate);
+
+        // Time-based gate advancement (replaces setInterval)
+        if (isPlaying && currentScene === 2) {
+            if (timestamp - lastAdvanceTime >= speed) {
+                if (currentGate < totalGates - 1) {
+                    currentGate++;
+                    updatePlayhead();
+                    updateTrajectories();
+                    updateTopology();
+                    document.getElementById('gate-current').textContent = currentGate;
+                    lastAdvanceTime = timestamp;
+                } else {
+                    togglePlay();
+                }
+            }
+        }
+
+        // Lerp sphere positions toward targets every frame (smooth movement)
+        Object.keys(trajectorySpheres).forEach(key => {
+            const sphere = trajectorySpheres[key];
+            const target = sphereTargets[key];
+            if (sphere && target) {
+                sphere.position.lerp(target, LERP_ALPHA);
+            }
+        });
+
         controls.update();
         renderer.render(scene, camera);
 
