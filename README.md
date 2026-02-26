@@ -85,19 +85,24 @@ The visualization shows gate-by-gate quantum state trajectories on a PCA project
 
 The core component is the **A-Gate**, a 2-qubit circuit encoding a single PN neuron channel:
 
-```text
-     ┌───┐┌──────────┐     ┌───────────┐
-E: ──┤ H ├┤ P(b)     ├──■──┤ Ry(a·π/2) ├──
-     └───┘└──────────┘  │  └───────────┘
-     ┌───┐┌──────────┐┌─┴─┐┌───────────┐
-I: ──┤ H ├┤ P(b)     ├┤ X ├┤ Ry(c·π/2) ├──
-     └───┘└──────────┘└───┘└───────────┘
-```
+![A-Gate Circuit Diagram](Diagrams/pn_2qubit_circuit.svg)
+
+The circuit consists of two layers:
+
+1. **Per-Qubit Encoding** (sandwich structure):
+   - `H → P(b) → Rx(2a) → P(b) → H` on excitatory qubit (q₀)
+   - `H → P(b) → Ry(2c) → P(b) → H` on inhibitory qubit (q₁)
+
+2. **E-I Coupling**:
+   - `CRy(π/4)`: Control on E, target on I
+   - `CRz(π/4)`: Control on I, target on E
 
 **Parameters (PLV theta-alpha encoding):**
 - `a`: Excitatory amplitude — PLV between theta (4-8 Hz) and alpha (8-13 Hz) bands
-- `b`: Shared phase — E-I coupling, encodes temporal dynamics
+- `b`: Shared phase — appears 4× in circuit, encodes temporal dynamics
 - `c`: Inhibitory amplitude — PLV between complementary frequency pairs
+
+**Gate count**: 14 gates (H:4, P:4, R:2, CR:2) | **Depth**: 7
 
 ### Multi-Channel Circuit (8 channels, 17 qubits)
 
