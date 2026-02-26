@@ -59,6 +59,11 @@ nul
 # Local Claude Code settings
 .claude/settings.local.json
 
+# Prompt files
+*PROMPT*.md
+*prompt*.md
+prompts_checklist.md
+
 # AWS configuration (uses SSO, no secrets but keep local)
 .aws/
 
