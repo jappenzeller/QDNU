@@ -132,7 +132,7 @@
   <text x="590" y="126" class="param" style="text-anchor: start; font-size: 10px;">c: inhibitory</text>
 
   <line x1="570" y1="138" x2="690" y2="138" stroke="#ddd" stroke-width="1"/>
-  <text x="630" y="152" class="section-label" style="font-weight: bold; font-size: 11px;">Gate Count: 14</text>
+  <text x="630" y="152" class="section-label" style="font-weight: bold; font-size: 11px;">Gate Count: 12</text>
   <text x="630" y="165" class="param" style="font-size: 9px;">H:4  P:4  R:2  CR:2</text>
   <text x="630" y="178" class="param" style="font-size: 9px;">Depth: 7</text>
 </svg>

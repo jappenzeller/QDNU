@@ -34,7 +34,7 @@ def create_single_channel_agate(a, b, c):
     Returns:
         QuantumCircuit: 2-qubit circuit implementing the A-Gate
 
-    Circuit structure (14 gates total, depth 7):
+    Circuit structure (12 gates total, depth 7):
         q0 (E): ─H─P(b)─Rx(2a)─P(b)─H───●────────Rz(π/4)──
                                         │           │
         q1 (I): ─H─P(b)─Ry(2c)─P(b)─H───Ry(π/4)────●───────

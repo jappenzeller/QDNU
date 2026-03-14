@@ -70,3 +70,12 @@ prompts_checklist.md
 # Environment variables
 .env
 
+# Salesforce tooling cache
+.sfdx/
+
+# Archive files
+*.zip
+
+# CSV results (generated)
+*.csv
+

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QNFM — EEG → SPD Manifold</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0d14;font-family:'JetBrains Mono','Fira Mono','Courier New',monospace;overflow:hidden;height:100vh;display:flex;flex-direction:column}
+#root{display:flex;flex-direction:column;height:100vh;border:0.5px solid #1a2740}
+#hdr{display:flex;align-items:center;justify-content:space-between;padding:7px 14px;border-bottom:0.5px solid #1a2740;flex-shrink:0;gap:8px;background:#06090f}
+#hdr-l{display:flex;align-items:center;gap:12px}
+#hdr-title{font-weight:600;letter-spacing:4px;color:#8ab4d0;font-size:13px}
+#hdr-sub{color:#2a4560;font-size:11px}
+#lbl-badge{font-size:11px;padding:2px 9px;border-radius:4px;border:0.5px solid #1a2740;color:#2a4560;background:#06090f;transition:all 0.4s}
+#hdr-r{display:flex;gap:6px;align-items:center}
+.pol-lbl{font-size:11px;color:#2a4560}
+.pbtn{font-family:inherit;font-size:11px;padding:2px 10px;border-radius:4px;cursor:pointer;border:0.5px solid #1a2740;background:transparent;color:#2a4560;transition:all 0.2s}
+.pbtn:hover{border-color:#2a4560}
+#panels{display:flex;flex:1;overflow:hidden;min-height:0}
+#left{width:20%;border-right:0.5px solid #1a2740;display:flex;flex-direction:column;overflow:hidden;background:#06090f}
+#center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:#06090f}
+#right{width:27%;border-left:0.5px solid #1a2740;display:flex;flex-direction:column;overflow:auto;background:#06090f}
+.panel-hdr{padding:5px 9px;font-size:10px;letter-spacing:2px;color:#2a4560;border-bottom:0.5px solid #1a2740;flex-shrink:0;text-transform:uppercase;background:#06090f}
+#fml-box{padding:7px;display:flex;flex-direction:column;gap:4px;flex-shrink:0}
+.fml-card{border:0.5px solid #111e30;border-radius:4px;padding:5px 7px;background:#080c14}
+.fml-tag{font-size:10px;color:#2a4560;letter-spacing:1px;margin-bottom:1px;text-transform:uppercase}
+.fml-form{font-size:11px;color:#5a8aaa;line-height:1.35}
+.fml-sub{font-size:10px;color:#1e3248;margin-top:1px}
+#eeg-wrap{flex:1;padding:4px 6px 6px;border-top:0.5px solid #1a2740;display:flex;flex-direction:column;min-height:0}
+#eeg-lbl{font-size:10px;letter-spacing:1.5px;color:#2a4560;margin-bottom:3px;flex-shrink:0;text-transform:uppercase}
+#eeg-cv{width:100%;display:block;flex:1}
+#c-lbl{font-size:10px;letter-spacing:2px;color:#2a4560;text-transform:uppercase;flex-shrink:0}
+#head-svg{flex-shrink:0}
+#legend{display:flex;gap:14px;font-size:11px;color:#2a4560;flex-shrink:0}
+#r-body{padding:7px;display:flex;flex-direction:column;gap:8px}
+.rcv-lbl{font-size:10px;color:#2a4560;letter-spacing:1.5px;margin-bottom:3px;text-transform:uppercase}
+canvas.rcv{width:100%;display:block}
+#info-bar{display:flex;gap:20px;padding:4px 14px;border-top:0.5px solid #1a2740;flex-shrink:0;background:#06090f}
+.info-item{display:flex;flex-direction:column;gap:1px}
+.info-k{font-size:9px;color:#1e3248;letter-spacing:1.5px;text-transform:uppercase}
+.info-v{font-size:11px;color:#4a7a9a;font-family:inherit}
+</style>
+</head>
+<body>
+<div id="root">
+  <div id="hdr">
+    <div id="hdr-l">
+      <span id="hdr-title">QNFM</span>
+      <span id="hdr-sub">Quantum Neural Field Mapping · EEG → SPD Manifold</span>
+      <span id="lbl-badge">Interictal</span>
+    </div>
+    <div id="hdr-r">
+      <span class="pol-lbl">Polarity</span>
+      <button class="pbtn" id="pbtn-std">Standard</button>
+      <button class="pbtn" id="pbtn-inv">Inverted</button>
+    </div>
+  </div>
+
+  <div id="panels">
+    <!-- LEFT -->
+    <div id="left">
+      <div class="panel-hdr">Encoding stack</div>
+      <div id="fml-box"></div>
+      <div id="eeg-wrap">
+        <div id="eeg-lbl">Ch16 · live traces</div>
+        <canvas id="eeg-cv"></canvas>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div id="center">
+      <div id="c-lbl">Neural field topology</div>
+      <svg id="head-svg" viewBox="0 0 200 228" style="width:min(320px,85%);height:auto"></svg>
+      <div id="legend">
+        <span>● Low PLV</span>
+        <span style="color:#c08030">● High PLV</span>
+        <span id="lpolspan">▲ Standard polarity</span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div id="right">
+      <div class="panel-hdr">Manifold geometry</div>
+      <div id="r-body">
+        <div>
+          <div class="rcv-lbl">PLV matrix · ch8 subset</div>
+          <canvas id="plv-cv" class="rcv"></canvas>
+        </div>
+        <div>
+          <div class="rcv-lbl">SPD(8) · polarity trajectory</div>
+          <canvas id="mfld-cv" class="rcv"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="info-bar">
+    <div class="info-item"><span class="info-k">State</span><span class="info-v" id="iv-state">Interictal</span></div>
+    <div class="info-item"><span class="info-k">Mean PLV</span><span class="info-v" id="iv-plv">0.12</span></div>
+    <div class="info-item"><span class="info-k">⟨Z⟩</span><span class="info-v" id="iv-z">+0.041</span></div>
+    <div class="info-item"><span class="info-k">Polarity</span><span class="info-v" id="iv-pol">Standard</span></div>
+    <div class="info-item"><span class="info-k">Window</span><span class="info-v">20 s · CH8</span></div>
+    <div class="info-item"><span class="info-k">Dataset</span><span class="info-v">CHB-MIT</span></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const CH=['Fp1','Fp2','F7','F3','F4','F8','T7','C3','C4','T8','P7','P3','P4','P8','O1','O2'];
+const EP=[[76,18],[124,18],[30,55],[74,47],[126,47],[170,55],[14,100],[64,100],[136,100],[186,100],[30,145],[74,151],[126,151],[170,145],[74,183],[126,183]];
+const PAIRS=[[0,3],[1,4],[2,3],[4,5],[2,6],[5,9],[3,7],[4,8],[6,7],[8,9],[6,10],[9,13],[7,11],[8,12],[10,11],[12,13],[10,14],[13,15],[11,14],[12,15],[3,4],[7,8],[11,12]];
+const SHOW8=[0,3,4,7,8,11,12,14];
+const FREQ=[7.2,7.8,5.1,8.3,8.1,5.4,6.8,9.1,8.9,6.6,7.4,10.2,10.1,7.3,5.9,6.1];
+const lerp=(a,b,t)=>a+(b-a)*t;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const ictFn=t=>{const c=t%14;if(c<5)return 0;if(c<6)return c-5;if(c<10)return 1;if(c<11)return 11-c;return 0;};
+const dNoise=s=>{const x=Math.sin(s*9301.3+49297.7)*43758.5;return(x-Math.floor(x))*2-1;};
+const eegS=(ch,t)=>0.52*Math.sin(2*Math.PI*FREQ[ch]*t+ch*0.41)+0.24*Math.sin(2*Math.PI*FREQ[ch]*1.97*t+ch*0.54)+0.13*Math.sin(2*Math.PI*FREQ[ch]*0.51*t+ch*0.25)+0.07*dNoise(ch*371+Math.floor(t*55));
+const getPLV=(i,j,t,ic,pol)=>{const fs=1-Math.abs(FREQ[i]-FREQ[j])/12;const base=0.07+0.17*fs+0.05*Math.sin(t*0.3+i*j*0.07);const boost=pol==='std'?ic*0.56:ic*(((i+j)%3===0)?0.38:0.04);return clamp(base+boost,0.04,0.96);};
+const plvRGB=v=>[Math.round(lerp(10,228,Math.pow(v,0.7))),Math.round(lerp(140,105,v)),Math.round(lerp(215,20,Math.pow(v,0.7)))];
+const qbez=(a,b,k=0.22)=>{const mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1;return`M${a[0]},${a[1]} Q${mx-dy/len*len*k},${my+dx/len*len*k} ${b[0]},${b[1]}`;};
+
+let polarity='std',startTs=null,currentLbl='Interictal';
+
+// ── Polarity buttons ──────────────────────────────────────────────────
+function updateBtns(){
+  ['std','inv'].forEach(k=>{
+    const b=document.getElementById(`pbtn-${k}`);
+    if(k===polarity){
+      b.style.background=k==='std'?'rgba(0,140,210,0.15)':'rgba(200,110,20,0.15)';
+      b.style.borderColor=k==='std'?'#0078b0':'#a06010';
+      b.style.color=k==='std'?'#40a0d0':'#c07820';
+    } else {
+      b.style.background='transparent';
+      b.style.borderColor='#1a2740';
+      b.style.color='#2a4560';
+    }
+  });
+}
+document.getElementById('pbtn-std').onclick=()=>{polarity='std';updateBtns();};
+document.getElementById('pbtn-inv').onclick=()=>{polarity='inv';updateBtns();};
+updateBtns();
+
+// ── Build formula cards ───────────────────────────────────────────────
+const fmls=[
+  ['PLV','PLVᵢⱼ = |1/N Σ eⁱ⁽φᵢ⁻φⱼ⁾|','4–13 Hz · Hilbert phase'],
+  ['Encode','θᵢⱼ = π · PLVᵢⱼ','rotation ∈ [0,π]'],
+  ['SPD','Σ = (1/N)XXᵀ ∈ SPD(8)','covariance manifold'],
+  ['A-gate','H·P(b)·Rₓ(2a)·P(b)·H','excitatory path'],
+  ['⟨Z⟩','(N₀ − N₁) / 1024','polarity observable'],
+];
+const fmlBox=document.getElementById('fml-box');
+fmls.forEach(([tag,form,sub])=>{
+  const d=document.createElement('div');
+  d.className='fml-card';
+  d.innerHTML=`<div class="fml-tag">${tag}</div><div class="fml-form">${form}</div><div class="fml-sub">${sub}</div>`;
+  fmlBox.appendChild(d);
+});
+
+// ── Build SVG ─────────────────────────────────────────────────────────
+const NS='http://www.w3.org/2000/svg';
+const svg=document.getElementById('head-svg');
+function mkEl(tag,attrs){const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));return el;}
+
+svg.appendChild(mkEl('rect',{width:200,height:228,fill:'#06090f',rx:4}));
+svg.appendChild(mkEl('ellipse',{cx:100,cy:112,rx:84,ry:96,fill:'none',stroke:'#0d1c2e','stroke-width':1.2}));
+svg.appendChild(mkEl('path',{d:'M92,16 Q100,7 108,16',fill:'none',stroke:'#0d1c2e','stroke-width':1}));
+svg.appendChild(mkEl('path',{d:'M16,100 Q9,112 16,124',fill:'none',stroke:'#0d1c2e','stroke-width':1}));
+svg.appendChild(mkEl('path',{d:'M184,100 Q191,112 184,124',fill:'none',stroke:'#0d1c2e','stroke-width':1}));
+svg.appendChild(mkEl('line',{x1:100,y1:20,x2:100,y2:204,stroke:'#090e1a','stroke-width':0.25}));
+svg.appendChild(mkEl('line',{x1:18,y1:112,x2:182,y2:112,stroke:'#090e1a','stroke-width':0.25}));
+
+const defs=mkEl('defs',{});
+['std','inv'].forEach(k=>{
+  const m=mkEl('marker',{id:`ah-${k}`,'markerWidth':5,'markerHeight':3.5,refX:4.5,refY:1.75,orient:'auto'});
+  m.appendChild(mkEl('polygon',{points:'0 0, 5 1.75, 0 3.5',fill:k==='std'?'#00c8f0':'#f07040'}));
+  defs.appendChild(m);
+});
+svg.appendChild(defs);
+
+const flEls=PAIRS.map(([i,j])=>{
+  const el=mkEl('path',{d:qbez(EP[i],EP[j]),fill:'none',stroke:'rgba(0,60,90,0.05)','stroke-width':0.3});
+  svg.appendChild(el);return el;
+});
+
+const parrEl=mkEl('line',{x1:100,y1:112,x2:118,y2:96,stroke:'#00c8f0','stroke-width':1.5,'stroke-linecap':'round','marker-end':'url(#ah-std)','stroke-opacity':0.15});
+svg.appendChild(parrEl);
+
+const spEls=[],edEls=[];
+EP.forEach(([x,y],ch)=>{
+  svg.appendChild(mkEl('circle',{cx:x,cy:y,r:6.5,fill:`hsla(${175+ch*9},50%,28%,0.1)`}));
+  const sp=mkEl('path',{d:`M${x-11},${y}`,fill:'none','stroke-width':0.5});
+  svg.appendChild(sp);spEls.push(sp);
+  const ed=mkEl('circle',{cx:x,cy:y,r:2,fill:`hsla(${175+ch*9},72%,58%,0.85)`,opacity:0.55});
+  svg.appendChild(ed);edEls.push(ed);
+  const txt=mkEl('text',{x,y:y-7,'text-anchor':'middle','font-size':4.5,'font-family':'monospace',fill:`hsla(${175+ch*9},35%,46%,0.4)`});
+  txt.textContent=CH[ch];svg.appendChild(txt);
+});
+
+// ── Canvas sizing ─────────────────────────────────────────────────────
+function resizeCvs(){
+  const eegCv=document.getElementById('eeg-cv');
+  const wr=document.getElementById('eeg-wrap');
+  eegCv.width=wr.clientWidth*devicePixelRatio||200;
+  eegCv.height=(wr.clientHeight-22)*devicePixelRatio||300;
+
+  const plvCv=document.getElementById('plv-cv');
+  const mfCv=document.getElementById('mfld-cv');
+  const rw=document.getElementById('right').clientWidth-14;
+  plvCv.width=(rw*devicePixelRatio)||200;plvCv.height=plvCv.width*0.95;
+  mfCv.width=(rw*devicePixelRatio)||200;mfCv.height=mfCv.width*0.75;
+}
+resizeCvs();
+window.addEventListener('resize',resizeCvs);
+
+// ── Draw EEG traces ───────────────────────────────────────────────────
+function drawEEG(t,ic){
+  const cv=document.getElementById('eeg-cv');
+  if(!cv.width)return;
+  const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  ctx.fillStyle='#06090f';ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='rgba(14,28,50,0.7)';ctx.lineWidth=0.3;
+  for(let i=1;i<16;i++){const y=(i/16)*H;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  const chH=H/16,S=120;
+  for(let ch=0;ch<16;ch++){
+    const y0=(ch+0.5)*chH,amp=chH*0.38*(1+ic*0.5),hue=175+ch*9;
+    ctx.beginPath();ctx.strokeStyle=`hsla(${hue},60%,56%,${0.55+ic*0.3})`;ctx.lineWidth=0.7;
+    for(let s=0;s<S;s++){const x=(s/S)*W,st=t-(S-s)/(S*7),v=eegS(ch,st)*(1+ic*0.4);s===0?ctx.moveTo(x,y0-v*amp):ctx.lineTo(x,y0-v*amp);}
+    ctx.stroke();
+    ctx.font=`${Math.max(7,chH*0.38)}px monospace`;ctx.fillStyle=`hsla(${hue},35%,44%,0.45)`;
+    ctx.fillText(CH[ch],2,y0-chH*0.3);
+  }
+}
+
+// ── Draw PLV matrix ───────────────────────────────────────────────────
+function drawPLV(t,ic,pol){
+  const cv=document.getElementById('plv-cv');
+  if(!cv.width)return;
+  const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  ctx.fillStyle='#06090f';ctx.fillRect(0,0,W,H);
+  const N=8,cell=Math.floor((Math.min(W,H)-36)/N),ox=(W-cell*N)/2,oy=18;
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+    const ci=SHOW8[r],cj=SHOW8[c],v=ci===cj?1.0:getPLV(ci,cj,t,ic,pol);
+    const[rv,gv,bv]=plvRGB(v);
+    ctx.fillStyle=`rgb(${rv},${gv},${bv})`;ctx.fillRect(ox+c*cell+1,oy+r*cell+1,cell-2,cell-2);
+  }
+  ctx.fillStyle='rgba(70,115,148,0.5)';ctx.font=`${Math.max(7,cell*0.42)}px monospace`;ctx.textAlign='center';
+  for(let i=0;i<N;i++)ctx.fillText(CH[SHOW8[i]],ox+i*cell+cell/2,oy+N*cell+12);
+  const bx=ox,bw=cell*N,by=oy+N*cell+16;
+  const g=ctx.createLinearGradient(bx,0,bx+bw,0);
+  g.addColorStop(0,'rgb(10,100,210)');g.addColorStop(1,'rgb(228,105,20)');
+  ctx.fillStyle=g;ctx.fillRect(bx,by,bw,4);
+}
+
+// ── Draw manifold ─────────────────────────────────────────────────────
+function drawMfld(t,ic,pol){
+  const cv=document.getElementById('mfld-cv');
+  if(!cv.width)return;
+  const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  ctx.fillStyle='#06090f';ctx.fillRect(0,0,W,H);
+  const cx=W/2,cy=H*0.42,rx=W*0.37,ry=H*0.22;
+  ctx.strokeStyle='rgba(15,40,70,0.8)';ctx.lineWidth=0.4;
+  for(let i=-4;i<=4;i++){
+    const s=i/4;
+    ctx.beginPath();
+    for(let u=0;u<=40;u++){const x=cx+((u/40)*2-1)*rx,y=cy+s*ry*0.7+((u/40)*2-1)**2*ry*0.32;u===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+    ctx.stroke();
+    ctx.beginPath();
+    for(let u=0;u<=20;u++){const v=(u/20)*2-1,x=cx+s*rx,y=cy+v*ry*0.55+s*s*ry*0.32;u===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+    ctx.stroke();
+  }
+  const sx0=cx-rx*0.28,sy0=cy+ry*0.22;
+  ctx.fillStyle='rgba(0,175,220,0.9)';ctx.beginPath();ctx.arc(sx0,sy0,3.5,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='rgba(70,155,195,0.65)';ctx.font=`${Math.max(8,W*0.04)}px monospace`;ctx.textAlign='left';ctx.fillText('Σ₀',sx0+6,sy0+3);
+  const dir=pol==='std'?1:-1,sx1=cx+rx*(0.22+ic*0.2*dir),sy1=cy+ry*(dir*0.36*ic-0.08);
+  if(ic>0.04){
+    const col=pol==='std'?'rgba(215,105,18,':'rgba(200,50,50,';
+    ctx.strokeStyle=col+(0.3+ic*0.6)+')';ctx.lineWidth=1.2;ctx.setLineDash([3,3]);
+    ctx.beginPath();ctx.moveTo(sx0,sy0);ctx.quadraticCurveTo((sx0+sx1)/2,Math.min(sy0,sy1)-ry*0.35,sx1,sy1);ctx.stroke();ctx.setLineDash([]);
+    const[cr,cg,cb]=pol==='std'?[218,105,18]:[200,50,50];
+    ctx.fillStyle=`rgba(${cr},${cg},${cb},${0.22+ic*0.7})`;ctx.beginPath();ctx.arc(sx1,sy1,2.5+ic*2.5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=`rgba(${cr},${cg},${cb},0.85)`;ctx.fillText('Σ₁',sx1+5,sy1+3);
+  }
+  const aA=pol==='std'?-Math.PI*0.2:-Math.PI+Math.PI*0.2,aL=18*(0.15+ic*0.85);
+  const ax=cx+0.06*rx*dir,ay=cy+ry*0.08,ex2=ax+Math.cos(aA)*aL,ey2=ay+Math.sin(aA)*aL;
+  const ac=pol==='std'?`rgba(0,200,240,${0.3+ic*0.65})`:`rgba(240,100,40,${0.3+ic*0.65})`;
+  ctx.strokeStyle=ac;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(ex2,ey2);ctx.stroke();
+  const ha=0.45;ctx.beginPath();ctx.moveTo(ex2,ey2);ctx.lineTo(ex2-7*Math.cos(aA-ha),ey2-7*Math.sin(aA-ha));ctx.moveTo(ex2,ey2);ctx.lineTo(ex2-7*Math.cos(aA+ha),ey2-7*Math.sin(aA+ha));ctx.stroke();
+  ctx.fillStyle='rgba(40,80,112,0.45)';ctx.font=`${Math.max(7,W*0.036)}px monospace`;ctx.textAlign='center';ctx.fillText('SPD(8)',cx,H-5);
+}
+
+// ── Update SVG field ──────────────────────────────────────────────────
+function updateSVG(t,ic,pol){
+  spEls.forEach((p,ch)=>{
+    const[ex,ey]=EP[ch];let d='';
+    for(let i=0;i<=18;i++){const st=t-(18-i)/(18*6),v=eegS(ch,st)*(1+ic*0.4),x=ex-11+(i/18)*22,y=ey-v*7;d+=i===0?`M${x},${y}`:`L${x},${y}`;}
+    p.setAttribute('d',d);p.setAttribute('stroke',`hsla(${175+ch*9},60%,54%,${0.35+ic*0.42})`);
+  });
+  flEls.forEach((l,idx)=>{
+    const[i,j]=PAIRS[idx],v=getPLV(i,j,t,ic,pol),[rv,gv,bv]=plvRGB(v);
+    l.setAttribute('stroke',`rgba(${rv},${gv},${bv},${0.03+v*0.6})`);
+    l.setAttribute('stroke-width',0.1+v*3.2);
+    l.setAttribute('stroke-dasharray',`${2+v*5} ${7+(1-v)*8}`);
+    l.setAttribute('stroke-dashoffset',-(t*(pol==='std'?18:-18))%90);
+  });
+  edEls.forEach((d,ch)=>{
+    const pulse=0.45+ic*0.48*(0.5+0.5*Math.sin(t*FREQ[ch]*0.22+ch*0.7));
+    d.setAttribute('r',(2+ic*1.8).toFixed(1));d.setAttribute('opacity',pulse.toFixed(2));
+  });
+  const aA=pol==='std'?-Math.PI*0.22:Math.PI-Math.PI*0.22,aL=16*(0.14+ic*0.86);
+  parrEl.setAttribute('x2',(100+Math.cos(aA)*aL).toFixed(1));
+  parrEl.setAttribute('y2',(112+Math.sin(aA)*aL).toFixed(1));
+  parrEl.setAttribute('stroke',pol==='std'?'#00c8f0':'#f07040');
+  parrEl.setAttribute('stroke-opacity',clamp(ic*1.3,0,1).toFixed(2));
+  parrEl.setAttribute('marker-end',`url(#ah-${pol})`);
+}
+
+// ── Update info bar ───────────────────────────────────────────────────
+function updateInfo(t,ic,pol){
+  const lbl=ic>0.5?'Ictal':'Interictal';
+  document.getElementById('iv-state').textContent=lbl;
+  document.getElementById('iv-state').style.color=ic>0.5?'#c07820':'#4a7a9a';
+  let plvSum=0,plvN=0;
+  PAIRS.forEach(([i,j])=>{plvSum+=getPLV(i,j,t,ic,pol);plvN++;});
+  const mplv=(plvSum/plvN).toFixed(3);
+  document.getElementById('iv-plv').textContent=mplv;
+  const z=pol==='std'?(ic*0.38+0.04).toFixed(3):(-(ic*0.38+0.04)).toFixed(3);
+  document.getElementById('iv-z').textContent=(z>0?'+':'')+z;
+  document.getElementById('iv-z').style.color=pol==='std'?'#40a0d0':'#c07820';
+  document.getElementById('iv-pol').textContent=pol==='std'?'Standard':'Inverted';
+  document.getElementById('iv-pol').style.color=pol==='std'?'#40a0d0':'#c07820';
+  const badge=document.getElementById('lbl-badge');
+  if(lbl!==currentLbl){
+    currentLbl=lbl;badge.textContent=lbl;
+    badge.style.borderColor=lbl==='Ictal'?'#a06010':'#1a2740';
+    badge.style.color=lbl==='Ictal'?'#c07820':'#2a4560';
+  }
+  const lps=document.getElementById('lpolspan');
+  lps.textContent=(pol==='std'?'▲ Standard':'▼ Inverted')+' polarity';
+  lps.style.color=pol==='std'?'#40a0d0':'#c07820';
+}
+
+// ── Animation loop ────────────────────────────────────────────────────
+function frame(ts){
+  if(!startTs)startTs=ts;
+  const t=(ts-startTs)/1000,ic=ictFn(t),pol=polarity;
+  drawEEG(t,ic);
+  drawPLV(t,ic,pol);
+  drawMfld(t,ic,pol);
+  updateSVG(t,ic,pol);
+  updateInfo(t,ic,pol);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

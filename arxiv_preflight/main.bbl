@@ -1,0 +1,410 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{24}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Rasheed et~al.}{2021}]{rasheed2021}
+\begin{barticle}
+\bauthor{\bsnm{Rasheed}, \binits{K.}},
+\bauthor{\bsnm{Qayyum}, \binits{A.}},
+\bauthor{\bsnm{Qadir}, \binits{J.}},
+\bauthor{\bsnm{Sivathamboo}, \binits{S.}},
+\bauthor{\bsnm{Kwan}, \binits{P.}},
+\bauthor{\bsnm{Kuhlmann}, \binits{L.}},
+\bauthor{\bsnm{O'Brien}, \binits{T.}},
+\bauthor{\bsnm{Razi}, \binits{A.}}:
+\batitle{Machine learning for predicting epileptic seizures using {EEG}
+  signals: A review}.
+\bjtitle{IEEE Reviews in Biomedical Engineering}
+\bvolume{14},
+\bfpage{139}--\blpage{155}
+(\byear{2021})
+\doiurl{10.1109/RBME.2020.3008792}
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Mormann et~al.}{2007}]{mormann2007}
+\begin{barticle}
+\bauthor{\bsnm{Mormann}, \binits{F.}},
+\bauthor{\bsnm{Andrzejak}, \binits{R.G.}},
+\bauthor{\bsnm{Elger}, \binits{C.E.}},
+\bauthor{\bsnm{Lehnertz}, \binits{K.}}:
+\batitle{Seizure prediction: The long and winding road}.
+\bjtitle{Brain}
+\bvolume{130}(\bissue{2}),
+\bfpage{314}--\blpage{333}
+(\byear{2007})
+\doiurl{10.1093/brain/awl241}
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{{World Health Organization}}{2019}]{who2019}
+\begin{bbook}
+\bauthor{\bsnm{{World Health Organization}}}:
+\bbtitle{Epilepsy: A Public Health Imperative}.
+\bpublisher{World Health Organization},
+\blocation{Geneva}
+(\byear{2019})
+\end{bbook}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Daoud and Bayoumi}{2019}]{daoud2019}
+\begin{barticle}
+\bauthor{\bsnm{Daoud}, \binits{H.}},
+\bauthor{\bsnm{Bayoumi}, \binits{M.A.}}:
+\batitle{Efficient epileptic seizure prediction based on deep learning}.
+\bjtitle{IEEE Transactions on Biomedical Circuits and Systems}
+\bvolume{13}(\bissue{5}),
+\bfpage{804}--\blpage{813}
+(\byear{2019})
+\doiurl{10.1109/TBCAS.2019.2929053}
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Gupta et~al.}{2003}]{gupta2003}
+\begin{bbook}
+\bauthor{\bsnm{Gupta}, \binits{M.M.}},
+\bauthor{\bsnm{Jin}, \binits{L.}},
+\bauthor{\bsnm{Homma}, \binits{N.}}:
+\bbtitle{Static and Dynamic Neural Networks: From Fundamentals to Advanced
+  Theory}.
+\bpublisher{John Wiley \& Sons},
+\blocation{Hoboken, NJ}
+(\byear{2003})
+\end{bbook}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Buzs\'{a}ki and Wang}{2012}]{buzsaki2012}
+\begin{barticle}
+\bauthor{\bsnm{Buzs\'{a}ki}, \binits{G.}},
+\bauthor{\bsnm{Wang}, \binits{X.-J.}}:
+\batitle{Mechanisms of gamma oscillations}.
+\bjtitle{Annual Review of Neuroscience}
+\bvolume{35},
+\bfpage{203}--\blpage{225}
+(\byear{2012})
+\doiurl{10.1146/annurev-neuro-062111-150444}
+\end{barticle}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Biamonte et~al.}{2017}]{biamonte2017}
+\begin{barticle}
+\bauthor{\bsnm{Biamonte}, \binits{J.}},
+\bauthor{\bsnm{Wittek}, \binits{P.}},
+\bauthor{\bsnm{Pancotti}, \binits{N.}},
+\bauthor{\bsnm{Rebentrost}, \binits{P.}},
+\bauthor{\bsnm{Wiebe}, \binits{N.}},
+\bauthor{\bsnm{Lloyd}, \binits{S.}}:
+\batitle{Quantum machine learning}.
+\bjtitle{Nature}
+\bvolume{549},
+\bfpage{195}--\blpage{202}
+(\byear{2017})
+\doiurl{10.1038/nature23474}
+\end{barticle}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Preskill}{2018}]{preskill2018}
+\begin{barticle}
+\bauthor{\bsnm{Preskill}, \binits{J.}}:
+\batitle{Quantum computing in the {NISQ} era and beyond}.
+\bjtitle{Quantum}
+\bvolume{2},
+\bfpage{79}
+(\byear{2018})
+\doiurl{10.22331/q-2018-08-06-79}
+\end{barticle}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Cerezo et~al.}{2021}]{cerezo2021}
+\begin{barticle}
+\bauthor{\bsnm{Cerezo}, \binits{M.}},
+\bauthor{\bsnm{Arrasmith}, \binits{A.}},
+\bauthor{\bsnm{Babbush}, \binits{R.}},
+\bauthor{\bsnm{Benjamin}, \binits{S.C.}},
+\bauthor{\bsnm{Endo}, \binits{S.}},
+\bauthor{\bsnm{Fujii}, \binits{K.}},
+\bauthor{\bsnm{McClean}, \binits{J.R.}},
+\bauthor{\bsnm{Mitarai}, \binits{K.}},
+\bauthor{\bsnm{Yuan}, \binits{X.}},
+\bauthor{\bsnm{Cincio}, \binits{L.}},
+\bauthor{\bsnm{Coles}, \binits{P.J.}}:
+\batitle{Variational quantum algorithms}.
+\bjtitle{Nature Reviews Physics}
+\bvolume{3},
+\bfpage{625}--\blpage{644}
+(\byear{2021})
+\doiurl{10.1038/s42254-021-00348-9}
+\end{barticle}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Farhi and Neven}{2018}]{farhi2018}
+\begin{botherref}
+\oauthor{\bsnm{Farhi}, \binits{E.}},
+\oauthor{\bsnm{Neven}, \binits{H.}}:
+Classification with quantum neural networks on near term processors.
+arXiv preprint arXiv:1802.06002
+(2018)
+\end{botherref}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{Abbas et~al.}{2021}]{abbas2021}
+\begin{barticle}
+\bauthor{\bsnm{Abbas}, \binits{A.}},
+\bauthor{\bsnm{Sutter}, \binits{D.}},
+\bauthor{\bsnm{Zoufal}, \binits{C.}},
+\bauthor{\bsnm{Lucchi}, \binits{A.}},
+\bauthor{\bsnm{Woerner}, \binits{S.}}:
+\batitle{The power of quantum neural networks}.
+\bjtitle{Nature Computational Science}
+\bvolume{1}(\bissue{6}),
+\bfpage{403}--\blpage{409}
+(\byear{2021})
+\doiurl{10.1038/s43588-021-00084-1}
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{Gandhi et~al.}{2014}]{gandhi2014}
+\begin{barticle}
+\bauthor{\bsnm{Gandhi}, \binits{V.}},
+\bauthor{\bsnm{Prasad}, \binits{G.}},
+\bauthor{\bsnm{Coyle}, \binits{D.}},
+\bauthor{\bsnm{Behera}, \binits{L.}},
+\bauthor{\bsnm{McGinnity}, \binits{T.M.}}:
+\batitle{Quantum neural network-based {EEG} filtering for a brain-computer
+  interface}.
+\bjtitle{IEEE Transactions on Neural Networks and Learning Systems}
+\bvolume{25}(\bissue{2}),
+\bfpage{278}--\blpage{288}
+(\byear{2014})
+\doiurl{10.1109/TNNLS.2013.2274436}
+\end{barticle}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{Chen et~al.}{2024}]{chen2024qeegnet}
+\begin{bchapter}
+\bauthor{\bsnm{Chen}, \binits{C.-S.}}, \betal:
+\bctitle{{QEEGNet}: Quantum machine learning for enhanced
+  electroencephalography encoding}.
+In: \bbtitle{IEEE Workshop on Signal Processing Systems (SiPS)},
+pp. \bfpage{153}--\blpage{158}
+(\byear{2024}).
+\doiurl{10.1109/SiPS62041.2024.00035}
+\end{bchapter}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Olvera et~al.}{2024}]{olvera2024}
+\begin{barticle}
+\bauthor{\bsnm{Olvera}, \binits{C.}}, \betal:
+\batitle{{EEG}-based motor imagery classification with quantum algorithms}.
+\bjtitle{Expert Systems with Applications}
+\bvolume{247},
+\bfpage{123286}
+(\byear{2024})
+\doiurl{10.1016/j.eswa.2024.123286}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Buhrman et~al.}{2001}]{buhrman2001}
+\begin{barticle}
+\bauthor{\bsnm{Buhrman}, \binits{H.}},
+\bauthor{\bsnm{Cleve}, \binits{R.}},
+\bauthor{\bsnm{Watrous}, \binits{J.}},
+\bauthor{\bsnm{Wolf}, \binits{R.}}:
+\batitle{Quantum fingerprinting}.
+\bjtitle{Physical Review Letters}
+\bvolume{87}(\bissue{16}),
+\bfpage{167902}
+(\byear{2001})
+\doiurl{10.1103/PhysRevLett.87.167902}
+\end{barticle}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Holevo}{1973}]{holevo1973}
+\begin{barticle}
+\bauthor{\bsnm{Holevo}, \binits{A.S.}}:
+\batitle{Bounds for the quantity of information transmitted by a quantum
+  communication channel}.
+\bjtitle{Problems of Information Transmission}
+\bvolume{9}(\bissue{3}),
+\bfpage{177}--\blpage{183}
+(\byear{1973})
+\end{barticle}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{Goldberger et~al.}{2000}]{goldberger2000}
+\begin{barticle}
+\bauthor{\bsnm{Goldberger}, \binits{A.L.}},
+\bauthor{\bsnm{Amaral}, \binits{L.A.N.}},
+\bauthor{\bsnm{Glass}, \binits{L.}},
+\bauthor{\bsnm{Hausdorff}, \binits{J.M.}},
+\bauthor{\bsnm{Ivanov}, \binits{P.C.}},
+\bauthor{\bsnm{Mark}, \binits{R.G.}},
+\bauthor{\bsnm{Mietus}, \binits{J.E.}},
+\bauthor{\bsnm{Moody}, \binits{G.B.}},
+\bauthor{\bsnm{Peng}, \binits{C.-K.}},
+\bauthor{\bsnm{Stanley}, \binits{H.E.}}:
+\batitle{{PhysioBank}, {PhysioToolkit}, and {PhysioNet}: Components of a new
+  research resource for complex physiologic signals}.
+\bjtitle{Circulation}
+\bvolume{101}(\bissue{23}),
+\bfpage{215}--\blpage{220}
+(\byear{2000})
+\doiurl{10.1161/01.CIR.101.23.e215}
+\end{barticle}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{Shoeb}{2009}]{shoeb2009}
+\begin{botherref}
+\oauthor{\bsnm{Shoeb}, \binits{A.H.}}:
+Application of machine learning to epileptic seizure onset detection and
+  treatment.
+{PhD} dissertation,
+Massachusetts Institute of Technology
+(2009)
+\end{botherref}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Chen and Guestrin}{2016}]{chen2016xgboost}
+\begin{bchapter}
+\bauthor{\bsnm{Chen}, \binits{T.}},
+\bauthor{\bsnm{Guestrin}, \binits{C.}}:
+\bctitle{{XGBoost}: A scalable tree boosting system}.
+In: \bbtitle{Proceedings of the 22nd ACM SIGKDD International Conference on
+  Knowledge Discovery and Data Mining},
+pp. \bfpage{785}--\blpage{794}
+(\byear{2016}).
+\doiurl{10.1145/2939672.2939785}
+\end{bchapter}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{{Javadi-Abhari} et~al.}{2024}]{javadi2024}
+\begin{botherref}
+\oauthor{\bsnm{{Javadi-Abhari}}, \binits{A.}}, et al.:
+Quantum computing with {Qiskit}.
+arXiv preprint arXiv:2405.08810
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 21
+\bibitem[\protect\citeauthoryear{Fuchs and van~de Graaf}{1999}]{fuchs1999}
+\begin{barticle}
+\bauthor{\bsnm{Fuchs}, \binits{C.A.}},
+\bauthor{\bsnm{Graaf}, \binits{J.}}:
+\batitle{Cryptographic distinguishability measures for quantum-mechanical
+  states}.
+\bjtitle{IEEE Transactions on Information Theory}
+\bvolume{45}(\bissue{4}),
+\bfpage{1216}--\blpage{1227}
+(\byear{1999})
+\doiurl{10.1109/18.761271}
+\end{barticle}
+\endbibitem
+
+%%% 22
+\bibitem[\protect\citeauthoryear{Schuld et~al.}{2021}]{schuld2021encoding}
+\begin{barticle}
+\bauthor{\bsnm{Schuld}, \binits{M.}},
+\bauthor{\bsnm{Sweke}, \binits{R.}},
+\bauthor{\bsnm{Meyer}, \binits{J.J.}}:
+\batitle{Effect of data encoding on the expressive power of variational
+  quantum-machine-learning models}.
+\bjtitle{Physical Review A}
+\bvolume{103}(\bissue{3}),
+\bfpage{032430}
+(\byear{2021})
+\doiurl{10.1103/PhysRevA.103.032430}
+\end{barticle}
+\endbibitem
+
+%%% 23
+\bibitem[\protect\citeauthoryear{Li et~al.}{2022}]{li2022concentration}
+\begin{botherref}
+\oauthor{\bsnm{Li}, \binits{G.}},
+\oauthor{\bsnm{Song}, \binits{Z.}},
+\oauthor{\bsnm{Wang}, \binits{X.}}:
+Concentration of data encoding in parameterized quantum circuits.
+arXiv preprint arXiv:2206.08273
+(2022)
+\end{botherref}
+\endbibitem
+
+%%% 24
+\bibitem[\protect\citeauthoryear{McClean et~al.}{2018}]{mcclean2018}
+\begin{barticle}
+\bauthor{\bsnm{McClean}, \binits{J.R.}},
+\bauthor{\bsnm{Boixo}, \binits{S.}},
+\bauthor{\bsnm{Smelyanskiy}, \binits{V.N.}},
+\bauthor{\bsnm{Babbush}, \binits{R.}},
+\bauthor{\bsnm{Neven}, \binits{H.}}:
+\batitle{Barren plateaus in quantum neural network training landscapes}.
+\bjtitle{Nature Communications}
+\bvolume{9},
+\bfpage{4812}
+(\byear{2018})
+\doiurl{10.1038/s41467-018-07090-4}
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}

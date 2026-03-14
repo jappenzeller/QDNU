@@ -1,0 +1,65 @@
+Comparison: Previously Rejected Submission vs. Current Submission (7313652)
+
+Note: The current submission is published on TechRxiv (IEEE preprint
+server) and is under peer review at Springer (Quantum Information
+Processing), having passed technical screening and been assigned a
+reviewer.
+
+                        Paper 1 (rejected)              Paper 2 (current, 7313652)
+─────────────────────────────────────────────────────────────────────────────────────
+Title                   "...Multi-Channel EEG            "...Multi-Channel EEG
+                        Analysis: A Theoretical          Analysis: Hardware Validation
+                        Framework"                       and Empirical Limits"
+
+Scope                   Theoretical framework            Empirical validation study
+
+Dataset                 Kaggle AES (Dog_1),              CHB-MIT Scalp EEG Database,
+                        single canine subject,           22 human pediatric patients,
+                        15 ictal / 15 interictal         504 segments (284 ictal/
+                        segments                         preictal, 220 interictal)
+
+Quantum hardware        None — Qiskit Aer               IBM Heron r2 processor
+                        statevector simulator only       (ibm_torino, 133 qubits),
+                                                         1024-8192 shots per circuit
+
+Validation method       Single subject, no               Leave-one-subject-out (LOSO)
+                        cross-validation,                cross-validation across all
+                        optimized threshold              22 subjects
+
+Classical baselines     None                             XGBoost classifier:
+                                                         8-channel (816 features) and
+                                                         18-channel (2016 features)
+
+Encoding strategies     Single (PN dynamics              Three encodings compared:
+                        with RMS envelope)               V1 (PN dynamics), V2 (band
+                                                         power), V3 (PLV/Hilbert)
+
+Hardware validation     Not performed                    99.3% configuration
+                                                         discrimination across 5
+                                                         neural configurations
+
+Transpilation           Not performed                    Full transpilation to native
+                                                         CZ gate set, scaling verified
+                                                         (14.1M - 17.5, R2 > 0.99)
+
+Hardware scaling        Not tested                       Verified O(M) for
+                                                         M = 2, 4, 6, 8 channels
+                                                         on physical hardware
+
+Key finding             Fidelity separation              Encoding bottleneck
+                        between ictal/interictal         identification, manifold
+                        (0.173) on one subject           polarity discovery, honest
+                                                         quantum-classical comparison
+
+Tables / Figures        3 tables, 3 figures              12 tables, 7 figures
+
+Pages                   14                               20
+
+References              12                               24
+─────────────────────────────────────────────────────────────────────────────────────
+
+Paper 1 proposed a theoretical architecture and tested it in simulation
+on a single animal subject. Paper 2 is a comprehensive empirical study
+validating that architecture on IBM quantum hardware and a standard
+clinical EEG benchmark, with new findings not present in the earlier
+work.

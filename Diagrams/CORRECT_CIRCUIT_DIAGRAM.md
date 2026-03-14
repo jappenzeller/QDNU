@@ -143,7 +143,7 @@ Legend:
 
 ## Gate Count Summary
 
-Total gates: 14
+Total gates: 12
 - Hadamard: 4 (2 per qubit)
 - Phase: 4 (2 per qubit, all with same angle b)
 - Rotation: 2 (1 RX, 1 RY)
