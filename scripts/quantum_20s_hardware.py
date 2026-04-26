@@ -500,7 +500,9 @@ def run_hardware_loso_20s(channels: List[str], subjects: List[str], backend) -> 
             'polarity_1.95s': prior_polarity,
             'polarity_changed': polarity_changed,
             'n_samples': len(y_test_valid),
-            'n_seizure': int(sum(y_test_valid))
+            'n_seizure': int(sum(y_test_valid)),
+            'scores': scores.tolist(),
+            'y_true': y_test_valid.tolist(),
         }
 
         all_y_true.extend(y_test_valid.tolist())

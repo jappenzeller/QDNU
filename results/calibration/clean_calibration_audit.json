@@ -1,0 +1,808 @@
+{
+  "prompt": "022",
+  "task": "Polarity Calibration Validity Audit",
+  "timestamp": "2026-03-28T09:54:35.717433",
+  "verdict": "PREDICTION_INVALID",
+  "subjects": [
+    "chb01",
+    "chb03",
+    "chb05",
+    "chb07",
+    "chb11",
+    "chb14",
+    "chb21"
+  ],
+  "classifiers": {
+    "Tier3_LDA": {
+      "chb01": {
+        "raw_auc": 0.7428571428571429
+      },
+      "chb03": {
+        "raw_auc": 0.2357142857142857
+      },
+      "chb05": {
+        "raw_auc": 0.86
+      },
+      "chb07": {
+        "raw_auc": 0.6833333333333333
+      },
+      "chb11": {
+        "raw_auc": 0.75
+      },
+      "chb14": {
+        "raw_auc": 0.43571428571428567
+      },
+      "chb21": {
+        "raw_auc": 0.4571428571428571
+      }
+    },
+    "Tier2A_Eigen": {
+      "chb01": {
+        "raw_auc": 0.6857142857142857
+      },
+      "chb03": {
+        "raw_auc": 0.9285714285714286
+      },
+      "chb05": {
+        "raw_auc": 0.81
+      },
+      "chb07": {
+        "raw_auc": 0.8
+      },
+      "chb11": {
+        "raw_auc": 0.55
+      },
+      "chb14": {
+        "raw_auc": 0.4785714285714286
+      },
+      "chb21": {
+        "raw_auc": 0.5285714285714286
+      }
+    },
+    "Tier3_XGB": {
+      "chb01": {
+        "raw_auc": 0.5214285714285714
+      },
+      "chb03": {
+        "raw_auc": 0.7928571428571429
+      },
+      "chb05": {
+        "raw_auc": 0.72
+      },
+      "chb07": {
+        "raw_auc": 0.6
+      },
+      "chb11": {
+        "raw_auc": 0.5333333333333333
+      },
+      "chb14": {
+        "raw_auc": 0.35714285714285715
+      },
+      "chb21": {
+        "raw_auc": 0.18571428571428572
+      }
+    },
+    "AGate_Sim": {
+      "chb01": {
+        "raw_auc": 0.6857142857142857
+      },
+      "chb03": {
+        "raw_auc": 0.4357142857142857
+      },
+      "chb05": {
+        "raw_auc": 0.61
+      },
+      "chb07": {
+        "raw_auc": 0.6666666666666666
+      },
+      "chb11": {
+        "raw_auc": 0.2833333333333333
+      },
+      "chb14": {
+        "raw_auc": 0.6
+      },
+      "chb21": {
+        "raw_auc": 0.38749999999999996
+      }
+    }
+  },
+  "calibration_results": {
+    "Tier3_LDA": {
+      "approach_a": {
+        "chb01": {
+          "raw_auc": 0.7428571428571429,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.7428571428571429,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.7428571428571429,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 3,
+          "n_inner_standard": 3
+        },
+        "chb03": {
+          "raw_auc": 0.2357142857142857,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.2357142857142857,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.7642857142857142,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 1,
+          "n_inner_standard": 5
+        },
+        "chb05": {
+          "raw_auc": 0.86,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.86,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.86,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb07": {
+          "raw_auc": 0.6833333333333333,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.6833333333333333,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6833333333333333,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb11": {
+          "raw_auc": 0.75,
+          "approach_a_polarity": "inverted",
+          "approach_a_auc": 0.25,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.75,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 4,
+          "n_inner_standard": 2
+        },
+        "chb14": {
+          "raw_auc": 0.43571428571428567,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.43571428571428567,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5642857142857143,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb21": {
+          "raw_auc": 0.4571428571428571,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.4571428571428571,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5428571428571429,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        }
+      },
+      "approach_b": {
+        "chb01": {
+          "raw_auc": 0.7428571428571429,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.7428571428571429,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.7428571428571429,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 99882.42287037743,
+          "mean_inter_trace": 27232.657002520937,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb03": {
+          "raw_auc": 0.2357142857142857,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.2357142857142857,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.7642857142857142,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 97362.05852386805,
+          "mean_inter_trace": 28732.021715096496,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb05": {
+          "raw_auc": 0.86,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.86,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.86,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 65146.35301147352,
+          "mean_inter_trace": 23840.00671861789,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb07": {
+          "raw_auc": 0.6833333333333333,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.6833333333333333,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6833333333333333,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 82797.69798201273,
+          "mean_inter_trace": 22089.024818130285,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb11": {
+          "raw_auc": 0.75,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.75,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.75,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 97633.08318954831,
+          "mean_inter_trace": 27794.557164176797,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb14": {
+          "raw_auc": 0.43571428571428567,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.43571428571428567,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5642857142857143,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 106644.56377115689,
+          "mean_inter_trace": 21891.71705010969,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb21": {
+          "raw_auc": 0.4571428571428571,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.4571428571428571,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5428571428571429,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 98857.90710280783,
+          "mean_inter_trace": 23309.151078747087,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        }
+      },
+      "overall_oracle_auc": 0.7010884353741496,
+      "overall_approach_a_auc": 0.5235374149659863,
+      "overall_approach_b_auc": 0.5949659863945577,
+      "approach_a_agreement": "3/7",
+      "approach_b_agreement": "4/7"
+    },
+    "Tier2A_Eigen": {
+      "approach_a": {
+        "chb01": {
+          "raw_auc": 0.6857142857142857,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.6857142857142857,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6857142857142857,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 1,
+          "n_inner_standard": 5
+        },
+        "chb03": {
+          "raw_auc": 0.9285714285714286,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.9285714285714286,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.9285714285714286,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb05": {
+          "raw_auc": 0.81,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.81,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.81,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb07": {
+          "raw_auc": 0.8,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.8,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.8,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb11": {
+          "raw_auc": 0.55,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.55,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.55,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 1,
+          "n_inner_standard": 5
+        },
+        "chb14": {
+          "raw_auc": 0.4785714285714286,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.4785714285714286,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5214285714285714,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 0,
+          "n_inner_standard": 6
+        },
+        "chb21": {
+          "raw_auc": 0.5285714285714286,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.5285714285714286,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.5285714285714286,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        }
+      },
+      "approach_b": {
+        "chb01": {
+          "raw_auc": 0.6857142857142857,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.6857142857142857,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6857142857142857,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 99882.42287037743,
+          "mean_inter_trace": 27232.657002520937,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb03": {
+          "raw_auc": 0.9285714285714286,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.9285714285714286,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.9285714285714286,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 97362.05852386805,
+          "mean_inter_trace": 28732.021715096496,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb05": {
+          "raw_auc": 0.81,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.81,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.81,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 65146.35301147352,
+          "mean_inter_trace": 23840.00671861789,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb07": {
+          "raw_auc": 0.8,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.8,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.8,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 82797.69798201273,
+          "mean_inter_trace": 22089.024818130285,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb11": {
+          "raw_auc": 0.55,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.55,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.55,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 97633.08318954831,
+          "mean_inter_trace": 27794.557164176797,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb14": {
+          "raw_auc": 0.4785714285714286,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.4785714285714286,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5214285714285714,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 106644.56377115689,
+          "mean_inter_trace": 21891.71705010969,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb21": {
+          "raw_auc": 0.5285714285714286,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.5285714285714286,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.5285714285714286,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 98857.90710280783,
+          "mean_inter_trace": 23309.151078747087,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        }
+      },
+      "overall_oracle_auc": 0.6891836734693877,
+      "overall_approach_a_auc": 0.6830612244897959,
+      "overall_approach_b_auc": 0.6830612244897959,
+      "approach_a_agreement": "6/7",
+      "approach_b_agreement": "6/7"
+    },
+    "Tier3_XGB": {
+      "approach_a": {
+        "chb01": {
+          "raw_auc": 0.5214285714285714,
+          "approach_a_polarity": "inverted",
+          "approach_a_auc": 0.47857142857142865,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.5214285714285714,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 4,
+          "n_inner_standard": 2
+        },
+        "chb03": {
+          "raw_auc": 0.7928571428571429,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.7928571428571429,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.7928571428571429,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb05": {
+          "raw_auc": 0.72,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.72,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.72,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb07": {
+          "raw_auc": 0.6,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.6,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6,
+          "agrees_with_oracle": true,
+          "n_inner_inverted": 3,
+          "n_inner_standard": 3
+        },
+        "chb11": {
+          "raw_auc": 0.5333333333333333,
+          "approach_a_polarity": "inverted",
+          "approach_a_auc": 0.4666666666666667,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.5333333333333333,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 4,
+          "n_inner_standard": 2
+        },
+        "chb14": {
+          "raw_auc": 0.35714285714285715,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.35714285714285715,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.6428571428571428,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        },
+        "chb21": {
+          "raw_auc": 0.18571428571428572,
+          "approach_a_polarity": "standard",
+          "approach_a_auc": 0.18571428571428572,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.8142857142857143,
+          "agrees_with_oracle": false,
+          "n_inner_inverted": 2,
+          "n_inner_standard": 4
+        }
+      },
+      "approach_b": {
+        "chb01": {
+          "raw_auc": 0.5214285714285714,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.5214285714285714,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.5214285714285714,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 99882.42287037743,
+          "mean_inter_trace": 27232.657002520937,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb03": {
+          "raw_auc": 0.7928571428571429,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.7928571428571429,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.7928571428571429,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 97362.05852386805,
+          "mean_inter_trace": 28732.021715096496,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb05": {
+          "raw_auc": 0.72,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.72,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.72,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 65146.35301147352,
+          "mean_inter_trace": 23840.00671861789,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb07": {
+          "raw_auc": 0.6,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.6,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 82797.69798201273,
+          "mean_inter_trace": 22089.024818130285,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb11": {
+          "raw_auc": 0.5333333333333333,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.5333333333333333,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.5333333333333333,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 97633.08318954831,
+          "mean_inter_trace": 27794.557164176797,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb14": {
+          "raw_auc": 0.35714285714285715,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.35714285714285715,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.6428571428571428,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 106644.56377115689,
+          "mean_inter_trace": 21891.71705010969,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb21": {
+          "raw_auc": 0.18571428571428572,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.18571428571428572,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.8142857142857143,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 98857.90710280783,
+          "mean_inter_trace": 23309.151078747087,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        }
+      },
+      "overall_oracle_auc": 0.6606802721088435,
+      "overall_approach_a_auc": 0.514421768707483,
+      "overall_approach_b_auc": 0.5300680272108843,
+      "approach_a_agreement": "3/7",
+      "approach_b_agreement": "5/7"
+    },
+    "AGate_Sim": {
+      "approach_a": {
+        "chb01": {
+          "raw_auc": 0.6857142857142857,
+          "approach_a_polarity": "N/A",
+          "approach_a_auc": NaN,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6857142857142857,
+          "agrees_with_oracle": false
+        },
+        "chb03": {
+          "raw_auc": 0.4357142857142857,
+          "approach_a_polarity": "N/A",
+          "approach_a_auc": NaN,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5642857142857143,
+          "agrees_with_oracle": false
+        },
+        "chb05": {
+          "raw_auc": 0.61,
+          "approach_a_polarity": "N/A",
+          "approach_a_auc": NaN,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.61,
+          "agrees_with_oracle": false
+        },
+        "chb07": {
+          "raw_auc": 0.6666666666666666,
+          "approach_a_polarity": "N/A",
+          "approach_a_auc": NaN,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6666666666666666,
+          "agrees_with_oracle": false
+        },
+        "chb11": {
+          "raw_auc": 0.2833333333333333,
+          "approach_a_polarity": "N/A",
+          "approach_a_auc": NaN,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.7166666666666667,
+          "agrees_with_oracle": false
+        },
+        "chb14": {
+          "raw_auc": 0.6,
+          "approach_a_polarity": "N/A",
+          "approach_a_auc": NaN,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6,
+          "agrees_with_oracle": false
+        },
+        "chb21": {
+          "raw_auc": 0.38749999999999996,
+          "approach_a_polarity": "N/A",
+          "approach_a_auc": NaN,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.6125,
+          "agrees_with_oracle": false
+        }
+      },
+      "approach_b": {
+        "chb01": {
+          "raw_auc": 0.6857142857142857,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.6857142857142857,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6857142857142857,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 99882.42287037743,
+          "mean_inter_trace": 27232.657002520937,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb03": {
+          "raw_auc": 0.4357142857142857,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.4357142857142857,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.5642857142857143,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 97362.05852386805,
+          "mean_inter_trace": 28732.021715096496,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb05": {
+          "raw_auc": 0.61,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.61,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.61,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 65146.35301147352,
+          "mean_inter_trace": 23840.00671861789,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb07": {
+          "raw_auc": 0.6666666666666666,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.6666666666666666,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6666666666666666,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 82797.69798201273,
+          "mean_inter_trace": 22089.024818130285,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb11": {
+          "raw_auc": 0.2833333333333333,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.2833333333333333,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.7166666666666667,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 97633.08318954831,
+          "mean_inter_trace": 27794.557164176797,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb14": {
+          "raw_auc": 0.6,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.6,
+          "oracle_polarity": "standard",
+          "oracle_auc": 0.6,
+          "agrees_with_oracle": true,
+          "mean_ictal_trace": 106644.56377115689,
+          "mean_inter_trace": 21891.71705010969,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        },
+        "chb21": {
+          "raw_auc": 0.38749999999999996,
+          "approach_b_polarity": "standard",
+          "approach_b_auc": 0.38749999999999996,
+          "oracle_polarity": "inverted",
+          "oracle_auc": 0.6125,
+          "agrees_with_oracle": false,
+          "mean_ictal_trace": 98857.90710280783,
+          "mean_inter_trace": 23309.151078747087,
+          "n_train_patients_with_ictal": 6,
+          "low_ictal_flag": false
+        }
+      },
+      "overall_oracle_auc": 0.636547619047619,
+      "overall_approach_a_auc": NaN,
+      "overall_approach_b_auc": 0.5241326530612245,
+      "approach_a_agreement": "N/A",
+      "approach_b_agreement": "4/7"
+    }
+  },
+  "tier3_xgb_experiment": {
+    "chb01": {
+      "xgb_raw_auc": 0.5214285714285714,
+      "lda_raw_auc": 0.7428571428571429,
+      "xgb_polarity": "standard",
+      "lda_polarity": "standard",
+      "both_inverted": false
+    },
+    "chb03": {
+      "xgb_raw_auc": 0.7928571428571429,
+      "lda_raw_auc": 0.2357142857142857,
+      "xgb_polarity": "standard",
+      "lda_polarity": "inverted",
+      "both_inverted": false
+    },
+    "chb05": {
+      "xgb_raw_auc": 0.72,
+      "lda_raw_auc": 0.86,
+      "xgb_polarity": "standard",
+      "lda_polarity": "standard",
+      "both_inverted": false
+    },
+    "chb07": {
+      "xgb_raw_auc": 0.6,
+      "lda_raw_auc": 0.6833333333333333,
+      "xgb_polarity": "standard",
+      "lda_polarity": "standard",
+      "both_inverted": false
+    },
+    "chb11": {
+      "xgb_raw_auc": 0.5333333333333333,
+      "lda_raw_auc": 0.75,
+      "xgb_polarity": "standard",
+      "lda_polarity": "standard",
+      "both_inverted": false
+    },
+    "chb14": {
+      "xgb_raw_auc": 0.35714285714285715,
+      "lda_raw_auc": 0.43571428571428567,
+      "xgb_polarity": "inverted",
+      "lda_polarity": "inverted",
+      "both_inverted": true
+    },
+    "chb21": {
+      "xgb_raw_auc": 0.18571428571428572,
+      "lda_raw_auc": 0.4571428571428571,
+      "xgb_polarity": "inverted",
+      "lda_polarity": "inverted",
+      "both_inverted": true
+    }
+  }
+}

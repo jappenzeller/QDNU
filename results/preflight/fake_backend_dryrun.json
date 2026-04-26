@@ -1,0 +1,104 @@
+{
+  "prompt": "024",
+  "task": "Fake Backend Dry Run",
+  "timestamp": "2026-03-28T14:42:19.221803",
+  "status": "PASS",
+  "backend": "GenericBackendV2 (133q) + Statevector",
+  "subjects": [
+    "chb01",
+    "chb03"
+  ],
+  "shots": "statevector (exact)",
+  "configs": {
+    "CH8_20s": {
+      "config": "CH8_20s",
+      "n_channels": 8,
+      "n_qubits": 17,
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.3,
+          "n_samples": 24,
+          "n_seizure": 14
+        },
+        "chb03": {
+          "raw_auc": 0.16428571428571426,
+          "n_samples": 24,
+          "n_seizure": 14
+        }
+      },
+      "runtime_sec": 38.3
+    },
+    "CH12": {
+      "config": "CH12",
+      "n_channels": 12,
+      "n_qubits": 25,
+      "per_subject": {
+        "chb01": {
+          "raw_auc": "N/A (sv infeasible)"
+        },
+        "chb03": {
+          "raw_auc": "N/A (sv infeasible)"
+        }
+      },
+      "runtime_sec": 0,
+      "note": "Statevector infeasible at 25 qubits. Circuit construction and transpilation verified."
+    },
+    "CH16": {
+      "config": "CH16",
+      "n_channels": 16,
+      "n_qubits": 33,
+      "per_subject": {
+        "chb01": {
+          "raw_auc": "N/A (sv infeasible)"
+        },
+        "chb03": {
+          "raw_auc": "N/A (sv infeasible)"
+        }
+      },
+      "runtime_sec": 0,
+      "note": "Statevector infeasible at 33 qubits. Circuit construction and transpilation verified."
+    }
+  },
+  "transpilation": {
+    "CH8_20s": {
+      "depth": 21,
+      "two_qubit_gates": 38,
+      "num_qubits_transpiled": 133,
+      "gate_ops": {
+        "rz": 88,
+        "sx": 48,
+        "cx": 38,
+        "measure": 17,
+        "x": 8,
+        "barrier": 1
+      }
+    },
+    "CH12": {
+      "depth": 25,
+      "two_qubit_gates": 58,
+      "num_qubits_transpiled": 133,
+      "gate_ops": {
+        "rz": 132,
+        "sx": 72,
+        "cx": 58,
+        "measure": 25,
+        "x": 12,
+        "barrier": 1
+      }
+    },
+    "CH16": {
+      "depth": 29,
+      "two_qubit_gates": 78,
+      "num_qubits_transpiled": 133,
+      "gate_ops": {
+        "rz": 176,
+        "sx": 96,
+        "cx": 78,
+        "measure": 33,
+        "x": 16,
+        "barrier": 1
+      }
+    }
+  },
+  "notes": "Statevector simulation used for speed. GenericBackendV2 transpilation for gate count check only. Torino gate counts validated in PROMPT 025."
+}

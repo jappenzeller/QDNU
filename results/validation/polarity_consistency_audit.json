@@ -1,0 +1,178 @@
+{
+  "prompt": "029",
+  "task": "Polarity Consistency Audit",
+  "timestamp": "2026-03-28T16:09:20.870056",
+  "runs_loaded": [
+    "CH8_1.95s",
+    "CH8_20s",
+    "CH12",
+    "CH16"
+  ],
+  "auc_matrix": {
+    "chb01": {
+      "CH8_1.95s": 0.6857,
+      "CH8_20s": 0.5286,
+      "CH12": 0.4786,
+      "CH16": 0.5
+    },
+    "chb03": {
+      "CH8_1.95s": 0.4357,
+      "CH8_20s": 0.45,
+      "CH12": 0.4643,
+      "CH16": 0.5
+    },
+    "chb05": {
+      "CH8_1.95s": 0.61,
+      "CH8_20s": 0.365,
+      "CH12": 0.45,
+      "CH16": 0.5
+    },
+    "chb07": {
+      "CH8_1.95s": 0.6667,
+      "CH8_20s": 0.45,
+      "CH12": 0.6333,
+      "CH16": 0.5
+    },
+    "chb11": {
+      "CH8_1.95s": 0.2833,
+      "CH8_20s": 0.3,
+      "CH12": 0.5,
+      "CH16": 0.5833
+    },
+    "chb14": {
+      "CH8_1.95s": 0.6,
+      "CH8_20s": 0.3812,
+      "CH12": 0.6719,
+      "CH16": 0.5
+    },
+    "chb21": {
+      "CH8_1.95s": 0.3875,
+      "CH8_20s": 0.35,
+      "CH12": 0.4562,
+      "CH16": 0.5
+    }
+  },
+  "polarity_matrix": {
+    "chb01": {
+      "CH8_1.95s": "standard",
+      "CH8_20s": "standard",
+      "CH12": "inverted",
+      "CH16": "chance"
+    },
+    "chb03": {
+      "CH8_1.95s": "inverted",
+      "CH8_20s": "inverted",
+      "CH12": "inverted",
+      "CH16": "chance"
+    },
+    "chb05": {
+      "CH8_1.95s": "standard",
+      "CH8_20s": "inverted",
+      "CH12": "inverted",
+      "CH16": "chance"
+    },
+    "chb07": {
+      "CH8_1.95s": "standard",
+      "CH8_20s": "inverted",
+      "CH12": "standard",
+      "CH16": "chance"
+    },
+    "chb11": {
+      "CH8_1.95s": "inverted",
+      "CH8_20s": "inverted",
+      "CH12": "chance",
+      "CH16": "standard"
+    },
+    "chb14": {
+      "CH8_1.95s": "standard",
+      "CH8_20s": "inverted",
+      "CH12": "standard",
+      "CH16": "chance"
+    },
+    "chb21": {
+      "CH8_1.95s": "inverted",
+      "CH8_20s": "inverted",
+      "CH12": "inverted",
+      "CH16": "chance"
+    }
+  },
+  "consistency": {
+    "chb01": {
+      "polarities": [
+        "standard",
+        "standard",
+        "inverted"
+      ],
+      "consistent": false,
+      "dominant": "standard",
+      "n_runs_with_signal": 3
+    },
+    "chb03": {
+      "polarities": [
+        "inverted",
+        "inverted",
+        "inverted"
+      ],
+      "consistent": true,
+      "dominant": "inverted",
+      "n_runs_with_signal": 3
+    },
+    "chb05": {
+      "polarities": [
+        "standard",
+        "inverted",
+        "inverted"
+      ],
+      "consistent": false,
+      "dominant": "inverted",
+      "n_runs_with_signal": 3
+    },
+    "chb07": {
+      "polarities": [
+        "standard",
+        "inverted",
+        "standard"
+      ],
+      "consistent": false,
+      "dominant": "standard",
+      "n_runs_with_signal": 3
+    },
+    "chb11": {
+      "polarities": [
+        "inverted",
+        "inverted"
+      ],
+      "consistent": true,
+      "dominant": "inverted",
+      "n_runs_with_signal": 2
+    },
+    "chb14": {
+      "polarities": [
+        "standard",
+        "inverted",
+        "standard"
+      ],
+      "consistent": false,
+      "dominant": "standard",
+      "n_runs_with_signal": 3
+    },
+    "chb21": {
+      "polarities": [
+        "inverted",
+        "inverted",
+        "inverted"
+      ],
+      "consistent": true,
+      "dominant": "inverted",
+      "n_runs_with_signal": 3
+    }
+  },
+  "summary": {
+    "n_consistent": 3,
+    "n_inconsistent": 4,
+    "n_chance_ch16": 6,
+    "prediction_met": false,
+    "chb14_always_inverted": false,
+    "chb21_always_inverted": true
+  }
+}

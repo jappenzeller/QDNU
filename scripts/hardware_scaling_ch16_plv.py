@@ -437,10 +437,16 @@ def run_hardware_loso(channels: List[str], subjects: List[str], backend) -> Dict
         except:
             auc = 0.5
 
+        polarity = 'inverted' if auc < 0.5 else 'standard'
         per_subject[test_subject] = {
             'auc': float(auc),
+            'raw_auc': float(auc),
+            'calibrated_auc': float(max(auc, 1.0 - auc)),
+            'polarity': polarity,
             'n_samples': len(y_test),
-            'n_seizure': int(sum(y_test))
+            'n_seizure': int(sum(y_test)),
+            'scores': scores.tolist(),
+            'y_true': y_test.tolist(),
         }
 
         all_y_true.extend(y_test.tolist())

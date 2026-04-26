@@ -1,0 +1,190 @@
+{
+  "prompt": "030",
+  "task": "Dual Calibration Reporting",
+  "timestamp": "2026-03-28T16:14:40.719844",
+  "calibration_method": "oracle (max(raw, 1-raw), labeled as assumes-known-polarity)",
+  "tier2a_clean_reference": 0.6831,
+  "tier2a_oracle_reference": 0.6892,
+  "configs": {
+    "CH8_1.95s": {
+      "overall_raw_auc": 0.5241,
+      "overall_oracle_calibrated_auc": 0.6365,
+      "n_inverted": 3,
+      "chb14_inverted": false,
+      "chb21_inverted": true,
+      "chb03_inverted": true,
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.6857,
+          "oracle_calibrated_auc": 0.6857,
+          "polarity": "standard"
+        },
+        "chb03": {
+          "raw_auc": 0.4357,
+          "oracle_calibrated_auc": 0.5643,
+          "polarity": "inverted"
+        },
+        "chb05": {
+          "raw_auc": 0.61,
+          "oracle_calibrated_auc": 0.61,
+          "polarity": "standard"
+        },
+        "chb07": {
+          "raw_auc": 0.6667,
+          "oracle_calibrated_auc": 0.6667,
+          "polarity": "standard"
+        },
+        "chb11": {
+          "raw_auc": 0.2833,
+          "oracle_calibrated_auc": 0.7167,
+          "polarity": "inverted"
+        },
+        "chb14": {
+          "raw_auc": 0.6,
+          "oracle_calibrated_auc": 0.6,
+          "polarity": "standard"
+        },
+        "chb21": {
+          "raw_auc": 0.3875,
+          "oracle_calibrated_auc": 0.6125,
+          "polarity": "inverted"
+        }
+      }
+    },
+    "CH8_20s": {
+      "overall_raw_auc": 0.4035,
+      "overall_oracle_calibrated_auc": 0.6046,
+      "n_inverted": 6,
+      "chb14_inverted": true,
+      "chb21_inverted": true,
+      "chb03_inverted": true,
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.5286,
+          "oracle_calibrated_auc": 0.5286,
+          "polarity": "standard"
+        },
+        "chb03": {
+          "raw_auc": 0.45,
+          "oracle_calibrated_auc": 0.55,
+          "polarity": "inverted"
+        },
+        "chb05": {
+          "raw_auc": 0.365,
+          "oracle_calibrated_auc": 0.635,
+          "polarity": "inverted"
+        },
+        "chb07": {
+          "raw_auc": 0.45,
+          "oracle_calibrated_auc": 0.55,
+          "polarity": "inverted"
+        },
+        "chb11": {
+          "raw_auc": 0.3,
+          "oracle_calibrated_auc": 0.7,
+          "polarity": "inverted"
+        },
+        "chb14": {
+          "raw_auc": 0.3812,
+          "oracle_calibrated_auc": 0.6188,
+          "polarity": "inverted"
+        },
+        "chb21": {
+          "raw_auc": 0.35,
+          "oracle_calibrated_auc": 0.65,
+          "polarity": "inverted"
+        }
+      }
+    },
+    "CH12": {
+      "overall_raw_auc": 0.522,
+      "overall_oracle_calibrated_auc": 0.5652,
+      "n_inverted": 4,
+      "chb14_inverted": false,
+      "chb21_inverted": true,
+      "chb03_inverted": true,
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.4786,
+          "oracle_calibrated_auc": 0.5214,
+          "polarity": "inverted"
+        },
+        "chb03": {
+          "raw_auc": 0.4643,
+          "oracle_calibrated_auc": 0.5357,
+          "polarity": "inverted"
+        },
+        "chb05": {
+          "raw_auc": 0.45,
+          "oracle_calibrated_auc": 0.55,
+          "polarity": "inverted"
+        },
+        "chb07": {
+          "raw_auc": 0.6333,
+          "oracle_calibrated_auc": 0.6333,
+          "polarity": "standard"
+        },
+        "chb11": {
+          "raw_auc": 0.5,
+          "oracle_calibrated_auc": 0.5,
+          "polarity": "chance"
+        },
+        "chb14": {
+          "raw_auc": 0.6719,
+          "oracle_calibrated_auc": 0.6719,
+          "polarity": "standard"
+        },
+        "chb21": {
+          "raw_auc": 0.4562,
+          "oracle_calibrated_auc": 0.5437,
+          "polarity": "inverted"
+        }
+      }
+    },
+    "CH16": {
+      "overall_raw_auc": 0.5119,
+      "overall_oracle_calibrated_auc": 0.5119,
+      "n_inverted": 0,
+      "chb14_inverted": false,
+      "chb21_inverted": false,
+      "chb03_inverted": false,
+      "per_subject": {
+        "chb01": {
+          "raw_auc": 0.5,
+          "oracle_calibrated_auc": 0.5,
+          "polarity": "chance"
+        },
+        "chb03": {
+          "raw_auc": 0.5,
+          "oracle_calibrated_auc": 0.5,
+          "polarity": "chance"
+        },
+        "chb05": {
+          "raw_auc": 0.5,
+          "oracle_calibrated_auc": 0.5,
+          "polarity": "chance"
+        },
+        "chb07": {
+          "raw_auc": 0.5,
+          "oracle_calibrated_auc": 0.5,
+          "polarity": "chance"
+        },
+        "chb11": {
+          "raw_auc": 0.5833,
+          "oracle_calibrated_auc": 0.5833,
+          "polarity": "standard"
+        },
+        "chb14": {
+          "raw_auc": 0.5,
+          "oracle_calibrated_auc": 0.5,
+          "polarity": "chance"
+        },
+        "chb21": {
+          "raw_auc": 0.5,
+          "oracle_calibrated_auc": 0.5,
+          "polarity": "chance"
+        }
+      }
+    }
+  }
+}

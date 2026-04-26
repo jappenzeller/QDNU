@@ -23,8 +23,9 @@ research/
 *_dashboard.png
 *.png
 
-# Paper directory (not for public repo)
+# Paper / school directories (not for public repo)
 paper/
+papers/
 figures/
 
 # AWS Infrastructure (separate repo)
@@ -43,10 +44,12 @@ agate_parameter_space/
 # Large derived artifacts
 *.npz
 
-# Submission packages (not for public repo)
+# Submission packages and manuscripts (not for public repo)
 arxiv_submission/
 springer_submission/
 springer_submission.zip
+submission/
+PolarityPaper/
 
 # Blender files (too large for GitHub)
 blender/

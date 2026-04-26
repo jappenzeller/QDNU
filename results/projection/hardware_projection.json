@@ -1,30 +1,26 @@
 {
-  "timestamp": "2026-02-22T12:01:35.012747",
-  "prompt": "PROMPT 010-FIX",
+  "prompt": "031",
+  "timestamp": "2026-03-28T16:17:48.777342",
   "comparators": {
+    "tier2a_clean": {
+      "label": "Tier 2A Eigenvalues (clean-validated)",
+      "auc": 0.6831,
+      "note": "Only comparator with validated label-free calibration (PROMPT 022)"
+    },
+    "tier2a_oracle": {
+      "label": "Tier 2A Eigenvalues (oracle)",
+      "auc": 0.6892,
+      "note": "Oracle calibration for reference"
+    },
+    "tier3_oracle": {
+      "label": "Tier 3 Riemannian (oracle)",
+      "auc": 0.7011,
+      "note": "Oracle only - clean calibration fails (PROMPT 022)"
+    },
     "tier2b_full": {
       "label": "Classical Ceiling (336 features)",
       "auc": 0.952,
-      "n_features": 336,
-      "n_patients": 22,
-      "source": "PROMPT 018",
-      "note": "Not a fair quantum comparator \u2014 feature count exceeds encoding capacity"
-    },
-    "tier3_calibrated": {
-      "label": "Riemannian Calibrated (36 features)",
-      "auc": 0.659,
-      "n_features": 36,
-      "n_patients": 22,
-      "source": "PROMPT 018",
-      "note": "Geometry-preserving classical method with polarity calibration"
-    },
-    "tier2a_eigenvalues": {
-      "label": "Eigenvalues Only (8 features)",
-      "auc": 0.628,
-      "n_features": 8,
-      "n_patients": 22,
-      "source": "PROMPT 018",
-      "note": "Fair quantum comparator \u2014 matched feature dimensionality"
+      "note": "Not a fair quantum comparator"
     }
   },
   "data_points": [
@@ -34,27 +30,9 @@
       "qubits": 9,
       "window_s": 1.95,
       "backend": "hardware",
-      "encoding": "V2_band_power",
       "raw_auc": 0.5,
-      "calibrated_auc": 0.5,
-      "n_inverted": 0,
-      "calibration_lift": 0,
-      "status": "degenerate",
-      "note": "All subjects at 0.500 AUC \u2014 no signal"
-    },
-    {
-      "id": "ch4_1.95s_sim",
-      "channels": 4,
-      "qubits": 9,
-      "window_s": 1.95,
-      "backend": "simulation",
-      "encoding": "V2_band_power",
-      "raw_auc": 0.5221510883482715,
-      "calibrated_auc": 0.5221510883482715,
-      "n_inverted": null,
-      "calibration_lift": null,
-      "status": "degenerate",
-      "note": "Excluded from trend fitting"
+      "oracle_cal_auc": 0.5,
+      "status": "degenerate"
     },
     {
       "id": "ch8_1.95s_hw",
@@ -62,43 +40,10 @@
       "qubits": 17,
       "window_s": 1.95,
       "backend": "hardware",
-      "encoding": "PLV_theta_alpha",
-      "raw_auc": 0.511003861003861,
-      "calibrated_auc": 0.636547619047619,
+      "raw_auc": 0.5241,
+      "oracle_cal_auc": 0.6365,
       "n_inverted": 3,
-      "n_subjects": 7,
-      "calibration_lift": 0.11241496598639455,
-      "status": "available",
-      "note": "Primary hardware result with polarity calibration"
-    },
-    {
-      "id": "ch8_1.95s_sim",
-      "channels": 8,
-      "qubits": 17,
-      "window_s": 1.95,
-      "backend": "simulation",
-      "encoding": "V2_band_power",
-      "raw_auc": 0.5344110115236875,
-      "calibrated_auc": 0.5344110115236875,
-      "n_inverted": null,
-      "calibration_lift": null,
-      "status": "available",
-      "note": "Encoding mismatch with hardware (V2 vs PLV)"
-    },
-    {
-      "id": "ch8_20s_sim",
-      "channels": 8,
-      "qubits": 17,
-      "window_s": 20.0,
-      "backend": "simulation",
-      "encoding": "PLV_theta_alpha",
-      "raw_auc": 0.38629343629343627,
-      "calibrated_auc": 0.6302041997354498,
-      "n_inverted": 6,
-      "n_subjects": 7,
-      "calibration_lift": 0.24391076344201357,
-      "status": "available",
-      "note": "Simulation inverts at 20s \u2014 worse raw AUC than 1.95s"
+      "status": "available"
     },
     {
       "id": "ch8_20s_hw",
@@ -106,298 +51,236 @@
       "qubits": 17,
       "window_s": 20.0,
       "backend": "hardware",
-      "encoding": "PLV_theta_alpha",
-      "raw_auc": null,
-      "calibrated_auc": null,
-      "n_inverted": null,
-      "calibration_lift": null,
-      "status": "pending",
-      "note": "Scheduled for March 22+"
+      "raw_auc": 0.4035,
+      "oracle_cal_auc": 0.6046,
+      "n_inverted": 6,
+      "status": "available"
     },
     {
-      "id": "ch12_1.95s_sim",
+      "id": "ch12_hw",
       "channels": 12,
       "qubits": 25,
-      "window_s": 1.95,
-      "backend": "simulation",
-      "encoding": "V2_band_power",
-      "raw_auc": 0.6436293436293437,
-      "calibrated_auc": 0.6436293436293437,
-      "n_inverted": null,
-      "calibration_lift": null,
-      "status": "available",
-      "note": "7-subject subset (limited by memory)"
-    },
-    {
-      "id": "ch12_1.95s_hw",
-      "channels": 12,
-      "qubits": 25,
-      "window_s": 1.95,
+      "window_s": 30.0,
       "backend": "hardware",
-      "encoding": "PLV_theta_alpha",
-      "raw_auc": null,
-      "calibrated_auc": null,
-      "n_inverted": null,
-      "calibration_lift": null,
-      "status": "pending",
-      "note": "Scheduled for March 22+"
+      "raw_auc": 0.522,
+      "oracle_cal_auc": 0.5652,
+      "n_inverted": 4,
+      "status": "available"
     },
     {
-      "id": "ch16_1.95s_sim",
+      "id": "ch16_hw",
       "channels": 16,
       "qubits": 33,
-      "window_s": 1.95,
-      "backend": "simulation",
-      "encoding": "V2_band_power",
-      "raw_auc": null,
-      "calibrated_auc": null,
-      "n_inverted": null,
-      "calibration_lift": null,
-      "status": "infeasible",
-      "note": "state_vector_size_gb: 128.00, available_gb: 45.55"
+      "window_s": 30.0,
+      "backend": "hardware",
+      "raw_auc": 0.5119,
+      "oracle_cal_auc": 0.5119,
+      "n_inverted": 0,
+      "status": "noise_floor",
+      "note": "Coherence budget exceeded at 33q/246 CZ gates"
     },
     {
-      "id": "ch16_1.95s_hw",
-      "channels": 16,
-      "qubits": 33,
+      "id": "ch4_sim",
+      "channels": 4,
+      "qubits": 9,
       "window_s": 1.95,
-      "backend": "hardware",
-      "encoding": "PLV_theta_alpha",
-      "raw_auc": null,
-      "calibrated_auc": null,
-      "n_inverted": null,
-      "calibration_lift": null,
-      "status": "pending",
-      "note": "Scheduled for March 22+"
-    }
-  ],
-  "gap_analysis": {
-    "quantum_best": {
-      "id": "ch8_1.95s_hw",
-      "calibrated_auc": 0.636547619047619,
-      "raw_auc": 0.511003861003861,
+      "backend": "simulation",
+      "raw_auc": 0.5221510883482715,
+      "oracle_cal_auc": 0.5221510883482715,
+      "status": "available"
+    },
+    {
+      "id": "ch8_sim",
       "channels": 8,
+      "qubits": 17,
       "window_s": 1.95,
-      "encoding": "PLV_theta_alpha"
+      "backend": "simulation",
+      "raw_auc": 0.5344110115236875,
+      "oracle_cal_auc": 0.5344110115236875,
+      "status": "available"
     },
-    "gaps": {
-      "tier2b_full": {
-        "comparator_label": "Classical Ceiling (336 features)",
-        "comparator_auc": 0.952,
-        "gap": -0.3155,
-        "status": "below",
-        "note": "Not a fair quantum comparator \u2014 feature count exceeds encoding capacity"
-      },
-      "tier3_calibrated": {
-        "comparator_label": "Riemannian Calibrated (36 features)",
-        "comparator_auc": 0.659,
-        "gap": -0.0225,
-        "status": "nearly_there",
-        "note": "Geometry-preserving classical method with polarity calibration"
-      },
-      "tier2a_eigenvalues": {
-        "comparator_label": "Eigenvalues Only (8 features)",
-        "comparator_auc": 0.628,
-        "gap": 0.0085,
-        "status": "EXCEEDED",
-        "note": "Fair quantum comparator \u2014 matched feature dimensionality"
-      }
+    {
+      "id": "ch12_sim",
+      "channels": 12,
+      "qubits": 25,
+      "window_s": 1.95,
+      "backend": "simulation",
+      "raw_auc": 0.6436293436293437,
+      "oracle_cal_auc": 0.6436293436293437,
+      "status": "available"
     }
-  },
-  "gap_model": {
-    "model": "linear",
-    "n_points": 2,
-    "slope": 0.00015700777144438013,
-    "intercept": 0.020738018405272077,
-    "data_points": [
-      {
-        "channels": 4,
-        "qubits": 9,
-        "window_s": 1.95,
-        "sim_auc": 0.5221510883482715,
-        "hw_auc": 0.5,
-        "gap": 0.022151088348271508,
-        "inverted": false
-      },
-      {
-        "channels": 8,
-        "qubits": 17,
-        "window_s": 1.95,
-        "sim_auc": 0.5344110115236875,
-        "hw_auc": 0.511003861003861,
-        "gap": 0.02340715051982656,
-        "inverted": false
-      }
-    ],
-    "predictions": {
-      "q25": {
-        "qubits": 25,
-        "predicted_gap": 0.02466321269138158,
-        "channels": 12
-      },
-      "q33": {
-        "qubits": 33,
-        "predicted_gap": 0.02591927486293662,
-        "channels": 16
-      },
-      "q41": {
-        "qubits": 41,
-        "predicted_gap": 0.02717533703449166,
-        "channels": 20
-      },
-      "q49": {
-        "qubits": 49,
-        "predicted_gap": 0.028431399206046704,
-        "channels": 24
-      }
-    },
-    "interpretation": "positive slope = gap worsens with qubits; negative = gap improves",
-    "note": "Based on non-degenerate points only (CH4 excluded)"
-  },
-  "channel_scaling": {
-    "window_s": 1.95,
-    "points": [
-      {
-        "channels": 4,
-        "qubits": 9,
-        "raw_auc": 0.5,
-        "calibrated_auc": 0.5,
-        "status": "degenerate",
-        "encoding": "V2_band_power"
-      },
-      {
-        "channels": 8,
-        "qubits": 17,
-        "raw_auc": 0.511003861003861,
-        "calibrated_auc": 0.636547619047619,
-        "status": "available",
-        "encoding": "PLV_theta_alpha"
-      },
-      {
-        "channels": 12,
-        "qubits": 25,
-        "raw_auc": null,
-        "calibrated_auc": null,
-        "status": "pending",
-        "encoding": "PLV_theta_alpha"
-      },
-      {
-        "channels": 16,
-        "qubits": 33,
-        "raw_auc": null,
-        "calibrated_auc": null,
-        "status": "pending",
-        "encoding": "PLV_theta_alpha"
-      }
-    ]
-  },
-  "window_scaling": {
-    "channels": 8,
-    "points": [
-      {
-        "window_s": 1.95,
-        "simulation": {
-          "raw_auc": 0.5344110115236875,
-          "calibrated_auc": 0.5344110115236875,
-          "status": "available"
-        },
-        "hardware": {
-          "raw_auc": 0.511003861003861,
-          "calibrated_auc": 0.636547619047619,
-          "n_inverted": 3,
-          "calibration_lift": 0.11241496598639455,
-          "status": "available"
-        }
-      },
-      {
-        "window_s": 20.0,
-        "simulation": {
-          "raw_auc": 0.38629343629343627,
-          "calibrated_auc": 0.6302041997354498,
-          "status": "available"
-        },
-        "hardware": {
-          "raw_auc": null,
-          "calibrated_auc": null,
-          "n_inverted": null,
-          "calibration_lift": null,
-          "status": "pending"
-        }
-      }
-    ]
-  },
-  "polarity_tracking": {
-    "quantum_hw_points": [
-      {
-        "id": "ch4_1.95s_hw",
-        "channels": 4,
-        "window_s": 1.95,
-        "n_inverted": 0,
-        "n_subjects": null,
-        "calibration_lift": 0
-      },
-      {
-        "id": "ch8_1.95s_hw",
-        "channels": 8,
-        "window_s": 1.95,
-        "n_inverted": 3,
-        "n_subjects": 7,
-        "calibration_lift": 0.11241496598639455
-      }
-    ],
-    "classical_reference": {
-      "tier2a": {
-        "n_inverted": 10,
-        "n_subjects": 22,
-        "calibration_lift": 0.10722058244785515
-      },
-      "tier3": {
-        "n_inverted": 6,
-        "n_subjects": 22,
-        "calibration_lift": 0.12260822510822522
-      }
-    }
-  },
-  "simulation_reliability": {
-    "findings": [
-      {
-        "observation": "Simulation underestimates hardware (PLV 1.95s)",
-        "sim_auc": 0.5344110115236875,
-        "hw_calibrated_auc": 0.636547619047619,
-        "gap": -0.1021,
-        "note": "Hardware with calibration beats simulation"
-      },
-      {
-        "observation": "Simulation worsens with longer windows",
-        "sim_1.95s_auc": 0.5344110115236875,
-        "sim_20s_auc": 0.38629343629343627,
-        "change": -0.1481,
-        "note": "Raw AUC drops, but calibration recovers"
-      },
-      {
-        "observation": "Encoding mismatch between sim and hardware",
-        "sim_encoding": "V2_band_power",
-        "hw_encoding": "PLV_theta_alpha",
-        "note": "Direct gap comparison is not reliable"
-      }
-    ],
-    "recommendation": "Do not use simulation for encoding selection or performance projection. Hardware with calibration is the ground truth.",
-    "inversion_observed": true
-  },
-  "conclusions": [
-    "1. Quantum EXCEEDS matched-dimensionality classical (Tier 2A) by +0.009",
-    "2. Gap to Tier 3 calibrated is small (-0.022) \u2014 may close with 20s windows",
-    "3. Gap to Tier 2B (classical ceiling) is large (-0.316) \u2014 not closeable on near-term hardware",
-    "4. Simulation is unreliable proxy \u2014 hardware with calibration is ground truth"
   ],
-  "pending_data": {
-    "count": 3,
-    "ids": [
-      "ch8_20s_hw",
-      "ch12_1.95s_hw",
-      "ch16_1.95s_hw"
-    ],
-    "expected_date": "March 22, 2026+",
-    "note": "Run PROMPT 010-R after March 22 data arrives"
-  }
+  "gap_analysis": [
+    {
+      "data_point": "ch4_1.95s_hw",
+      "comparator": "tier2a_clean",
+      "comparator_auc": 0.6831,
+      "hardware_oracle_auc": 0.5,
+      "gap": 0.1831,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch4_1.95s_hw",
+      "comparator": "tier2a_oracle",
+      "comparator_auc": 0.6892,
+      "hardware_oracle_auc": 0.5,
+      "gap": 0.1892,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch4_1.95s_hw",
+      "comparator": "tier3_oracle",
+      "comparator_auc": 0.7011,
+      "hardware_oracle_auc": 0.5,
+      "gap": 0.2011,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch4_1.95s_hw",
+      "comparator": "tier2b_full",
+      "comparator_auc": 0.952,
+      "hardware_oracle_auc": 0.5,
+      "gap": 0.452,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_1.95s_hw",
+      "comparator": "tier2a_clean",
+      "comparator_auc": 0.6831,
+      "hardware_oracle_auc": 0.6365,
+      "gap": 0.0466,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_1.95s_hw",
+      "comparator": "tier2a_oracle",
+      "comparator_auc": 0.6892,
+      "hardware_oracle_auc": 0.6365,
+      "gap": 0.0527,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_1.95s_hw",
+      "comparator": "tier3_oracle",
+      "comparator_auc": 0.7011,
+      "hardware_oracle_auc": 0.6365,
+      "gap": 0.0646,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_1.95s_hw",
+      "comparator": "tier2b_full",
+      "comparator_auc": 0.952,
+      "hardware_oracle_auc": 0.6365,
+      "gap": 0.3155,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_20s_hw",
+      "comparator": "tier2a_clean",
+      "comparator_auc": 0.6831,
+      "hardware_oracle_auc": 0.6046,
+      "gap": 0.0785,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_20s_hw",
+      "comparator": "tier2a_oracle",
+      "comparator_auc": 0.6892,
+      "hardware_oracle_auc": 0.6046,
+      "gap": 0.0846,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_20s_hw",
+      "comparator": "tier3_oracle",
+      "comparator_auc": 0.7011,
+      "hardware_oracle_auc": 0.6046,
+      "gap": 0.0965,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch8_20s_hw",
+      "comparator": "tier2b_full",
+      "comparator_auc": 0.952,
+      "hardware_oracle_auc": 0.6046,
+      "gap": 0.3474,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch12_hw",
+      "comparator": "tier2a_clean",
+      "comparator_auc": 0.6831,
+      "hardware_oracle_auc": 0.5652,
+      "gap": 0.1179,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch12_hw",
+      "comparator": "tier2a_oracle",
+      "comparator_auc": 0.6892,
+      "hardware_oracle_auc": 0.5652,
+      "gap": 0.124,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch12_hw",
+      "comparator": "tier3_oracle",
+      "comparator_auc": 0.7011,
+      "hardware_oracle_auc": 0.5652,
+      "gap": 0.1359,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch12_hw",
+      "comparator": "tier2b_full",
+      "comparator_auc": 0.952,
+      "hardware_oracle_auc": 0.5652,
+      "gap": 0.3868,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch16_hw",
+      "comparator": "tier2a_clean",
+      "comparator_auc": 0.6831,
+      "hardware_oracle_auc": 0.5119,
+      "gap": 0.1712,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch16_hw",
+      "comparator": "tier2a_oracle",
+      "comparator_auc": 0.6892,
+      "hardware_oracle_auc": 0.5119,
+      "gap": 0.1773,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch16_hw",
+      "comparator": "tier3_oracle",
+      "comparator_auc": 0.7011,
+      "hardware_oracle_auc": 0.5119,
+      "gap": 0.1892,
+      "hardware_exceeds": false
+    },
+    {
+      "data_point": "ch16_hw",
+      "comparator": "tier2b_full",
+      "comparator_auc": 0.952,
+      "hardware_oracle_auc": 0.5119,
+      "gap": 0.4401,
+      "hardware_exceeds": false
+    }
+  ],
+  "best_hardware": {
+    "id": "ch8_1.95s_hw",
+    "oracle_cal_auc": 0.6365
+  },
+  "pending_data_points": [],
+  "notes": [
+    "All hardware runs complete (CH8-1.95s, CH8-20s, CH12, CH16)",
+    "CH16 at noise floor (33q/246 CZ gates exceeds coherence budget)",
+    "Polarity is NOT stable across configurations (4/7 inconsistent)",
+    "Best hardware AUC (0.637 oracle-cal) below Tier 2A clean (0.683)"
+  ]
 }

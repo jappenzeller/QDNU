@@ -1,94 +1,61 @@
-# Hardware Readiness Projection — Updated
+# Hardware Projection Report (PROMPT 031)
+Generated: 2026-03-28T16:17:48.778343
 
-Generated: 2026-02-22T12:01:35.012747
+## 1. Channel Scaling Curve (Hardware)
 
-## Current State (pre-March 22)
+| Channels | Qubits | Window | Raw AUC | Oracle-cal. AUC | N_inv | Status |
+|----------|--------|--------|---------|-----------------|-------|--------|
+| 4 | 9 | 1.95s | 0.5000 | 0.5000 | — | degenerate |
+| 8 | 17 | 1.95s | 0.5241 | 0.6365 | 3 | available |
+| 8 | 17 | 20.0s | 0.4035 | 0.6046 | 6 | available |
+| 12 | 25 | 30.0s | 0.5220 | 0.5652 | 4 | available |
+| 16 | 33 | 30.0s | 0.5119 | 0.5119 | 0 | noise_floor |
 
-| Data Point | Channels | Window | Backend | Calibrated AUC | Status |
-|------------|----------|--------|---------|----------------|--------|
-| ch4_1.95s_hw | 4 | 1.95s | hardware | 0.5000 | degenerate |
-| ch4_1.95s_sim | 4 | 1.95s | simulation | 0.5222 | degenerate |
-| ch8_1.95s_hw | 8 | 1.95s | hardware | 0.6365 | available |
-| ch8_1.95s_sim | 8 | 1.95s | simulation | 0.5344 | available |
-| ch8_20s_sim | 8 | 20.0s | simulation | 0.6302 | available |
-| ch8_20s_hw | 8 | 20.0s | hardware | — | pending |
-| ch12_1.95s_sim | 12 | 1.95s | simulation | 0.6436 | available |
-| ch12_1.95s_hw | 12 | 1.95s | hardware | — | pending |
-| ch16_1.95s_sim | 16 | 1.95s | simulation | — | infeasible |
-| ch16_1.95s_hw | 16 | 1.95s | hardware | — | pending |
+## 2. Window Size Scaling (CH8)
 
-## Gap Analysis (against three comparators)
+| Window | Raw AUC | Oracle-cal. AUC | N_inverted |
+|--------|---------|-----------------|------------|
+| 1.95s | 0.5241 | 0.6365 | 3 |
+| 20.0s | 0.4035 | 0.6046 | 6 |
 
-**Quantum Best**: ch8_1.95s_hw — 0.6365 calibrated AUC
+## 3. Simulation vs Hardware
 
-| Comparator | AUC | Quantum Best | Gap | Status |
-|------------|-----|--------------|-----|--------|
-| Classical Ceiling (336 features) | 0.952 | 0.637 | -0.316 | - below |
-| Riemannian Calibrated (36 features) | 0.659 | 0.637 | -0.022 | ~ nearly_there |
-| Eigenvalues Only (8 features) | 0.628 | 0.637 | +0.009 | + EXCEEDED |
+| Config | Sim AUC | HW Raw AUC | HW Oracle-cal. | Sim-HW Gap |
+|--------|---------|------------|----------------|------------|
+| CH4 | 0.5222 | 0.5000 | 0.5000 | +0.0222 |
+| CH8 | 0.5344 | 0.5241 | 0.6365 | +0.0103 |
+| CH12 | 0.6436 | 0.5220 | 0.5652 | +0.1216 |
 
-## Channel Scaling Curve
+## 4. Gap Analysis vs Classical Comparators
 
-Fixed window: 1.95s
+| Comparator | AUC | Best HW Oracle-cal. | Gap | Note |
+|------------|-----|---------------------|-----|------|
+| Tier 2A Eigenvalues (clean-validated) | 0.6831 | 0.6365 | +0.0466 | Only comparator with validated label-free calibration (PROMPT 022) |
+| Tier 2A Eigenvalues (oracle) | 0.6892 | 0.6365 | +0.0527 | Oracle calibration for reference |
+| Tier 3 Riemannian (oracle) | 0.7011 | 0.6365 | +0.0646 | Oracle only - clean calibration fails (PROMPT 022) |
+| Classical Ceiling (336 features) | 0.9520 | 0.6365 | +0.3155 | Not a fair quantum comparator |
 
-| Channels | Qubits | Raw AUC | Calibrated AUC | Status |
-|----------|--------|---------|----------------|--------|
-| 4 | 9 | 0.5000 | 0.5000 | degenerate |
-| 8 | 17 | 0.5110 | 0.6365 | available |
-| 12 | 25 | — | — | pending |
-| 16 | 33 | — | — | pending |
+Best hardware result (oracle-calibrated): **0.6365** (CH8 1.95s)
 
-## Window Size Impact
+## 5. Key Findings
 
-Fixed channels: 8
+- **CH16 (33q, 246 CZ gates):** Noise floor exceeded. All subjects at chance (0.500).
+- **Polarity instability:** 4/7 subjects show inconsistent polarity across configs.
+  Only chb21 is consistently inverted; chb03 consistently inverted on A-Gate.
+- **Channel scaling:** No improvement from CH8 to CH12 on hardware.
+  CH12 oracle-cal (0.565) < CH8 1.95s oracle-cal (0.637).
+- **Window scaling:** 20s windows did NOT improve over 1.95s on hardware.
+  CH8 20s oracle-cal (0.605) < CH8 1.95s oracle-cal (0.637).
+- **Clean calibration gap:** A-Gate best (0.637) still below Tier 2A clean (0.683).
 
-| Window | Sim Raw | Sim Cal | HW Raw | HW Cal | HW Status |
-|--------|---------|---------|--------|--------|-----------|
-| 1.95s | 0.534 | 0.534 | 0.511 | 0.637 | available |
-| 20.0s | 0.386 | 0.630 | — | — | pending |
+## 6. Polarity Tracking
 
-## Simulation Reliability Assessment
-
-- **Simulation underestimates hardware (PLV 1.95s)**
-  - Gap: -0.1021
-  - Hardware with calibration beats simulation
-
-- **Simulation worsens with longer windows**
-  - Raw AUC drops, but calibration recovers
-
-- **Encoding mismatch between sim and hardware**
-  - Direct gap comparison is not reliable
-
-**Recommendation**: Do not use simulation for encoding selection or performance projection. Hardware with calibration is the ground truth.
-
-## Polarity Tracking
-
-**Quantum Hardware Points:**
-
-| Point | Channels | Window | N Inverted | Calibration Lift |
-|-------|----------|--------|------------|------------------|
-| ch4_1.95s_hw | 4 | 1.95s | 0 | — |
-| ch8_1.95s_hw | 8 | 1.95s | 3/7 | 0.112 |
-
-**Classical Reference (PROMPT 018, 22 patients):**
-- Tier 2A: 10/22 inverted, lift 0.107
-- Tier 3: 6/22 inverted, lift 0.123
-
-## Projections (after March 22 data)
-
-Pending data points: 3
-- ch8_20s_hw, ch12_1.95s_hw, ch16_1.95s_hw
-- Expected: March 22, 2026+
-
-After March 22 hardware data arrives:
-1. Run `python scripts/hardware_projection.py` (PROMPT 010-R)
-2. 4-point channel scaling curve will be available
-3. 2-point window scaling (1.95s vs 20s) will be available
-4. Combined CH16 @ 20s projection can be computed
-
-## Key Conclusions
-
-1. Quantum EXCEEDS matched-dimensionality classical (Tier 2A) by +0.009
-2. Gap to Tier 3 calibrated is small (-0.022) — may close with 20s windows
-3. Gap to Tier 2B (classical ceiling) is large (-0.316) — not closeable on near-term hardware
-4. Simulation is unreliable proxy — hardware with calibration is ground truth
+| Subject | CH8-1.95s | CH8-20s | CH12 | CH16 | Consistent? |
+|---------|-----------|---------|------|------|-------------|
+| chb01 | standard | standard | inverted | chance | NO |
+| chb03 | inverted | inverted | inverted | chance | YES |
+| chb05 | standard | inverted | inverted | chance | NO |
+| chb07 | standard | inverted | standard | chance | NO |
+| chb11 | inverted | inverted | chance | standard | YES |
+| chb14 | standard | inverted | standard | chance | NO |
+| chb21 | inverted | inverted | inverted | chance | YES |
