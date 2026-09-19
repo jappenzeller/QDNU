@@ -61,7 +61,7 @@ python -m venv .venv && source .venv/bin/activate      # .venv\Scripts\activate 
 pip install -r requirements.txt
 
 # fetch PhysioNet eegmmidb subject 1, runs 1–2 (eyes open / closed), ~2 MB
-python -c "import mne; mne.datasets.eegbci.load_data(1, [1, 2], path='data/eegmmidb')"
+python -c "import mne; mne.datasets.eegbci.load_data(1, [1, 2], path='data/eegmmidb', update_path=False)"
 
 python scripts/phase5_two_channel.py     # 1 system + 1 ancilla qubit
 python scripts/phase5_four_channel.py    # 2 + 2
