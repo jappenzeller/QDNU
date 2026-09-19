@@ -1,0 +1,5 @@
+Config,Channels,Qubits,CZ_Gates,Raw_AUC,Oracle_Cal_AUC,N_Inverted,chb14_chb21_inv
+CH8-1.95s,8,17,94,0.5241,0.6365,3,N/Y
+CH8-20s,8,17,94,0.4035,0.6046,6,Y/Y
+CH12,12,25,167,0.5220,0.5652,4,N/Y
+CH16,16,33,246,0.5119,0.5119,0,N/N

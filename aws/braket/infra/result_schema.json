@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Braket A-Gate Result Row",
+  "description": "One row per (run, backend, patient, window, channel). Written as Parquet, registered in Athena.",
+  "type": "object",
+  "required": [
+    "run_id",
+    "backend",
+    "patient_id",
+    "window_id",
+    "window_state",
+    "channel_index",
+    "shots",
+    "schema_version"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Job run identifier, format YYYYMMDDTHHMMSSZ_{backend}_{shorthex}."
+    },
+    "backend": {
+      "type": "string",
+      "description": "Backend short name (sv1, dm1, ionq-aria-1, rigetti-ankaa-3, iqm-garnet, ...)."
+    },
+    "patient_id": {
+      "type": "string",
+      "description": "CHB-MIT patient ID, e.g. chb01."
+    },
+    "window_id": {
+      "type": "string",
+      "description": "Stable identifier for the EEG window the parameters were derived from."
+    },
+    "window_state": {
+      "type": "string",
+      "enum": ["interictal", "preictal", "ictal", "unknown"],
+      "description": "Clinical state label."
+    },
+    "channel_index": {
+      "type": "integer",
+      "description": "0-based channel index within the multi-channel A-Gate. -1 indicates a row-level error."
+    },
+    "z_e": {
+      "type": ["number", "null"],
+      "description": "<Z> on the excitatory qubit for this channel, computed from measurement counts."
+    },
+    "z_i": {
+      "type": ["number", "null"],
+      "description": "<Z> on the inhibitory qubit for this channel."
+    },
+    "polarity_e": {
+      "type": ["integer", "null"],
+      "enum": [-1, 1, null],
+      "description": "sgn(<Z>) on the excitatory qubit."
+    },
+    "polarity_i": {
+      "type": ["integer", "null"],
+      "enum": [-1, 1, null],
+      "description": "sgn(<Z>) on the inhibitory qubit."
+    },
+    "fid_ictal": {
+      "type": ["number", "null"],
+      "description": "Hellinger fidelity between this window's count distribution and the patient's ictal-state template. In [0, 1]."
+    },
+    "fid_inter": {
+      "type": ["number", "null"],
+      "description": "Hellinger fidelity between this window's count distribution and the patient's interictal-state template. In [0, 1]."
+    },
+    "fid_score": {
+      "type": ["number", "null"],
+      "description": "fid_ictal - fid_inter. Positive values indicate the window resembles the ictal template more; negative indicate interictal. Sign is the polarity-equivalent observable from Paper 1's pipeline."
+    },
+    "shots": {
+      "type": "integer",
+      "description": "Number of measurement shots used."
+    },
+    "wall_time_seconds": {
+      "type": ["number", "null"],
+      "description": "End-to-end task wall time, including queueing on hardware backends."
+    },
+    "error": {
+      "type": ["string", "null"],
+      "description": "If non-null, the row records a per-window failure rather than a measurement."
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version tag; bump when columns change."
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "_comment": "PROMPT AWS-006 - explicit Glue table schema for IBM Heron + future hardware polarity records. Sister table to braket_results in the same database. Source of truth; bootstrap_data_layer.py reads this and creates/updates the Glue table.",
+  "database": "aws004",
+  "table_name": "polarity_results",
+  "description": "Per-(subject, encoding-config) polarity records from real-hardware runs. Currently IBM Heron; forward-compatible with IonQ/IQM/Rigetti.",
+  "serde": "org.openx.data.jsonserde.JsonSerDe",
+  "serde_parameters": {
+    "case.insensitive": "false",
+    "ignore.malformed.json": "false"
+  },
+  "input_format": "org.apache.hadoop.mapred.TextInputFormat",
+  "output_format": "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat",
+  "columns": [
+    {"Name": "timestamp", "Type": "string"},
+    {"Name": "channels", "Type": "int"},
+    {"Name": "window_s", "Type": "double"},
+    {"Name": "encoding", "Type": "string"},
+    {"Name": "shots", "Type": "int"},
+    {"Name": "raw_auc", "Type": "double"},
+    {"Name": "oracle_cal_auc", "Type": "double"},
+    {"Name": "polarity_sign", "Type": "string"},
+    {"Name": "polarity_strength", "Type": "string"},
+    {"Name": "mean_z_e", "Type": "array<double>"},
+    {"Name": "mean_z_i", "Type": "array<double>"},
+    {"Name": "covariance_shift", "Type": "array<double>"},
+    {"Name": "adapter_applied", "Type": "boolean"},
+    {"Name": "notes", "Type": "string"},
+    {"Name": "device_arn", "Type": "string"},
+    {"Name": "task_arn", "Type": "string"},
+    {"Name": "region", "Type": "string"}
+  ],
+  "partition_keys": [
+    {"Name": "prompt_id", "Type": "string"},
+    {"Name": "device", "Type": "string"},
+    {"Name": "subject", "Type": "string"}
+  ],
+  "partition_projection": {
+    "prompt_id": {
+      "type": "enum",
+      "values": ["AWS-003", "IBM-HERON"]
+    },
+    "device": {
+      "type": "enum",
+      "values": ["SV1", "default_simulator", "ibm_torino", "Aria-1", "Forte-1", "Garnet"]
+    },
+    "subject": {
+      "type": "enum",
+      "values": ["chb01", "chb03", "chb05", "chb07", "chb11", "chb14", "chb21"]
+    }
+  }
+}

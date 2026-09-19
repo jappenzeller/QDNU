@@ -1,0 +1,8 @@
+Subject,CH8_1.95s,CH8_20s,CH12,CH16,Consistent,Note
+chb01,standard,standard,inverted,chance,NO,
+chb03,inverted,inverted,inverted,chance,YES,consistent on A-Gate
+chb05,standard,inverted,inverted,chance,NO,config-dependent
+chb07,standard,inverted,standard,chance,NO,config-dependent
+chb11,inverted,inverted,chance,standard,YES,
+chb14,standard,inverted,standard,chance,NO,config-dependent
+chb21,inverted,inverted,inverted,chance,YES,geometric (XGB confirmed)

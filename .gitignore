@@ -51,12 +51,13 @@ trained_template.npy
 
 # EEG data (not distributed due to licensing)
 Data/
-eeg/Data/
+eeg/Data
 *.mat
 *.edf
 
 # Generated outputs
 benchmark_results/
+*.log
 research/
 *_dashboard.png
 *.png
@@ -122,6 +123,8 @@ prompts_checklist.md
 
 
 # PROMPT 086 phase 2: local material, editor config, LaTeX build junk
+uploads/
+cdk.out/
 _local/
 .claude/
 .vscode/
@@ -130,3 +133,8 @@ arxiv_preflight/*.bbl
 arxiv_preflight/*.blg
 arxiv_preflight/*.log
 arxiv_preflight/*.out
+
+# PROMPT 086b: results are repo content despite the global csv/png ignores
+!results/**/*.csv
+!results/**/*.png
+!analysis_results/**/*.csv
