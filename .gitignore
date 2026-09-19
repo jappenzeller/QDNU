@@ -120,3 +120,13 @@ prompts_checklist.md
 # CSV results (generated)
 *.csv
 
+
+# PROMPT 086 phase 2: local material, editor config, LaTeX build junk
+_local/
+.claude/
+.vscode/
+arxiv_preflight/*.aux
+arxiv_preflight/*.bbl
+arxiv_preflight/*.blg
+arxiv_preflight/*.log
+arxiv_preflight/*.out
