@@ -1,7 +1,7 @@
 # qdnu.ai — Site Map (Post-Migration, April 2026)
 
 ## Navigation (nav.html)
-`QDNU | Framework | Instrument | Invariants | Findings | Domains | Hardware | Math ↗ | Viz ↗ | Roadmap`
+`QDNU | Framework | Instrument | Invariants | Findings | Notebook | Domains | Hardware | Math ↗ | Viz ↗`
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Path | Title | Description |
 |------|-------|-------------|
-| `/` | QDNU — QNFM | Hub: thesis hero, 6 entry-point cards, status board, roadmap teaser |
+| `/` | QDNU — QNFM | Hub: thesis hero, 6 entry-point cards, status board |
 | `/framework/` | Framework | QNFM encoding pipeline, live field mapping, invariant hierarchy cards |
 | `/instrument/` | Instrument | A-Gate circuit architecture, gate diagrams, IBM Heron topology |
 | `/invariants/` | Invariants | 4-scene interactive: polarity (confirmed), cross-freq + trajectory (predicted) |
@@ -17,13 +17,15 @@
 | `/findings/paper-1/` | Paper 1 | Polarity discovery narrative (Problem → Discovery → Simulation → Results) |
 | `/findings/paper-2/` | Paper 2 | Continuous polarity, hardware scaling, pre-registration outcomes |
 | `/findings/paper-3/` | Paper 3 | QNFM theoretical framework scoping (drafting) |
+| `/notebook/` | Notebook | Hub for working pages of the current research line (DSP-000) |
+| `/notebook/one-qubit/` | One Qubit from Two Electrodes | Two-channel EEG covariance as a mixed state, prepared by purification and read back |
+| `/notebook/ei-unit/` | The E/I Unit on a Pattern Pair | One E/I unit on the two dominant patterns of an 8-channel state; gain vs coupling on purity |
 | `/domains/` | Domains | 3 domain cards: EEG (validated), FX (theoretical), ECG (planned) |
 | `/domains/eeg/` | EEG Domain | CHB-MIT dataset, hardware subset rationale, Mark IV plans |
 | `/domains/fx/` | FX Domain | E-Gate architecture, factor basis, Nash equilibrium proximity |
 | `/hardware/` | Hardware | Hub: Mark IV, Lattice Configuration, planned tools |
 | `/hardware/mark-iv/` | Mark IV | 18-channel EEG headset specs, design iterations, status |
 | `/hardware/lattice-configuration/` | Lattice Config | Interactive 3D electrode positioning tool |
-| `/roadmap/` | Roadmap | Status board + 4-column timeline (Completed → Speculative) |
 
 ## Supporting Pages
 
@@ -36,18 +38,11 @@
 | `/math/plv/` | PLV | Phase synchrony → rotation angles |
 | `/math/riemannian-geometry/` | Riemannian Geometry | Geodesics, tangent spaces, metric tensors |
 | `/math/bures-manifold/` | Bures Manifold | SPD↔Bures identity, 3D trajectory |
+| `/math/bures-wasserstein/` | Bures-Wasserstein | Metric components: eigenvalue resolution, conjugation sandwich, BW geodesic, fidelity |
 | `/math/quantum-states/` | Quantum States | Bloch sphere, superposition, measurement |
 | `/viz/` | Visualization Hub | Main Three.js visualization |
 | `/viz/agate-the-shape-of-a-seizure.html` | Shape of a Seizure | SPD manifold, geodesics, polarity |
 | `/viz/agate-boundary-crossings.html` | Boundary Crossings | Julia set fractal transitions |
-| `/qnfm/` | QNFM (legacy) | Original QNFM page, still live, dynamic nav |
-
-## Redirects (meta-refresh)
-
-| Old Path | New Path |
-|----------|----------|
-| `/math/a-gate-architecture/` | `/instrument/` |
-| `/math/invariants/` | `/invariants/` |
 
 ## Components
 
