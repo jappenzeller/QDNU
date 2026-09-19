@@ -1,0 +1,24 @@
+# classical_8ch: analysis_results/quantum_loso_v2/classical_results.json (XGBoost-8ch-V2, agg=0.625) | quantum_v1: analysis_results/quantum_loso/quantum_results.json (PN-dynamics, agg=0.444) | quantum_v2: analysis_results/quantum_loso_v2/quantum_results.json (band-power, agg=0.534) | quantum_v3: analysis_results/quantum_loso_v3/quantum_theta_alpha_results.json (PLV 4-13Hz, agg=0.460) | hardware: results/hardware_validation/ch8_heron_loso_results.json (ibm_torino, agg=0.511)
+subject,classical_8ch_auc,quantum_v1_auc,quantum_v2_auc,quantum_v3_auc,hardware_auc
+chb01,0.9286,0.3143,0.8786,0.4786,0.6857
+chb02,0.7833,0.6167,0.1667,0.2833,NaN
+chb03,0.5500,0.3143,0.5643,0.4643,0.4357
+chb04,0.7875,0.3250,0.3750,0.3000,NaN
+chb05,0.9200,0.2700,0.5800,0.4100,0.6100
+chb06,0.5850,0.4600,0.8050,0.5900,NaN
+chb07,0.9167,0.2667,0.3667,0.6167,0.6667
+chb08,0.4800,0.2500,0.6000,0.4000,NaN
+chb09,0.7875,0.4250,0.4125,0.2625,NaN
+chb10,0.7857,0.7357,0.5786,0.5357,NaN
+chb11,0.6667,0.3167,0.5167,0.6333,0.2833
+chb13,0.4792,0.2083,0.9500,0.4375,NaN
+chb14,0.3438,0.5313,0.5563,0.6500,0.6000
+chb15,0.5825,0.5150,0.3900,0.5550,NaN
+chb16,0.9000,0.5700,0.3750,0.4350,NaN
+chb17,0.1833,0.4000,0.6000,0.4167,NaN
+chb18,0.9500,0.9417,0.5083,0.2500,NaN
+chb19,0.5000,0.3333,0.7167,0.5333,NaN
+chb20,0.9875,0.4000,0.7313,0.5438,NaN
+chb21,0.7000,0.2500,0.5125,0.6625,0.3875
+chb22,1.0000,0.6500,0.7000,0.4333,NaN
+chb23,0.7500,0.4000,0.5714,0.4286,NaN

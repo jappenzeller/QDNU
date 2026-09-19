@@ -1,0 +1,24 @@
+# classical_spectral: XGBoost 5-bag on band power (5 bands x 8ch = 40 features) | classical_nonspectral: XGBoost 5-bag on PLV coherence (28 channel pairs, 4-13Hz) | quantum_spectral: analysis_results/quantum_loso_v2/quantum_results.json (V2 band-power encoding, agg=0.534) | quantum_nonspectral: analysis_results/quantum_loso_v3/quantum_theta_alpha_results.json (V3 PLV 4-13Hz, agg=0.460)
+subject,classical_spectral,classical_nonspectral,quantum_spectral,quantum_nonspectral
+chb01,0.3571,0.7714,0.8786,0.4786
+chb02,0.7167,0.4500,0.1667,0.2833
+chb03,0.4714,0.2714,0.5643,0.4643
+chb04,0.4500,0.7375,0.3750,0.3000
+chb05,0.5300,0.3500,0.5800,0.4100
+chb06,0.2100,0.5000,0.8050,0.5900
+chb07,0.7833,0.8000,0.3667,0.6167
+chb08,0.5900,0.2300,0.6000,0.4000
+chb09,0.6250,0.4250,0.4125,0.2625
+chb10,0.7643,0.6571,0.5786,0.5357
+chb11,0.6167,0.5333,0.5167,0.6333
+chb13,0.4292,0.3792,0.9500,0.4375
+chb14,0.5938,0.6625,0.5563,0.6500
+chb15,0.3700,0.5100,0.3900,0.5550
+chb16,0.5650,0.6250,0.3750,0.4350
+chb17,0.4833,0.2667,0.6000,0.4167
+chb18,0.6083,0.7583,0.5083,0.2500
+chb19,0.4833,0.7667,0.7167,0.5333
+chb20,0.7312,0.2750,0.7312,0.5437
+chb21,0.6000,0.4000,0.5125,0.6625
+chb22,0.8833,0.6500,0.7000,0.4333
+chb23,0.4786,0.3286,0.5714,0.4286
