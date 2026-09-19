@@ -7,6 +7,44 @@ __pycache__/
 *.pyc
 *.pyo
 
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python packaging / build artifacts
+*.egg
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+
+# Compiled/native libraries
+*.dll
+*.so
+*.dylib
+*.pyd
+*.lib
+*.a
+*.o
+*.exe
+*.whl
+
 # Generated artifacts
 *.npy
 trained_template.npy

@@ -66,17 +66,18 @@ def create_multichannel_circuit(params_list):
         qc.crz(np.pi / 4, q_I, q_E)  # I controls E
 
     # === Layer 2: Inter-channel ring topology ===
+    # Closed ring: M CNOTs that wrap E_{M-1} -> E_0 (and same for I).
     if num_channels > 1:
-        # Entangle excitatory qubits (E_0 -> E_1 -> E_2 -> ...)
-        for i in range(num_channels - 1):
+        # Entangle excitatory qubits (E_0 -> E_1 -> ... -> E_{M-1} -> E_0)
+        for i in range(num_channels):
             q_E_i = 1 + 2 * i
-            q_E_j = 1 + 2 * (i + 1)
+            q_E_j = 1 + 2 * ((i + 1) % num_channels)
             qc.cx(q_E_i, q_E_j)
 
-        # Entangle inhibitory qubits (I_0 -> I_1 -> I_2 -> ...)
-        for i in range(num_channels - 1):
+        # Entangle inhibitory qubits (I_0 -> I_1 -> ... -> I_{M-1} -> I_0)
+        for i in range(num_channels):
             q_I_i = 1 + 2 * i + 1
-            q_I_j = 1 + 2 * (i + 1) + 1
+            q_I_j = 1 + 2 * ((i + 1) % num_channels) + 1
             qc.cx(q_I_i, q_I_j)
 
     # === Layer 3: Global synchronization via ancilla ===
