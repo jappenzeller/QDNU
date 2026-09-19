@@ -1,0 +1,7 @@
+# Hardware / cloud extras: only needed for the IBM Quantum and AWS Braket runs.
+# The analysis and phase 5 scripts do NOT need these; see requirements.txt.
+# generated 2026-09-19 from the working venv (Python 3.11.0)
+amazon-braket-sdk==1.117.1
+boto3==1.43.6
+qiskit-braket-provider==0.14.3
+qiskit-ibm-runtime==0.46.1

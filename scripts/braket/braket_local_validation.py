@@ -13,7 +13,7 @@ between the count distributions. Writes a stable-schema JSON to
 results/braket/local_equivalence_chb01.json.
 
 No AWS spend. No network calls. No source modifications outside scripts/braket/
-and requirements-braket.txt.
+and requirements-hardware.txt.
 """
 
 from __future__ import annotations
