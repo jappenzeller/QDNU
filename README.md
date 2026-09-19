@@ -1,267 +1,107 @@
-# Quantum Positive-Negative Neuron (QPNN)
+# QNFM — Quantum Neural Field Mapping
 
-**A quantum computing architecture for multi-channel EEG seizure prediction with IBM Heron hardware validation.**
+**A quantum-information geometry for multichannel EEG covariance states — and the hardware circuit that led there.**
 
-[![Platform](https://img.shields.io/badge/Platform-qdnu.ai-00d4ff)](https://qdnu.ai)
-[![Visualization](https://img.shields.io/badge/Viz-Interactive_3D-f59e0b)](https://qdnu.ai/viz/)
-[![TechRxiv](https://img.shields.io/badge/TechRxiv-Preprint-1a73e8)](https://www.techrxiv.org/users/1029972/articles/1389742-quantum-positive-negative-neuron-architecture-for-multi-channel-eeg-analysis-hardware-validation-and-empirical-limits)
+*Repository name `QDNU` is historical (Quantum Dynamic Neural Unit, the Paper 1 era); the framework is QNFM.*
 
-**Author:** James Appenzeller, Independent Researcher
+[![Site](https://img.shields.io/badge/qdnu.ai-site-00d4ff)](https://qdnu.ai)
+[![Notebook](https://img.shields.io/badge/qdnu.ai-notebook-f59e0b)](https://qdnu.ai/notebook/)
+[![Paper 1](https://img.shields.io/badge/Discover_Quantum_Science-10.1007%2Fs44464--026--00032--w-1a73e8)](https://doi.org/10.1007/s44464-026-00032-w)
 
----
-
-**Layout.** `qdnu/` package · `scripts/` analysis scripts by prompt number · `results/promptNNN/` outputs with a `SUMMARY.md` each · `docs/` theory notes and `docs/web/` story pages · `qdnu-infra/static/` the qdnu.ai source · `analysis_results/` Paper 1 era outputs. Prompt files (`docs/PROMPT_*.md`) are local and not tracked.
+**Author:** James Appenzeller · PhD student, National University · independent researcher
 
 ---
 
-## Abstract
+## What this repository is
 
-We present a quantum computing architecture based on the Positive-Negative (PN) neuron model for multi-channel electroencephalogram (EEG) seizure prediction. The proposed A-Gate circuit encodes excitatory-inhibitory dynamics using paired qubits with parameterized rotation gates, leveraging quantum entanglement to capture inter-channel phase synchronization efficiently.
+An EEG window of *M* channels gives an *M*×*M* covariance matrix Σ. Divided by its trace, Σ/tr Σ is symmetric, positive semidefinite and has trace one — which is the definition of a density matrix. This repository treats that identification literally: the trace-normalised covariance is a quantum state, the total power is a classical scalar that travels alongside it, and the questions asked of the state are the ones quantum information asks — its spectrum, its purity, its entropy, how it moves under a generator.
 
-Validated on the **CHB-MIT Scalp EEG Database** using Leave-One-Subject-Out (LOSO) cross-validation, our 8-channel quantum circuit (17 qubits) achieves **0.637 AUC** on IBM Heron r2 hardware after polarity calibration, compared to **0.7419 AUC** for the strongest classical baseline. The hardware-classical gap of 0.105 AUC (14% relative) represents honest assessment of current quantum limitations.
+Three things live here:
 
----
+1. **The current line of work (2026-09 →).** The covariance-as-state formulation ("DSP-000"), prepared on a simulated register by purification at 2, 4 and 8 channels and read back exactly; a two-level excitatory/inhibitory (E/I) generator derived as the state's dynamics; and the tests of both on public data. Written up as readable pages at [qdnu.ai/notebook](https://qdnu.ai/notebook/), with sources in `docs/web/`.
+2. **The polarity work (Paper 2, 2026-04 → 09).** Within a patient, seizures shift the covariance in a coherent direction (coherence ≈ 1 across seizures), and the sign of that shift is patient-specific. Results in `results/prompt035…042/`, each with a `SUMMARY.md`.
+3. **The hardware feature map (Paper 1, published).** The A-Gate: a fixed two-qubit circuit per channel, driven by EEG phase-locking features, run on IBM Heron. Code in `qdnu/`, results in `analysis_results/` and `results/hardware_validation/`. This is the history — see *What changed since Paper 1* below before reading it as the current claim.
 
-## Key Findings
+## What changed since Paper 1
 
-1. **Polarity Calibration**: Patient-specific polarity inversion corrects for individual differences in seizure manifestation, reducing the raw hardware-classical gap from 0.24 to 0.105 (56% reduction).
+Paper 1 (*Discover Quantum Science* 2:30, 2026) reported that an 8-channel A-Gate circuit on IBM Heron reached 0.637 AUC on CHB-MIT after per-patient polarity calibration, against 0.742 for the strongest classical baseline, and named the encoding as the bottleneck. Those numbers stand. Two claims made around them do not, and this README is the place to say so plainly:
 
-2. **Encoding Geometry Matters**: PLV-based phase encoding captures temporal dynamics that correlation eigenvalues miss. Classical eigenvalue-only features achieve 0.54 AUC vs 0.74 AUC with spectral context—paralleling the quantum finding that encoding strategy constitutes the primary performance bottleneck.
+- **The A-Gate is a fixed basis change on classical features.** Every gate after the encoding is a fixed unitary, so anything the circuit measures is a transformed observable on three classical numbers per channel. One of the three, the absolute phase `b`, carries no information at all — it is a gauge, confirmed on ~32,000 windows across CHB-MIT and PhysioNet (`docs/AGATE_OBSERVABLE_NOTES.md`; `results/prompt038`, `results/prompt041`).
+- **There is no O(M) versus O(M²) advantage.** The earlier README claimed one. The circuit does not compute inter-channel correlation; the classical preprocessing does. The claim is withdrawn.
 
-3. **O(M) vs O(M²) Scaling**: The quantum architecture encodes M-channel correlations in O(M) gates versus O(M²) classical pairwise operations, with theoretical advantage realized at scale.
+What the circuit did do was expose a sign that flexible classifiers absorb: a fixed measurement basis cannot flip with the patient, so patients whose ictal shift points the other way come out below chance. That observation is real, it is Paper 2, and it is what led to the state formulation. The honest summary of "why quantum" here is *formulation, not speed*: the rigidities of the formalism — fixed basis, trace one, unobservable global phase — each produced a finding.
 
----
+`docs/STATE_OF_THE_WORK.md` is the one-page version of this arc.
 
-## Live Platform
+## Layout
 
-| URL | Description |
-|-----|-------------|
-| [qdnu.ai](https://qdnu.ai) | Project portal with research overview |
-| [qdnu.ai/viz/](https://qdnu.ai/viz/) | Interactive 3D quantum state visualization |
+```text
+qdnu/               A-Gate circuit, PN dynamics, multichannel builder (Paper 1 era)
+scripts/            analysis scripts; promptNNN_*.py pair with results/promptNNN/
+  phase5_*.py       purification worked examples, 2 / 4 / 8 channels
+results/promptNNN/  outputs with a SUMMARY.md each (035–042 = polarity and state work)
+results/paper1/     Paper 1 tables
+analysis_results/   Paper 1 era LOSO and hardware outputs
+docs/               theory notes (AGATE_OBSERVABLE_NOTES, EI_TWO_LEVEL_NOTES, STATE_OF_THE_WORK)
+docs/web/           story pages, light-theme sources of qdnu.ai/notebook
+visualization/      Three.js SPD-manifold viewer (qdnu.ai/viz)
+aws/  infra/        Braket job package and data-layer bootstrap
+arxiv_preflight/    Paper 1 LaTeX source
+```
 
-The visualization shows gate-by-gate quantum state trajectories on a PCA projection of the SPD covariance manifold, including:
+The qdnu.ai site itself lives in a separate repository. Prompt files that drive the work (`docs/PROMPT_*.md`) are local and not tracked.
 
-- Real-time circuit diagram execution
-- 3D manifold trajectory with polarity divergence
-- IBM Heron physical qubit topology (ibm_torino)
+## Reproduce the notebook pages
 
----
+The phase 5 examples run on public data with no credentials.
 
-## Results
+```bash
+git clone https://github.com/jappenzeller/QDNU.git && cd QDNU
+python -m venv .venv && source .venv/bin/activate      # .venv\Scripts\activate on Windows
+pip install -r requirements.txt
 
-### Hardware Validation (IBM Heron r2, CHB-MIT, LOSO)
+# fetch PhysioNet eegmmidb subject 1, runs 1–2 (eyes open / closed), ~2 MB
+python -c "import mne; mne.datasets.eegbci.load_data(1, [1, 2], path='data/eegmmidb')"
 
-| Metric                       | Value                 |
-|------------------------------|-----------------------|
-| **Calibrated Hardware AUC**  | **0.637**             |
-| Raw Hardware AUC             | 0.531                 |
-| Classical Baseline (XGBoost) | 0.7419                |
-| Hardware-Classical Gap       | 0.105 (14% relative)  |
-| Gap Reduction from Calibration | 56.4%               |
+python scripts/phase5_two_channel.py     # 1 system + 1 ancilla qubit
+python scripts/phase5_four_channel.py    # 2 + 2
+python scripts/phase5_eight_channel.py   # 3 + 3, 26 CNOTs transpiled
+```
 
-### Per-Patient Hardware Results
+Each prints Σ, ρ, the spectrum, the reduced state after purification (equal to ρ to ~1e-15), shot estimates of the Z-string observables against tr(ρO), and the eigenvalues read back from the ancilla. The 041 eye-closure test (`scripts/prompt041_eye_closure.py`) runs on the same dataset for all 109 subjects.
+
+The CHB-MIT scripts (`prompt035…040`, `042`) need the [CHB-MIT Scalp EEG Database](https://physionet.org/content/chbmit/1.0.0/) downloaded locally; pass its root with `--data-root`. Data is not distributed here.
+
+## Paper 1 hardware results, for the record
+
+IBM Heron (ibm_torino), CHB-MIT, 7 patients, LOSO, 17 qubits, 97 CZ gates, 1024 shots, no error mitigation.
 
 | Patient | Raw AUC | Calibrated AUC | Polarity |
 |---------|---------|----------------|----------|
-| chb01   | 0.686   | 0.686          | Standard |
-| chb03   | 0.436   | 0.564          | Inverted |
-| chb05   | 0.610   | 0.610          | Standard |
-| chb07   | 0.667   | 0.667          | Standard |
-| chb11   | 0.283   | 0.717          | Inverted |
-| chb14   | 0.600   | 0.600          | Standard |
-| chb21   | 0.388   | 0.613          | Inverted |
+| chb01 | 0.686 | 0.686 | standard |
+| chb03 | 0.436 | 0.564 | inverted |
+| chb05 | 0.610 | 0.610 | standard |
+| chb07 | 0.667 | 0.667 | standard |
+| chb11 | 0.283 | 0.717 | inverted |
+| chb14 | 0.600 | 0.600 | standard |
+| chb21 | 0.388 | 0.613 | inverted |
 
-### Classical Baselines (LOSO, 8-channel)
-
-| Method                                  | AUC        |
-|-----------------------------------------|------------|
-| **Tier 3 Combined** (log-FFT + CC eig)  | **0.7419** |
-| Tier 2 MAX (correlation eigenvalues)    | 0.7234     |
-| Riemannian tangent space + XGBoost      | 0.6314     |
-| CC_freq eigenvalues only                | 0.5445     |
-| CC_time eigenvalues only                | 0.5106     |
-
----
-
-## Architecture
-
-### The A-Gate
-
-The core component is the **A-Gate**, a 2-qubit circuit encoding a single PN neuron channel:
-
-![A-Gate Circuit Diagram](Diagrams/pn_2qubit_circuit.svg)
-
-The circuit consists of two layers:
-
-1. **Per-Qubit Encoding** (sandwich structure):
-   - `H → P(b) → Rx(2a) → P(b) → H` on excitatory qubit (q₀)
-   - `H → P(b) → Ry(2c) → P(b) → H` on inhibitory qubit (q₁)
-
-2. **E-I Coupling**:
-   - `CRy(π/4)`: Control on E, target on I
-   - `CRz(π/4)`: Control on I, target on E
-
-**Parameters (PLV theta-alpha encoding):**
-- `a`: Excitatory amplitude — PLV between theta (4-8 Hz) and alpha (8-13 Hz) bands
-- `b`: Shared phase — appears 4× in circuit, encodes temporal dynamics
-- `c`: Inhibitory amplitude — PLV between complementary frequency pairs
-
-**Gate count**: 12 gates (H:4, P:4, R:2, CR:2) | **Depth**: 7
-
-### Transpiled Circuit
-
-Before execution on IBM hardware, the logical A-Gate circuit is **transpiled** to the backend's native gate set. This process:
-
-1. **Decomposes** high-level gates (H, P, Rx, Ry, CRy, CRz) into native gates (√X, Rz, CZ)
-2. **Maps** logical qubits to physical qubits based on hardware topology
-3. **Inserts SWAP gates** where needed for non-adjacent qubit interactions
-
-![Transpiled A-Gate Circuit](Diagrams/circuit-d6dfb5p54hss73b9mg90.svg)
-
-The expansion from 12 logical gates to ~30 native gates per channel reflects the cost of hardware abstraction. The full 8-channel circuit (17 qubits) transpiles to 97 CZ gates total.
-
-### Multi-Channel Circuit (8 channels, 17 qubits)
-
-| Property       | Value |
-|----------------|-------|
-| Logical qubits | 17    |
-| CZ gates       | 97    |
-| Total gates    | ~200  |
-| Circuit depth  | O(M)  |
-
-### Complexity Advantage
-
-| Operation            | Classical | Quantum | Advantage |
-|----------------------|-----------|---------|-----------|
-| Correlation encoding | O(M²)     | O(M)    | M×        |
-| Template matching    | O(M²)     | O(M)    | M×        |
-| Parameter storage    | O(M²)     | O(M)    | M×        |
-
-For 19-channel clinical EEG: theoretical 19× reduction in correlation complexity.
-
----
-
-## Dataset
-
-**CHB-MIT Scalp EEG Database** (PhysioNet)
-
-- 22 pediatric subjects with intractable seizures
-- 8 EEG channels (bipolar montage): FP1-F7, F7-T7, FP1-F3, F3-C3, FP2-F8, F8-T8, FP2-F4, F4-C4
-- 256 Hz sampling rate
-- 10-second windows, 1-second sub-windows with MAX pooling
-- Leave-One-Subject-Out cross-validation
-
----
-
-## Installation
-
-```bash
-git clone https://github.com/jappenzeller/QDNU.git
-cd QDNU
-pip install -r requirements.txt
-```
-
-**Requirements:**
-- Python 3.9+
-- Qiskit 1.0+
-- qiskit-ibm-runtime (for hardware execution)
-- NumPy, SciPy, scikit-learn, XGBoost
-- pyedflib (for CHB-MIT EDF files)
-- pyriemann (for Riemannian geometry baselines)
-
----
-
-## Quick Start
-
-```python
-from qdnu import create_single_channel_agate
-
-# Create A-Gate circuit with PLV parameters
-circuit = create_single_channel_agate(a=0.6, b=1.2, c=0.4)
-print(circuit.draw())
-```
-
-### Run Classical Baseline
-
-```bash
-python scripts/tier3_combined_loso.py
-```
-
-### Run Hardware Validation
-
-```bash
-# Requires IBM Quantum credentials
-python scripts/hardware_validation.py --patient chb01 --backend ibm_torino
-```
-
----
-
-## Project Structure
-
-```text
-QDNU/
-├── qdnu/                      # Core quantum library
-│   ├── quantum_agate.py       # A-Gate circuit implementation
-│   ├── pn_dynamics.py         # PN neuron dynamics
-│   └── multichannel_circuit.py
-├── scripts/                   # Executable scripts
-│   ├── hardware_validation.py # IBM Heron execution
-│   ├── tier3_combined_loso.py # Classical baseline (0.7419 AUC)
-│   ├── generate_figures.py    # Publication figures
-│   └── export_circuit_gates.py # Visualization data export
-├── visualization/             # Interactive 3D visualization
-│   └── index.html             # Three.js SPD manifold viewer
-├── visualization_data/        # Precomputed trajectory data
-│   ├── circuit_trajectories.json
-│   ├── circuit_gates.json
-│   └── heron_topology.json
-├── sagemaker/                 # AWS SageMaker training
-│   └── train_chbmit.py        # CHB-MIT preprocessing
-├── results/                   # Experiment outputs
-│   ├── hardware_validation/   # IBM hardware results
-│   └── patient_analysis/      # Per-patient profiles
-└── .aws/                      # AWS SSO configuration
-```
-
----
-
-## Supplementary Material
-
-**Interactive Visualization:** [qdnu.ai/viz/](https://qdnu.ai/viz/)
-
-The visualization renders A-Gate circuit evolution on a PCA projection of the SPD covariance manifold for two representative patients:
-
-- **chb01** (standard polarity): Hardware AUC 0.686, boundary distance -0.190
-- **chb11** (inverted polarity): Raw AUC 0.283 → Calibrated 0.717, boundary distance +0.211
-
-Three synchronized panels show the logical circuit diagram, 3D manifold trajectory, and IBM Heron physical qubit topology.
-
----
-
-## References
-
-- Shoeb, A. H. (2009). Application of machine learning to epileptic seizure onset detection and treatment. MIT PhD thesis.
-- Gupta, A., et al. (2003). The Positive-Negative neuron model for neural computation.
-- IBM Quantum. (2024). Heron processor architecture.
-- Mormann, F., et al. (2007). Seizure prediction: the long and winding road. Brain.
-
----
-
-## License
-
-Research use only. Contact author for collaboration.
-
----
+Cohort: raw 0.531, calibrated 0.637, strongest classical baseline (log-FFT + correlation eigenvalues, XGBoost) 0.742. Full tables in `results/paper1/` and `analysis_results/`.
 
 ## Citation
 
 ```bibtex
 @article{appenzeller2026qpnn,
-  title={Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Analysis: Hardware Validation and Empirical Limits},
-  author={Appenzeller, James},
-  year={2026},
-  journal={TechRxiv preprint},
-  url={https://www.techrxiv.org/users/1029972/articles/1389742-quantum-positive-negative-neuron-architecture-for-multi-channel-eeg-analysis-hardware-validation-and-empirical-limits},
-  note={IBM Heron r2 hardware validation, CHB-MIT dataset, LOSO cross-validation}
+  title   = {Hardware-Validated Quantum Positive-Negative Neuron Architecture for Multi-Channel EEG Analysis},
+  author  = {Appenzeller, James},
+  journal = {Discover Quantum Science},
+  volume  = {2},
+  number  = {30},
+  year    = {2026},
+  doi     = {10.1007/s44464-026-00032-w}
 }
 ```
+
+## License
+
+Research use. Contact the author for collaboration or reuse.
