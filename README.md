@@ -10,6 +10,10 @@
 
 ---
 
+**Layout.** `qdnu/` package · `scripts/` analysis scripts by prompt number · `results/promptNNN/` outputs with a `SUMMARY.md` each · `docs/` theory notes and `docs/web/` story pages · `qdnu-infra/static/` the qdnu.ai source · `analysis_results/` Paper 1 era outputs. Prompt files (`docs/PROMPT_*.md`) are local and not tracked.
+
+---
+
 ## Abstract
 
 We present a quantum computing architecture based on the Positive-Negative (PN) neuron model for multi-channel electroencephalogram (EEG) seizure prediction. The proposed A-Gate circuit encodes excitatory-inhibitory dynamics using paired qubits with parameterized rotation gates, leveraging quantum entanglement to capture inter-channel phase synchronization efficiently.
