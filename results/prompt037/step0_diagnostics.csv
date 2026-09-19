@@ -1,0 +1,19 @@
+test,statistic,p_value,n
+s_norm vs n_seizures,-0.5806,0.0046,22
+s_norm_corr vs n_seizures,-0.5244,0.0122,22
+s_norm*sqrt(K) vs n_seizures,0.1077,0.6332,22
+s_norm*sqrt(K) vs mean_seizure_duration,0.0672,0.7664,22
+bw_dist*sqrt(K) vs mean_seizure_duration,0.3235,0.1419,22
+loglog_slope[s_norm],-0.397,0.022,22
+loglog_slope[s_norm_corr],-0.4463,0.0307,22
+loglog_slope[bw_dist],-0.2757,0.2428,22
+ictal_retention vs mean_seizure_duration,0.723,0.0001,22
+ictal_retention vs max_seizure_duration,0.5768,0.005,22
+ictal_retention vs bw_dist,0.364,0.0958,22
+ictal_retention vs s_norm,0.3575,0.1023,22
+n_seizures vs mean_seizure_duration,-0.5582,0.0069,22
+bw_dist vs mean_seizure_duration,0.5065,0.0162,22
+partial: bw_dist vs mean_dur | n_seizures,0.4002,0.0722,22
+partial: bw_dist vs n_seizures | mean_dur,-0.0943,0.6844,22
+partial: s_norm vs n_seizures | mean_dur,-0.4674,0.0327,22
+partial: s_norm vs mean_dur | n_seizures,0.1195,0.6057,22

@@ -1,0 +1,8 @@
+{
+  "max_roundtrip_err": 6.086683766285169e-15,
+  "max_identity_err": 2.1316282072803006e-14,
+  "sign_agreement": 20,
+  "spearman_alpha_logtr": 0.9277244494635801,
+  "unit_test_1": true,
+  "unit_test_2": false
+}

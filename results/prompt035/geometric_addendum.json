@@ -1,0 +1,610 @@
+{
+ "generated": "2026-09-02T20:06:23.671605",
+ "window_sec": 20.0,
+ "channels": [
+  "FP1-F7",
+  "F7-T7",
+  "FP1-F3",
+  "F3-C3",
+  "FP2-F8",
+  "F8-T8",
+  "FP2-F4",
+  "F4-C4"
+ ],
+ "geo": {
+  "chb01": {
+   "s_norm": 4.945703392746905,
+   "s_norm_corr": 4.829143719645845,
+   "bw_dist": 108.14218521013628,
+   "window_sec": 20.0,
+   "n_windows": 24,
+   "n_seizure": 14
+  },
+  "chb02": {
+   "s_norm": 4.8083477044864615,
+   "s_norm_corr": 4.498236292722359,
+   "bw_dist": 129.23352705692895,
+   "window_sec": 20.0,
+   "n_windows": 15,
+   "n_seizure": 5
+  },
+  "chb03": {
+   "s_norm": 7.642098985159198,
+   "s_norm_corr": 7.493206153380891,
+   "bw_dist": 162.52794509696776,
+   "window_sec": 20.0,
+   "n_windows": 24,
+   "n_seizure": 14
+  },
+  "chb04": {
+   "s_norm": 2.3352657387590687,
+   "s_norm_corr": 1.2950578499868195,
+   "bw_dist": 36.8575904566237,
+   "window_sec": 20.0,
+   "n_windows": 18,
+   "n_seizure": 8
+  },
+  "chb05": {
+   "s_norm": 2.8228499853216946,
+   "s_norm_corr": 2.641132296102243,
+   "bw_dist": 128.97023977383404,
+   "window_sec": 20.0,
+   "n_windows": 20,
+   "n_seizure": 10
+  },
+  "chb06": {
+   "s_norm": 1.5826315829462125,
+   "s_norm_corr": 1.3248357888011975,
+   "bw_dist": 42.374920353325386,
+   "window_sec": 20.0,
+   "n_windows": 22,
+   "n_seizure": 12
+  },
+  "chb07": {
+   "s_norm": 3.6228259778423024,
+   "s_norm_corr": 3.236804183305183,
+   "bw_dist": 95.07387008131361,
+   "window_sec": 20.0,
+   "n_windows": 16,
+   "n_seizure": 6
+  },
+  "chb08": {
+   "s_norm": 3.798493961398672,
+   "s_norm_corr": 3.6408104807681347,
+   "bw_dist": 140.2261545583702,
+   "window_sec": 20.0,
+   "n_windows": 20,
+   "n_seizure": 10
+  },
+  "chb09": {
+   "s_norm": 5.941855627193674,
+   "s_norm_corr": 5.599875106201512,
+   "bw_dist": 334.5067504705581,
+   "window_sec": 20.0,
+   "n_windows": 18,
+   "n_seizure": 8
+  },
+  "chb10": {
+   "s_norm": 1.48787751012982,
+   "s_norm_corr": 1.3469909833721878,
+   "bw_dist": 62.40003957260887,
+   "window_sec": 20.0,
+   "n_windows": 24,
+   "n_seizure": 14
+  },
+  "chb11": {
+   "s_norm": 3.4146973012061093,
+   "s_norm_corr": 3.1738175065955745,
+   "bw_dist": 79.44176089721957,
+   "window_sec": 20.0,
+   "n_windows": 16,
+   "n_seizure": 6
+  },
+  "chb13": {
+   "s_norm": 2.0237676876489936,
+   "s_norm_corr": 1.8486495731077048,
+   "bw_dist": 44.52033062135981,
+   "window_sec": 20.0,
+   "n_windows": 32,
+   "n_seizure": 22
+  },
+  "chb14": {
+   "s_norm": 1.7302461185353315,
+   "s_norm_corr": 1.525224463076541,
+   "bw_dist": 42.52631739545653,
+   "window_sec": 20.0,
+   "n_windows": 23,
+   "n_seizure": 13
+  },
+  "chb15": {
+   "s_norm": 2.197596898844401,
+   "s_norm_corr": 1.2220541084377126,
+   "bw_dist": 118.82213994829759,
+   "window_sec": 20.0,
+   "n_windows": 50,
+   "n_seizure": 40
+  },
+  "chb16": {
+   "s_norm": 1.996164824738317,
+   "s_norm_corr": 1.6798348276672492,
+   "bw_dist": 44.45071076991754,
+   "window_sec": 20.0,
+   "n_windows": 20,
+   "n_seizure": 10
+  },
+  "chb17": {
+   "s_norm": 2.761050990434737,
+   "s_norm_corr": 2.280315038825693,
+   "bw_dist": 55.945068391854726,
+   "window_sec": 20.0,
+   "n_windows": 16,
+   "n_seizure": 6
+  },
+  "chb18": {
+   "s_norm": 3.0928930112871016,
+   "s_norm_corr": 2.7273694321783126,
+   "bw_dist": 63.64387206581253,
+   "window_sec": 20.0,
+   "n_windows": 22,
+   "n_seizure": 12
+  },
+  "chb19": {
+   "s_norm": 3.0382153466064614,
+   "s_norm_corr": 1.8532231168389333,
+   "bw_dist": 79.577403307724,
+   "window_sec": 20.0,
+   "n_windows": 16,
+   "n_seizure": 6
+  },
+  "chb20": {
+   "s_norm": 1.8881589675076766,
+   "s_norm_corr": 1.7056932461839736,
+   "bw_dist": 36.95598568075131,
+   "window_sec": 20.0,
+   "n_windows": 26,
+   "n_seizure": 16
+  },
+  "chb21": {
+   "s_norm": 3.1223890646790444,
+   "s_norm_corr": 2.866059498496427,
+   "bw_dist": 63.650908727030846,
+   "window_sec": 20.0,
+   "n_windows": 17,
+   "n_seizure": 7
+  },
+  "chb22": {
+   "s_norm": 4.019884735755961,
+   "s_norm_corr": 3.7769133608513465,
+   "bw_dist": 97.72187976115545,
+   "window_sec": 20.0,
+   "n_windows": 16,
+   "n_seizure": 6
+  },
+  "chb23": {
+   "s_norm": 2.0742764153463398,
+   "s_norm_corr": 1.8731509457641695,
+   "bw_dist": 51.536287366864734,
+   "window_sec": 20.0,
+   "n_windows": 24,
+   "n_seizure": 14
+  }
+ },
+ "correlations": [
+  {
+   "clinical_variable": "age_years",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": 0.41612488584061785,
+   "p_value": 0.05407028245295168,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "age_years",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": -0.2118814000643255,
+   "p_value": 0.3438380113766012,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "age_years",
+   "polarity_measure": "s_norm",
+   "spearman_rho": 0.4377834356722831,
+   "p_value": 0.04158116691966327,
+   "n": 22,
+   "flag": true
+  },
+  {
+   "clinical_variable": "age_years",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": 0.14932148193473221,
+   "p_value": 0.5071824790604298,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "age_years",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": 0.21040754272621356,
+   "p_value": 0.3472832929048756,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizures",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": -0.301264631772271,
+   "p_value": 0.17304728661569918,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizures",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": -0.0716614252550597,
+   "p_value": 0.7513123276424561,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizures",
+   "polarity_measure": "s_norm",
+   "spearman_rho": -0.580580207716716,
+   "p_value": 0.004611258945274823,
+   "n": 22,
+   "flag": true
+  },
+  {
+   "clinical_variable": "n_seizures",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": -0.524413514373934,
+   "p_value": 0.012228102209181852,
+   "n": 22,
+   "flag": true
+  },
+  {
+   "clinical_variable": "n_seizures",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": -0.3501821391065286,
+   "p_value": 0.11011215977212185,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "mean_seizure_duration_sec",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": 0.10110138782146984,
+   "p_value": 0.6543861694474711,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "mean_seizure_duration_sec",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": 0.014685117784124109,
+   "p_value": 0.9482839731897503,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "mean_seizure_duration_sec",
+   "polarity_measure": "s_norm",
+   "spearman_rho": 0.4048560135516658,
+   "p_value": 0.06161719936398598,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "mean_seizure_duration_sec",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": 0.23658949745906271,
+   "p_value": 0.28911250012812834,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "mean_seizure_duration_sec",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": 0.5064935064935067,
+   "p_value": 0.016154109038624024,
+   "n": 22,
+   "flag": true
+  },
+  {
+   "clinical_variable": "median_seizure_duration_sec",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": 0.05254237288135593,
+   "p_value": 0.8163671449818053,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "median_seizure_duration_sec",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": 0.15649717514124295,
+   "p_value": 0.48674593894460727,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "median_seizure_duration_sec",
+   "polarity_measure": "s_norm",
+   "spearman_rho": 0.35413726348637753,
+   "p_value": 0.10587904863346755,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "median_seizure_duration_sec",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": 0.17339735229715775,
+   "p_value": 0.44028921551709577,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "median_seizure_duration_sec",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": 0.4750070790941683,
+   "p_value": 0.025484562076639385,
+   "n": 22,
+   "flag": true
+  },
+  {
+   "clinical_variable": "max_seizure_duration_sec",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": 0.11920903954802262,
+   "p_value": 0.5972270439643237,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "max_seizure_duration_sec",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": 0.07288135593220339,
+   "p_value": 0.7472112843453976,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "max_seizure_duration_sec",
+   "polarity_measure": "s_norm",
+   "spearman_rho": 0.2908782945701506,
+   "p_value": 0.18907713524617212,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "max_seizure_duration_sec",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": 0.13555493339191485,
+   "p_value": 0.5475186674448684,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "max_seizure_duration_sec",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": 0.38689637238942365,
+   "p_value": 0.0752733305438143,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizure_files",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": -0.37283238241713507,
+   "p_value": 0.0874680757508634,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizure_files",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": 0.0571774562758294,
+   "p_value": 0.800470764299511,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizure_files",
+   "polarity_measure": "s_norm",
+   "spearman_rho": -0.39895059531157057,
+   "p_value": 0.06588017317162882,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizure_files",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": -0.359468040088712,
+   "p_value": 0.10036359007349555,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "n_seizure_files",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": -0.13612642173851228,
+   "p_value": 0.5458155795088904,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "total_recording_hours",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": -0.14854561450864004,
+   "p_value": 0.5094167789503666,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "total_recording_hours",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": -0.22592488898652477,
+   "p_value": 0.31202847852146615,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "total_recording_hours",
+   "polarity_measure": "s_norm",
+   "spearman_rho": 0.18351214003387917,
+   "p_value": 0.413653233707415,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "total_recording_hours",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": 0.032185206098249576,
+   "p_value": 0.8869328238311864,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "total_recording_hours",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": 0.1959345002823264,
+   "p_value": 0.3821811432408392,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "seizure_density_per_hour",
+   "polarity_measure": "t2a_polarity_mag",
+   "spearman_rho": -0.16097148340289888,
+   "p_value": 0.47421441232089445,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "seizure_density_per_hour",
+   "polarity_measure": "t3_polarity_mag",
+   "spearman_rho": 0.039536855572641826,
+   "p_value": 0.8613253728702307,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "seizure_density_per_hour",
+   "polarity_measure": "s_norm",
+   "spearman_rho": -0.4635798983625071,
+   "p_value": 0.029778209241076523,
+   "n": 22,
+   "flag": true
+  },
+  {
+   "clinical_variable": "seizure_density_per_hour",
+   "polarity_measure": "s_norm_corr",
+   "spearman_rho": -0.3596837944664032,
+   "p_value": 0.10014490036970836,
+   "n": 22,
+   "flag": false
+  },
+  {
+   "clinical_variable": "seizure_density_per_hour",
+   "polarity_measure": "bw_dist",
+   "spearman_rho": -0.25578769057029926,
+   "p_value": 0.2505725286148971,
+   "n": 22,
+   "flag": false
+  }
+ ],
+ "n_tests": 40,
+ "bonferroni_alpha": 0.00125,
+ "confound_diagnostic_vs_n_seizure_windows": {
+  "s_norm": {
+   "rho": -0.4404111242377804,
+   "p": 0.040234036409210985
+  },
+  "s_norm_corr": {
+   "rho": -0.38222208968822907,
+   "p": 0.07917489387939812
+  },
+  "bw_dist": {
+   "rho": -0.2213465235806461,
+   "p": 0.322195581064341
+  }
+ },
+ "strong_weak": [
+  {
+   "variable": "age_years",
+   "strong_mean": 13.5,
+   "weak_mean": 10.375,
+   "p_two_sided": 0.5333333333333333
+  },
+  {
+   "variable": "n_seizures",
+   "strong_mean": 5.5,
+   "weak_mean": 5.75,
+   "p_two_sided": 1.0
+  },
+  {
+   "variable": "mean_seizure_duration_sec",
+   "strong_mean": 53.589285714285715,
+   "weak_mean": 76.05029761904761,
+   "p_two_sided": 0.5333333333333333
+  },
+  {
+   "variable": "median_seizure_duration_sec",
+   "strong_mean": 53.0,
+   "weak_mean": 70.5,
+   "p_two_sided": 1.0
+  },
+  {
+   "variable": "max_seizure_duration_sec",
+   "strong_mean": 75.0,
+   "weak_mean": 101.25,
+   "p_two_sided": 0.5333333333333333
+  },
+  {
+   "variable": "n_seizure_files",
+   "strong_mean": 5.5,
+   "weak_mean": 5.5,
+   "p_two_sided": 1.0
+  },
+  {
+   "variable": "total_recording_hours",
+   "strong_mean": 35.41597222222222,
+   "weak_mean": 43.151805555555555,
+   "p_two_sided": 0.5333333333333333
+  },
+  {
+   "variable": "seizure_density_per_hour",
+   "strong_mean": 0.15302059853006786,
+   "weak_mean": 0.16331161975126607,
+   "p_two_sided": 1.0
+  },
+  {
+   "variable": "t2a_polarity_mag",
+   "strong_mean": 0.2285714285714286,
+   "weak_mean": 0.06860119047619047,
+   "p_two_sided": 0.13333333333333333
+  },
+  {
+   "variable": "t3_polarity_mag",
+   "strong_mean": 0.3375,
+   "weak_mean": 0.1685714285714286,
+   "p_two_sided": 0.5333333333333333
+  },
+  {
+   "variable": "s_norm",
+   "strong_mean": 5.382244024919121,
+   "weak_mean": 3.2804063686115583,
+   "p_two_sided": 0.5333333333333333
+  },
+  {
+   "variable": "s_norm_corr",
+   "strong_mean": 5.1796328259386595,
+   "weak_mean": 3.058076165532453,
+   "p_two_sided": 0.5333333333333333
+  },
+  {
+   "variable": "bw_dist",
+   "strong_mean": 113.0894269119993,
+   "weak_mean": 93.67815311518511,
+   "p_two_sided": 0.8
+  }
+ ]
+}

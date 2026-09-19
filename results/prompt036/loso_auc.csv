@@ -1,0 +1,5 @@
+feature_set,n_features,pooled_auc,mean_per_patient_auc,auc_chb01,auc_chb03,auc_chb05,auc_chb07,auc_chb11,auc_chb14,auc_chb21
+b_alone (PROMPT 019 ref),8,0.5083,,,,,,,,
+r_alone,56,0.6741,0.6732,1.0000,0.0714,0.9200,0.6000,0.6333,0.7125,0.7750
+delta_alone,112,0.3429,0.3713,0.3000,0.4857,0.6800,0.1333,0.5000,0.0250,0.4750
+r_plus_delta,168,0.5606,0.6376,0.8857,0.1714,0.8600,0.3333,0.9000,0.5375,0.7750

@@ -1,0 +1,13 @@
+{
+  "W8": {
+    "trace_up": 76,
+    "entropy_down": 52,
+    "plv_up": 35,
+    "med_dlogtr": 0.26634126167114935,
+    "med_dS": 0.00914022532157821
+  },
+  "occipital4_W4": {
+    "entropy_down": 37,
+    "med_dS": 0.023465845035192223
+  }
+}

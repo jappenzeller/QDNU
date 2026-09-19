@@ -1,0 +1,59 @@
+{
+  "scale": {
+    "name": "sign(alpha) vs t3_polarity",
+    "agree": 13,
+    "agree_best_flip": 13,
+    "fisher_p": 0.5324675324675324,
+    "table": [
+      [
+        13,
+        6
+      ],
+      [
+        3,
+        0
+      ]
+    ]
+  },
+  "shape": {
+    "name": "sign(shape projection on cohort axis) vs t3_polarity",
+    "agree": 7,
+    "agree_best_flip": 15,
+    "fisher_p": 0.3340838727835632,
+    "table": [
+      [
+        4,
+        3
+      ],
+      [
+        12,
+        3
+      ]
+    ]
+  },
+  "shape_axis_explained_var": 0.3784023205344081,
+  "t3_polarity": {
+    "chb01": "standard",
+    "chb02": "standard",
+    "chb03": "inverted",
+    "chb04": "standard",
+    "chb05": "standard",
+    "chb06": "inverted",
+    "chb07": "standard",
+    "chb08": "inverted",
+    "chb09": "standard",
+    "chb10": "inverted",
+    "chb11": "standard",
+    "chb13": "standard",
+    "chb14": "standard",
+    "chb15": "standard",
+    "chb16": "standard",
+    "chb17": "standard",
+    "chb18": "standard",
+    "chb19": "standard",
+    "chb20": "inverted",
+    "chb21": "standard",
+    "chb22": "inverted",
+    "chb23": "standard"
+  }
+}

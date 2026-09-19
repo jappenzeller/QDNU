@@ -1,0 +1,183 @@
+{
+  "backend": "FakeTorino (ibm_torino)",
+  "basis_gates": [
+    "cz",
+    "id",
+    "rz",
+    "sx",
+    "x"
+  ],
+  "seed_transpiler": 42,
+  "optimization_level": 3,
+  "M_values": [
+    2,
+    4,
+    6,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "rows": [
+    {
+      "M": 2,
+      "qubits": 5,
+      "original_depth": 12,
+      "transpiled_depth": 33,
+      "transpiled_total_gates": 84,
+      "transpiled_cz_gates": 14,
+      "transpiled_two_qubit_total": 14,
+      "transpiled_ops": {
+        "sx": 32,
+        "rz": 31,
+        "cz": 14,
+        "measure": 5,
+        "x": 2,
+        "barrier": 1
+      }
+    },
+    {
+      "M": 4,
+      "qubits": 9,
+      "original_depth": 14,
+      "transpiled_depth": 57,
+      "transpiled_total_gates": 204,
+      "transpiled_cz_gates": 34,
+      "transpiled_two_qubit_total": 34,
+      "transpiled_ops": {
+        "sx": 85,
+        "rz": 72,
+        "cz": 34,
+        "measure": 9,
+        "x": 4,
+        "barrier": 1
+      }
+    },
+    {
+      "M": 6,
+      "qubits": 13,
+      "original_depth": 16,
+      "transpiled_depth": 73,
+      "transpiled_total_gates": 332,
+      "transpiled_cz_gates": 67,
+      "transpiled_two_qubit_total": 67,
+      "transpiled_ops": {
+        "sx": 142,
+        "rz": 104,
+        "cz": 67,
+        "measure": 13,
+        "x": 6,
+        "barrier": 1
+      }
+    },
+    {
+      "M": 8,
+      "qubits": 17,
+      "original_depth": 18,
+      "transpiled_depth": 112,
+      "transpiled_total_gates": 494,
+      "transpiled_cz_gates": 97,
+      "transpiled_two_qubit_total": 97,
+      "transpiled_ops": {
+        "sx": 214,
+        "rz": 157,
+        "cz": 97,
+        "measure": 17,
+        "x": 9,
+        "barrier": 1
+      }
+    },
+    {
+      "M": 12,
+      "qubits": 25,
+      "original_depth": 22,
+      "transpiled_depth": 157,
+      "transpiled_total_gates": 788,
+      "transpiled_cz_gates": 162,
+      "transpiled_two_qubit_total": 162,
+      "transpiled_ops": {
+        "sx": 350,
+        "rz": 236,
+        "cz": 162,
+        "measure": 25,
+        "x": 15,
+        "barrier": 1
+      }
+    },
+    {
+      "M": 16,
+      "qubits": 33,
+      "original_depth": 26,
+      "transpiled_depth": 217,
+      "transpiled_total_gates": 1118,
+      "transpiled_cz_gates": 233,
+      "transpiled_two_qubit_total": 233,
+      "transpiled_ops": {
+        "sx": 496,
+        "rz": 336,
+        "cz": 233,
+        "measure": 33,
+        "x": 20,
+        "barrier": 1
+      }
+    },
+    {
+      "M": 24,
+      "qubits": 49,
+      "original_depth": 34,
+      "transpiled_depth": 363,
+      "transpiled_total_gates": 1785,
+      "transpiled_cz_gates": 404,
+      "transpiled_two_qubit_total": 404,
+      "transpiled_ops": {
+        "sx": 836,
+        "rz": 466,
+        "cz": 404,
+        "measure": 49,
+        "x": 30,
+        "barrier": 1
+      }
+    },
+    {
+      "M": 32,
+      "qubits": 65,
+      "original_depth": 42,
+      "transpiled_depth": 421,
+      "transpiled_total_gates": 2578,
+      "transpiled_cz_gates": 595,
+      "transpiled_two_qubit_total": 595,
+      "transpiled_ops": {
+        "sx": 1245,
+        "rz": 634,
+        "cz": 595,
+        "measure": 65,
+        "x": 39,
+        "barrier": 1
+      }
+    }
+  ],
+  "combined_fit": {
+    "slope": 19.36458333333333,
+    "intercept": -50.98958333333333,
+    "R2": 0.9909523735789695
+  },
+  "original_only_fit": {
+    "slope": 14.099999999999998,
+    "intercept": -17.49999999999997,
+    "R2": 0.9905829596412556,
+    "M_subset": [
+      2,
+      4,
+      6,
+      8
+    ]
+  },
+  "published_cz_check": {
+    "2": 14,
+    "4": 34,
+    "6": 67,
+    "8": 97
+  },
+  "cz_drift_from_published": []
+}

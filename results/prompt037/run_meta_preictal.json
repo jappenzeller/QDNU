@@ -1,0 +1,42 @@
+{
+  "generated": "2026-09-03T01:24:11",
+  "window_sec": 8.0,
+  "arm": "preictal",
+  "subjects": [
+    "chb01",
+    "chb02",
+    "chb03",
+    "chb04",
+    "chb05",
+    "chb06",
+    "chb07",
+    "chb08",
+    "chb09",
+    "chb10",
+    "chb11",
+    "chb13",
+    "chb14",
+    "chb15",
+    "chb16",
+    "chb17",
+    "chb18",
+    "chb19",
+    "chb20",
+    "chb21",
+    "chb22",
+    "chb23"
+  ],
+  "n_perm": 2000,
+  "n_boot_fixed": 200,
+  "seed": 37,
+  "n_interictal_cap": 10,
+  "perm_cohort": {
+    "stouffer_z": -13.586132431045694,
+    "stouffer_p": 4.8398784578154064e-42,
+    "n_above": 1,
+    "n": 21,
+    "sign_p": 2.09808349609375e-05
+  },
+  "n_exploratory_tests": 48,
+  "bonferroni_alpha": 0.0010416666666666667
+}

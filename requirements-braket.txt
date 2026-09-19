@@ -1,0 +1,3 @@
+qiskit-braket-provider>=0.4
+amazon-braket-sdk>=1.80
+qiskit-aer>=0.17    # required for Qiskit 2.x compatibility

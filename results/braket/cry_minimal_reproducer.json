@@ -1,0 +1,170 @@
+{
+  "subroutine_a": {
+    "prompt_id": "AWS-002",
+    "subroutine": "A",
+    "timestamp": "2026-05-09T12:24:43.899672+00:00",
+    "shots": 8192,
+    "threshold": 0.02,
+    "configurations": [
+      {
+        "gate": "cry",
+        "control": 0,
+        "target": 1,
+        "theta": "pi/4",
+        "shots": 8192,
+        "theoretical_probs": {
+          "00": 0.5,
+          "01": 0.42677669529663687,
+          "11": 0.07322330470336312
+        },
+        "aer_probs": {
+          "00": 0.4945068359375,
+          "01": 0.4361572265625,
+          "11": 0.0693359375
+        },
+        "braket_probs": {
+          "01": 0.4173583984375,
+          "00": 0.50390625,
+          "11": 0.0787353515625
+        },
+        "aer_max_diff_vs_theory": 0.009380531265863135,
+        "braket_max_diff_vs_theory": 0.009418296859136865,
+        "aer_passes": true,
+        "braket_passes": true
+      },
+      {
+        "gate": "cry",
+        "control": 1,
+        "target": 0,
+        "theta": "pi/4",
+        "shots": 8192,
+        "theoretical_probs": {
+          "00": 0.5,
+          "01": 0.5
+        },
+        "aer_probs": {
+          "00": 0.4945068359375,
+          "01": 0.5054931640625
+        },
+        "braket_probs": {
+          "00": 0.498291015625,
+          "01": 0.501708984375
+        },
+        "aer_max_diff_vs_theory": 0.0054931640625,
+        "braket_max_diff_vs_theory": 0.001708984375,
+        "aer_passes": true,
+        "braket_passes": true
+      },
+      {
+        "gate": "crz",
+        "control": 0,
+        "target": 1,
+        "theta": "pi/4",
+        "shots": 8192,
+        "theoretical_probs": {
+          "00": 0.5,
+          "01": 0.5
+        },
+        "aer_probs": {
+          "00": 0.4945068359375,
+          "01": 0.5054931640625
+        },
+        "braket_probs": {
+          "01": 0.51171875,
+          "00": 0.48828125
+        },
+        "aer_max_diff_vs_theory": 0.0054931640625,
+        "braket_max_diff_vs_theory": 0.01171875,
+        "aer_passes": true,
+        "braket_passes": true
+      },
+      {
+        "gate": "crz",
+        "control": 1,
+        "target": 0,
+        "theta": "pi/4",
+        "shots": 8192,
+        "theoretical_probs": {
+          "00": 0.5,
+          "01": 0.5
+        },
+        "aer_probs": {
+          "00": 0.4945068359375,
+          "01": 0.5054931640625
+        },
+        "braket_probs": {
+          "01": 0.50634765625,
+          "00": 0.49365234375
+        },
+        "aer_max_diff_vs_theory": 0.0054931640625,
+        "braket_max_diff_vs_theory": 0.00634765625,
+        "aer_passes": true,
+        "braket_passes": true
+      }
+    ]
+  },
+  "subroutine_b": {
+    "prompt_id": "AWS-002",
+    "subroutine": "B",
+    "timestamp": "2026-05-09T12:24:45.032354+00:00",
+    "segment": "chb01_03.edf#start=2996.0s",
+    "qiskit_cry_count": 8,
+    "qiskit_crz_count": 8,
+    "cry_unitary_qiskit_vs_decomposed_max_abs": 5.551115123125783e-17,
+    "emitted_circuit_path": "results\\braket\\provider_emitted_circuit.txt",
+    "emitted_gate_types": {
+      "H": 34,
+      "PhaseShift": 32,
+      "Rx": 8,
+      "Ry": 24,
+      "CNot": 30,
+      "Rz": 8,
+      "ZZ": 8,
+      "CZ": 8,
+      "Measure": 17
+    }
+  },
+  "subroutine_c": {
+    "prompt_id": "AWS-002",
+    "subroutine": "C",
+    "timestamp": "2026-05-09T12:24:45.586198+00:00",
+    "minimal_results_after_workaround": [
+      {
+        "gate": "cry",
+        "control": 0,
+        "target": 1,
+        "aer_max_diff_vs_theory": 0.009380531265863135,
+        "braket_max_diff_vs_theory": 0.007587242171636865,
+        "aer_passes": true,
+        "braket_passes": true
+      },
+      {
+        "gate": "cry",
+        "control": 1,
+        "target": 0,
+        "aer_max_diff_vs_theory": 0.0054931640625,
+        "braket_max_diff_vs_theory": 0.005615234375,
+        "aer_passes": true,
+        "braket_passes": true
+      },
+      {
+        "gate": "crz",
+        "control": 0,
+        "target": 1,
+        "aer_max_diff_vs_theory": 0.0054931640625,
+        "braket_max_diff_vs_theory": 0.000732421875,
+        "aer_passes": true,
+        "braket_passes": true
+      },
+      {
+        "gate": "crz",
+        "control": 1,
+        "target": 0,
+        "aer_max_diff_vs_theory": 0.0054931640625,
+        "braket_max_diff_vs_theory": 0.003173828125,
+        "aer_passes": true,
+        "braket_passes": true
+      }
+    ]
+  }
+}

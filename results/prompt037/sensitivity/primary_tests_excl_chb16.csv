@@ -1,0 +1,5 @@
+id,measure,clinical_variable,spearman_rho,p,n,partial_rho_given_other,partial_p,other_variable,partial_rho_given_retention,partial_p_retention,holm_p,survives_holm
+P1,L_corr,n_seizures,-0.531604,0.0131327,21,-0.398519,0.0817866,mean_seizure_duration_sec,,,0.0393981,1
+P2,c_corr,n_seizures,-0.463585,0.0342878,21,-0.547913,0.0123853,mean_seizure_duration_sec,,,0.0685757,0
+P3,D_bar,mean_seizure_duration_sec,0.618182,0.00281948,21,0.524008,0.0177137,n_seizures,,,0.0112779,1
+P4,L_corr,mean_seizure_duration_sec,0.432468,0.0502299,21,0.216221,0.359875,n_seizures,,,0.0685757,0

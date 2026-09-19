@@ -1,0 +1,183 @@
+{
+  "bal": {
+    "vs_t3_all22": {
+      "label": "vs t3_polarity, all 22",
+      "n_determined": 15,
+      "n_total": 22,
+      "agree": 9,
+      "p_two_sided": 0.6072387695312499,
+      "agree_best_flip": 9,
+      "p_best_flip_adjusted": 0.6072387695312499,
+      "undetermined": [
+        "chb02",
+        "chb03",
+        "chb04",
+        "chb05",
+        "chb09",
+        "chb13",
+        "chb17"
+      ]
+    },
+    "vs_t3_strong": {
+      "label": "vs t3_polarity, |AUC-0.5|>=0.1 (n=13; post hoc)",
+      "n_determined": 9,
+      "n_total": 13,
+      "agree": 8,
+      "p_two_sided": 0.0390625,
+      "agree_best_flip": 8,
+      "p_best_flip_adjusted": 0.0390625,
+      "undetermined": [
+        "chb02",
+        "chb03",
+        "chb05",
+        "chb17"
+      ]
+    },
+    "vs_hardware_paper2": {
+      "label": "vs Paper 2 hardware polarity, 7-patient subset",
+      "n_determined": 5,
+      "n_total": 7,
+      "agree": 3,
+      "p_two_sided": 1.0,
+      "agree_best_flip": 3,
+      "p_best_flip_adjusted": 1.0,
+      "undetermined": [
+        "chb03",
+        "chb05"
+      ]
+    },
+    "spearman_delta_vs_alpha_Q1": {
+      "rho": 0.32580463015245625,
+      "p": 0.13895890567395847
+    },
+    "spearman_delta_vs_signed_Lcorr_037": {
+      "rho": 0.42970073404856013,
+      "p": 0.045946566581951453
+    }
+  },
+  "naive": {
+    "vs_t3_all22": {
+      "label": "vs t3_polarity, all 22",
+      "n_determined": 16,
+      "n_total": 22,
+      "agree": 9,
+      "p_two_sided": 0.803619384765625,
+      "agree_best_flip": 9,
+      "p_best_flip_adjusted": 0.803619384765625,
+      "undetermined": [
+        "chb02",
+        "chb04",
+        "chb05",
+        "chb13",
+        "chb20",
+        "chb23"
+      ]
+    },
+    "vs_t3_strong": {
+      "label": "vs t3_polarity, |AUC-0.5|>=0.1 (n=13; post hoc)",
+      "n_determined": 10,
+      "n_total": 13,
+      "agree": 8,
+      "p_two_sided": 0.109375,
+      "agree_best_flip": 8,
+      "p_best_flip_adjusted": 0.109375,
+      "undetermined": [
+        "chb02",
+        "chb05",
+        "chb23"
+      ]
+    },
+    "vs_hardware_paper2": {
+      "label": "vs Paper 2 hardware polarity, 7-patient subset",
+      "n_determined": 6,
+      "n_total": 7,
+      "agree": 4,
+      "p_two_sided": 0.6875,
+      "agree_best_flip": 4,
+      "p_best_flip_adjusted": 0.6875,
+      "undetermined": [
+        "chb05"
+      ]
+    },
+    "spearman_delta_vs_alpha_Q1": {
+      "rho": -0.2173913043478261,
+      "p": 0.3311374194883423
+    },
+    "spearman_delta_vs_signed_Lcorr_037": {
+      "rho": -0.07058159232072277,
+      "p": 0.7549478236684113
+    }
+  },
+  "anc": {
+    "vs_t3_all22": {
+      "label": "vs t3_polarity, all 22",
+      "n_determined": 19,
+      "n_total": 22,
+      "agree": 8,
+      "p_two_sided": 0.6476058959960938,
+      "agree_best_flip": 11,
+      "p_best_flip_adjusted": 0.6476058959960938,
+      "undetermined": [
+        "chb09",
+        "chb16",
+        "chb22"
+      ]
+    },
+    "vs_t3_strong": {
+      "label": "vs t3_polarity, |AUC-0.5|>=0.1 (n=13; post hoc)",
+      "n_determined": 11,
+      "n_total": 13,
+      "agree": 5,
+      "p_two_sided": 1.0,
+      "agree_best_flip": 6,
+      "p_best_flip_adjusted": 1.0,
+      "undetermined": [
+        "chb16",
+        "chb22"
+      ]
+    },
+    "vs_hardware_paper2": {
+      "label": "vs Paper 2 hardware polarity, 7-patient subset",
+      "n_determined": 7,
+      "n_total": 7,
+      "agree": 5,
+      "p_two_sided": 0.453125,
+      "agree_best_flip": 5,
+      "p_best_flip_adjusted": 0.453125,
+      "undetermined": []
+    },
+    "spearman_delta_vs_alpha_Q1": {
+      "rho": 0.09881422924901187,
+      "p": 0.6617494869264954
+    },
+    "spearman_delta_vs_signed_Lcorr_037": {
+      "rho": 0.09203839638622249,
+      "p": 0.6837393497090001
+    }
+  },
+  "step0_pooled": {
+    "a_hi": 0.21566751700680273,
+    "c_hi": 0.0234375,
+    "b_dead_E": 0.19355867346938777,
+    "b_dead_I": 0.19754464285714285,
+    "readable": 0.47103528911564624
+  },
+  "dead_zone": 0.3,
+  "a_max": 0.7853981633974483,
+  "n_boot": 2000,
+  "strong_subset": [
+    "chb01",
+    "chb02",
+    "chb03",
+    "chb05",
+    "chb06",
+    "chb08",
+    "chb10",
+    "chb16",
+    "chb17",
+    "chb19",
+    "chb21",
+    "chb22",
+    "chb23"
+  ]
+}

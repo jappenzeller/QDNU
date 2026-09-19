@@ -1,0 +1,40 @@
+{
+  "n_patients_K_ge_4": 12,
+  "n_seizures": 90,
+  "mean_rho_duration_vs_d": 0.15576505897678908,
+  "stouffer_z_d": 1.132623009327276,
+  "stouffer_p_d": 0.25737260178893884,
+  "mean_rho_duration_vs_sqnorm_corr": 0.15255887394136644,
+  "stouffer_z_sqnorm": 1.6242330336020154,
+  "stouffer_p_sqnorm": 0.10432608323865906,
+  "mixed_model_log_d_on_log_dur": {
+    "slope": 0.15336951157357998,
+    "se": 0.04914651158800808,
+    "p": 0.0018044675617484268,
+    "n_seizures": 105,
+    "n_patients": 17,
+    "converged": true,
+    "within_between": {
+      "within_slope": 0.14307127925924398,
+      "within_se": 0.04942242488864661,
+      "within_p": 0.003793208645744056,
+      "between_slope": 0.7336098876476844,
+      "between_se": 0.35189087320513246,
+      "between_p": 0.037090608449308594,
+      "converged": true
+    },
+    "random_slope": {
+      "slope": 0.23790439085761578,
+      "se": 0.13527589216584338,
+      "p": 0.07863516178139605
+    }
+  },
+  "fixed_window_count_control": {
+    "mean_stouffer_z": 1.354593184635221,
+    "p_from_mean_z": 0.1755472060787936,
+    "sd_stouffer_z": 0.7383592744294674,
+    "mean_per_patient_rho": 0.1842973205607553,
+    "n_boot": 200
+  },
+  "power_note": "Stouffer over 16 patients at K~7: true within-patient rho 0.40 -> z~3.3; 0.25 -> z~2.0. Underpowered below rho~0.25."
+}

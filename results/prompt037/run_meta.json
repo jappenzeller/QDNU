@@ -1,0 +1,42 @@
+{
+  "generated": "2026-09-03T01:23:41",
+  "window_sec": 8.0,
+  "arm": "ictal",
+  "subjects": [
+    "chb01",
+    "chb02",
+    "chb03",
+    "chb04",
+    "chb05",
+    "chb06",
+    "chb07",
+    "chb08",
+    "chb09",
+    "chb10",
+    "chb11",
+    "chb13",
+    "chb14",
+    "chb15",
+    "chb16",
+    "chb17",
+    "chb18",
+    "chb19",
+    "chb20",
+    "chb21",
+    "chb22",
+    "chb23"
+  ],
+  "n_perm": 2000,
+  "n_boot_fixed": 200,
+  "seed": 37,
+  "n_interictal_cap": 10,
+  "perm_cohort": {
+    "stouffer_z": -7.040049657528493,
+    "stouffer_p": 1.9217133320281544e-12,
+    "n_above": 3,
+    "n": 21,
+    "sign_p": 0.0014896392822265625
+  },
+  "n_exploratory_tests": 48,
+  "bonferroni_alpha": 0.0010416666666666667
+}

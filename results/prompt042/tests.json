@@ -1,0 +1,59 @@
+{
+  "n_purifier": 4,
+  "n_mixer": 10,
+  "n_undetermined": 8,
+  "purifiers": [
+    "chb08",
+    "chb13",
+    "chb14",
+    "chb21"
+  ],
+  "mixers": [
+    "chb01",
+    "chb04",
+    "chb06",
+    "chb07",
+    "chb10",
+    "chb16",
+    "chb17",
+    "chb18",
+    "chb19",
+    "chb23"
+  ],
+  "hi": {
+    "median_dslope_purifiers": -0.0410055036089656,
+    "median_dslope_mixers": 0.23564655152860747,
+    "mannwhitney_p": 1.0,
+    "direction": "purifiers steeper",
+    "spearman_dslope_vs_dS_all22": [
+      -0.0005646527385657821,
+      0.998010198944439
+    ],
+    "spearman_dslope_vs_alpha038": [
+      0.10559006211180126,
+      0.6400256218947228
+    ],
+    "n_patients_slope_flattens": 12
+  },
+  "broad_nopeak": {
+    "median_dslope_purifiers": -0.335121758988334,
+    "median_dslope_mixers": 0.1978880851712056,
+    "mannwhitney_p": 0.4535464535464536,
+    "direction": "purifiers steeper",
+    "spearman_dslope_vs_dS_all22": [
+      0.21287408243929987,
+      0.3415289138231927
+    ],
+    "spearman_dslope_vs_alpha038": [
+      0.12478825522303785,
+      0.5800486861512526
+    ],
+    "n_patients_slope_flattens": 12
+  },
+  "spearman_dS_vs_alpha038": [
+    0.30321852060982496,
+    0.1701399245217479
+  ],
+  "P1_PASS": false,
+  "P2_PASS": false
+}

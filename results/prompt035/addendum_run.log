@@ -1,0 +1,35 @@
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: H:\QuantumPython\QDNU\.venv\Scripts\python.exe -m pip install --upgrade pip
+Installing pyedflib...
+pyedflib installed.
+Subjects (22): ['chb01', 'chb02', 'chb03', 'chb04', 'chb05', 'chb06', 'chb07', 'chb08', 'chb09', 'chb10', 'chb11', 'chb13', 'chb14', 'chb15', 'chb16', 'chb17', 'chb18', 'chb19', 'chb20', 'chb21', 'chb22', 'chb23']
+  chb01: ||s_p||=4.946  BW=108.1422  (24 win @ 20s, 14 seizure)
+  chb02: ||s_p||=4.808  BW=129.2335  (15 win @ 20s, 5 seizure)
+  chb03: ||s_p||=7.642  BW=162.5279  (24 win @ 20s, 14 seizure)
+  chb04: ||s_p||=2.335  BW=36.8576  (18 win @ 20s, 8 seizure)
+  chb05: ||s_p||=2.823  BW=128.9702  (20 win @ 20s, 10 seizure)
+  chb06: ||s_p||=1.583  BW=42.3749  (22 win @ 20s, 12 seizure)
+  chb07: ||s_p||=3.623  BW=95.0739  (16 win @ 20s, 6 seizure)
+  chb08: ||s_p||=3.798  BW=140.2262  (20 win @ 20s, 10 seizure)
+  chb09: ||s_p||=5.942  BW=334.5068  (18 win @ 20s, 8 seizure)
+  chb10: ||s_p||=1.488  BW=62.4000  (24 win @ 20s, 14 seizure)
+  chb11: ||s_p||=3.415  BW=79.4418  (16 win @ 20s, 6 seizure)
+  chb13: ||s_p||=2.024  BW=44.5203  (32 win @ 20s, 22 seizure)
+  chb14: ||s_p||=1.730  BW=42.5263  (23 win @ 20s, 13 seizure)
+  chb15: ||s_p||=2.198  BW=118.8221  (50 win @ 20s, 40 seizure)
+  chb16: ||s_p||=1.996  BW=44.4507  (20 win @ 20s, 10 seizure)
+  chb17: ||s_p||=2.761  BW=55.9451  (16 win @ 20s, 6 seizure)
+  chb18: ||s_p||=3.093  BW=63.6439  (22 win @ 20s, 12 seizure)
+  chb19: ||s_p||=3.038  BW=79.5774  (16 win @ 20s, 6 seizure)
+  chb20: ||s_p||=1.888  BW=36.9560  (26 win @ 20s, 16 seizure)
+  chb21: ||s_p||=3.122  BW=63.6509  (17 win @ 20s, 7 seizure)
+  chb22: ||s_p||=4.020  BW=97.7219  (16 win @ 20s, 6 seizure)
+  chb23: ||s_p||=2.074  BW=51.5363  (24 win @ 20s, 14 seizure)
+
+Correlations: 40 tests, 6 flagged (|rho|>0.4, p<0.05), 0 survive Bonferroni (alpha=0.0013)
+  diagnostic s_norm vs n_seizure_windows: rho=-0.440 p=0.0402
+  diagnostic s_norm_corr vs n_seizure_windows: rho=-0.382 p=0.0792
+  diagnostic bw_dist vs n_seizure_windows: rho=-0.221 p=0.3222
+
+Done in 6s. Outputs in H:\QuantumPython\QDNU\results\prompt035

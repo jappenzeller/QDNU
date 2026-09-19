@@ -1,0 +1,271 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The E/I Unit on a Pattern Pair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<style>
+:root{
+  --bg:#FCFCFB; --bg2:#F3F4F1; --ink:#1C2229; --ink2:#4A535C; --muted:#6E7780; --rule:#DFE1DC;
+  --sys:#0E93AB; --sys-soft:#D9EEF2; --anc:#B8720F; --anc-soft:#F6E9D3; --mono-bg:#F5F6F3;
+  --surf-lo:#E3F1F4; --surf-hi:#0A5E6E;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101826; --bg2:#16203A; --ink:#E6E9EE; --ink2:#B6BEC9; --muted:#8E98A5; --rule:#263248;
+    --sys:#1A9DB3; --sys-soft:#153842; --anc:#C4852A; --anc-soft:#3A2C14; --mono-bg:#141D2E;
+    --surf-lo:#1B3440; --surf-hi:#5CC8DA;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101826; --bg2:#16203A; --ink:#E6E9EE; --ink2:#B6BEC9; --muted:#8E98A5; --rule:#263248;
+  --sys:#1A9DB3; --sys-soft:#153842; --anc:#C4852A; --anc-soft:#3A2C14; --mono-bg:#141D2E;
+  --surf-lo:#1B3440; --surf-hi:#5CC8DA;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:17px;line-height:1.55;padding-block:0 96px;padding-inline:20px}
+.wrap{max-width:960px;margin:0 auto}
+h1,h2,h3{font-family:"Newsreader",Georgia,serif;font-weight:500;letter-spacing:-0.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5vw,3rem);line-height:1.08}
+h2{font-size:1.6rem;line-height:1.2;margin-top:3rem;margin-bottom:.5rem}
+p{margin:.7rem 0;max-width:68ch}
+.lede{font-family:"Newsreader",Georgia,serif;font-size:1.3rem;line-height:1.4;color:var(--ink2);max-width:36em;margin-top:1rem}
+header{padding-block:56px 22px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-weight:600}
+.m{font-family:"Newsreader",Georgia,serif;font-style:italic;font-size:1.06em}
+.m sub,.eq sub,.m sup,.eq sup{font-size:.68em;font-style:normal}
+.eq{font-family:"Newsreader",Georgia,serif;font-size:1.3rem;text-align:center;margin:1rem 0;line-height:1.5}
+.eq i{font-style:italic}.eq .up{font-style:normal}
+.mat{display:inline-grid;grid-template-columns:auto auto;gap:2px 18px;padding:6px 14px;border-left:1.5px solid currentColor;border-right:1.5px solid currentColor;border-radius:6px;font-family:"IBM Plex Mono",monospace;font-size:1rem;vertical-align:middle;font-style:normal}
+.panel{background:var(--bg2);border-radius:8px;padding:18px 20px;margin:1.2rem 0}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 28px;align-items:end}
+.ctl label{display:block;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ctl .val{font-family:"IBM Plex Mono",monospace;font-size:1.1rem;margin:2px 0 4px}
+.ctl input[type=range]{width:100%;accent-color:var(--sys)}
+.ctl.anc input[type=range]{accent-color:var(--anc)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.presets button{font:inherit;font-size:.9rem;padding:5px 12px;border:1px solid var(--rule);background:var(--bg);color:var(--ink);border-radius:4px;cursor:pointer}
+.presets button:hover{border-color:var(--sys)}
+.presets button:focus-visible{outline:2px solid var(--sys);outline-offset:2px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:1rem 0}
+.stat{padding:12px 14px;border-left:3px solid var(--rule)}
+.stat.sys{border-color:var(--sys)}.stat.anc{border-color:var(--anc)}
+.stat b{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .v{font-family:"IBM Plex Mono",monospace;font-size:1.4rem;line-height:1.2;margin-top:2px}
+.stat small{display:block;color:var(--muted);font-size:.85rem;margin-top:3px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;align-items:start}
+figure{margin:1.2rem 0}
+figure svg{max-width:100%;height:auto;display:block}
+figcaption{font-size:.9rem;color:var(--muted);margin-top:.5rem;max-width:70ch;line-height:1.45}
+.plot{width:100%;height:360px}
+.plot3{width:100%;height:460px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:20px}
+.regime{display:inline-block;padding:2px 10px;border-radius:3px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.regime.osc{background:var(--sys-soft);color:var(--sys)}.regime.sep{background:var(--anc-soft);color:var(--anc)}.regime.ep{background:var(--mono-bg);color:var(--ink2)}
+.note{border-top:1px solid var(--rule);margin-top:3rem;padding-top:1.4rem}
+footer{margin-top:3rem;font-size:.85rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1rem}
+@media (max-width:520px){.grid2{grid-template-columns:1fr}.plot3{height:380px}}
+</style></head><body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">QDNU · A-Gate as a field · unit 1 of 4</div>
+  <h1>The E/I Unit on a Pattern Pair</h1>
+  <p class="lede">One excitatory/inhibitory unit acting on the two dominant patterns of an 8-channel EEG state. Two knobs, gain asymmetry and coupling, and what each does to the purity of the state.</p>
+</header>
+
+<section>
+<h2>The setup</h2>
+<p>From the 8-channel purification run (S001, eyes closed, seconds 10–14), the two largest weights are pattern 0, the whole-head in-phase mode, and pattern 1, the front-versus-occiput mode. In their own basis the pair is diagonal:</p>
+<div class="eq"><i>Λ</i><sub>1</sub> = <span class="mat"><span>0.660</span><span>0</span><span>0</span><span>0.231</span></span></div>
+<p>The unit's generator has two parameters. Gain asymmetry <span class="m">g</span> is how much faster pattern 0 grows than pattern 1. Coupling <span class="m">κ</span> is how strongly each pattern feeds the other.</p>
+<div class="eq"><i>K</i><sub>1</sub> = <span class="mat"><span><i>g</i></span><span>−<i>κ</i></span><span><i>κ</i></span><span>−<i>g</i></span></span></div>
+<p>Running the unit for time <span class="m">t</span> moves the pair to <span class="m">e<sup>K₁t</sup> Λ₁ e<sup>K₁ᵀt</sup></span>, and the whole 8-dim state is renormalised to trace one. The other three units are switched off, so the other six weights sit still and only shrink or grow in proportion. Everything below is that map, computed exactly.</p>
+</section>
+
+<section>
+<h2>Turn the knobs</h2>
+<div class="panel">
+  <div class="controls">
+    <div class="ctl anc"><label for="g">gain asymmetry g</label><div class="val" id="gv">0.30</div><input type="range" id="g" min="-1" max="1" step="0.01" value="0.30"></div>
+    <div class="ctl"><label for="k">coupling κ</label><div class="val" id="kv">0.10</div><input type="range" id="k" min="0" max="1" step="0.01" value="0.10"></div>
+    <div class="ctl"><label for="t">time t</label><div class="val" id="tv">2.0</div><input type="range" id="t" min="0" max="8" step="0.05" value="2"></div>
+  </div>
+  <div class="presets">
+    <button type="button" data-g="0.3" data-k="0">gain only</button>
+    <button type="button" data-g="0" data-k="0.5">coupling only</button>
+    <button type="button" data-g="0.3" data-k="0.1">gain wins</button>
+    <button type="button" data-g="0.1" data-k="0.5">coupling wins</button>
+    <button type="button" data-g="0.3" data-k="0.3">exceptional point</button>
+    <button type="button" data-g="-0.3" data-k="0.1">gain favours the weak pattern</button>
+  </div>
+</div>
+<div class="stats">
+  <div class="stat"><b>regime</b><div class="v" id="regime">—</div><small id="regime-note"></small></div>
+  <div class="stat sys"><b>purity, full state</b><div class="v" id="pur">—</div><small>start 0.493 · pure = 1</small></div>
+  <div class="stat sys"><b>entropy</b><div class="v" id="ent">—</div><small>nats · start 0.998</small></div>
+  <div class="stat anc"><b>pair weights now</b><div class="v" id="wts">—</div><small>were 0.660 / 0.231</small></div>
+</div>
+
+<div class="grid2">
+<figure style="margin-top:0">
+<svg id="ellipse" viewBox="0 0 360 360" role="img" aria-label="The pair's 2 by 2 matrix drawn as an ellipse in the pattern-0, pattern-1 plane, updating with the sliders" style="color:var(--ink)"></svg>
+<figcaption>The pair as an ellipse in the (pattern 0, pattern 1) plane. Axis lengths are the square roots of the two weights; the dashed outline is where it started. A rotation turns the ellipse without reshaping it — that is why coupling alone cannot change purity.</figcaption>
+</figure>
+<figure style="margin-top:0">
+<div id="curve" class="plot"></div>
+<figcaption>Purity of the full 8-channel state against time for the current <span class="m">g</span> and <span class="m">κ</span>. The marker is the current <span class="m">t</span>. Grey curves are the two single-knob cases for comparison.</figcaption>
+</figure>
+</div>
+</section>
+
+<section>
+<h2>The whole landscape</h2>
+<p>Purity after a fixed time, over every combination of gain and coupling. The diagonal <span class="m">g = κ</span> is the exceptional point of the generator: above it the gain wins and the state purifies, below it the coupling wins and the state oscillates. The surface has a ridge along that line.</p>
+<div class="panel" style="padding:12px 20px"><div class="controls"><div class="ctl"><label for="ts">time for the surface</label><div class="val" id="tsv">3.0</div><input type="range" id="ts" min="0.5" max="8" step="0.1" value="3"></div></div></div>
+<figure><div id="surf1" class="plot3"></div><figcaption>Purity of the full state at time <span class="m">t</span>, as a function of gain asymmetry (−1 to 1) and coupling (0 to 1). Drag to rotate.</figcaption></figure>
+
+<p>The second surface fixes the coupling and lets gain and time vary. Below the coupling line the surface ripples and never climbs; above it, it climbs and stays up. The transition is not gradual — it is the exceptional point.</p>
+<div class="panel" style="padding:12px 20px"><div class="controls"><div class="ctl"><label for="ks">coupling for the surface</label><div class="val" id="ksv">0.40</div><input type="range" id="ks" min="0.05" max="1" step="0.05" value="0.4"></div></div></div>
+<figure><div id="surf2" class="plot3"></div><figcaption>Purity against gain asymmetry (0 to 1) and time (0 to 8) at fixed coupling <span class="m">κ</span>. The crease at <span class="m">g = κ</span> separates the oscillating region from the purifying one.</figcaption></figure>
+</section>
+
+<section class="note">
+<h2>What the pictures say</h2>
+<p>Gain alone changes purity by multiplication: pattern 0 by <span class="m">e<sup>2gt</sup></span>, pattern 1 by <span class="m">e<sup>−2gt</sup></span>. Positive gain purifies. Negative gain favours the weak pattern, so purity dips through its minimum where the two weights cross and then climbs again on the other side.</p>
+<p>Coupling alone is a rotation, and a rotation cannot change the eigenvalues of anything. Purity is flat, exactly, for all time. An E/I unit with balanced gain is invisible to this observable.</p>
+<p>With both, the sign of <span class="m">g² − κ²</span> decides everything. Coupling-dominated: purity oscillates with period <span class="m">π / √(κ² − g²)</span> and has no trend. Gain-dominated: purity climbs to 1 along a direction tilted from pattern 0 by an angle set by <span class="m">κ / g</span>.</p>
+<p>So the field can purify robustly, and it can only mix transiently — through a negative gain that hasn't yet crossed over, or an oscillation caught on the way down. That is the prediction to carry to the within-seizure, time-resolved entropy on CHB-MIT: purifiers should be monotonic, mixers should not.</p>
+</section>
+
+<footer>Unit 1 weights from <code>phase5_eight_channel.py</code>; the other six weights (0.055, 0.030, 0.009, 0.007, 0.006, 0.002) are held fixed. All curves are the closed-form exponential of a 2×2 generator; nothing is simulated.</footer>
+</div>
+
+<script>
+(function(){
+const L0=0.6598, L1=0.2314, REST=[0.0551,0.0296,0.0092,0.0074,0.0055,0.0022];
+const restSum=REST.reduce((a,b)=>a+b,0), restSq=REST.reduce((a,b)=>a+b*b,0);
+
+function expK(g,k,t){ // 2x2 exp of t*[[g,-k],[k,-g]]
+  const d=g*g-k*k; let c,s;
+  if(Math.abs(d)<1e-12){c=1;s=t;}
+  else if(d>0){const m=Math.sqrt(d);c=Math.cosh(m*t);s=Math.sinh(m*t)/m;}
+  else{const w=Math.sqrt(-d);c=Math.cos(w*t);s=Math.sin(w*t)/w;}
+  return [[c+s*g,-s*k],[s*k,c-s*g]];
+}
+function evolve(g,k,t){
+  const A=expK(g,k,t);
+  // M = A diag(L0,L1) A^T
+  const m00=A[0][0]*A[0][0]*L0+A[0][1]*A[0][1]*L1;
+  const m01=A[0][0]*A[1][0]*L0+A[0][1]*A[1][1]*L1;
+  const m11=A[1][0]*A[1][0]*L0+A[1][1]*A[1][1]*L1;
+  const tr=m00+m11, det=m00*m11-m01*m01, disc=Math.sqrt(Math.max(tr*tr/4-det,0));
+  const e0=tr/2+disc, e1=tr/2-disc;
+  const norm=tr+restSum;
+  const purity=(e0*e0+e1*e1+restSq)/(norm*norm);
+  const ws=[e0/norm,e1/norm].concat(REST.map(r=>r/norm));
+  const ent=-ws.reduce((a,w)=>a+(w>1e-12?w*Math.log(w):0),0);
+  // eigenvector angle of M
+  const ang=0.5*Math.atan2(2*m01,m00-m11);
+  return {m00,m01,m11,e0:e0/norm,e1:e1/norm,purity,ent,ang,tr};
+}
+const $=id=>document.getElementById(id);
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function regime(g,k){const d=g*g-k*k; if(Math.abs(d)<1e-9) return ['exceptional point','ep','growth is linear in t, neither oscillates nor saturates'];
+  if(d>0) return ['gain wins','sep','purifies: collapses onto one direction, rate √(g²−κ²) = '+Math.sqrt(d).toFixed(2)];
+  return ['coupling wins','osc','oscillates, period π/√(κ²−g²) = '+(Math.PI/Math.sqrt(-d)).toFixed(2)];}
+
+// ---- ellipse
+function drawEllipse(g,k,t){
+  const r=evolve(g,k,t), S=110; // scale: sqrt(weight)*S
+  const start=evolve(0,0,0);
+  const el=$('ellipse'); const ink=css('--ink'), muted=css('--muted'), rule=css('--rule'), sys=css('--sys'), anc=css('--anc');
+  // pair renormalised to its own trace for the picture
+  const a0=Math.sqrt(r.e0/(r.e0+r.e1))*S, a1=Math.sqrt(r.e1/(r.e0+r.e1))*S;
+  const b0=Math.sqrt(start.e0/(start.e0+start.e1))*S, b1=Math.sqrt(start.e1/(start.e0+start.e1))*S;
+  const deg=-r.ang*180/Math.PI;
+  el.innerHTML=`
+  <g transform="translate(180,180)">
+    <line x1="-170" y1="0" x2="170" y2="0" stroke="${rule}"/><line x1="0" y1="-170" x2="0" y2="170" stroke="${rule}"/>
+    <text x="164" y="-8" font-size="12" fill="${muted}" text-anchor="end" font-family="Source Sans 3,sans-serif">pattern 0</text>
+    <text x="8" y="-158" font-size="12" fill="${muted}" font-family="Source Sans 3,sans-serif">pattern 1</text>
+    <ellipse rx="${b0}" ry="${b1}" fill="none" stroke="${muted}" stroke-dasharray="4 4" stroke-width="1.2"/>
+    <g transform="rotate(${deg})">
+      <ellipse rx="${a0}" ry="${a1}" fill="${sys}" fill-opacity="0.18" stroke="${sys}" stroke-width="2"/>
+      <line x1="0" y1="0" x2="${a0}" y2="0" stroke="${anc}" stroke-width="2.2"/>
+      <line x1="0" y1="0" x2="0" y2="${-a1}" stroke="${anc}" stroke-width="2.2" stroke-dasharray="3 3"/>
+    </g>
+    <text x="-168" y="164" font-size="12" fill="${ink}" font-family="IBM Plex Mono,monospace">tilt ${(r.ang*180/Math.PI).toFixed(1)}°</text>
+  </g>`;
+}
+
+// ---- curve
+const T=[]; for(let i=0;i<=200;i++) T.push(i*8/200);
+function plotCurve(g,k,t){
+  const ink=css('--ink'), muted=css('--muted'), rule=css('--rule'), sys=css('--sys'), anc=css('--anc');
+  const y=T.map(x=>evolve(g,k,x).purity), yg=T.map(x=>evolve(g,0,x).purity), yk=T.map(x=>evolve(0,k,x).purity);
+  const cur=evolve(g,k,t);
+  const font={family:'Source Sans 3, sans-serif',color:ink,size:12};
+  Plotly.react('curve',[
+    {x:T,y:yg,mode:'lines',line:{color:muted,width:1.2,dash:'dot'},name:'gain only',hovertemplate:'t %{x:.2f}<br>purity %{y:.3f}<extra>gain only</extra>'},
+    {x:T,y:yk,mode:'lines',line:{color:muted,width:1.2,dash:'dash'},name:'coupling only',hovertemplate:'t %{x:.2f}<br>purity %{y:.3f}<extra>coupling only</extra>'},
+    {x:T,y:y,mode:'lines',line:{color:sys,width:2.4},name:'g = '+g.toFixed(2)+', κ = '+k.toFixed(2),hovertemplate:'t %{x:.2f}<br>purity %{y:.3f}<extra></extra>'},
+    {x:[t],y:[cur.purity],mode:'markers',marker:{color:anc,size:10,line:{color:css('--bg'),width:2}},name:'now',hoverinfo:'skip'}
+  ],{
+    margin:{l:48,r:12,t:10,b:40},paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font,
+    xaxis:{title:{text:'time t'},gridcolor:rule,zeroline:false,range:[0,8]},
+    yaxis:{title:{text:'purity tr ρ²'},gridcolor:rule,zeroline:false,range:[0.4,1.02]},
+    legend:{orientation:'h',y:-0.25,x:0},hovermode:'x unified',showlegend:true
+  },{displayModeBar:false,responsive:true});
+}
+
+// ---- surfaces
+function colorscale(){return [[0,css('--surf-lo')],[1,css('--surf-hi')]];}
+function scene(xt,yt){const ink=css('--ink'),rule=css('--rule');return{
+  xaxis:{title:{text:xt},gridcolor:rule,color:ink,backgroundcolor:'rgba(0,0,0,0)'},
+  yaxis:{title:{text:yt},gridcolor:rule,color:ink,backgroundcolor:'rgba(0,0,0,0)'},
+  zaxis:{title:{text:'purity'},gridcolor:rule,color:ink,range:[0.4,1],backgroundcolor:'rgba(0,0,0,0)'},
+  camera:{eye:{x:1.6,y:-1.5,z:0.9}}};}
+function plotSurf1(ts){
+  const G=[],K=[]; for(let i=0;i<=60;i++)G.push(-1+2*i/60); for(let j=0;j<=40;j++)K.push(j/40);
+  const Z=K.map(k=>G.map(g=>evolve(g,k,ts).purity));
+  const font={family:'Source Sans 3, sans-serif',color:css('--ink'),size:12};
+  const ridge={type:'scatter3d',mode:'lines',x:K.map(k=>k),y:K,z:K.map(k=>evolve(k,k,ts).purity+0.003),line:{color:css('--anc'),width:5},name:'g = κ',hoverinfo:'name'};
+  const ridge2={type:'scatter3d',mode:'lines',x:K.map(k=>-k),y:K,z:K.map(k=>evolve(-k,k,ts).purity+0.003),line:{color:css('--anc'),width:5},name:'g = −κ',hoverinfo:'name'};
+  Plotly.react('surf1',[{type:'surface',x:G,y:K,z:Z,colorscale:colorscale(),showscale:false,contours:{z:{show:true,usecolormap:false,color:css('--rule'),width:1,start:0.45,end:1,size:0.05}},hovertemplate:'g %{x:.2f}<br>κ %{y:.2f}<br>purity %{z:.3f}<extra></extra>'},ridge,ridge2],
+    {margin:{l:0,r:0,t:0,b:0},paper_bgcolor:'rgba(0,0,0,0)',font,scene:scene('gain g','coupling κ'),showlegend:false},{displayModeBar:false,responsive:true});
+}
+function plotSurf2(ks){
+  const G=[],TT=[]; for(let i=0;i<=50;i++)G.push(i/50); for(let j=0;j<=80;j++)TT.push(j*8/80);
+  const Z=TT.map(t=>G.map(g=>evolve(g,ks,t).purity));
+  const font={family:'Source Sans 3, sans-serif',color:css('--ink'),size:12};
+  const crease={type:'scatter3d',mode:'lines',x:TT.map(()=>ks),y:TT,z:TT.map(t=>evolve(ks,ks,t).purity+0.003),line:{color:css('--anc'),width:5},name:'g = κ',hoverinfo:'name'};
+  Plotly.react('surf2',[{type:'surface',x:G,y:TT,z:Z,colorscale:colorscale(),showscale:false,contours:{z:{show:true,usecolormap:false,color:css('--rule'),width:1,start:0.45,end:1,size:0.05}},hovertemplate:'g %{x:.2f}<br>t %{y:.2f}<br>purity %{z:.3f}<extra></extra>'},crease],
+    {margin:{l:0,r:0,t:0,b:0},paper_bgcolor:'rgba(0,0,0,0)',font,scene:scene('gain g','time t'),showlegend:false},{displayModeBar:false,responsive:true});
+}
+
+// ---- wiring
+function readGK(){return {g:parseFloat($('g').value),k:parseFloat($('k').value),t:parseFloat($('t').value)};}
+function update(){
+  const {g,k,t}=readGK();
+  $('gv').textContent=g.toFixed(2); $('kv').textContent=k.toFixed(2); $('tv').textContent=t.toFixed(2);
+  const r=evolve(g,k,t), rg=regime(g,k);
+  $('regime').innerHTML='<span class="regime '+rg[1]+'">'+rg[0]+'</span>'; $('regime-note').textContent=rg[2];
+  $('pur').textContent=r.purity.toFixed(3); $('ent').textContent=r.ent.toFixed(3);
+  $('wts').textContent=r.e0.toFixed(3)+' / '+r.e1.toFixed(3);
+  drawEllipse(g,k,t); plotCurve(g,k,t);
+}
+['g','k','t'].forEach(id=>$(id).addEventListener('input',update));
+document.querySelectorAll('.presets button').forEach(b=>b.addEventListener('click',()=>{$('g').value=b.dataset.g;$('k').value=b.dataset.k;update();}));
+$('ts').addEventListener('input',()=>{$('tsv').textContent=parseFloat($('ts').value).toFixed(1);plotSurf1(parseFloat($('ts').value));});
+$('ks').addEventListener('input',()=>{$('ksv').textContent=parseFloat($('ks').value).toFixed(2);plotSurf2(parseFloat($('ks').value));});
+function all(){update();plotSurf1(parseFloat($('ts').value));plotSurf2(parseFloat($('ks').value));}
+if(window.Plotly){all();} else {document.querySelector('script[src*="plotly"]').addEventListener('load',all); drawEllipse(0.3,0.1,2);}
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);}catch(e){}
+new MutationObserver(all).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+
+</body></html>

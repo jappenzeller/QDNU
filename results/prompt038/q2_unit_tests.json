@@ -1,0 +1,22 @@
+{
+  "closed_forms_max_err": 7.771561172376096e-16,
+  "qiskit_vs_numpy_state_max_err": 1.4432899320127035e-15,
+  "balance_exactness_max_err": 1.2301271112846734e-13,
+  "U_XE_Udag_pauli": {
+    "X_E I_I": 0.7886,
+    "X_E Y_I": 0.1464,
+    "X_E Z_I": 0.1353,
+    "Y_E I_I": 0.3266,
+    "Y_E Y_I": -0.3536,
+    "Y_E Z_I": -0.3266
+  },
+  "leading_on_XE": true,
+  "ancilla_subset_E_indices": [
+    0,
+    2,
+    4,
+    6
+  ],
+  "ancilla_shortcut_max_err": 2.220446049250313e-15,
+  "pass": true
+}

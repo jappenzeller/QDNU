@@ -1,0 +1,18 @@
+{
+  "lda": {
+    "auc_full": 0.447945205479452,
+    "sign_full": -1,
+    "stability": 0.7833333333333333,
+    "auc_draw_min": 0.21986301369863012,
+    "auc_draw_median": 0.42054794520547945,
+    "auc_draw_max": 0.9095890410958904
+  },
+  "meandiff": {
+    "auc_full": 0.41643835616438357,
+    "sign_full": -1,
+    "stability": 1.0,
+    "auc_draw_min": 0.3787671232876712,
+    "auc_draw_median": 0.4184931506849315,
+    "auc_draw_max": 0.48287671232876717
+  }
+}

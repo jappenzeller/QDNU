@@ -1,0 +1,148 @@
+{
+  "T1_full": {
+    "n_pairs": 462,
+    "spearman_dev_vs_abs_cos": 0.5938074438955572,
+    "spearman_dev_vs_kappa": -0.5651191352855179,
+    "partial_dev_vs_kappa_given_abs_cos": -0.18891774572334344,
+    "sign_agreement_auc_vs_cos": 0.9761904761904762,
+    "spearman_abs_cos_vs_kappa": -0.7971194985134958,
+    "kappa_median": 0.04274235547249221,
+    "kappa_min": 0.007702553240819001,
+    "kappa_max": 0.27401358699425166,
+    "cos_median": 0.7944873862646462,
+    "frac_cos_negative": 0.2813852813852814,
+    "frac_auc_below_half": 0.29653679653679654
+  },
+  "T1_shape": {
+    "spearman_dev_vs_abs_cos": 0.865385017320493,
+    "spearman_dev_vs_kappa": -0.1478453185378245,
+    "partial_dev_vs_kappa_given_abs_cos": 0.056056743866395004,
+    "sign_agreement_auc_vs_cos": 0.9675324675324676,
+    "kappa_median": 0.25460647506852774,
+    "cos_median": 0.08021383256890241,
+    "frac_cos_negative": 0.4155844155844156,
+    "frac_auc_below_half": 0.43506493506493504
+  },
+  "T2_T3_per_patient": {
+    "stab_strict_lda ~ mean_kappa": {
+      "rho": -0.47995394315471474,
+      "p": 0.02378625837215856,
+      "n": 22
+    },
+    "stab_strict_lda ~ mean_abs_cos": {
+      "rho": 0.6234366779090089,
+      "p": 0.0019356197145728486,
+      "n": 22
+    },
+    "stab_strict_lda ~ mean_kappa_shape": {
+      "rho": -0.29367811207019257,
+      "p": 0.18466013876839554,
+      "n": 22
+    },
+    "stab_strict_lda ~ mean_abs_cos_shape": {
+      "rho": 0.3062643168732008,
+      "p": 0.16567546518465076,
+      "n": 22
+    },
+    "stab_strict_lda ~ f_scale": {
+      "rho": 0.47995394315471474,
+      "p": 0.02378625837215856,
+      "n": 22
+    },
+    "stab_strict_lda ~ G_perp_norm": {
+      "rho": -0.0050344819212033015,
+      "p": 0.98226013146761,
+      "n": 22
+    },
+    "stab_pooled_lda ~ mean_kappa": {
+      "rho": -0.3070956846451276,
+      "p": 0.16447112623928667,
+      "n": 22
+    },
+    "stab_pooled_lda ~ mean_abs_cos": {
+      "rho": 0.4172619804378965,
+      "p": 0.053350201783940995,
+      "n": 22
+    },
+    "stab_pooled_lda ~ mean_kappa_shape": {
+      "rho": -0.18665481204267054,
+      "p": 0.4055606937836733,
+      "n": 22
+    },
+    "stab_pooled_lda ~ mean_abs_cos_shape": {
+      "rho": 0.13014463958938494,
+      "p": 0.5637607805440559,
+      "n": 22
+    },
+    "stab_pooled_lda ~ f_scale": {
+      "rho": 0.2528687514828839,
+      "p": 0.256207401009387,
+      "n": 22
+    },
+    "stab_pooled_lda ~ G_perp_norm": {
+      "rho": 0.13756516728527093,
+      "p": 0.5415387523198739,
+      "n": 22
+    },
+    "frac_others_read_me_inverted ~ mean_kappa": {
+      "rho": 0.44952621226414674,
+      "p": 0.0358236930624186,
+      "n": 22
+    },
+    "frac_others_read_me_inverted ~ mean_abs_cos": {
+      "rho": -0.20718903610528577,
+      "p": 0.3548769603558434,
+      "n": 22
+    },
+    "frac_others_read_me_inverted ~ mean_kappa_shape": {
+      "rho": 0.41437807221057155,
+      "p": 0.055191016983849574,
+      "n": 22
+    },
+    "frac_others_read_me_inverted ~ mean_abs_cos_shape": {
+      "rho": -0.14799216864663267,
+      "p": 0.5110134619182292,
+      "n": 22
+    },
+    "frac_others_read_me_inverted ~ f_scale": {
+      "rho": -0.37368022583274746,
+      "p": 0.08669375856431362,
+      "n": 22
+    },
+    "frac_others_read_me_inverted ~ G_perp_norm": {
+      "rho": -0.14059256021430103,
+      "p": 0.5325902611416283,
+      "n": 22
+    },
+    "frac_others_read_me_inverted_shape ~ mean_kappa": {
+      "rho": -0.17436622083913342,
+      "p": 0.437699259528066,
+      "n": 22
+    },
+    "frac_others_read_me_inverted_shape ~ mean_abs_cos": {
+      "rho": -0.11396485022165583,
+      "p": 0.6135653544789959,
+      "n": 22
+    },
+    "frac_others_read_me_inverted_shape ~ mean_kappa_shape": {
+      "rho": 0.3914692605113877,
+      "p": 0.07159822389366872,
+      "n": 22
+    },
+    "frac_others_read_me_inverted_shape ~ mean_abs_cos_shape": {
+      "rho": -0.19260059687459832,
+      "p": 0.3904913652914539,
+      "n": 22
+    },
+    "frac_others_read_me_inverted_shape ~ f_scale": {
+      "rho": 0.17835499059689133,
+      "p": 0.42712224146299216,
+      "n": 22
+    },
+    "frac_others_read_me_inverted_shape ~ G_perp_norm": {
+      "rho": -0.6137007184436165,
+      "p": 0.002383106581141823,
+      "n": 22
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "W": 4.0,
+  "n_subjects": 109,
+  "P1_trace": {
+    "n_positive": 80,
+    "frac": 0.7339449541284404,
+    "sign_p": 1.080908243358372e-06,
+    "wilcoxon_p": 1.2910985173808422e-07,
+    "median_delta": 0.2906775489579374,
+    "n_sig_positive": 63,
+    "PASS": false
+  },
+  "P2_entropy": {
+    "n_negative": 54,
+    "frac": 0.4954128440366973,
+    "sign_p": 1.0,
+    "wilcoxon_p": 0.11557965249936408,
+    "median_delta": 0.008791310790847606,
+    "n_sig_negative": 11,
+    "n_sig_positive": 24,
+    "PASS": false
+  },
+  "P3a_gauge": {
+    "resultant_open": 0.010263750982846757,
+    "resultant_closed": 0.010977947279218367,
+    "n_channel_windows": 13080,
+    "uniform_expectation": 0.008743717709783362,
+    "PASS": true
+  },
+  "P3b_plv": {
+    "n_positive": 36,
+    "frac": 0.3302752293577982,
+    "sign_p": 0.0005050343915302424,
+    "median_delta": -0.01877924000140907,
+    "PASS": false
+  },
+  "berger": {
+    "n_ratio_gt_2": 85,
+    "median_ratio": 3.9058286492190417
+  },
+  "relations": {
+    "spearman_dS_vs_alpha_ratio": -0.0740339171531832,
+    "spearman_dS_vs_dlogtr": -0.36000370679269766,
+    "spearman_dplv_vs_alpha_ratio": 0.10768232786581411,
+    "entropy_drop_frac_in_berger_subjects": 0.49411764705882355,
+    "entropy_drop_frac_in_nonberger": 0.5
+  }
+}
