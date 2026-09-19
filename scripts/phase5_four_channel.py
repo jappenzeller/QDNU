@@ -3,6 +3,9 @@ Same window as the two-channel example (S001 R02, seconds 10-14). Channels Pz Oz
 Checks: reduced state == rho; shot estimates of Z1, Z2, Z1Z2 vs tr(rho O); ancilla marginal vs lambda;
 transpiled gate count for the whole preparation."""
 import numpy as np, mne
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")  # circuit drawings are Unicode; Windows consoles default to cp1252
 from scipy.signal import butter, filtfilt, iirnotch
 from pyriemann.estimation import Covariances
 from qiskit import QuantumCircuit, transpile

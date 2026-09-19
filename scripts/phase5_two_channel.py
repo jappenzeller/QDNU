@@ -1,4 +1,7 @@
 import numpy as np, mne
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")  # circuit drawings are Unicode; Windows consoles default to cp1252
 from scipy.signal import butter, filtfilt, iirnotch
 from pyriemann.estimation import Covariances
 from qiskit import QuantumCircuit
