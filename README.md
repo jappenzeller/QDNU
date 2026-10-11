@@ -7,6 +7,7 @@
 [![Site](https://img.shields.io/badge/qdnu.ai-site-00d4ff)](https://qdnu.ai)
 [![Notebook](https://img.shields.io/badge/qdnu.ai-notebook-f59e0b)](https://qdnu.ai/notebook/)
 [![Paper 1](https://img.shields.io/badge/Discover_Quantum_Science-10.1007%2Fs44464--026--00032--w-1a73e8)](https://doi.org/10.1007/s44464-026-00032-w)
+[![Paper 2](https://img.shields.io/badge/Research_Square-10.21203%2Frs.3.rs--10787059%2Fv1-1a73e8)](https://doi.org/10.21203/rs.3.rs-10787059/v1)
 
 **Author:** James Appenzeller · PhD student, National University · independent researcher
 
@@ -19,7 +20,7 @@ An EEG window of *M* channels gives an *M*×*M* covariance matrix Σ. Divided by
 Three things live here:
 
 1. **The current line of work (2026-09 →).** The covariance-as-state formulation ("DSP-000"), prepared on a simulated register by purification at 2, 4 and 8 channels and read back exactly; a two-level excitatory/inhibitory (E/I) generator derived as the state's dynamics; and the tests of both on public data. Written up as readable pages at [qdnu.ai/notebook](https://qdnu.ai/notebook/), with sources in `docs/web/`.
-2. **The polarity work (Paper 2, 2026-04 → 09).** Within a patient, seizures shift the covariance in a coherent direction (coherence ≈ 1 across seizures), and the sign of that shift is patient-specific. Results in `results/prompt035…042/`, each with a `SUMMARY.md`.
+2. **The polarity work (Paper 2, preprint 2026-10).** Within a patient, seizures shift the covariance in a coherent direction (coherence ≈ 1 across seizures), and the sign of that shift is patient-specific. Results in `results/prompt035…042/`, each with a `SUMMARY.md`.
 3. **The hardware feature map (Paper 1, published).** The A-Gate: a fixed two-qubit circuit per channel, driven by EEG phase-locking features, run on IBM Heron. Code in `qdnu/`, results in `analysis_results/` and `results/hardware_validation/`. This is the history — see *What changed since Paper 1* below before reading it as the current claim.
 
 ## What changed since Paper 1
@@ -99,6 +100,15 @@ Cohort: raw 0.531, calibrated 0.637, strongest classical baseline (log-FFT + cor
   number  = {30},
   year    = {2026},
   doi     = {10.1007/s44464-026-00032-w}
+}
+
+@article{appenzeller2026polarity,
+  title   = {Manifold polarity as the geometric cause of cross patient failure in Riemannian EEG seizure detection},
+  author  = {Appenzeller, James},
+  journal = {Research Square (preprint)},
+  year    = {2026},
+  doi     = {10.21203/rs.3.rs-10787059/v1},
+  note    = {Under review}
 }
 ```
 
