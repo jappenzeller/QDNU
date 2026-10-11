@@ -1,0 +1,144 @@
+{
+ "generated": "2026-10-11T11:45:55",
+ "data": "CHB-MIT annotation files only (chbXX-summary.txt); no EEG read, no entropy computed",
+ "groups_from": "results/prompt042/per_patient.csv",
+ "n_patients": 22,
+ "n_seizures": 142,
+ "P1": {
+  "statement": "purifier median durations exceed mixer median durations",
+  "test": "Mann-Whitney U, one-sided (greater)",
+  "n_purifier": 4,
+  "n_mixer": 10,
+  "U": 18.0,
+  "p_value": 0.6333666333666333,
+  "alpha": 0.05,
+  "rank_biserial": -0.09999999999999998,
+  "purifier_medians_s": [
+   20.0,
+   50.5,
+   53.0,
+   171
+  ],
+  "mixer_medians_s": [
+   8.0,
+   15.0,
+   51,
+   52.5,
+   62,
+   65,
+   78,
+   90,
+   96,
+   106.5
+  ],
+  "group_median_of_medians_s": {
+   "purifier": 51.75,
+   "mixer": 63.5
+  },
+  "pass_": false
+ },
+ "flip": {
+  "threshold_s": 57.5,
+  "threshold_definition": "median of the 14 determined patients' median durations",
+  "n_determined": 14,
+  "n_flips": 9,
+  "flip_rate": 0.6428571428571429,
+  "flips": [
+   {
+    "patient": "chb13",
+    "group": "purifier",
+    "median_s": 50.5,
+    "reason": "purifier below threshold"
+   },
+   {
+    "patient": "chb14",
+    "group": "purifier",
+    "median_s": 20.0,
+    "reason": "purifier below threshold"
+   },
+   {
+    "patient": "chb21",
+    "group": "purifier",
+    "median_s": 53.0,
+    "reason": "purifier below threshold"
+   },
+   {
+    "patient": "chb04",
+    "group": "mixer",
+    "median_s": 106.5,
+    "reason": "mixer above threshold"
+   },
+   {
+    "patient": "chb07",
+    "group": "mixer",
+    "median_s": 96,
+    "reason": "mixer above threshold"
+   },
+   {
+    "patient": "chb10",
+    "group": "mixer",
+    "median_s": 65,
+    "reason": "mixer above threshold"
+   },
+   {
+    "patient": "chb17",
+    "group": "mixer",
+    "median_s": 90,
+    "reason": "mixer above threshold"
+   },
+   {
+    "patient": "chb19",
+    "group": "mixer",
+    "median_s": 78,
+    "reason": "mixer above threshold"
+   },
+   {
+    "patient": "chb23",
+    "group": "mixer",
+    "median_s": 62,
+    "reason": "mixer above threshold"
+   }
+  ]
+ },
+ "flip_context": {
+  "note": "DESCRIPTIVE, not pre-declared: what the flip metric can reach given 4 purifiers / 10 mixers and a median-split threshold",
+  "purifiers_above_threshold": 1,
+  "reachable_flip_counts": {
+   "0": 11,
+   "1": 9,
+   "2": 7,
+   "3": 5,
+   "4": 3
+  },
+  "floor": 3,
+  "ceiling": 11,
+  "chance_expectation": 7.0,
+  "p_flips_at_least_observed": 0.27972027972027974
+ },
+ "spread": {
+  "criterion": "max/min > 3",
+  "n_determined_over": 4,
+  "patients": [
+   "chb13",
+   "chb21",
+   "chb01",
+   "chb23"
+  ],
+  "spreads": {
+   "chb08": 1.97,
+   "chb13": 4.12,
+   "chb14": 2.93,
+   "chb21": 6.75,
+   "chb01": 3.74,
+   "chb04": 2.37,
+   "chb06": 1.67,
+   "chb07": 1.66,
+   "chb10": 2.54,
+   "chb16": 2.33,
+   "chb17": 1.31,
+   "chb18": 2.27,
+   "chb19": 1.05,
+   "chb23": 5.65
+  }
+ }
+}

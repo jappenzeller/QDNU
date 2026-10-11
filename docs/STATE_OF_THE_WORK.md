@@ -51,4 +51,4 @@ A quantum-information geometry for multichannel EEG covariance states — the de
 
 ## What is next
 
-Not another test. The DSP-000 Phase 1 reading, and a `theory_notes.md` in your own words. Tests resume when a claim in that draft needs one.
+The Notebook pages are the theory record; the next page is 03, within-seizure time-resolved entropy, preceded by the duration check (091).
