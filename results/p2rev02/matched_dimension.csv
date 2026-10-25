@@ -1,0 +1,13 @@
+labelling,classifier,d,auc_mean,auc_sd,n_inversions
+original,lda,8,0.6554,0.011,7
+original,lda,24,0.657,0.0078,6
+original,lda,36,0.6761,0.0113,5
+original,lda,72,0.6648,0.0104,6
+original,lda,144,0.6586,0.0103,5
+original,lda,336,0.6265,0.0072,5
+original,xgb,8,0.6079,0.0074,9
+original,xgb,24,0.6405,0.0134,5
+original,xgb,36,0.6521,0.0095,6
+original,xgb,72,0.6601,0.0118,5
+original,xgb,144,0.6549,0.01,5
+original,xgb,336,0.6435,0.0103,5

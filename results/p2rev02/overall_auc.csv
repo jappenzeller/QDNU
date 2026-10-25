@@ -1,0 +1,13 @@
+labelling,method,classifier,d,mean_over_seeds,sd_over_seeds
+original,tier2a_raw,xgb,8,0.5293,0.0157
+original,tier2a_calibrated,xgb,8,0.5777,0.0104
+original,tier2b_raw,xgb,336,0.5612,0.0146
+original,tier2b_calibrated,xgb,336,0.6519,0.0099
+original,tier3_raw,lda,36,0.609,0.0179
+original,tier3_calibrated,lda,36,0.6775,0.0106
+strict,tier2a_raw,xgb,8,0.6137,0.0143
+strict,tier2a_calibrated,xgb,8,0.6557,0.0107
+strict,tier2b_raw,xgb,336,0.7046,0.0139
+strict,tier2b_calibrated,xgb,336,0.7525,0.0128
+strict,tier3_raw,lda,36,0.7736,0.0085
+strict,tier3_calibrated,lda,36,0.7895,0.0049

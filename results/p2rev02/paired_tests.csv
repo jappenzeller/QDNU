@@ -1,0 +1,13 @@
+comparison,labelling,auc_kind,n,mean_diff,ci_lo,ci_hi,tost_p,wilcoxon_p,wilcoxon_method,rank_biserial
+t3_vs_t2a,original,calibrated,22,0.0904,0.0407,0.1449,0.92057,0.00285,exact,0.7
+t3_vs_t2a,original,raw,22,0.0647,-0.0049,0.1344,0.65347,0.22211,exact,0.304
+t3_vs_t2b,original,calibrated,22,0.0119,-0.0533,0.078,0.14228,0.65564,exact,0.115
+t3_vs_t2b,original,raw,22,0.0115,-0.0643,0.0892,0.17964,0.97462,exact,0.012
+t2a_vs_t2b,original,calibrated,22,-0.0785,-0.1227,-0.0335,0.87359,0.00415,exact,-0.676
+t2a_vs_t2b,original,raw,22,-0.0532,-0.1151,0.0063,0.53784,0.2479,exact,-0.289
+t3_vs_t2a,strict,calibrated,22,0.1413,0.0706,0.2138,0.98779,0.00145,exact,0.739
+t3_vs_t2a,strict,raw,22,0.1711,0.0985,0.2474,0.99731,0.0003,exact,0.818
+t3_vs_t2b,strict,calibrated,22,0.027,-0.0419,0.0942,0.26604,0.44341,exact,0.194
+t3_vs_t2b,strict,raw,22,0.0449,-0.0528,0.1489,0.46257,0.48259,exact,0.178
+t2a_vs_t2b,strict,calibrated,22,-0.1143,-0.1812,-0.0458,0.95656,0.00832,exact,-0.628
+t2a_vs_t2b,strict,raw,22,-0.1263,-0.2267,-0.0133,0.90849,0.03588,exact,-0.514

@@ -1,0 +1,114 @@
+{
+  "pre_declarations_see": "scripts/p2rev02_classical_rerun.py module docstring",
+  "xgb_params": {
+    "n_estimators": 200,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 3,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "random_state": 42,
+    "eval_metric": "logloss",
+    "n_jobs": -1
+  },
+  "lda_params": {
+    "solver": "lsqr",
+    "shrinkage": "auto"
+  },
+  "scipy_version": "1.17.1",
+  "D1": {
+    "declared": "Tier 3 polarity sign agrees original vs strict in >= 18/22; undefined counts as disagreement",
+    "n_agree": 17,
+    "n_total": 22,
+    "disagreeing_patients": [
+      "chb03",
+      "chb04",
+      "chb06",
+      "chb09",
+      "chb16"
+    ],
+    "passed": false
+  },
+  "S1": {
+    "declared": "T3-T2A calibrated paired diff, original seed 0: equivalence iff 95% bootstrap CI inside (-0.05, +0.05); TOST margin 0.05; Wilcoxon pratt + rank-biserial for all comparisons",
+    "comparison": "t3_vs_t2a",
+    "labelling": "original",
+    "auc_kind": "calibrated",
+    "n": 22,
+    "mean_diff": 0.0904,
+    "ci_lo": 0.0407,
+    "ci_hi": 0.1449,
+    "tost_p": 0.92057,
+    "wilcoxon_p": 0.00285,
+    "wilcoxon_method": "exact",
+    "rank_biserial": 0.7,
+    "equivalent": false,
+    "passed": true
+  },
+  "M1": {
+    "declared": "(a) Spearman rho(d, cal AUC) over 6 points for PCA(T2B)+LDA > 0.8; (b) |T2B_pca36+LDA - T3_36+LDA| <= 0.05 calibrated, original seed 0",
+    "spearman_rho": -0.086,
+    "curve_seed0": [
+      0.6634,
+      0.6562,
+      0.6678,
+      0.669,
+      0.6665,
+      0.6369
+    ],
+    "t2b_pca36_lda": 0.6678,
+    "t3_lda": 0.6562,
+    "gap_at_36": 0.0115,
+    "a_passed": false,
+    "b_passed": true,
+    "passed": false,
+    "replacement_sentence": "the Tier 2B representation performs better under the conditions tested"
+  },
+  "G1": {
+    "declared": "pi_p agrees with Tier 3 AUC side in >= 75% of patients whose seed-0 bootstrap CI excludes 0.5 (original labelling); all-22 agreement and cosine reported; both labellings",
+    "original_agree_all": 16,
+    "original_n_all": 22,
+    "original_agree_decided": 9,
+    "original_n_decided": 10,
+    "original_rate_decided": 0.9,
+    "strict_agree_all": 19,
+    "strict_n_all": 22,
+    "strict_agree_decided": 13,
+    "strict_n_decided": 14,
+    "strict_rate_decided": 0.9285714285714286,
+    "passed": true
+  },
+  "controls": {
+    "label_flip_passed": true,
+    "label_flip_max_deviation": 1.6653345369377348e-16,
+    "permutation": "per-patient p_below in per_patient_auc.csv (tier3 rows)"
+  },
+  "hw_sim_bootstrap": {
+    "bootstrapped": [
+      "agate_hw_20s (results/window_analysis/quantum_20s_hardware.json per-subject scores+y_true)"
+    ],
+    "not_available": [
+      "agate_hw_1.95s: ch8_heron_loso_results.json stores per-patient AUC only; would need per-segment expectation values or raw shot counts from the ibm_torino jobs",
+      "agate_sim_1.95s (Table 1 row): quantum_theta_alpha_results.json stores per-patient AUC and mean scores only",
+      "agate_sim_20s: quantum_20s_simulation.json stores per-patient AUC only",
+      "reviewer_response/predictions.npz holds per-segment scores for the V3 theta-band sim (q_v3), which is NOT the submitted theta-alpha row, so it was not used"
+    ]
+  },
+  "rebuilds": {
+    "table4_qsim_differs": [
+      "chb05",
+      "chb11",
+      "chb21"
+    ],
+    "sim195_calibrated_pooled_submitted": 0.54,
+    "sim195_calibrated_per_patient_oracle_v3file": 0.6014,
+    "sim195_calibrated_per_patient_oracle_scalingfile": 0.6076,
+    "seizure_count": 142
+  },
+  "class_balance": {
+    "original": "856:856",
+    "strict": "430:856"
+  }
+}

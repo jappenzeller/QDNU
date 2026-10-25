@@ -1,0 +1,8 @@
+patient,qsim_auc,qsim_sign,submitted_sign,differs,window_s,source
+chb01,0.4786,inverted,inverted,0,1.95,"results/scaling/quantum_channel_scaling.json ch8 (overall 0.4595 = simulation_ch8_auc in ch8_heron_loso_results.json; 1.95 s, PLV 4-13 Hz, MAX)"
+chb03,0.4643,inverted,inverted,0,1.95,"results/scaling/quantum_channel_scaling.json ch8 (overall 0.4595 = simulation_ch8_auc in ch8_heron_loso_results.json; 1.95 s, PLV 4-13 Hz, MAX)"
+chb05,0.41,inverted,standard,1,1.95,"results/scaling/quantum_channel_scaling.json ch8 (overall 0.4595 = simulation_ch8_auc in ch8_heron_loso_results.json; 1.95 s, PLV 4-13 Hz, MAX)"
+chb07,0.65,standard,standard,0,1.95,"results/scaling/quantum_channel_scaling.json ch8 (overall 0.4595 = simulation_ch8_auc in ch8_heron_loso_results.json; 1.95 s, PLV 4-13 Hz, MAX)"
+chb11,0.65,standard,inverted,1,1.95,"results/scaling/quantum_channel_scaling.json ch8 (overall 0.4595 = simulation_ch8_auc in ch8_heron_loso_results.json; 1.95 s, PLV 4-13 Hz, MAX)"
+chb14,0.6438,standard,standard,0,1.95,"results/scaling/quantum_channel_scaling.json ch8 (overall 0.4595 = simulation_ch8_auc in ch8_heron_loso_results.json; 1.95 s, PLV 4-13 Hz, MAX)"
+chb21,0.6625,standard,inverted,1,1.95,"results/scaling/quantum_channel_scaling.json ch8 (overall 0.4595 = simulation_ch8_auc in ch8_heron_loso_results.json; 1.95 s, PLV 4-13 Hz, MAX)"
