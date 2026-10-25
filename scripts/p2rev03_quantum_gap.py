@@ -1,0 +1,452 @@
+#!/usr/bin/env python3
+"""
+================================================================================
+PROMPT P2REV-03 - The quantum rows: classical equivalent, finite-shot and
+noise-model distributions
+================================================================================
+
+Stages (--stage): job0 (pin the runs), job1 (reproduce ideal expectations and
+pin the segment set; CHECKPOINT - the run stops here and reports if any
+submitted quantum row cannot be reproduced to 1e-6), job2..job6 per the
+prompt, gated on the Job 1 checkpoint.
+
+Outputs: results/p2rev03/ (tracked).
+
+================================================================================
+EXPECTATION BLOCK (prompt requires this filled before running)
+================================================================================
+
+> Jim's stated expectation (2026-10-25): the paper is a geometry paper; the
+> A-Gate is the instrument that exposed the sign and motivated the geometric
+> definition; this prompt decides how much the quantum section can still say,
+> nothing more. [Verbatim from the prompt header, Jim 2026-10-25.]
+>
+> Operationalization recorded by Claude from that stance - Jim has NOT
+> separately stated numeric expectations for H1/H2, and this block says so
+> rather than inventing them:
+> - H1/H2 are expected to show whether shot noise and device noise account
+>   for the hardware numbers; under Jim's reading the hardware gap is not
+>   load-bearing for the paper's geometry claims, so either outcome is
+>   reportable.
+> - The fixed-observable sign is expected to agree with pi_p for the
+>   strongly-polar patients (large cosine) if the instrument story holds.
+> - What would change his reading of the hardware gap: hardware values
+>   falling outside BOTH the finite-shot and the noise-model intervals.
+> (Flagged in docs/PROMPT_P2REV_03_RESULTS.md as a question for Jim to
+> confirm or replace.)
+
+================================================================================
+PRE-DECLARED BLOCKS (verbatim from docs/PROMPT_P2REV_03_quantum_gap.md,
+written here before anything ran)
+================================================================================
+
+H1 (Job 3, finite-shot distribution)
+    For each segment, p = (1 + <Z_0>)/2. Draw counts ~ Binomial(1024, p),
+    200 seeds, score = 2*p_hat - 1. Per seed, compute per-patient AUC and the
+    overall AUC (same pooling as the submitted row). Report, per patient and
+    overall, the 2.5 / 50 / 97.5 percentiles, and the percentile at which the
+    hardware value sits. Both rows (1.95 s, 20 s).
+    Pre-declared H1: the hardware per-patient raw AUC lies inside the
+    finite-shot 95 % interval for >= 5 of 7 patients, for the 1.95 s row.
+    Reported separately for the 20 s row. If H1 passes, shot noise alone
+    accounts for the hardware numbers and the "discrepancy" is not one. If H1
+    fails, Job 4 is where the explanation has to come from.
+
+H2 (Job 4, noise-model distribution)
+    Transpile the Job 1 circuits for FakeTorino (qiskit-ibm-runtime fake
+    provider; state the version and the transpiler optimization level, which
+    must match the hardware script) and sample with
+    AerSimulator.from_backend, 1024 shots per circuit, seeds >= 20. Budget:
+    estimate the runtime from the first 20 circuits before launching; if the
+    full set at 20 seeds exceeds 3 h, reduce seeds to 10 and say so; if it
+    still exceeds 3 h, run only the segments the hardware saw and say so.
+    Same statistics as Job 3.
+    Pre-declared H2: the hardware per-patient raw AUC lies inside the
+    noise-model 95 % interval for >= 5 of 7 patients, 1.95 s row. Also report
+    the overall gap: hardware 0.5241 minus the noise-model overall AUC, with
+    the noise-model 95 % interval, so the manuscript's Delta = 0.0515 gets an
+    interval around it.
+
+Q1 (Job 5, sub-chance readout significance)
+    For the ideal 1.95 s scores, per patient, 7-subset and all 22, both
+    labellings: permutation p for "below chance" (1000 within-patient label
+    permutations, same definition as P2REV-02 c2). For the hardware 20 s row
+    the per-window scores exist and P2REV-02 already bootstrapped them; add
+    the permutation p there too. The hardware 1.95 s row has no per-segment
+    scores; state that again and do not fabricate an interval.
+    Pre-declared Q1: the section-5.2 sentence "AUC < 0.5 is an explicit
+    polarity readout" is retained only if, under the original labelling,
+    >= 3 of the 7 hardware-subset patients are below chance in the ideal
+    simulation at p < 0.05 AND the same patients are below chance in Tier 3
+    (P2REV-02 per_patient_auc.csv, perm_p). Otherwise the sentence is
+    replaced by: the fixed-basis observable's sign is reported per patient as
+    an observation, with its interval.
+
+G2 (Job 6, sign table)
+    One table, 7 hardware patients, both labellings where available: pi_p and
+    its cosine (from geometric_sign.csv), Tier 3 sign, ideal-sim sign,
+    hardware 1.95 s sign, hardware 20 s sign, and the balance-observable sign
+    from Job 2. Agreement counts for every pair of columns.
+    Pre-declared G2: the ideal-sim sign agrees with pi_p in >= 5 of 7 under
+    the original labelling. Reported, not judged, for strict.
+================================================================================
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import importlib.util
+import json
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT / 'QA1'))
+
+OUT_DIR = PROJECT_ROOT / "results" / "p2rev03"
+DATA_DIR = Path("H:/Data/PythonDNU/EEG/chbmit")
+HW_SUBSET = ['chb01', 'chb03', 'chb05', 'chb07', 'chb11', 'chb14', 'chb21']
+REPRO_TOL = 1e-6
+
+
+def log(msg=""):
+    print(f"{datetime.now():%H:%M:%S} | {msg}", flush=True)
+
+
+def load_script(name):
+    """Import one of the original run scripts as a module (functions only;
+    all have __main__ guards)."""
+    spec = importlib.util.spec_from_file_location(
+        name, PROJECT_ROOT / 'scripts' / f'{name}.py')
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# =============================================================================
+# Stage job0 - pin the runs (table written to run_inventory.md)
+# =============================================================================
+
+RUN_INVENTORY = """# P2REV-03 Job 0 - the submitted quantum rows, pinned
+
+Every cell below was read out of the producing script, not inferred.
+
+| row | result file | script that produced it | window | montage | labelling | segments per patient | shots | scoring function |
+|---|---|---|---|---|---|---|---|---|
+| hardware 1.95 s | `results/hardware_validation/ch8_heron_loso_results.json` | `scripts/quantum_heron_validation.py` (PROMPT 006) | **first 2.0 s sub-window** of each 30 s `train_chbmit` segment (`SUBWINDOW_SEC = 2.0`; the manuscript's "1.95 s" appears nowhere in the code) | fronto-central CH8: FP1-F7, F7-T7, FP1-F3, F3-C3, FP2-F8, F8-T8, FP2-F4, F4-C4 (from `classical_channel_scaling.json`) | original (`label_map = {interictal:0, preictal:1, ictal:1}`) | chb01 24, chb03 24, chb05 20, chb07 16, chb11 16, chb14 26, chb21 18 (= 144; one score per segment) | 1024, `optimization_level=3`, no mitigation | **Hellinger fidelity of the measured 17-bit count distribution against two template circuits** (ictal / interictal, parameters averaged over the training patients' sub-window params, templates run on hardware); score = fid_ictal - fid_inter |
+| hardware 20 s | `results/window_analysis/quantum_20s_hardware.json` | `scripts/quantum_20s_hardware.py` (PROMPT 017) | first 20 s of each 30 s segment, one circuit per segment | same CH8 (the "bipolar" list in its config IS the fronto-central eight - all CHB-MIT channels are bipolar pairs; same montage as every other run) | original | same segment sets as above (24/24/20/16/16/26/18) | 1024, `optimization_level=3`, no mitigation | same dual-template Hellinger scoring, templates re-run on hardware per fold (template segments capped at first 50 per class) |
+| simulation 1.95 s | `results/scaling/quantum_channel_scaling.json` `ch8` | `scripts/quantum_channel_scaling.py` | **all** 2.0 s sub-windows of each 30 s segment (15 per full segment), **MAX over sub-windows** | same CH8 | original | 22 subjects, 504 segments total (`n_samples` per subject in the file) | statevector (exact) | **amplitude fidelity** abs(<psi_test|psi_template>)^2 against statevector templates; score = fid_ictal - fid_inter, MAX over sub-windows |
+| (simulation 20 s) | `results/window_analysis/quantum_20s_simulation.json` | `scripts/quantum_20s_simulation.py` | first 20 s, one circuit per segment | same CH8 | original | 7 subjects only (templates from the other 6 of the 7, first 50 per class) | statevector | **Bhattacharyya coefficient of basis-state probability distributions** against template distributions; score = fid_ictal - fid_inter |
+
+Facts the table forces into the open (each verified in the scripts):
+
+1. **None of the four rows measures the ancilla <Z_0>.** Every submitted quantum
+   number is dual-template fidelity classification: the test state's distance to an
+   ictal and an interictal *template circuit* whose parameters are averages over the
+   **training patients'** (a, b, c) features. The templates are rebuilt per LOSO fold
+   from training data, so the method has a trained component; the manuscript's
+   section-3.5 scoring definition ((N0 - N1)/N on the output qubit) and the
+   "no trained parameters" framing of section 5.2 do not describe the submitted
+   numbers.
+2. The hardware 1.95 s and simulation 1.95 s rows differ in more than backend:
+   hardware scores the **first** 2.0 s sub-window per segment by **count-distribution
+   Hellinger** fidelity; the simulation scores **all 15** sub-windows by **amplitude**
+   fidelity and takes the MAX. The submitted "simulation-hardware gap"
+   (Delta = 0.0515) therefore compares two different estimators as well as two
+   backends. The 20 s rows are closer (same one-window-per-segment design;
+   count-Hellinger vs statevector-probability Bhattacharyya).
+3. The window the manuscript calls "1.95 s" is 2.0 s in every producing script.
+4. No quantum run applies the classical preprocessing chain (0.5-40 Hz bandpass,
+   60 Hz notch, z-score); raw EDF goes straight into the PLV extraction's own
+   4-13 Hz bandpass. Section 3.1's "preprocessing applied to all experiments" is
+   wrong for the quantum rows.
+5. All four rows use `train_chbmit` 30 s segments with the original labelling
+   (preictal 60 s labelled 1) and the first-minutes interictal selection; the
+   circuit builder is `QA1/multichannel_circuit.py`, whose inter-channel layer is an
+   **open chain** (M-1 CNOTs); `qdnu/multichannel_circuit.py` is a *closed ring* and
+   was NOT what the runs used.
+"""
+
+
+def stage_job0():
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    with open(OUT_DIR / 'run_inventory.md', 'w', encoding='utf-8') as f:
+        f.write(RUN_INVENTORY)
+    log("job0: run_inventory.md written")
+
+
+# =============================================================================
+# Stage job1 - reproduce the ideal expectations and pin the segment set
+# =============================================================================
+
+def ancilla_z_from_sv(sv):
+    """<Z_0> for qubit 0 from a qiskit Statevector."""
+    p = sv.probabilities([0])
+    return float(p[0] - p[1])
+
+
+def stage_job1():
+    """Faithful re-run of the two simulation rows (the only reproducible
+    rows), plus the ancilla <Z_0> evaluation the prompt specifies. Writes
+    job1_reproduction.json and the ideal_scores CSVs, then evaluates the
+    1e-6 checkpoint."""
+    from qiskit.quantum_info import Statevector
+    from sklearn.metrics import roc_auc_score
+
+    qcs = load_script('quantum_channel_scaling')      # sim 1.95 s row
+    q20 = load_script('quantum_20s_simulation')       # sim 20 s row
+    from QA1.multichannel_circuit import create_multichannel_circuit
+
+    t0 = time.time()
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    # ---- load all segments exactly as the scaling script did ---------------
+    channels = qcs.load_channels() if hasattr(qcs, 'load_channels') else \
+        ["FP1-F7", "F7-T7", "FP1-F3", "F3-C3",
+         "FP2-F8", "F8-T8", "FP2-F4", "F4-C4"]
+    log(f"job1: loading segments (channels: {channels})")
+    eeg_list, labels, subjects = qcs.load_all_segments(channels)
+    label_map = {'interictal': 0, 'preictal': 1, 'ictal': 1}
+    y = np.array([label_map.get(l, 0) for l in labels])
+    uniq = sorted(set(subjects))
+    log(f"job1: {len(eeg_list)} segments, {len(uniq)} subjects")
+
+    # ---- cache (a,b,c) params per (segment, sub-window), original order ----
+    log("job1: extracting PLV params (2.0 s sub-windows, as the scripts did)")
+    seg_params = []     # list over segments of list over sub-windows of params
+    for eeg in eeg_list:
+        seg_params.append(qcs.extract_plv_params_subwindows(
+            eeg, fs=qcs.FS, band=qcs.BAND))
+
+    # statevector + <Z_0> per (segment, sub-window), computed once
+    log("job1: statevectors + <Z_0> per sub-window")
+    seg_svs = {}        # i -> list of Statevector (kept only per fold, below)
+    z0_rows = []        # per sub-window ancilla expectation
+    n_sw_total = sum(len(s) for s in seg_params)
+    log(f"job1: {n_sw_total} sub-window circuits")
+
+    # ---- faithful sim-1.95s LOSO (templates from cached params) ------------
+    def average_params(params_flat, n_ch):
+        avg = []
+        for ch in range(n_ch):
+            avg_a = np.mean([p[ch][0] for p in params_flat])
+            sins = np.mean([np.sin(p[ch][1]) for p in params_flat])
+            coss = np.mean([np.cos(p[ch][1]) for p in params_flat])
+            avg_b = np.arctan2(sins, coss) % (2 * np.pi)
+            avg_c = np.clip(np.mean([p[ch][2] for p in params_flat]),
+                            0.05, 0.95)
+            avg.append((avg_a, avg_b, avg_c))
+        return avg
+
+    n_ch = len(channels)
+    per_subject_repro = {}
+    ideal_rows_195 = []
+    z0_auc_195 = {}
+    for test_subject in uniq:
+        train_idx = [i for i in range(len(eeg_list))
+                     if subjects[i] != test_subject]
+        test_idx = [i for i in range(len(eeg_list))
+                    if subjects[i] == test_subject]
+        y_test = y[test_idx]
+        if len(np.unique(y_test)) < 2:
+            continue
+        ictal_flat = [sw for i in train_idx if labels[i] in ('ictal',
+                                                             'preictal')
+                      for sw in seg_params[i]]
+        inter_flat = [sw for i in train_idx if labels[i] == 'interictal'
+                      for sw in seg_params[i]]
+        if not ictal_flat or not inter_flat:
+            continue
+        ictal_sv = Statevector.from_instruction(
+            create_multichannel_circuit(average_params(ictal_flat, n_ch)))
+        inter_sv = Statevector.from_instruction(
+            create_multichannel_circuit(average_params(inter_flat, n_ch)))
+
+        final_scores = []
+        z0_first = []
+        for i in test_idx:
+            sw_scores = []
+            for k, sw in enumerate(seg_params[i]):
+                sv = Statevector.from_instruction(
+                    create_multichannel_circuit(sw))
+                fid_i = abs(ictal_sv.inner(sv)) ** 2
+                fid_t = abs(inter_sv.inner(sv)) ** 2
+                sw_scores.append(fid_i - fid_t)
+                z0 = ancilla_z_from_sv(sv)
+                ideal_rows_195.append(dict(
+                    patient=test_subject, segment_idx=i, subwindow_idx=k,
+                    y=int(y[i]), z_expect=z0,
+                    fidelity_score=fid_i - fid_t))
+                if k == 0:
+                    z0_first.append(z0)
+            final_scores.append(max(sw_scores) if sw_scores else 0.0)
+        auc = roc_auc_score(y_test, final_scores)
+        try:
+            z0_auc = roc_auc_score(y_test, z0_first)
+        except ValueError:
+            z0_auc = None
+        z0_auc_195[test_subject] = z0_auc
+        per_subject_repro[test_subject] = dict(
+            repro_auc=float(auc), n=len(test_idx))
+        log(f"job1: sim-1.95s {test_subject} repro AUC {auc:.6f} "
+            f"| <Z0> first-subwindow AUC "
+            f"{z0_auc if z0_auc is None else round(z0_auc, 4)}")
+
+    # compare with the submitted scaling file
+    scal = json.load(open(PROJECT_ROOT /
+                          'results/scaling/quantum_channel_scaling.json',
+                          encoding='utf-8'))['ch8']['per_subject']
+    max_dev_195 = 0.0
+    for s, d in per_subject_repro.items():
+        sub = float(scal[s]['auc'])
+        d['submitted_auc'] = sub
+        d['abs_dev'] = abs(d['repro_auc'] - sub)
+        d['z0_auc_first_subwindow'] = z0_auc_195[s]
+        d['z0_abs_dev_vs_submitted'] = (
+            None if z0_auc_195[s] is None else abs(z0_auc_195[s] - sub))
+        max_dev_195 = max(max_dev_195, d['abs_dev'])
+
+    # ---- faithful sim-20s row (7 subjects, module's own functions) ---------
+    log("job1: sim-20s row (7 subjects)")
+    subject_data = {}
+    for subj in HW_SUBSET:
+        el, lb = q20.load_subject_data(subj, channels)
+        if el:
+            yy = np.array([label_map.get(l, 0) for l in lb])
+            if len(np.unique(yy)) == 2:
+                subject_data[subj] = (el, lb, yy)
+    per_subject_20 = {}
+    ideal_rows_20 = []
+    W = q20.WINDOW_SAMPLES
+    for test_subject in subject_data:
+        train_ictal, train_inter = [], []
+        for subj, (el, lb, _) in subject_data.items():
+            if subj != test_subject:
+                for eeg, l in zip(el, lb):
+                    e = eeg[:, :W]
+                    if e.shape[1] >= W:
+                        (train_ictal if l in ('ictal', 'preictal')
+                         else train_inter).append(e)
+        if not train_ictal or not train_inter:
+            continue
+        ictal_params = [q20.extract_plv_params(e, fs=q20.FS, band=q20.BAND)
+                        for e in train_ictal[:50]]
+        inter_params = [q20.extract_plv_params(e, fs=q20.FS, band=q20.BAND)
+                        for e in train_inter[:50]]
+        ictal_avg = average_params(ictal_params, n_ch)
+        inter_avg = average_params(inter_params, n_ch)
+        sv_i = Statevector.from_instruction(
+            create_multichannel_circuit(ictal_avg))
+        sv_t = Statevector.from_instruction(
+            create_multichannel_circuit(inter_avg))
+        pi_ = np.abs(sv_i.data) ** 2
+        pt_ = np.abs(sv_t.data) ** 2
+        el, lb, yy = subject_data[test_subject]
+        scores, yv = [], []
+        for idx, eeg in enumerate(el):
+            e = eeg[:, :W]
+            if e.shape[1] < W:
+                continue
+            params = q20.extract_plv_params(e, fs=q20.FS, band=q20.BAND)
+            sv = Statevector.from_instruction(
+                create_multichannel_circuit(params))
+            p = np.abs(sv.data) ** 2
+            fid_i = float(np.sum(np.sqrt(p * pi_)) ** 2)
+            fid_t = float(np.sum(np.sqrt(p * pt_)) ** 2)
+            scores.append(fid_i - fid_t)
+            yv.append(int(yy[idx]))
+            ideal_rows_20.append(dict(
+                patient=test_subject, segment_idx=idx, y=int(yy[idx]),
+                z_expect=ancilla_z_from_sv(sv),
+                fidelity_score=fid_i - fid_t))
+        auc = roc_auc_score(yv, scores)
+        z0s = [r['z_expect'] for r in ideal_rows_20
+               if r['patient'] == test_subject]
+        try:
+            z0_auc = roc_auc_score(yv, z0s)
+        except ValueError:
+            z0_auc = None
+        per_subject_20[test_subject] = dict(repro_auc=float(auc),
+                                            z0_auc=z0_auc, n=len(yv))
+        log(f"job1: sim-20s {test_subject} repro AUC {auc:.6f} | <Z0> AUC "
+            f"{z0_auc if z0_auc is None else round(z0_auc, 4)}")
+
+    sub20 = json.load(open(PROJECT_ROOT /
+                           'results/window_analysis/'
+                           'quantum_20s_simulation.json',
+                           encoding='utf-8'))['per_subject']
+    max_dev_20 = 0.0
+    for s, d in per_subject_20.items():
+        sub = float(sub20[s]['raw_auc'])
+        d['submitted_auc'] = sub
+        d['abs_dev'] = abs(d['repro_auc'] - sub)
+        d['z0_abs_dev_vs_submitted'] = (
+            None if d['z0_auc'] is None else abs(d['z0_auc'] - sub))
+        max_dev_20 = max(max_dev_20, d['abs_dev'])
+
+    # ---- write outputs ------------------------------------------------------
+    for name, rows in [('ideal_scores_1p95s.csv', ideal_rows_195),
+                       ('ideal_scores_20s.csv', ideal_rows_20)]:
+        with open(OUT_DIR / name, 'w', newline='', encoding='utf-8') as f:
+            w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+            w.writeheader()
+            w.writerows(rows)
+
+    repro = dict(
+        tolerance=REPRO_TOL,
+        sim_1p95s=dict(
+            per_subject=per_subject_repro,
+            max_abs_dev_faithful=max_dev_195,
+            faithful_reproduced_to_tol=bool(max_dev_195 < REPRO_TOL),
+            note='faithful = dual-template amplitude-fidelity MAX pipeline; '
+                 'z0 = the ancilla observable the P2REV-03 prompt specifies',
+        ),
+        sim_20s=dict(
+            per_subject=per_subject_20,
+            max_abs_dev_faithful=max_dev_20,
+            faithful_reproduced_to_tol=bool(max_dev_20 < REPRO_TOL),
+        ),
+        hardware_rows='not reproducible by simulation by construction '
+                      '(physical counts); compared distributionally in '
+                      'Jobs 3-4',
+        checkpoint_z0=dict(
+            z0_reproduces_submitted=False,
+            reason='no submitted row was scored by the ancilla <Z_0>; all '
+                   'four rows are dual-template fidelity classifiers (see '
+                   'run_inventory.md)',
+        ),
+        runtime_min=round((time.time() - t0) / 60, 1),
+    )
+    with open(OUT_DIR / 'job1_reproduction.json', 'w', encoding='utf-8') as f:
+        json.dump(repro, f, indent=2)
+    log(f"job1: done in {repro['runtime_min']} min; "
+        f"faithful max dev 1.95s {max_dev_195:.2e}, 20s {max_dev_20:.2e}")
+    log("job1 CHECKPOINT: the <Z_0> reproduction the prompt specifies FAILS "
+        "by construction (no row used <Z_0>); stopping before Jobs 2-6 per "
+        "instruction.")
+    return repro
+
+
+# =============================================================================
+# MAIN
+# =============================================================================
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--stage', default='job0+job1',
+                    choices=['job0', 'job1', 'job0+job1'])
+    args = ap.parse_args()
+    if args.stage in ('job0', 'job0+job1'):
+        stage_job0()
+    if args.stage in ('job1', 'job0+job1'):
+        stage_job1()
+
+
+if __name__ == '__main__':
+    main()

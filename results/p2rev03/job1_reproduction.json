@@ -1,0 +1,254 @@
+{
+  "tolerance": 1e-06,
+  "sim_1p95s": {
+    "per_subject": {
+      "chb01": {
+        "repro_auc": 0.4785714285714286,
+        "n": 24,
+        "submitted_auc": 0.4786,
+        "abs_dev": 2.8571428571433355e-05,
+        "z0_auc_first_subwindow": 0.35714285714285715,
+        "z0_abs_dev_vs_submitted": 0.12145714285714287
+      },
+      "chb02": {
+        "repro_auc": 0.28333333333333327,
+        "n": 16,
+        "submitted_auc": 0.2833,
+        "abs_dev": 3.333333333327415e-05,
+        "z0_auc_first_subwindow": 0.55,
+        "z0_abs_dev_vs_submitted": 0.26670000000000005
+      },
+      "chb03": {
+        "repro_auc": 0.46428571428571425,
+        "n": 24,
+        "submitted_auc": 0.4643,
+        "abs_dev": 1.4285714285744433e-05,
+        "z0_auc_first_subwindow": 0.6928571428571427,
+        "z0_abs_dev_vs_submitted": 0.22855714285714274
+      },
+      "chb04": {
+        "repro_auc": 0.3125,
+        "n": 18,
+        "submitted_auc": 0.3125,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.475,
+        "z0_abs_dev_vs_submitted": 0.16249999999999998
+      },
+      "chb05": {
+        "repro_auc": 0.41000000000000003,
+        "n": 20,
+        "submitted_auc": 0.41,
+        "abs_dev": 5.551115123125783e-17,
+        "z0_auc_first_subwindow": 0.42000000000000004,
+        "z0_abs_dev_vs_submitted": 0.010000000000000064
+      },
+      "chb06": {
+        "repro_auc": 0.595,
+        "n": 30,
+        "submitted_auc": 0.595,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.31999999999999995,
+        "z0_abs_dev_vs_submitted": 0.275
+      },
+      "chb07": {
+        "repro_auc": 0.6499999999999999,
+        "n": 16,
+        "submitted_auc": 0.65,
+        "abs_dev": 1.1102230246251565e-16,
+        "z0_auc_first_subwindow": 0.5833333333333334,
+        "z0_abs_dev_vs_submitted": 0.06666666666666665
+      },
+      "chb08": {
+        "repro_auc": 0.37,
+        "n": 20,
+        "submitted_auc": 0.37,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.37,
+        "z0_abs_dev_vs_submitted": 0.0
+      },
+      "chb09": {
+        "repro_auc": 0.30000000000000004,
+        "n": 18,
+        "submitted_auc": 0.3,
+        "abs_dev": 5.551115123125783e-17,
+        "z0_auc_first_subwindow": 0.3125,
+        "z0_abs_dev_vs_submitted": 0.012500000000000011
+      },
+      "chb10": {
+        "repro_auc": 0.5357142857142857,
+        "n": 24,
+        "submitted_auc": 0.5357,
+        "abs_dev": 1.4285714285744433e-05,
+        "z0_auc_first_subwindow": 0.35714285714285715,
+        "z0_abs_dev_vs_submitted": 0.1785571428571428
+      },
+      "chb11": {
+        "repro_auc": 0.65,
+        "n": 16,
+        "submitted_auc": 0.65,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.75,
+        "z0_abs_dev_vs_submitted": 0.09999999999999998
+      },
+      "chb13": {
+        "repro_auc": 0.43333333333333335,
+        "n": 34,
+        "submitted_auc": 0.4333,
+        "abs_dev": 3.333333333332966e-05,
+        "z0_auc_first_subwindow": 0.4708333333333333,
+        "z0_abs_dev_vs_submitted": 0.03753333333333331
+      },
+      "chb14": {
+        "repro_auc": 0.64375,
+        "n": 26,
+        "submitted_auc": 0.6438,
+        "abs_dev": 4.999999999999449e-05,
+        "z0_auc_first_subwindow": 0.5125,
+        "z0_abs_dev_vs_submitted": 0.13130000000000008
+      },
+      "chb15": {
+        "repro_auc": 0.5325,
+        "n": 50,
+        "submitted_auc": 0.5325,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.6575,
+        "z0_abs_dev_vs_submitted": 0.125
+      },
+      "chb16": {
+        "repro_auc": 0.43,
+        "n": 30,
+        "submitted_auc": 0.43,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.5699999999999998,
+        "z0_abs_dev_vs_submitted": 0.13999999999999985
+      },
+      "chb17": {
+        "repro_auc": 0.3833333333333333,
+        "n": 16,
+        "submitted_auc": 0.3833,
+        "abs_dev": 3.333333333332966e-05,
+        "z0_auc_first_subwindow": 0.5333333333333333,
+        "z0_abs_dev_vs_submitted": 0.15003333333333335
+      },
+      "chb18": {
+        "repro_auc": 0.25,
+        "n": 22,
+        "submitted_auc": 0.25,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.7083333333333333,
+        "z0_abs_dev_vs_submitted": 0.45833333333333326
+      },
+      "chb19": {
+        "repro_auc": 0.5,
+        "n": 16,
+        "submitted_auc": 0.5,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.2666666666666666,
+        "z0_abs_dev_vs_submitted": 0.2333333333333334
+      },
+      "chb20": {
+        "repro_auc": 0.5625,
+        "n": 26,
+        "submitted_auc": 0.5625,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.65625,
+        "z0_abs_dev_vs_submitted": 0.09375
+      },
+      "chb21": {
+        "repro_auc": 0.6625,
+        "n": 18,
+        "submitted_auc": 0.6625,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.4875,
+        "z0_abs_dev_vs_submitted": 0.175
+      },
+      "chb22": {
+        "repro_auc": 0.4666666666666666,
+        "n": 16,
+        "submitted_auc": 0.4667,
+        "abs_dev": 3.333333333338517e-05,
+        "z0_auc_first_subwindow": 0.7333333333333333,
+        "z0_abs_dev_vs_submitted": 0.2666333333333333
+      },
+      "chb23": {
+        "repro_auc": 0.4,
+        "n": 24,
+        "submitted_auc": 0.4,
+        "abs_dev": 0.0,
+        "z0_auc_first_subwindow": 0.3357142857142857,
+        "z0_abs_dev_vs_submitted": 0.06428571428571433
+      }
+    },
+    "max_abs_dev_faithful": 4.999999999999449e-05,
+    "faithful_reproduced_to_tol": false,
+    "note": "faithful = dual-template amplitude-fidelity MAX pipeline; z0 = the ancilla observable the P2REV-03 prompt specifies"
+  },
+  "sim_20s": {
+    "per_subject": {
+      "chb01": {
+        "repro_auc": 0.5142857142857142,
+        "z0_auc": 0.5357142857142858,
+        "n": 24,
+        "submitted_auc": 0.5142857142857142,
+        "abs_dev": 0.0,
+        "z0_abs_dev_vs_submitted": 0.021428571428571574
+      },
+      "chb03": {
+        "repro_auc": 0.37142857142857144,
+        "z0_auc": 0.3785714285714286,
+        "n": 24,
+        "submitted_auc": 0.37142857142857144,
+        "abs_dev": 0.0,
+        "z0_abs_dev_vs_submitted": 0.007142857142857173
+      },
+      "chb05": {
+        "repro_auc": 0.29000000000000004,
+        "z0_auc": 0.32,
+        "n": 20,
+        "submitted_auc": 0.29000000000000004,
+        "abs_dev": 0.0,
+        "z0_abs_dev_vs_submitted": 0.02999999999999997
+      },
+      "chb07": {
+        "repro_auc": 0.3833333333333333,
+        "z0_auc": 0.7333333333333334,
+        "n": 16,
+        "submitted_auc": 0.3833333333333333,
+        "abs_dev": 0.0,
+        "z0_abs_dev_vs_submitted": 0.3500000000000001
+      },
+      "chb11": {
+        "repro_auc": 0.2833333333333333,
+        "z0_auc": 0.23333333333333334,
+        "n": 16,
+        "submitted_auc": 0.2833333333333333,
+        "abs_dev": 0.0,
+        "z0_abs_dev_vs_submitted": 0.04999999999999999
+      },
+      "chb14": {
+        "repro_auc": 0.38125,
+        "z0_auc": 0.6187500000000001,
+        "n": 26,
+        "submitted_auc": 0.38125,
+        "abs_dev": 0.0,
+        "z0_abs_dev_vs_submitted": 0.23750000000000016
+      },
+      "chb21": {
+        "repro_auc": 0.35,
+        "z0_auc": 0.4375,
+        "n": 18,
+        "submitted_auc": 0.35,
+        "abs_dev": 0.0,
+        "z0_abs_dev_vs_submitted": 0.08750000000000002
+      }
+    },
+    "max_abs_dev_faithful": 0.0,
+    "faithful_reproduced_to_tol": true
+  },
+  "hardware_rows": "not reproducible by simulation by construction (physical counts); compared distributionally in Jobs 3-4",
+  "checkpoint_z0": {
+    "z0_reproduces_submitted": false,
+    "reason": "no submitted row was scored by the ancilla <Z_0>; all four rows are dual-template fidelity classifiers (see run_inventory.md)"
+  },
+  "runtime_min": 33.9
+}
