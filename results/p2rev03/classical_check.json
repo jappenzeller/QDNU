@@ -1,0 +1,157 @@
+{
+  "max_abs_err_vs_qiskit_1p95s": 2.453592884421596e-14,
+  "max_abs_err_vs_qiskit_20s": 8.881784197001252e-15,
+  "balance_identity_max_err": 9.103828801926284e-14,
+  "tolerance_required": 1e-10,
+  "passed": true,
+  "dead_zones_1p95s_subwindows": {
+    "chb01": {
+      "n": 360,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9777777777777777
+    },
+    "chb02": {
+      "n": 240,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9708333333333333
+    },
+    "chb03": {
+      "n": 360,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.975
+    },
+    "chb04": {
+      "n": 270,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9740740740740741
+    },
+    "chb05": {
+      "n": 300,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9833333333333333
+    },
+    "chb06": {
+      "n": 450,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9755555555555555
+    },
+    "chb07": {
+      "n": 240,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9916666666666667
+    },
+    "chb08": {
+      "n": 300,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9666666666666667
+    },
+    "chb09": {
+      "n": 270,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9851851851851852
+    },
+    "chb10": {
+      "n": 360,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9833333333333333
+    },
+    "chb11": {
+      "n": 240,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9583333333333334
+    },
+    "chb13": {
+      "n": 510,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9882352941176471
+    },
+    "chb14": {
+      "n": 390,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.982051282051282
+    },
+    "chb15": {
+      "n": 750,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9746666666666667
+    },
+    "chb16": {
+      "n": 450,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9711111111111111
+    },
+    "chb17": {
+      "n": 240,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9791666666666666
+    },
+    "chb18": {
+      "n": 330,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9727272727272728
+    },
+    "chb19": {
+      "n": 240,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9708333333333333
+    },
+    "chb20": {
+      "n": 390,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9871794871794872
+    },
+    "chb21": {
+      "n": 270,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9629629629629629
+    },
+    "chb22": {
+      "n": 240,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9791666666666666
+    },
+    "chb23": {
+      "n": 360,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9722222222222222
+    }
+  },
+  "dead_zones_20s": {
+    "chb01": {
+      "n": 24,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 1.0
+    },
+    "chb03": {
+      "n": 24,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 1.0
+    },
+    "chb05": {
+      "n": 20,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.95
+    },
+    "chb07": {
+      "n": 16,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 1.0
+    },
+    "chb11": {
+      "n": 16,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 1.0
+    },
+    "chb14": {
+      "n": 26,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 0.9615384615384616
+    },
+    "chb21": {
+      "n": 18,
+      "frac_amp_over_pi4": 1.0,
+      "frac_phase_dead": 1.0
+    }
+  },
+  "note": "a, c are clipped to [0.05, 0.95] by the PLV extraction, so the amp flag marks windows with any channel a or c > pi/4 (0.785); phase flag: any channel with |sin b| or |cos b| < 0.3."
+}

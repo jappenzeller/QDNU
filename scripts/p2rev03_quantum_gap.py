@@ -13,31 +13,40 @@ prompt, gated on the Job 1 checkpoint.
 Outputs: results/p2rev03/ (tracked).
 
 ================================================================================
-EXPECTATION BLOCK (prompt requires this filled before running)
+EXPECTATION BLOCK (verbatim from docs/PROMPT_P2REV_03_quantum_gap.md as
+updated by Jim; replaces the earlier Claude-operationalized block)
 ================================================================================
 
-> Jim's stated expectation (2026-10-25): the paper is a geometry paper; the
-> A-Gate is the instrument that exposed the sign and motivated the geometric
-> definition; this prompt decides how much the quantum section can still say,
-> nothing more. [Verbatim from the prompt header, Jim 2026-10-25.]
+> Jim's stated expectation (2026-10-25): "nothing is correct and it's all
+> noise."
 >
-> Operationalization recorded by Claude from that stance - Jim has NOT
-> separately stated numeric expectations for H1/H2, and this block says so
-> rather than inventing them:
-> - H1/H2 are expected to show whether shot noise and device noise account
->   for the hardware numbers; under Jim's reading the hardware gap is not
->   load-bearing for the paper's geometry claims, so either outcome is
->   reportable.
-> - The fixed-observable sign is expected to agree with pi_p for the
->   strongly-polar patients (large cosine) if the instrument story holds.
-> - What would change his reading of the hardware gap: hardware values
->   falling outside BOTH the finite-shot and the noise-model intervals.
-> (Flagged in docs/PROMPT_P2REV_03_RESULTS.md as a question for Jim to
-> confirm or replace.)
+> As predictions: H1 passes (hardware values sit inside the shot-noise band;
+> the gap was never a gap); H2 then adds nothing; Q1 fails (no
+> hardware-subset patient is reliably below chance in the ideal simulation);
+> G2 is at chance (sign agreement with pi_p around 3-4 of 7). The one thing
+> not expected to be noise is pi_p itself, which P2REV-02 already tested
+> (G1). Anything stronger than chance in Q1 or G2 is a surprise and is
+> reported as one.
 
 ================================================================================
-PRE-DECLARED BLOCKS (verbatim from docs/PROMPT_P2REV_03_quantum_gap.md,
-written here before anything ran)
+REVISION OF SCOPE (resume from Job 2, 2026-10-31) - as implemented
+================================================================================
+
+The Job 1 checkpoint showed no submitted row measures the ancilla <Z_0>. The
+resume instruction references a "Revision of scope" section of the prompt
+that is not present in the file on disk; the implemented reading, recorded
+here so it can be corrected if wrong: Jobs 2, 3, 5 and 6 run exactly as the
+prompt states them - i.e. the analysis object is the FIXED ancilla
+observable <Z_0> (the section-3.5 definition), computed classically, with
+the submitted template-fidelity pipeline documented in run_inventory.md and
+the estimator mismatch carried as a caveat on every hardware comparison.
+Job 4 / H2 (FakeTorino) is OUT OF SCOPE under the revision - the expectation
+block's "H2 then adds nothing" - leaving exactly three pre-declared blocks
+in force. Jobs 0-1 outputs are untouched.
+
+================================================================================
+PRE-DECLARED BLOCKS IN FORCE (three, verbatim from the prompt; H2/Job 4
+descoped, not evaluated)
 ================================================================================
 
 H1 (Job 3, finite-shot distribution)
@@ -50,22 +59,12 @@ H1 (Job 3, finite-shot distribution)
     finite-shot 95 % interval for >= 5 of 7 patients, for the 1.95 s row.
     Reported separately for the 20 s row. If H1 passes, shot noise alone
     accounts for the hardware numbers and the "discrepancy" is not one. If H1
-    fails, Job 4 is where the explanation has to come from.
-
-H2 (Job 4, noise-model distribution)
-    Transpile the Job 1 circuits for FakeTorino (qiskit-ibm-runtime fake
-    provider; state the version and the transpiler optimization level, which
-    must match the hardware script) and sample with
-    AerSimulator.from_backend, 1024 shots per circuit, seeds >= 20. Budget:
-    estimate the runtime from the first 20 circuits before launching; if the
-    full set at 20 seeds exceeds 3 h, reduce seeds to 10 and say so; if it
-    still exceeds 3 h, run only the segments the hardware saw and say so.
-    Same statistics as Job 3.
-    Pre-declared H2: the hardware per-patient raw AUC lies inside the
-    noise-model 95 % interval for >= 5 of 7 patients, 1.95 s row. Also report
-    the overall gap: hardware 0.5241 minus the noise-model overall AUC, with
-    the noise-model 95 % interval, so the manuscript's Delta = 0.0515 gets an
-    interval around it.
+    fails, Job 4 is where the explanation has to come from. [Caveat carried
+    from Job 0: the hardware AUCs being located in these intervals were
+    produced by the template-Hellinger estimator, not by <Z_0>; H1 therefore
+    tests whether the hardware numbers are distinguishable from shot-level
+    noise around the fixed observable, and the estimator mismatch is stated
+    wherever H1 is reported.]
 
 Q1 (Job 5, sub-chance readout significance)
     For the ideal 1.95 s scores, per patient, 7-subset and all 22, both
@@ -434,18 +433,537 @@ def stage_job1():
 
 
 # =============================================================================
+# Resume stages (Jobs 2, 3, 5, 6 under the 2026-10-31 revision of scope)
+# =============================================================================
+
+N_BOOT = 2000
+N_PERM = 1000
+N_SHOT_SEEDS = 200
+SHOTS = 1024
+BOOT_SEED = 42
+SUBMITTED_HW_195 = None   # loaded in helpers
+P2REV02_DIR = PROJECT_ROOT / 'results' / 'p2rev02'
+
+
+def _p2rev02_module():
+    return load_script('p2rev02_classical_rerun')
+
+
+def _auc(y, s):
+    from sklearn.metrics import roc_auc_score
+    y = np.asarray(y)
+    if len(np.unique(y)) < 2:
+        return None
+    return float(roc_auc_score(y, s))
+
+
+def build_params_cache():
+    """(a,b,c) per (segment, sub-window) for the Job-1 segment set, plus the
+    20 s-window params for the 7-subset, cached to params_cache.npz."""
+    cache_path = OUT_DIR / 'params_cache.npz'
+    if cache_path.exists():
+        z = np.load(cache_path, allow_pickle=True)
+        return {k: z[k] for k in z.files}
+    qcs = load_script('quantum_channel_scaling')
+    channels = ["FP1-F7", "F7-T7", "FP1-F3", "F3-C3",
+                "FP2-F8", "F8-T8", "FP2-F4", "F4-C4"]
+    log("job2: loading segments for params cache")
+    eeg_list, labels, subjects = qcs.load_all_segments(channels)
+    rows_a, rows_b, rows_c = [], [], []
+    seg_idx, sw_idx, pats, labs = [], [], [], []
+    a20, b20, c20, seg20, pat20, lab20 = [], [], [], [], [], []
+    w20 = int(20.0 * qcs.FS)
+    for i, eeg in enumerate(eeg_list):
+        for k, sw in enumerate(qcs.extract_plv_params_subwindows(
+                eeg, fs=qcs.FS, band=qcs.BAND)):
+            arr = np.array(sw)
+            rows_a.append(arr[:, 0])
+            rows_b.append(arr[:, 1])
+            rows_c.append(arr[:, 2])
+            seg_idx.append(i)
+            sw_idx.append(k)
+            pats.append(subjects[i])
+            labs.append(labels[i])
+        if subjects[i] in HW_SUBSET and eeg.shape[1] >= w20:
+            arr = np.array(qcs.extract_plv_params(
+                eeg[:, :w20], fs=qcs.FS, band=qcs.BAND))
+            a20.append(arr[:, 0])
+            b20.append(arr[:, 1])
+            c20.append(arr[:, 2])
+            seg20.append(i)
+            pat20.append(subjects[i])
+            lab20.append(labels[i])
+    out = dict(a=np.array(rows_a), b=np.array(rows_b), c=np.array(rows_c),
+               seg_idx=np.array(seg_idx), sw_idx=np.array(sw_idx),
+               patient=np.array(pats), label=np.array(labs),
+               a20=np.array(a20), b20=np.array(b20), c20=np.array(c20),
+               seg20=np.array(seg20), patient20=np.array(pat20),
+               label20=np.array(lab20))
+    np.savez_compressed(cache_path, **out)
+    log(f"job2: params cache written ({len(seg_idx)} sub-windows, "
+        f"{len(seg20)} 20s windows)")
+    return out
+
+
+def stage_job2():
+    """Classical implementation: verify numpy <Z_0> against the Job-1 Qiskit
+    values, dead-zone fractions, and the 22-patient / both-labellings
+    re-evaluation on the P2REV-02 windows."""
+    from qdnu.agate_observable import (agate_ancilla_z, agate_balance,
+                                       dead_zone_flags,
+                                       verify_balance_identity)
+    t0 = time.time()
+    pc = build_params_cache()
+
+    # numpy <Z_0> and balance for every sub-window / 20 s window
+    log("job2: numpy <Z_0> for all cached params")
+    z_np = np.array([agate_ancilla_z(pc['a'][i], pc['b'][i], pc['c'][i])
+                     for i in range(len(pc['a']))])
+    bal_np = np.array([agate_balance(pc['a'][i], pc['b'][i], pc['c'][i])
+                       for i in range(len(pc['a']))])
+    z20_np = np.array([agate_ancilla_z(pc['a20'][i], pc['b20'][i],
+                                       pc['c20'][i])
+                       for i in range(len(pc['a20']))])
+    bal20_np = np.array([agate_balance(pc['a20'][i], pc['b20'][i],
+                                       pc['c20'][i])
+                         for i in range(len(pc['a20']))])
+    np.savez_compressed(OUT_DIR / 'z0_balance_cache.npz', z_np=z_np,
+                        bal_np=bal_np, z20_np=z20_np, bal20_np=bal20_np)
+
+    # verification vs the Job 1 Qiskit statevector values
+    import csv as _csv
+    sv195 = {}
+    with open(OUT_DIR / 'ideal_scores_1p95s.csv', encoding='utf-8') as f:
+        for r in _csv.DictReader(f):
+            sv195[(int(r['segment_idx']), int(r['subwindow_idx']))] = \
+                float(r['z_expect'])
+    err195 = max(abs(z_np[i] - sv195[(int(pc['seg_idx'][i]),
+                                      int(pc['sw_idx'][i]))])
+                 for i in range(len(z_np))
+                 if (int(pc['seg_idx'][i]), int(pc['sw_idx'][i])) in sv195)
+    # 20 s row: Job 1 enumerated segments per subject via its own loader;
+    # match by (patient, within-patient ordinal)
+    sv20 = {}
+    with open(OUT_DIR / 'ideal_scores_20s.csv', encoding='utf-8') as f:
+        rows20 = list(_csv.DictReader(f))
+    from collections import defaultdict
+    by_pat = defaultdict(list)
+    for r in rows20:
+        by_pat[r['patient']].append(float(r['z_expect']))
+    err20 = 0.0
+    ptr = defaultdict(int)
+    for i in range(len(z20_np)):
+        p = str(pc['patient20'][i])
+        err20 = max(err20, abs(z20_np[i] - by_pat[p][ptr[p]]))
+        ptr[p] += 1
+    bal_err = verify_balance_identity()
+    log(f"job2: max |qiskit - numpy| 1.95s {err195:.3e}, 20s {err20:.3e}, "
+        f"balance identity {bal_err:.3e}")
+
+    # dead-zone fractions per patient, both rows
+    def zone_frac(aa, bb, cc, pats):
+        out = {}
+        for p in sorted(set(pats.tolist())):
+            m = pats == p
+            flags = [dead_zone_flags(aa[i], bb[i], cc[i])
+                     for i in np.where(m)[0]]
+            out[p] = dict(
+                n=int(m.sum()),
+                frac_amp_over_pi4=float(np.mean([f[0] for f in flags])),
+                frac_phase_dead=float(np.mean([f[1] for f in flags])))
+        return out
+
+    classical_check = dict(
+        max_abs_err_vs_qiskit_1p95s=float(err195),
+        max_abs_err_vs_qiskit_20s=float(err20),
+        balance_identity_max_err=float(bal_err),
+        tolerance_required=1e-10,
+        passed=bool(err195 < 1e-10 and err20 < 1e-10),
+        dead_zones_1p95s_subwindows=zone_frac(pc['a'], pc['b'], pc['c'],
+                                              pc['patient']),
+        dead_zones_20s=zone_frac(pc['a20'], pc['b20'], pc['c20'],
+                                 pc['patient20']),
+        note='a, c are clipped to [0.05, 0.95] by the PLV extraction, so '
+             'the amp flag marks windows with any channel a or c > pi/4 '
+             '(0.785); phase flag: any channel with |sin b| or |cos b| < '
+             '0.3.',
+    )
+    with open(OUT_DIR / 'classical_check.json', 'w', encoding='utf-8') as f:
+        json.dump(classical_check, f, indent=2)
+
+    # ---- 22 patients x both labellings on the P2REV-02 windows ------------
+    log("job2: ideal_auc_22 on P2REV-02 windows (first 2.0 s per window)")
+    m02 = _p2rev02_module()
+    from sagemaker.train_full_cohort import read_edf_segment
+    qcs = load_script('quantum_channel_scaling')
+    cache02 = m02.load_cache(sorted(
+        d for d in Path(m02.DATA_ROOT).iterdir()
+        if d.is_dir() and d.name.startswith('chb')
+        and d.name not in m02.EXCLUDE_SUBJECTS))
+    rows_out = []
+    z_cache = {}
+    for lab in ['original', 'strict']:
+        for pat in sorted(cache02):
+            d = cache02[pat]
+            idx, y = m02.select_windows(d, lab, 0)
+            scores = []
+            for j in idx:
+                key = (pat, int(j))
+                if key not in z_cache:
+                    fn = str(d['src_file'][j])
+                    st = float(d['start'][j])
+                    data, fs = read_edf_segment(
+                        str(Path(m02.DATA_ROOT) / pat / fn), st, st + 2.0,
+                        target_channels=list(m02.QUANTUM_CHANNELS))
+                    if data is None:
+                        z_cache[key] = np.nan
+                    else:
+                        arr = np.array(qcs.extract_plv_params(
+                            data, fs=fs, band=qcs.BAND))
+                        z_cache[key] = agate_ancilla_z(
+                            arr[:, 0], arr[:, 1], arr[:, 2])
+                scores.append(z_cache[key])
+            scores = np.array(scores)
+            ok = ~np.isnan(scores)
+            auc = _auc(y[ok], scores[ok])
+            lo, hi = m02.bootstrap_auc_ci(y[ok], scores[ok])
+            pp, _ = m02.perm_p_below(y[ok], scores[ok])
+            rows_out.append(dict(patient=pat, labelling=lab,
+                                 auc=None if auc is None else round(auc, 4),
+                                 ci_lo=None if lo is None else round(lo, 4),
+                                 ci_hi=None if hi is None else round(hi, 4),
+                                 perm_p_below=round(pp, 4)))
+            log(f"job2: ideal_auc_22 {lab} {pat} auc "
+                f"{auc if auc is None else round(auc, 3)}")
+    with open(OUT_DIR / 'ideal_auc_22.csv', 'w', newline='',
+              encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=['patient', 'labelling', 'auc',
+                                          'ci_lo', 'ci_hi', 'perm_p_below'])
+        w.writeheader()
+        w.writerows(rows_out)
+    log(f"job2 done in {(time.time()-t0)/60:.1f} min")
+    return classical_check
+
+
+def _ideal_subset_scores(pc, z_np, z20_np):
+    """Per-segment ideal scores for the 7-subset, both rows.
+    1.95 s row: <Z_0> of sub-window 0 (the hardware design); 20 s row:
+    <Z_0> of the first-20 s window. Returns {row: {patient: (scores, labels)}}
+    where labels are the segment kinds (ictal/preictal/interictal)."""
+    out = {'1p95s': {}, '20s': {}}
+    first = (pc['sw_idx'] == 0)
+    for p in HW_SUBSET:
+        m = first & (pc['patient'] == p)
+        out['1p95s'][p] = (z_np[m], pc['label'][m])
+        m2 = pc['patient20'] == p
+        out['20s'][p] = (z20_np[m2], pc['label20'][m2])
+    return out
+
+
+def _labels_to_y(kinds, labelling):
+    kinds = np.asarray(kinds)
+    if labelling == 'original':
+        keep = np.ones(len(kinds), bool)
+        y = np.isin(kinds, ['ictal', 'preictal']).astype(int)
+    else:
+        keep = kinds != 'preictal'
+        y = (kinds == 'ictal').astype(int)
+    return keep, y
+
+
+def stage_job3():
+    """H1: finite-shot distribution around the ideal <Z_0>."""
+    pc = build_params_cache()
+    zc = np.load(OUT_DIR / 'z0_balance_cache.npz')
+    scores = _ideal_subset_scores(pc, zc['z_np'], zc['z20_np'])
+    hw195 = json.load(open(PROJECT_ROOT / 'results/hardware_validation/'
+                           'ch8_heron_loso_results.json',
+                           encoding='utf-8'))['ch8']['per_subject']
+    hw20 = json.load(open(PROJECT_ROOT / 'results/window_analysis/'
+                          'quantum_20s_hardware.json',
+                          encoding='utf-8'))['per_subject']
+    hw_vals = {'1p95s': {p: float(hw195[p]['auc']) for p in HW_SUBSET},
+               '20s': {p: float(hw20[p]['raw_auc']) for p in HW_SUBSET}}
+    rng = np.random.default_rng(7)
+    rows, h1 = [], {}
+    for row in ['1p95s', '20s']:
+        per_seed = {p: [] for p in HW_SUBSET}
+        for _ in range(N_SHOT_SEEDS):
+            for p in HW_SUBSET:
+                z, kinds = scores[row][p]
+                keep, y = _labels_to_y(kinds, 'original')
+                pr = (1 + z[keep]) / 2
+                phat = rng.binomial(SHOTS, np.clip(pr, 0, 1)) / SHOTS
+                a = _auc(y[keep], 2 * phat - 1)
+                per_seed[p].append(a)
+        inside = 0
+        for p in HW_SUBSET:
+            v = np.array(per_seed[p], float)
+            lo, md, hi = np.percentile(v, [2.5, 50, 97.5])
+            hwv = hw_vals[row][p]
+            pct = float(np.mean(v <= hwv) * 100)
+            ins = bool(lo <= hwv <= hi)
+            inside += ins
+            rows.append(dict(row=row, patient=p, p2_5=round(lo, 4),
+                             p50=round(md, 4), p97_5=round(hi, 4),
+                             hardware_value=round(hwv, 4),
+                             hardware_percentile=round(pct, 1),
+                             inside_95=int(ins)))
+        overall = np.array([[np.mean([per_seed[p][s] for p in HW_SUBSET])]
+                            for s in range(N_SHOT_SEEDS)]).ravel()
+        lo, md, hi = np.percentile(overall, [2.5, 50, 97.5])
+        hw_overall = float(np.mean(list(hw_vals[row].values())))
+        rows.append(dict(row=row, patient='OVERALL(mean of patients)',
+                         p2_5=round(lo, 4), p50=round(md, 4),
+                         p97_5=round(hi, 4),
+                         hardware_value=round(hw_overall, 4),
+                         hardware_percentile=round(
+                             float(np.mean(overall <= hw_overall) * 100), 1),
+                         inside_95=int(lo <= hw_overall <= hi)))
+        h1[row] = dict(n_inside=int(inside), n_total=len(HW_SUBSET))
+    with open(OUT_DIR / 'shot_distribution.csv', 'w', newline='',
+              encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+    h1_result = dict(
+        declared='hardware per-patient raw AUC inside the finite-shot 95% '
+                 'interval for >= 5 of 7 patients, 1.95 s row',
+        caveat='hardware AUCs come from the template-Hellinger estimator, '
+               'not <Z_0> (run_inventory.md)',
+        **{f'{k}_inside': v['n_inside'] for k, v in h1.items()},
+        passed=bool(h1['1p95s']['n_inside'] >= 5))
+    log(f"job3 H1: inside 95% interval 1.95s {h1['1p95s']['n_inside']}/7, "
+        f"20s {h1['20s']['n_inside']}/7 -> "
+        f"{'PASS' if h1_result['passed'] else 'FAIL'}")
+    return h1_result
+
+
+def stage_job5():
+    """Q1: permutation p for 'below chance', ideal scores + hardware 20 s."""
+    pc = build_params_cache()
+    zc = np.load(OUT_DIR / 'z0_balance_cache.npz')
+    scores = _ideal_subset_scores(pc, zc['z_np'], zc['z20_np'])
+    m02 = _p2rev02_module()
+    rows = []
+    q1_sig = {}
+    for lab in ['original', 'strict']:
+        for p in HW_SUBSET:
+            z, kinds = scores['1p95s'][p]
+            keep, y = _labels_to_y(kinds, lab)
+            a = _auc(y[keep], z[keep])
+            pp, _ = m02.perm_p_below(y[keep], z[keep])
+            rows.append(dict(row='ideal_1p95s', patient=p, labelling=lab,
+                             auc=None if a is None else round(a, 4),
+                             perm_p_below=round(pp, 4)))
+            if lab == 'original':
+                q1_sig[p] = pp
+    hw20 = json.load(open(PROJECT_ROOT / 'results/window_analysis/'
+                          'quantum_20s_hardware.json',
+                          encoding='utf-8'))['per_subject']
+    for p in HW_SUBSET:
+        y = np.array(hw20[p]['y_true'])
+        s = np.array(hw20[p]['scores'])
+        pp, _ = m02.perm_p_below(y, s)
+        rows.append(dict(row='hardware_20s', patient=p, labelling='original',
+                         auc=round(float(hw20[p]['raw_auc']), 4),
+                         perm_p_below=round(pp, 4)))
+    with open(OUT_DIR / 'permutation_7.csv', 'w', newline='',
+              encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=['row', 'patient', 'labelling',
+                                          'auc', 'perm_p_below'])
+        w.writeheader()
+        w.writerows(rows)
+    # Tier 3 below-chance patients from P2REV-02
+    t3_sig = set()
+    with open(P2REV02_DIR / 'per_patient_auc.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            if (r['labelling'], r['seed'], r['method']) == \
+                    ('original', '0', 'tier3') and r['perm_p']:
+                if float(r['perm_p']) < 0.05:
+                    t3_sig.add(r['patient'])
+    ideal_sig = {p for p, v in q1_sig.items() if v < 0.05}
+    both = ideal_sig & t3_sig & set(HW_SUBSET)
+    q1 = dict(
+        declared='retain the 5.2 sentence only if >= 3 of 7 subset patients '
+                 'below chance in ideal sim at p<0.05 AND the same patients '
+                 'below chance in Tier 3',
+        ideal_below_chance=sorted(ideal_sig),
+        tier3_below_chance_all22=sorted(t3_sig),
+        both=sorted(both),
+        passed=bool(len(ideal_sig) >= 3 and ideal_sig <= t3_sig),
+        note='hardware 1.95 s row has no per-segment scores; no interval '
+             'fabricated (stated in run_inventory.md and the results doc)')
+    log(f"job5 Q1: ideal below-chance {sorted(ideal_sig)}; Tier3 "
+        f"{sorted(t3_sig)} -> {'PASS' if q1['passed'] else 'FAIL'}")
+    return q1
+
+
+def stage_job6():
+    """G2: the sign table."""
+    pc = build_params_cache()
+    zc = np.load(OUT_DIR / 'z0_balance_cache.npz')
+    scores = _ideal_subset_scores(pc, zc['z_np'], zc['z20_np'])
+    bal_first = {}
+    first = (pc['sw_idx'] == 0)
+    for p in HW_SUBSET:
+        m = first & (pc['patient'] == p)
+        bal_first[p] = (zc['bal_np'][m], pc['label'][m])
+    geo, t3 = {}, {}
+    with open(P2REV02_DIR / 'geometric_sign.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            geo[(r['patient'], r['labelling'])] = r
+    with open(P2REV02_DIR / 'per_patient_auc.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            if (r['seed'], r['method']) == ('0', 'tier3') and r['auc']:
+                t3[(r['patient'], r['labelling'])] = \
+                    1 if float(r['auc']) >= 0.5 else -1
+    hw195 = json.load(open(PROJECT_ROOT / 'results/hardware_validation/'
+                           'ch8_heron_loso_results.json',
+                           encoding='utf-8'))['ch8']['per_subject']
+    hw20 = json.load(open(PROJECT_ROOT / 'results/window_analysis/'
+                          'quantum_20s_hardware.json',
+                          encoding='utf-8'))['per_subject']
+
+    def sgn(x):
+        return None if x is None else (1 if x >= 0.5 else -1)
+
+    rows = []
+    for lab in ['original', 'strict']:
+        for p in HW_SUBSET:
+            z, kinds = scores['1p95s'][p]
+            keep, y = _labels_to_y(kinds, lab)
+            ideal_sign = sgn(_auc(y[keep], z[keep]))
+            bl, bkinds = bal_first[p]
+            bkeep, by = _labels_to_y(bkinds, lab)
+            bal_sign = int(np.sign(np.mean(bl[bkeep & (by == 1)]) -
+                                   np.mean(bl[bkeep & (by == 0)])))
+            g = geo.get((p, lab), {})
+            rows.append(dict(
+                patient=p, labelling=lab,
+                pi=g.get('pi'), cosine=g.get('cosine'),
+                tier3_sign=t3.get((p, lab)),
+                ideal_sim_sign=ideal_sign,
+                hw_1p95s_sign=(sgn(float(hw195[p]['auc']))
+                               if lab == 'original' else None),
+                hw_20s_sign=(sgn(float(hw20[p]['raw_auc']))
+                             if lab == 'original' else None),
+                balance_sign=bal_sign))
+    with open(OUT_DIR / 'sign_table.csv', 'w', newline='',
+              encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+    # pairwise agreement, original labelling
+    cols = ['pi', 'tier3_sign', 'ideal_sim_sign', 'hw_1p95s_sign',
+            'hw_20s_sign', 'balance_sign']
+    orig = [r for r in rows if r['labelling'] == 'original']
+    agree = {}
+    for i, c1 in enumerate(cols):
+        for c2 in cols[i + 1:]:
+            n = sum(1 for r in orig
+                    if r[c1] not in (None, '') and r[c2] not in (None, '')
+                    and int(r[c1]) == int(r[c2]))
+            agree[f'{c1}|{c2}'] = f'{n}/7'
+    n_g2 = int(agree['pi|ideal_sim_sign'].split('/')[0])
+    g2 = dict(declared='ideal-sim sign agrees with pi_p in >= 5 of 7, '
+                       'original labelling; reported for strict',
+              pairwise_agreement_original=agree,
+              ideal_vs_pi_original=n_g2,
+              ideal_vs_pi_strict=sum(
+                  1 for r in rows if r['labelling'] == 'strict'
+                  and r['pi'] not in (None, '') and r['ideal_sim_sign']
+                  is not None and int(r['pi']) == int(r['ideal_sim_sign'])),
+              passed=bool(n_g2 >= 5))
+    log(f"job6 G2: ideal-sim vs pi_p {n_g2}/7 original -> "
+        f"{'PASS' if g2['passed'] else 'FAIL'}")
+    return g2
+
+
+def stage_finalize(h1, q1, g2):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    (OUT_DIR / 'figures').mkdir(exist_ok=True)
+    cc = json.load(open(OUT_DIR / 'classical_check.json', encoding='utf-8'))
+    tests = dict(
+        scope='Jobs 2,3,5,6 under the 2026-10-31 revision; Job 4 / H2 '
+              'descoped (expectation block: "H2 then adds nothing")',
+        H1=h1, H2='descoped - not evaluated', Q1=q1, G2=g2,
+        classical_check=dict(
+            max_err_1p95s=cc['max_abs_err_vs_qiskit_1p95s'],
+            max_err_20s=cc['max_abs_err_vs_qiskit_20s'],
+            passed=cc['passed']))
+    with open(OUT_DIR / 'tests.json', 'w', encoding='utf-8') as f:
+        json.dump(tests, f, indent=2)
+
+    # figure: per patient x 2 rows - ideal point, shot interval, hw point
+    shot = {}
+    with open(OUT_DIR / 'shot_distribution.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            shot[(r['row'], r['patient'])] = r
+    pc = build_params_cache()
+    zc = np.load(OUT_DIR / 'z0_balance_cache.npz')
+    scores = _ideal_subset_scores(pc, zc['z_np'], zc['z20_np'])
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), sharey=True)
+    for ax, row, title in [(axes[0], '1p95s', '1.95 s row (first 2.0 s '
+                            'sub-window)'),
+                           (axes[1], '20s', '20 s row')]:
+        for i, p in enumerate(HW_SUBSET):
+            r = shot[(row, p)]
+            lo, hi = float(r['p2_5']), float(r['p97_5'])
+            z, kinds = scores[row][p]
+            keep, y = _labels_to_y(kinds, 'original')
+            ideal = _auc(y[keep], z[keep])
+            ax.plot([i, i], [lo, hi], color='#0072B2', lw=5, alpha=0.45,
+                    solid_capstyle='round',
+                    label='shot-noise 95 %' if i == 0 else None)
+            ax.plot(i, ideal, 'o', color='#0072B2', ms=6,
+                    label='ideal $\\langle Z_0\\rangle$' if i == 0 else None)
+            ax.plot(i, float(r['hardware_value']), 'D', color='#D55E00',
+                    ms=6, label='hardware (template estimator)'
+                    if i == 0 else None)
+        ax.axhline(0.5, color='#666666', lw=1, ls='--')
+        ax.set_xticks(range(7))
+        ax.set_xticklabels(HW_SUBSET, rotation=45, fontsize=8)
+        ax.set_title(title, fontsize=10)
+        ax.grid(alpha=0.25, lw=0.5, axis='y')
+    axes[0].set_ylabel('per-patient raw AUC')
+    axes[0].legend(frameon=False, fontsize=8, loc='lower left')
+    fig.suptitle('Ideal fixed observable, its shot-noise band, and the '
+                 'hardware values (noise-model band descoped with Job 4)',
+                 fontsize=11)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / 'figures' / 'shot_vs_noise_vs_hardware.png',
+                dpi=150)
+    plt.close(fig)
+    log("finalize: tests.json + figure written")
+    return tests
+
+
+# =============================================================================
 # MAIN
 # =============================================================================
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--stage', default='job0+job1',
-                    choices=['job0', 'job1', 'job0+job1'])
+                    choices=['job0', 'job1', 'job0+job1', 'resume',
+                             'resume-light'])
     args = ap.parse_args()
     if args.stage in ('job0', 'job0+job1'):
         stage_job0()
     if args.stage in ('job1', 'job0+job1'):
         stage_job1()
+    if args.stage in ('resume', 'resume-light'):
+        t0 = time.time()
+        if args.stage == 'resume':
+            stage_job2()
+        h1 = stage_job3()
+        q1 = stage_job5()
+        g2 = stage_job6()
+        stage_finalize(h1, q1, g2)
+        log(f"resume (jobs 2,3,5,6) TOTAL {(time.time()-t0)/60:.1f} min")
 
 
 if __name__ == '__main__':
