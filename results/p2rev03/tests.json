@@ -1,50 +1,37 @@
 {
-  "scope": "Jobs 2,3,5,6 under the 2026-10-31 revision; Job 4 / H2 descoped (expectation block: \"H2 then adds nothing\")",
-  "H1": {
-    "declared": "hardware per-patient raw AUC inside the finite-shot 95% interval for >= 5 of 7 patients, 1.95 s row",
-    "caveat": "hardware AUCs come from the template-Hellinger estimator, not <Z_0> (run_inventory.md)",
-    "1p95s_inside": 2,
-    "20s_inside": 4,
-    "passed": false
+  "scope": "revised Jobs 2-6 (2026-10-31): 20 s rows only; 1.95 s rows removed from the revision; earlier fixed-observable analysis archived under z0_analysis/",
+  "H1_revised": {
+    "declared": "hardware 20 s per-patient AUC inside the shot-noise 95% interval of the simulated template classifier for >= 5 of 7",
+    "n_inside": 5,
+    "n_total": 7,
+    "passed": true,
+    "runtime_min": 3.0
   },
-  "H2": "descoped - not evaluated",
-  "Q1": {
-    "declared": "retain the 5.2 sentence only if >= 3 of 7 subset patients below chance in ideal sim at p<0.05 AND the same patients below chance in Tier 3",
-    "ideal_below_chance": [],
-    "tier3_below_chance_all22": [
+  "Q1_revised": {
+    "declared": "retain 5.2 sentence only if >= 3/7 patients below chance at p<0.05 on the hardware 20 s row AND the same patients below chance in Tier 3; otherwise the sentence is removed",
+    "hw_below_chance": [],
+    "tier3_below_chance": [
       "chb06",
       "chb08"
     ],
-    "both": [],
     "passed": false,
-    "note": "hardware 1.95 s row has no per-segment scores; no interval fabricated (stated in run_inventory.md and the results doc)"
+    "labelling_note": "only the original labelling exists for these rows; the segments are fixed by the hardware run"
   },
-  "G2": {
-    "declared": "ideal-sim sign agrees with pi_p in >= 5 of 7, original labelling; reported for strict",
-    "pairwise_agreement_original": {
+  "G2_revised": {
+    "declared": "simulation 20 s sign agrees with pi_p in >= 5 of 7",
+    "sim20_vs_pi": 4,
+    "pairwise_agreement": {
       "pi|tier3_sign": "5/7",
-      "pi|ideal_sim_sign": "3/7",
-      "pi|hw_1p95s_sign": "5/7",
-      "pi|hw_20s_sign": "4/7",
-      "pi|balance_sign": "3/7",
-      "tier3_sign|ideal_sim_sign": "3/7",
-      "tier3_sign|hw_1p95s_sign": "5/7",
-      "tier3_sign|hw_20s_sign": "2/7",
-      "tier3_sign|balance_sign": "1/7",
-      "ideal_sim_sign|hw_1p95s_sign": "3/7",
-      "ideal_sim_sign|hw_20s_sign": "2/7",
-      "ideal_sim_sign|balance_sign": "3/7",
-      "hw_1p95s_sign|hw_20s_sign": "4/7",
-      "hw_1p95s_sign|balance_sign": "3/7",
-      "hw_20s_sign|balance_sign": "4/7"
+      "pi|hw20_sign": "4/7",
+      "pi|sim20_sign": "4/7",
+      "pi|z0_sign_supplementary": "4/7",
+      "tier3_sign|hw20_sign": "2/7",
+      "tier3_sign|sim20_sign": "2/7",
+      "tier3_sign|z0_sign_supplementary": "4/7",
+      "hw20_sign|sim20_sign": "7/7",
+      "hw20_sign|z0_sign_supplementary": "5/7",
+      "sim20_sign|z0_sign_supplementary": "5/7"
     },
-    "ideal_vs_pi_original": 3,
-    "ideal_vs_pi_strict": 5,
     "passed": false
-  },
-  "classical_check": {
-    "max_err_1p95s": 2.453592884421596e-14,
-    "max_err_20s": 8.881784197001252e-15,
-    "passed": true
   }
 }

@@ -29,65 +29,72 @@ updated by Jim; replaces the earlier Claude-operationalized block)
 > reported as one.
 
 ================================================================================
-REVISION OF SCOPE (resume from Job 2, 2026-10-31) - as implemented
+REVISION OF SCOPE AFTER THE JOB 1 CHECKPOINT (2026-10-31, verbatim from
+docs/PROMPT_P2REV_03_quantum_gap.md)
 ================================================================================
 
-The Job 1 checkpoint showed no submitted row measures the ancilla <Z_0>. The
-resume instruction references a "Revision of scope" section of the prompt
-that is not present in the file on disk; the implemented reading, recorded
-here so it can be corrected if wrong: Jobs 2, 3, 5 and 6 run exactly as the
-prompt states them - i.e. the analysis object is the FIXED ancilla
-observable <Z_0> (the section-3.5 definition), computed classically, with
-the submitted template-fidelity pipeline documented in run_inventory.md and
-the estimator mismatch carried as a caveat on every hardware comparison.
-Job 4 / H2 (FakeTorino) is OUT OF SCOPE under the revision - the expectation
-block's "H2 then adds nothing" - leaving exactly three pre-declared blocks
-in force. Jobs 0-1 outputs are untouched.
+Jim's decision: anything that is just removed or fixed for this revision is
+fine; this is about pulling back. Jobs 2-6 replace the originals. The two
+"1.95 s" rows (hardware and simulation) are REMOVED from the revision - the
+window is 2.0 s in the code, the two rows used different estimators, and the
+hardware row has no per-segment scores - so no further computation touches
+them. Everything below is on the 20 s rows only:
+results/window_analysis/quantum_20s_hardware.json (per-subject scores,
+y_true) and quantum_20s_simulation.json (reproduced to 0.0 in Job 1).
+Jobs 3-6 as originally written (binomial on <Z_0>, FakeTorino, 1.95 s) are
+cancelled. Do not install qiskit_ibm_runtime.
+
+[Historical note: an interim resume on 2026-10-31 ran the original Jobs
+2/3/5/6 on the fixed <Z_0> observable before this section reached the file;
+its outputs are preserved under results/p2rev03/z0_analysis/ and analysed
+the fixed observable, not the submitted classifier.]
 
 ================================================================================
-PRE-DECLARED BLOCKS IN FORCE (three, verbatim from the prompt; H2/Job 4
-descoped, not evaluated)
+REVISED PRE-DECLARED BLOCKS (verbatim from the prompt's revision of scope)
 ================================================================================
 
-H1 (Job 3, finite-shot distribution)
-    For each segment, p = (1 + <Z_0>)/2. Draw counts ~ Binomial(1024, p),
-    200 seeds, score = 2*p_hat - 1. Per seed, compute per-patient AUC and the
-    overall AUC (same pooling as the submitted row). Report, per patient and
-    overall, the 2.5 / 50 / 97.5 percentiles, and the percentile at which the
-    hardware value sits. Both rows (1.95 s, 20 s).
-    Pre-declared H1: the hardware per-patient raw AUC lies inside the
-    finite-shot 95 % interval for >= 5 of 7 patients, for the 1.95 s row.
-    Reported separately for the 20 s row. If H1 passes, shot noise alone
-    accounts for the hardware numbers and the "discrepancy" is not one. If H1
-    fails, Job 4 is where the explanation has to come from. [Caveat carried
-    from Job 0: the hardware AUCs being located in these intervals were
-    produced by the template-Hellinger estimator, not by <Z_0>; H1 therefore
-    tests whether the hardware numbers are distinguishable from shot-level
-    noise around the fixed observable, and the estimator mismatch is stated
-    wherever H1 is reported.]
+H1 (revised; Job 3 - shot-noise interval for the 20 s rows)
+    For each of the 7 patients and each LOSO fold as the 20 s simulation
+    script builds it: take the exact statevector probability distributions
+    of the two template circuits and of each test circuit. Draw 1024-shot
+    multinomial samples of BOTH templates and every test circuit, score each
+    test window by Hellinger fidelity exactly as quantum_20s_hardware.py
+    does (fid_ictal - fid_inter on counts), compute per-patient AUC and the
+    7-patient overall AUC. 200 seeds. Report per patient and overall:
+    2.5 / 50 / 97.5 percentiles, the exact-statevector value (the submitted
+    simulation row, Bhattacharyya on probabilities), and the hardware value
+    with the percentile it sits at.
+    Pre-declared H1 (revised): the hardware 20 s per-patient AUC lies inside
+    the shot-noise 95 % interval of the simulated template classifier for
+    >= 5 of 7 patients. If it passes, the manuscript's simulation-hardware
+    section is replaced by one sentence giving the percentile. If it fails,
+    the manuscript reports the hardware values with their intervals and says
+    the difference from simulation is not explained by shot noise; no
+    noise-model run follows in this revision.
 
-Q1 (Job 5, sub-chance readout significance)
-    For the ideal 1.95 s scores, per patient, 7-subset and all 22, both
-    labellings: permutation p for "below chance" (1000 within-patient label
-    permutations, same definition as P2REV-02 c2). For the hardware 20 s row
-    the per-window scores exist and P2REV-02 already bootstrapped them; add
-    the permutation p there too. The hardware 1.95 s row has no per-segment
-    scores; state that again and do not fabricate an interval.
-    Pre-declared Q1: the section-5.2 sentence "AUC < 0.5 is an explicit
-    polarity readout" is retained only if, under the original labelling,
-    >= 3 of the 7 hardware-subset patients are below chance in the ideal
-    simulation at p < 0.05 AND the same patients are below chance in Tier 3
-    (P2REV-02 per_patient_auc.csv, perm_p). Otherwise the sentence is
-    replaced by: the fixed-basis observable's sign is reported per patient as
-    an observation, with its interval.
+Q1 (revised; Job 4 - permutation and bootstrap on the 20 s rows)
+    Per patient: 95 % stratified bootstrap (2000) and permutation p_below
+    (1000 within-patient label permutations, P2REV-02 definition) on (i) the
+    hardware 20 s per-window scores and (ii) the exact simulation 20 s
+    scores. Both labellings are NOT available for these rows (the segments
+    are fixed by the hardware run); say so.
+    Pre-declared Q1 (revised): the section-5.2 sentence that sub-chance AUC
+    is an explicit polarity readout is retained only if >= 3 of 7 patients
+    are below chance at p < 0.05 on the hardware 20 s row AND the same
+    patients are below chance in Tier 3
+    (results/p2rev02/per_patient_auc.csv, original labelling, perm_p).
+    Otherwise the sentence is removed.
 
-G2 (Job 6, sign table)
-    One table, 7 hardware patients, both labellings where available: pi_p and
-    its cosine (from geometric_sign.csv), Tier 3 sign, ideal-sim sign,
-    hardware 1.95 s sign, hardware 20 s sign, and the balance-observable sign
-    from Job 2. Agreement counts for every pair of columns.
-    Pre-declared G2: the ideal-sim sign agrees with pi_p in >= 5 of 7 under
-    the original labelling. Reported, not judged, for strict.
+G2 (revised; Job 5 - sign table)
+    Seven patients, one table: pi_p and cosine (results/p2rev02/
+    geometric_sign.csv, original labelling), Tier 3 sign and CI, hardware
+    20 s sign and CI, simulation 20 s sign and CI, and one supplementary
+    column: the sign of the ancilla <Z_0> AUC from Job 1's
+    ideal_scores_20s.csv, labelled "fixed observable described in submitted
+    section 3.5; not what produced any reported number". Agreement counts
+    for every pair.
+    Pre-declared G2 (revised): the simulation 20 s sign agrees with pi_p in
+    >= 5 of 7.
 ================================================================================
 """
 
@@ -942,6 +949,317 @@ def stage_finalize(h1, q1, g2):
 
 
 # =============================================================================
+# REVISED JOBS 2-6 (2026-10-31 revision of scope: 20 s rows only)
+# =============================================================================
+
+Z0_DIR = OUT_DIR / 'z0_analysis'    # archived fixed-observable run + caches
+
+
+def _load_20s_params():
+    """20 s-window (a,b,c) per segment for the 7 subjects, from the verified
+    cache (identical to the Job 1 Qiskit inputs; reproduction dev 0.0)."""
+    z = np.load(Z0_DIR / 'params_cache.npz', allow_pickle=True)
+    return (z['a20'], z['b20'], z['c20'],
+            z['patient20'].astype(str), z['label20'].astype(str))
+
+
+def _avg_params(plist):
+    """Average (a,b,c) parameter sets exactly as the run scripts did
+    (circular mean for b, clip for c)."""
+    arr = np.array(plist)            # (n, 8, 3)
+    avg = []
+    for ch in range(arr.shape[1]):
+        avg_a = float(np.mean(arr[:, ch, 0]))
+        sins = np.mean(np.sin(arr[:, ch, 1]))
+        coss = np.mean(np.cos(arr[:, ch, 1]))
+        avg_b = float(np.arctan2(sins, coss) % (2 * np.pi))
+        avg_c = float(np.clip(np.mean(arr[:, ch, 2]), 0.05, 0.95))
+        avg.append((avg_a, avg_b, avg_c))
+    return avg
+
+
+def stage_rev3():
+    """H1 (revised): shot-noise interval of the simulated template
+    classifier, 20 s row, 200 seeds."""
+    from qiskit.quantum_info import Statevector
+    from QA1.multichannel_circuit import create_multichannel_circuit
+    t0 = time.time()
+    a20, b20, c20, pat20, lab20 = _load_20s_params()
+    n = len(pat20)
+    log(f"rev3: probability vectors for {n} test circuits")
+    probs = np.empty((n, 2 ** 17))
+    for i in range(n):
+        sv = Statevector.from_instruction(create_multichannel_circuit(
+            list(zip(a20[i], b20[i], c20[i]))))
+        probs[i] = np.abs(sv.data) ** 2
+
+    hw = json.load(open(PROJECT_ROOT / 'results/window_analysis/'
+                        'quantum_20s_hardware.json',
+                        encoding='utf-8'))['per_subject']
+    sim = json.load(open(PROJECT_ROOT / 'results/window_analysis/'
+                         'quantum_20s_simulation.json',
+                         encoding='utf-8'))['per_subject']
+
+    folds = {}
+    for test in HW_SUBSET:
+        tr = [i for i in range(n) if pat20[i] != test]
+        ict = [i for i in tr if lab20[i] in ('ictal', 'preictal')][:50]
+        itr = [i for i in tr if lab20[i] == 'interictal'][:50]
+        tmpl = {}
+        for name, idxs in [('ictal', ict), ('inter', itr)]:
+            avg = _avg_params([np.column_stack([a20[i], b20[i], c20[i]])
+                               for i in idxs])
+            sv = Statevector.from_instruction(
+                create_multichannel_circuit(avg))
+            tmpl[name] = np.abs(sv.data) ** 2
+        te = [i for i in range(n) if pat20[i] == test]
+        y = np.array([1 if lab20[i] in ('ictal', 'preictal') else 0
+                      for i in te])
+        folds[test] = dict(tmpl=tmpl, test_idx=te, y=y)
+        # sanity: exact Bhattacharyya reproduces the submitted sim row
+        ex = [float(np.sum(np.sqrt(probs[i] * tmpl['ictal'])) ** 2 -
+                    np.sum(np.sqrt(probs[i] * tmpl['inter'])) ** 2)
+              for i in te]
+        dev = abs(_auc(y, ex) - float(sim[test]['raw_auc']))
+        log(f"rev3: fold {test} exact-sim sanity dev {dev:.2e}")
+
+    rng = np.random.default_rng(7)
+    per_seed = {p: np.empty(200) for p in HW_SUBSET}
+    pooled = np.empty(200)
+    log("rev3: multinomial sampling, 200 seeds")
+    for s in range(200):
+        ys_all, sc_all = [], []
+        for test in HW_SUBSET:
+            f = folds[test]
+            ct_i = rng.multinomial(SHOTS, f['tmpl']['ictal']).astype(float)
+            ct_t = rng.multinomial(SHOTS, f['tmpl']['inter']).astype(float)
+            sq_i, sq_t = np.sqrt(ct_i), np.sqrt(ct_t)
+            scores = []
+            for i in f['test_idx']:
+                c = rng.multinomial(SHOTS, probs[i]).astype(float)
+                sq = np.sqrt(c)
+                fid_i = float(sq @ sq_i) ** 2 / SHOTS ** 2
+                fid_t = float(sq @ sq_t) ** 2 / SHOTS ** 2
+                scores.append(fid_i - fid_t)
+            per_seed[test][s] = _auc(f['y'], scores)
+            ys_all.extend(f['y'].tolist())
+            sc_all.extend(scores)
+        pooled[s] = _auc(ys_all, sc_all)
+        if s % 50 == 49:
+            log(f"rev3: seed {s + 1}/200")
+
+    rows, inside = [], 0
+    for p in HW_SUBSET:
+        v = per_seed[p]
+        lo, md, hi = np.percentile(v, [2.5, 50, 97.5])
+        hwv = float(hw[p]['raw_auc'])
+        ins = bool(lo <= hwv <= hi)
+        inside += ins
+        rows.append(dict(patient=p, p2_5=round(lo, 4), p50=round(md, 4),
+                         p97_5=round(hi, 4),
+                         sim_exact=round(float(sim[p]['raw_auc']), 4),
+                         hardware_value=round(hwv, 4),
+                         hardware_percentile=round(
+                             float(np.mean(v <= hwv) * 100), 1),
+                         inside_95=int(ins)))
+    mean_seed = np.mean([per_seed[p] for p in HW_SUBSET], axis=0)
+    for name, dist, hwv, simv in [
+            ('OVERALL(mean of patients)', mean_seed,
+             float(np.mean([hw[p]['raw_auc'] for p in HW_SUBSET])),
+             float(np.mean([sim[p]['raw_auc'] for p in HW_SUBSET]))),
+            ('OVERALL(pooled)', pooled,
+             0.3891, 0.3863)]:
+        lo, md, hi = np.percentile(dist, [2.5, 50, 97.5])
+        rows.append(dict(patient=name, p2_5=round(lo, 4), p50=round(md, 4),
+                         p97_5=round(hi, 4), sim_exact=round(simv, 4),
+                         hardware_value=round(hwv, 4),
+                         hardware_percentile=round(
+                             float(np.mean(dist <= hwv) * 100), 1),
+                         inside_95=int(lo <= hwv <= hi)))
+    with open(OUT_DIR / 'shot_distribution_20s.csv', 'w', newline='',
+              encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+    h1 = dict(declared='hardware 20 s per-patient AUC inside the shot-noise '
+                       '95% interval of the simulated template classifier '
+                       'for >= 5 of 7',
+              n_inside=int(inside), n_total=7, passed=bool(inside >= 5),
+              runtime_min=round((time.time() - t0) / 60, 1))
+    log(f"rev3 H1(revised): {inside}/7 inside -> "
+        f"{'PASS' if h1['passed'] else 'FAIL'} "
+        f"({h1['runtime_min']} min)")
+    return h1
+
+
+def stage_rev4():
+    """Q1 (revised): bootstrap + permutation on the two 20 s rows."""
+    m02 = _p2rev02_module()
+    hw = json.load(open(PROJECT_ROOT / 'results/window_analysis/'
+                        'quantum_20s_hardware.json',
+                        encoding='utf-8'))['per_subject']
+    sim_rows = {}
+    with open(OUT_DIR / 'ideal_scores_20s.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            sim_rows.setdefault(r['patient'], []).append(
+                (int(r['y']), float(r['fidelity_score'])))
+    rows = []
+    for name, data in [('hw', {p: (np.array(hw[p]['y_true']),
+                                   np.array(hw[p]['scores']))
+                               for p in HW_SUBSET}),
+                       ('sim', {p: (np.array([t[0] for t in sim_rows[p]]),
+                                    np.array([t[1] for t in sim_rows[p]]))
+                                for p in HW_SUBSET})]:
+        for p in HW_SUBSET:
+            y, s = data[p]
+            a = _auc(y, s)
+            lo, hi = m02.bootstrap_auc_ci(y, s)
+            pp, _ = m02.perm_p_below(y, s)
+            rows.append(dict(row=name, patient=p, auc=round(a, 4),
+                             ci_lo=round(lo, 4), ci_hi=round(hi, 4),
+                             perm_p_below=round(pp, 4)))
+    with open(OUT_DIR / 'per_patient_20s.csv', 'w', newline='',
+              encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=['row', 'patient', 'auc', 'ci_lo',
+                                          'ci_hi', 'perm_p_below'])
+        w.writeheader()
+        w.writerows(rows)
+    hw_below = sorted(r['patient'] for r in rows
+                      if r['row'] == 'hw' and r['perm_p_below'] < 0.05)
+    t3_below = set()
+    with open(P2REV02_DIR / 'per_patient_auc.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            if (r['labelling'], r['seed'], r['method']) == \
+                    ('original', '0', 'tier3') and r['perm_p'] \
+                    and float(r['perm_p']) < 0.05:
+                t3_below.add(r['patient'])
+    q1 = dict(declared='retain 5.2 sentence only if >= 3/7 patients below '
+                       'chance at p<0.05 on the hardware 20 s row AND the '
+                       'same patients below chance in Tier 3; otherwise the '
+                       'sentence is removed',
+              hw_below_chance=hw_below,
+              tier3_below_chance=sorted(t3_below),
+              passed=bool(len(hw_below) >= 3 and
+                          set(hw_below) <= t3_below),
+              labelling_note='only the original labelling exists for these '
+                             'rows; the segments are fixed by the hardware '
+                             'run')
+    log(f"rev4 Q1(revised): hw below-chance {hw_below} -> "
+        f"{'PASS' if q1['passed'] else 'FAIL'}")
+    return q1, rows
+
+
+def stage_rev5(pp_rows):
+    """G2 (revised): the sign table, 20 s rows."""
+    geo = {}
+    with open(P2REV02_DIR / 'geometric_sign.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            if r['labelling'] == 'original':
+                geo[r['patient']] = r
+    t3 = {}
+    with open(P2REV02_DIR / 'per_patient_auc.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            if (r['labelling'], r['seed'], r['method']) == \
+                    ('original', '0', 'tier3') and r['auc']:
+                t3[r['patient']] = r
+    z0 = {}
+    with open(OUT_DIR / 'ideal_scores_20s.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            z0.setdefault(r['patient'], []).append(
+                (int(r['y']), float(r['z_expect'])))
+    pp = {(r['row'], r['patient']): r for r in pp_rows}
+
+    def sgn(a):
+        return 1 if a >= 0.5 else -1
+
+    rows = []
+    for p in HW_SUBSET:
+        y = [t[0] for t in z0[p]]
+        s = [t[1] for t in z0[p]]
+        z0_sign = sgn(_auc(y, s))
+        rows.append(dict(
+            patient=p,
+            pi=int(geo[p]['pi']), cosine=geo[p]['cosine'],
+            tier3_sign=sgn(float(t3[p]['auc'])),
+            tier3_ci=f"[{t3[p]['ci_lo']}, {t3[p]['ci_hi']}]",
+            hw20_sign=sgn(pp[('hw', p)]['auc']),
+            hw20_ci=f"[{pp[('hw', p)]['ci_lo']}, {pp[('hw', p)]['ci_hi']}]",
+            sim20_sign=sgn(pp[('sim', p)]['auc']),
+            sim20_ci=f"[{pp[('sim', p)]['ci_lo']}, "
+                     f"{pp[('sim', p)]['ci_hi']}]",
+            z0_sign_supplementary=z0_sign))
+    with open(OUT_DIR / 'sign_table_20s.csv', 'w', newline='',
+              encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+        f.write('# z0_sign_supplementary: fixed observable described in '
+                'submitted section 3.5; not what produced any reported '
+                'number\n')
+    cols = ['pi', 'tier3_sign', 'hw20_sign', 'sim20_sign',
+            'z0_sign_supplementary']
+    agree = {}
+    for i, c1 in enumerate(cols):
+        for c2 in cols[i + 1:]:
+            agree[f'{c1}|{c2}'] = \
+                f"{sum(1 for r in rows if r[c1] == r[c2])}/7"
+    n_g2 = sum(1 for r in rows if r['sim20_sign'] == r['pi'])
+    g2 = dict(declared='simulation 20 s sign agrees with pi_p in >= 5 of 7',
+              sim20_vs_pi=n_g2, pairwise_agreement=agree,
+              passed=bool(n_g2 >= 5))
+    log(f"rev5 G2(revised): sim20 vs pi {n_g2}/7 -> "
+        f"{'PASS' if g2['passed'] else 'FAIL'}")
+    return g2
+
+
+def stage_rev_finalize(h1, q1, g2, pp_rows):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    tests = dict(
+        scope='revised Jobs 2-6 (2026-10-31): 20 s rows only; 1.95 s rows '
+              'removed from the revision; earlier fixed-observable analysis '
+              'archived under z0_analysis/',
+        H1_revised=h1, Q1_revised=q1, G2_revised=g2)
+    with open(OUT_DIR / 'tests.json', 'w', encoding='utf-8') as f:
+        json.dump(tests, f, indent=2)
+    shot = {}
+    with open(OUT_DIR / 'shot_distribution_20s.csv', encoding='utf-8') as f:
+        for r in csv.DictReader(f):
+            shot[r['patient']] = r
+    pp = {(r['row'], r['patient']): r for r in pp_rows}
+    fig, ax = plt.subplots(figsize=(8, 4.8))
+    for i, p in enumerate(HW_SUBSET):
+        r = shot[p]
+        ax.plot([i, i], [float(r['p2_5']), float(r['p97_5'])],
+                color='#0072B2', lw=6, alpha=0.4, solid_capstyle='round',
+                label='template classifier, 1024-shot 95 %'
+                if i == 0 else None)
+        ax.plot(i, float(r['sim_exact']), 'o', color='#0072B2', ms=6,
+                label='simulation (exact)' if i == 0 else None)
+        h = pp[('hw', p)]
+        ax.errorbar(i + 0.12, float(h['auc']),
+                    yerr=[[float(h['auc']) - float(h['ci_lo'])],
+                          [float(h['ci_hi']) - float(h['auc'])]],
+                    fmt='D', color='#D55E00', ms=6, lw=1.4, capsize=3,
+                    label='hardware (bootstrap 95 %)' if i == 0 else None)
+    ax.axhline(0.5, color='#666666', lw=1, ls='--')
+    ax.set_xticks(range(7))
+    ax.set_xticklabels(HW_SUBSET, rotation=45, fontsize=9)
+    ax.set_ylabel('per-patient raw AUC (20 s row)')
+    ax.set_title('Template classifier: exact simulation, its shot-noise '
+                 'band, and hardware with bootstrap CI')
+    ax.grid(alpha=0.25, lw=0.5, axis='y')
+    ax.legend(frameon=False, fontsize=9)
+    fig.tight_layout()
+    (OUT_DIR / 'figures').mkdir(exist_ok=True)
+    fig.savefig(OUT_DIR / 'figures' / 'shot_interval_vs_hardware_20s.png',
+                dpi=150)
+    plt.close(fig)
+    log("rev finalize: tests.json + figure written")
+
+
+# =============================================================================
 # MAIN
 # =============================================================================
 
@@ -949,7 +1267,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--stage', default='job0+job1',
                     choices=['job0', 'job1', 'job0+job1', 'resume',
-                             'resume-light'])
+                             'resume-light', 'revised'])
     args = ap.parse_args()
     if args.stage in ('job0', 'job0+job1'):
         stage_job0()
@@ -964,6 +1282,13 @@ def main():
         g2 = stage_job6()
         stage_finalize(h1, q1, g2)
         log(f"resume (jobs 2,3,5,6) TOTAL {(time.time()-t0)/60:.1f} min")
+    if args.stage == 'revised':
+        t0 = time.time()
+        h1 = stage_rev3()
+        q1, pp_rows = stage_rev4()
+        g2 = stage_rev5(pp_rows)
+        stage_rev_finalize(h1, q1, g2, pp_rows)
+        log(f"revised jobs TOTAL {(time.time()-t0)/60:.1f} min")
 
 
 if __name__ == '__main__':
