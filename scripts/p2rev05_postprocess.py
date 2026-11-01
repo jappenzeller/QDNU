@@ -25,7 +25,7 @@ LANDSCAPE_USABLE = PAGE_H - 2 * MARGIN
 
 
 def el(tag, **attrs):
-    e = OxmlElement(tag)
+    e = OxmlElement(tag if ':' in tag else f'w:{tag}')
     for k, v in attrs.items():
         e.set(qn(f'w:{k}'), str(v))
     return e

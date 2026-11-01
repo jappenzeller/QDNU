@@ -31,7 +31,7 @@ PROBE = """Text paragraph.
 
 def el(tag, **attrs):
     from docx.oxml import OxmlElement
-    e = OxmlElement(tag)
+    e = OxmlElement(tag if ':' in tag else f'w:{tag}')
     for k, v in attrs.items():
         e.set(qn(f'w:{k}'), str(v))
     return e
