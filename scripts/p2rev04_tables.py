@@ -246,9 +246,9 @@ def main():
            "with 95 % bootstrap intervals and permutation p; the 95 % "
            "shot-noise band of the simulated template classifier (200 "
            "seeds) and the percentile of the hardware value in it; signs: "
-           "Tier 3 σ_p, geometric π_p, and (supplementary) the ancilla "
-           "⟨Z₀⟩ observable described in the submitted §3.5, which "
-           "produced none of the reported numbers.",
+           "Tier 3 σ_p, geometric π_p, and (supplementary column) the "
+           "ancilla ⟨Z₀⟩ observable of the same circuit, which is not the "
+           "scoring rule of any reported number.",
            ['patient', 'n windows', 'hardware AUC [95 % CI]', 'hw perm p',
             'simulation AUC [95 % CI]', 'sim perm p', 'shot band',
             'hw percentile', 'σ (Tier 3)', 'π', '⟨Z₀⟩ sign'], rows5)
